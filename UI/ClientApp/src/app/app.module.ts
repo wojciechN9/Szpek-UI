@@ -10,6 +10,7 @@ import { HomeComponent } from './home/home.component';
 import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { SensorComponent } from './sensor/sensor.component';
+import { SensorDetailsComponent } from './sensor-details/sensor-details.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { SensorComponent } from './sensor/sensor.component';
     HomeComponent,
     CounterComponent,
     FetchDataComponent,
-    SensorComponent
+    SensorComponent,
+    SensorDetailsComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -29,6 +31,7 @@ import { SensorComponent } from './sensor/sensor.component';
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
       { path: 'sensor', component: SensorComponent },
+      { path: 'sensor/:id', component: SensorDetailsComponent },
 
     ])
   ],

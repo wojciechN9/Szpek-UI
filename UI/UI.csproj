@@ -26,11 +26,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\src\app\sensor-details\sensor-details.component.ts" />
     <None Remove="ClientApp\src\app\sensor\sensor.component.ts" />
     <None Remove="ClientApp\src\app\sensor\sensor.type.ts" />
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\app\sensor-details\sensor-details.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\sensor\sensor.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\sensor\sensor.type.ts" />
   </ItemGroup>

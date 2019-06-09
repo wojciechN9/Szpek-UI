@@ -14,8 +14,8 @@ namespace UI.Controllers
         {
             return new List<Sensor>()
             {
-                new Sensor(1, 10, 300, new DateTime(), "michow"),
-                new Sensor(2, 20, 100, new DateTime(), "lublin"),
+                new Sensor(1, 10, 300, DateTime.Now, "michow"),
+                new Sensor(2, 20, 100, DateTime.Now, "lublin"),
             };
         }
 
@@ -24,8 +24,8 @@ namespace UI.Controllers
         {
             return new List<Sensor>()
             {
-                new Sensor(1, 10, 300, new DateTime().AddHours(-1), "michow"),
-                new Sensor(2, 20, 100, new DateTime(), "michow"),
+                new Sensor(sensorId, 10, 300, DateTime.Now.AddHours(-1), "michow"),
+                new Sensor(sensorId, 20, 100, DateTime.Now, "michow"),
             };
         }
     }

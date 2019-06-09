@@ -1,0 +1,21 @@
+<h1>SensorDetails</h1>
+<p>Name: {{ currentData?.name}}</p>
+<p>Pm10: {{ currentData?.pm10Value}}</p>
+<p>Pm25: {{ currentData?.pm25Value}}</p>
+<p>periodTo: {{ currentData?.periodTo | date:'hh:mm'}}</p>
+<table class='table table-striped' *ngIf="sensorsDetails">
+  <thead>
+    <tr>
+      <th>pm10Value</th>
+      <th>pm25Value</th>
+      <th>periodTo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let sensorDetails of sensorsDetails">
+      <td>{{ sensorDetails.pm10Value }}</td>
+      <td>{{ sensorDetails.pm25Value }}</td>
+      <td>{{ sensorDetails.periodTo | date:'hh:mm'}}</td>
+    </tr>
+  </tbody>
+</table>
