@@ -1,0 +1,22 @@
+<h1>TU NARAZIE JEST SCIERNISKO</h1>
+
+<p>ALE BĘDZIE SAN FRANCISO</p>
+
+<table class='table table-striped' *ngIf="sensors">
+  <thead>
+    <tr>
+      <th>pm10Value</th>
+      <th>pm25Value</th>
+      <th>periodTo</th>
+      <th>name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let sensor of sensors">
+      <td>{{ sensor.pm10Value }}</td>
+      <td>{{ sensor.pm25Value }}</td>
+      <td>{{ sensor.periodTo }}</td>
+      <td>{{ sensor.name }}</td>
+    </tr>
+  </tbody>
+</table>
