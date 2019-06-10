@@ -11,6 +11,7 @@ import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { SensorComponent } from './sensor/sensor.component';
 import { SensorDetailsComponent } from './sensor-details/sensor-details.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { SensorDetailsComponent } from './sensor-details/sensor-details.componen
     CounterComponent,
     FetchDataComponent,
     SensorComponent,
-    SensorDetailsComponent
+    SensorDetailsComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

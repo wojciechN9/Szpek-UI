@@ -29,12 +29,14 @@
     <None Remove="ClientApp\src\app\sensor-details\sensor-details.component.ts" />
     <None Remove="ClientApp\src\app\sensor\sensor.component.ts" />
     <None Remove="ClientApp\src\app\sensor\sensor.type.ts" />
+    <None Remove="ClientApp\src\app\sidebar\sidebar.component.ts" />
   </ItemGroup>
 
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\src\app\sensor-details\sensor-details.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\sensor\sensor.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\sensor\sensor.type.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\sidebar\sidebar.component.ts" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
