@@ -1,0 +1,30 @@
+<div class="sensor-list">
+  <div class="sensor-list-location">
+    <div class="sensor-list-location-city">
+      {{sensor.name}}
+    </div>
+    <div class="sensor-list-location-name">
+      {{sensor.name}}
+    </div>
+    <div class="sensor-list-location-time">
+      <fa-icon [icon]="fa-clock"> {{sensor.periodTo | date:'hh:mm'}}</fa-icon>
+    </div>
+  </div>
+  <div class="sensor-list-values">
+    <div class="sensor-list-value poor-quality">
+      <div class="sensor-list-value-content">
+        <div class="sensor-list-value-unit">PM 2.5</div>
+        <div class="sensor-list-value-pollution">135</div>
+        <div class="sensor-list-value-info">μg/m3</div>
+      </div>
+    </div>
+    <div class="sensor-list-value poor-quality">
+      <div class="sensor-list-value-content">
+        <div class="sensor-list-value-unit">PM 2.5</div>
+        <div class="sensor-list-value-pollution">135</div>
+        <div class="sensor-list-value-info">μg/m3</div>
+      </div>
+    </div>
+  </div>
+  <fa-icon [icon]="fa-star"></fa-icon>
+</div>

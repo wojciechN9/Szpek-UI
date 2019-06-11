@@ -2,22 +2,10 @@
 
 <p>ALE BĘDZIE SAN FRANCISO</p>
 
-<table class='table table-striped' *ngIf="sensors">
-  <thead>
-    <tr>
-      <th>pm10Value</th>
-      <th>pm25Value</th>
-      <th>periodTo</th>
-      <th>name</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let sensor of sensors">
-      <td>{{ sensor.pm10Value }}</td>
-      <td>{{ sensor.pm25Value }}</td>
-      <td>{{ sensor.periodTo | date:'hh:mm'}}</td>
-      <td>{{ sensor.name }}</td>
-      <td><a routerLink="./{{ sensor.id }}">></a></td>
-    </tr>
-  </tbody>
-</table>
+
+  <div *ngFor="let sensor of sensors">
+    <sensor-list-element [sensor]="sensor"></sensor-list-element>
+  </div>
+
+
+<!--<td><a routerLink="./{{ sensor.id }}">></a></td>-->
