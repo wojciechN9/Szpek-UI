@@ -7,7 +7,7 @@
       {{sensor.name}}
     </div>
     <div class="sensor-list-location-time">
-      <fa-icon [icon]="fa-clock"> {{sensor.periodTo | date:'hh:mm'}}</fa-icon>
+      <fa-icon [icon]="['fas', 'clock']"></fa-icon>{{sensor.periodTo | date:'hh:mm'}}
     </div>
   </div>
   <div class="sensor-list-values">
@@ -20,11 +20,11 @@
     </div>
     <div class="sensor-list-value poor-quality">
       <div class="sensor-list-value-content">
-        <div class="sensor-list-value-unit">PM 2.5</div>
+        <div class="sensor-list-value-unit">PM 10</div>
         <div class="sensor-list-value-pollution">135</div>
         <div class="sensor-list-value-info">μg/m3</div>
       </div>
     </div>
   </div>
-  <fa-icon [icon]="fa-star"></fa-icon>
+  <fa-icon class="fav-unchecked" [icon]="['fas', 'star']"></fa-icon>
 </div>

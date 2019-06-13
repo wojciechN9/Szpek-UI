@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { faStar, faClock } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'sensor-list-element',
@@ -8,6 +7,4 @@ import { faStar, faClock } from '@fortawesome/free-solid-svg-icons';
 })
 export class SensorListElementComponent {
   @Input() sensor: Sensor;
-  faStar = faStar;
-  faClock = faClock;
 }

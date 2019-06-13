@@ -4,7 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faStar, faClock } from '@fortawesome/free-solid-svg-icons';
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
@@ -44,4 +45,8 @@ import { SensorListElementComponent } from './sensor-list-element/sensor-list-el
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor() {
+    library.add(faStar, faClock);
+  }
+}
