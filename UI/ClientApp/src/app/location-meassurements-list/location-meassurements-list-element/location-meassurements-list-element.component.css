@@ -1,0 +1,98 @@
+.location-meassurements-list {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: lightblue;
+  border-radius: 2rem;
+  margin-bottom: 0.5rem;
+  line-height: normal;
+}
+
+.location-meassurements-data {
+  display: flex;
+  flex-wrap: wrap;
+  flex: 4;
+  align-content: flex-start;
+}
+
+.location-meassurements-list-location {
+  padding: 0rem 0.5rem;
+  flex: 2;
+  flex-wrap: nowrap;
+}
+
+.location-meassurements-list-location-city {
+  font-size: 1.75rem;
+}
+
+.location-meassurements-list-location-name {
+  font-size: 1rem;
+  word-break: break-word;
+}
+
+.location-meassurements-list-location-time {
+  font-size: 0.75rem;
+}
+
+.location-meassurements-list-values {
+  display: flex;
+  flex: 2;
+}
+
+.location-meassurements-list-value {
+  height: 5.75rem;
+  width: 5.75rem;
+  display: flex;
+  margin: 0.25rem;
+  border-radius: 1rem;
+  background-color: white;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0.25rem 0.25rem 0.25rem gray;
+  border-style: solid;
+}
+
+.location-meassurements-list-value-content {
+}
+
+.location-meassurements-list-value-unit {
+  font-size: 0.75rem;
+  color: white;
+}
+
+.location-meassurements-list-value-pollution {
+  font-size: 2.5em;
+  font-weight: bold;
+  color: white;
+}
+
+.location-meassurements-list-value-info {
+  font-size: 0.5rem;
+  color: white;
+}
+
+.star {
+  text-align: center;
+}
+
+.fav-unchecked {
+  color: white;
+}
+
+.fav-checked {
+  color: orange;
+}
+
+.good-quality {
+  background-color: green;
+}
+
+.poor-quality {
+  background-color: orange;
+}
+
+.danger-quality {
+  background-color: red;
+}
