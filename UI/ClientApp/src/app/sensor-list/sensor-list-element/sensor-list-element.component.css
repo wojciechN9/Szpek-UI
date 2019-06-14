@@ -1,13 +1,19 @@
 .sensor-list {
   width: 100%;
-  display: inline-flex;
+  display: flex;
   justify-content: space-between;
   align-items: center;
   background-color: lightblue;
-  height: 7.5rem;
   border-radius: 2rem;
   margin-bottom: 0.5rem;
   line-height: normal;
+}
+
+.sensor-data {
+  display: flex;
+  flex-wrap: wrap;
+  flex: 4;
+  align-content: flex-start;
 }
 
 .sensor-list-location {
@@ -49,12 +55,10 @@
 }
 
 .sensor-list-value-content {
-  /*display: inline-flex;*/
 }
 
 .sensor-list-value-unit {
   font-size: 0.75rem;
-  /*font-weight: bold;*/
   color: white;
 }
 
@@ -70,7 +74,6 @@
 }
 
 .star {
-  flex: 0.5;
   text-align: center;
 }
 

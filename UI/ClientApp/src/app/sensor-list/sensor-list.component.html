@@ -1,0 +1,3 @@
+<div  *ngFor="let sensor of sensors">
+  <sensor-list-element [sensor]="sensor" [isFavourite]="isFavourite(sensor.id)" (favouriteStatusChanged)="favouriteStatusChangedEvent($event)"></sensor-list-element>
+</div>

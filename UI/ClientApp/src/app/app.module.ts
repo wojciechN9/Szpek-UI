@@ -14,7 +14,8 @@ import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { SensorComponent } from './sensor/sensor.component';
 import { SensorDetailsComponent } from './sensor-details/sensor-details.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
-import { SensorListElementComponent } from './sensor-list-element/sensor-list-element.component';
+import { SensorListComponent } from './sensor-list/sensor-list.component';
+import { SensorListElementComponent } from './sensor-list/sensor-list-element/sensor-list-element.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { SensorListElementComponent } from './sensor-list-element/sensor-list-el
     SensorComponent,
     SensorDetailsComponent,
     SidebarComponent,
+    SensorListComponent,
     SensorListElementComponent
   ],
   imports: [

@@ -3,9 +3,4 @@
 <p>ALE BĘDZIE SAN FRANCISO</p>
 
 
-  <div *ngFor="let sensor of sensors">
-    <sensor-list-element [sensor]="sensor"></sensor-list-element>
-  </div>
-
-
-<!--<td><a routerLink="./{{ sensor.id }}">></a></td>-->
+<sensor-list *ngIf="sensors" [sensors]="sensors"></sensor-list>
