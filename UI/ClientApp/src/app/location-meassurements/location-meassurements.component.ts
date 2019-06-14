@@ -1,5 +1,5 @@
-import { Component, Inject } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
+import { SzpekHttpService } from '../app.http.service';
 
 @Component({
   selector: 'location-meassurements',
@@ -8,11 +8,9 @@ import { HttpClient } from '@angular/common/http';
 export class LocationMeassurementsComponent {
   public locationsMeassurements: LocationMeassurements[];
 
-  constructor(
-    http: HttpClient,
-    @Inject('BASE_URL') baseUrl: string) {
-    http.get<LocationMeassurements[]>(baseUrl + 'api/LocationMeassurements').subscribe(result => {
-      this.locationsMeassurements = result;
-    }, error => console.error(error));
+  constructor(szpekService: SzpekHttpService) {
+    szpekService.getLocationsMeassures().subscribe(
+      result => { this.locationsMeassurements = result },
+      error => console.error(error));
   }
 }
