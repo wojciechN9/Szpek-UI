@@ -8,9 +8,6 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { faStar, faClock } from '@fortawesome/free-solid-svg-icons';
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
-import { HomeComponent } from './home/home.component';
-import { CounterComponent } from './counter/counter.component';
-import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { SensorComponent } from './sensor/sensor.component';
 import { SensorDetailsComponent } from './sensor-details/sensor-details.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
@@ -21,9 +18,6 @@ import { SensorListElementComponent } from './sensor-list/sensor-list-element/se
   declarations: [
     AppComponent,
     NavMenuComponent,
-    HomeComponent,
-    CounterComponent,
-    FetchDataComponent,
     SensorComponent,
     SensorDetailsComponent,
     SidebarComponent,
@@ -36,12 +30,10 @@ import { SensorListElementComponent } from './sensor-list/sensor-list-element/se
     FormsModule,
     FontAwesomeModule,
     RouterModule.forRoot([
-      { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'counter', component: CounterComponent },
-      { path: 'fetch-data', component: FetchDataComponent },
+      { path: '', component: SensorComponent, pathMatch: 'prefix' },
       { path: 'sensor', component: SensorComponent },
       { path: 'sensor/:id', component: SensorDetailsComponent },
-
+      { path: '**', redirectTo: '' }
     ])
   ],
   providers: [],
