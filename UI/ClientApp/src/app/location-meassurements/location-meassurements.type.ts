@@ -1,4 +1,4 @@
-interface Sensor {
+interface LocationMeassurements {
   id: number;
   pm10Value: number;
   pm25Value: number;

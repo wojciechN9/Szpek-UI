@@ -3,7 +3,7 @@
 <p>Pm10: {{ currentData?.pm10Value}}</p>
 <p>Pm25: {{ currentData?.pm25Value}}</p>
 <p>periodTo: {{ currentData?.periodTo | date:'hh:mm'}}</p>
-<table class='table table-striped' *ngIf="sensorsDetails">
+<table class='table table-striped' *ngIf="locationsMeassurements">
   <thead>
     <tr>
       <th>pm10Value</th>
@@ -12,10 +12,10 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let sensorDetails of sensorsDetails">
-      <td>{{ sensorDetails.pm10Value }}</td>
-      <td>{{ sensorDetails.pm25Value }}</td>
-      <td>{{ sensorDetails.periodTo | date:'hh:mm'}}</td>
+    <tr *ngFor="let locationMeassurement of locationsMeassurements">
+      <td>{{ locationMeassurement.pm10Value }}</td>
+      <td>{{ locationMeassurement.pm25Value }}</td>
+      <td>{{ locationMeassurement.periodTo | date:'hh:mm'}}</td>
     </tr>
   </tbody>
 </table>

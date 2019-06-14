@@ -8,21 +8,21 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { faStar, faClock } from '@fortawesome/free-solid-svg-icons';
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
-import { SensorComponent } from './sensor/sensor.component';
-import { SensorDetailsComponent } from './sensor-details/sensor-details.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
-import { SensorListComponent } from './sensor-list/sensor-list.component';
-import { SensorListElementComponent } from './sensor-list/sensor-list-element/sensor-list-element.component';
+import { LocationMeassurementsComponent } from './location-meassurements/location-meassurements.component';
+import { LocationMeassurementsDetailsComponent } from './location-meassurements-details/location-meassurements-details.component';
+import { LocationMeassurementsListComponent } from './location-meassurements-list/location-meassurements-list';
+import { LocationMeassurementsListElementComponent } from './location-meassurements-list/location-meassurements-list-element/location-meassurements-list-element.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavMenuComponent,
-    SensorComponent,
-    SensorDetailsComponent,
+    LocationMeassurementsComponent,
+    LocationMeassurementsDetailsComponent,
     SidebarComponent,
-    SensorListComponent,
-    SensorListElementComponent
+    LocationMeassurementsListComponent,
+    LocationMeassurementsListElementComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -30,9 +30,9 @@ import { SensorListElementComponent } from './sensor-list/sensor-list-element/se
     FormsModule,
     FontAwesomeModule,
     RouterModule.forRoot([
-      { path: '', component: SensorComponent, pathMatch: 'prefix' },
-      { path: 'sensor', component: SensorComponent },
-      { path: 'sensor/:id', component: SensorDetailsComponent },
+      { path: '', component: LocationMeassurementsComponent, pathMatch: 'prefix' },
+      { path: 'location', component: LocationMeassurementsComponent },
+      { path: 'location/:id', component: LocationMeassurementsDetailsComponent },
       { path: '**', redirectTo: '' }
     ])
   ],

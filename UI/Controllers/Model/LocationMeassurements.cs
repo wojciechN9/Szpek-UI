@@ -2,9 +2,9 @@
 
 namespace UI.Controllers.Model
 {
-    public class Sensor
+    public class LocationMeassurements
     {
-        public Sensor(long id, double pm10Value, double pm25Value, DateTime periodTo, string name)
+        public LocationMeassurements(long id, double pm10Value, double pm25Value, DateTime periodTo, string name)
         {
             Id = id;
             Pm10Value = pm10Value;
