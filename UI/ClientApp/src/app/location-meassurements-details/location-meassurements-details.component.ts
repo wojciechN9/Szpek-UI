@@ -1,5 +1,4 @@
-import { HttpClient } from '@angular/common/http';
-import { Component, Inject, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { SzpekHttpService } from '../app.http.service';
 
@@ -10,6 +9,7 @@ import { SzpekHttpService } from '../app.http.service';
 })
 export class LocationMeassurementsDetailsComponent {
   public locationMeassurements: LocationMeassurements;
+  public currentMeassurement: Meassurement;
   public id: number;
 
   ngOnInit() {
@@ -18,10 +18,12 @@ export class LocationMeassurementsDetailsComponent {
     });
   }
 
-  constructor(szpekService: SzpekHttpService,
+  constructor(
+    szpekService: SzpekHttpService,
     private route: ActivatedRoute) {
     szpekService.getLocationsMeassuresDetails(this.id).subscribe(result => {
       this.locationMeassurements = result;
+      this.currentMeassurement = this.locationMeassurements.meassurements[0];
     }, error => console.error(error));
   }
 }

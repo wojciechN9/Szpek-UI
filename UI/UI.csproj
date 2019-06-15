@@ -30,8 +30,10 @@
     <None Remove="ClientApp\src\app\location-meassurements-details\location-meassurements-details.component.ts" />
     <None Remove="ClientApp\src\app\location-meassurements-list\location-meassurements-list-element\location-meassurements-list-element.component.ts" />
     <None Remove="ClientApp\src\app\location-meassurements-list\location-meassurements-list.ts" />
+    <None Remove="ClientApp\src\app\location-meassurements\address.type.ts" />
     <None Remove="ClientApp\src\app\location-meassurements\location-meassurements.component.ts" />
     <None Remove="ClientApp\src\app\location-meassurements\location-meassurements.type.ts" />
+    <None Remove="ClientApp\src\app\location-meassurements\meassurement.type.ts" />
     <None Remove="ClientApp\src\app\sidebar\sidebar.component.ts" />
   </ItemGroup>
 
@@ -40,8 +42,10 @@
     <TypeScriptCompile Include="ClientApp\src\app\location-meassurements-details\location-meassurements-details.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\location-meassurements-list\location-meassurements-list-element\location-meassurements-list-element.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\location-meassurements-list\location-meassurements-list.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\location-meassurements\address.type.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\location-meassurements\location-meassurements.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\location-meassurements\location-meassurements.type.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\location-meassurements\meassurement.type.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\sidebar\sidebar.component.ts" />
   </ItemGroup>
 

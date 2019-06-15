@@ -1,9 +1,9 @@
-<!--//TODO next;-->
-<!--<h1>{{ currentData?.name}}</h1>
-<p>Pm10: {{ currentData?.pm10Value}}</p>
-<p>Pm25: {{ currentData?.pm25Value}}</p>
-<p>periodTo: {{ currentData?.periodTo | date:'hh:mm'}}</p>
-<table class='table table-striped' *ngIf="locationMeassurement">
+
+  <h1>{{ locationMeassurements?.address.city}}</h1>
+  <p>Pm10: {{ currentMeassurement?.pm10Value}}</p>
+  <p>Pm25: {{ currentMeassurement?.pm25Value}}</p>
+  <p>periodTo: {{ currentMeassurement?.periodTo | date:'hh:mm'}}</p>
+<table class='table table-striped' *ngIf="currentMeassurement">
   <thead>
     <tr>
       <th>pm10Value</th>
@@ -12,10 +12,10 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let locationMeassurement of locationsMeassurements">
-      <td>{{ locationMeassurement.pm10Value }}</td>
-      <td>{{ locationMeassurement.pm25Value }}</td>
-      <td>{{ locationMeassurement.periodTo | date:'hh:mm'}}</td>
+    <tr *ngFor="let meassurement of locationMeassurements.meassurements">
+      <td>{{ meassurement.pm10Value }}</td>
+      <td>{{ meassurement.pm25Value }}</td>
+      <td>{{ meassurement.periodTo | date:'hh:mm'}}</td>
     </tr>
   </tbody>
-</table>-->
+</table>
