@@ -1,7 +1,5 @@
 interface LocationMeassurements {
   id: number;
-  pm10Value: number;
-  pm25Value: number;
-  periodTo: Date;
-  name: string;
+  address: Address;
+  meassurements: Array<Meassurement>;
 }

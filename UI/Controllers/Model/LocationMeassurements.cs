@@ -1,26 +1,26 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace UI.Controllers.Model
 {
     public class LocationMeassurements
     {
-        public LocationMeassurements(long id, double pm10Value, double pm25Value, DateTime periodTo, string name)
+        public LocationMeassurements(
+            long id,
+            AddressRead address,
+            IEnumerable<MeassurementRead> meassurements)
         {
             Id = id;
-            Pm10Value = pm10Value;
-            Pm25Value = pm25Value;
-            PeriodTo = periodTo;
-            Name = name;
+            Address = address;
+            Meassurements = meassurements;
         }
 
         public long Id { get; }
 
-        public double Pm10Value { get; }
+        public AddressRead Address { get; }
 
-        public double Pm25Value { get; }
-
-        public DateTime PeriodTo { get; }
-
-        public string Name { get; }
+        public IEnumerable<MeassurementRead> Meassurements { get; }
     }
 }
+
+

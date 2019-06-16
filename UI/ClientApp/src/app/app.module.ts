@@ -13,6 +13,7 @@ import { LocationMeassurementsComponent } from './location-meassurements/locatio
 import { LocationMeassurementsDetailsComponent } from './location-meassurements-details/location-meassurements-details.component';
 import { LocationMeassurementsListComponent } from './location-meassurements-list/location-meassurements-list';
 import { LocationMeassurementsListElementComponent } from './location-meassurements-list/location-meassurements-list-element/location-meassurements-list-element.component';
+import { SzpekHttpService } from './app.http.service';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,7 @@ import { LocationMeassurementsListElementComponent } from './location-meassureme
       { path: '**', redirectTo: '' }
     ])
   ],
-  providers: [],
+  providers: [SzpekHttpService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
