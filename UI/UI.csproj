@@ -34,6 +34,7 @@
     <None Remove="ClientApp\src\app\location-meassurements\location-meassurements.component.ts" />
     <None Remove="ClientApp\src\app\location-meassurements\location-meassurements.type.ts" />
     <None Remove="ClientApp\src\app\location-meassurements\meassurement.type.ts" />
+    <None Remove="ClientApp\src\app\map\location-modal\location-modal.component.ts" />
     <None Remove="ClientApp\src\app\sidebar\sidebar.component.ts" />
   </ItemGroup>
 
@@ -46,6 +47,7 @@
     <TypeScriptCompile Include="ClientApp\src\app\location-meassurements\location-meassurements.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\location-meassurements\location-meassurements.type.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\location-meassurements\meassurement.type.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\map\location-modal\location-modal.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\sidebar\sidebar.component.ts" />
   </ItemGroup>
 
