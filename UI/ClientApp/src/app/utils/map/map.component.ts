@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { SzpekHttpService } from '../app.http.service';
+import { SzpekHttpService } from '../../app.http.service';
 import { LocationModalComponent } from './location-modal/location-modal.component';
 
 import OlMap from 'ol/Map';
