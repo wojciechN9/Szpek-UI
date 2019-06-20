@@ -14,6 +14,9 @@ import { LocationMeassurementsDetailsComponent } from './location-meassurements-
 import { LocationMeassurementsListComponent } from './location-meassurements-list/location-meassurements-list';
 import { LocationMeassurementsListElementComponent } from './location-meassurements-list/location-meassurements-list-element/location-meassurements-list-element.component';
 import { SzpekHttpService } from './app.http.service';
+import { MapComponent } from './map/map.component';
+import { NgbModule, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { LocationModalComponent } from './map/location-modal/location-modal.component';
 
 @NgModule({
   declarations: [
@@ -23,22 +26,27 @@ import { SzpekHttpService } from './app.http.service';
     LocationMeassurementsDetailsComponent,
     SidebarComponent,
     LocationMeassurementsListComponent,
-    LocationMeassurementsListElementComponent
+    LocationMeassurementsListElementComponent,
+    MapComponent,
+    LocationModalComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
     FontAwesomeModule,
+    NgbModule,
     RouterModule.forRoot([
       { path: '', component: LocationMeassurementsComponent, pathMatch: 'prefix' },
       { path: 'location', component: LocationMeassurementsComponent },
       { path: 'location/:id', component: LocationMeassurementsDetailsComponent },
+      { path: 'map', component: MapComponent },
       { path: '**', redirectTo: '' }
     ])
   ],
-  providers: [SzpekHttpService],
-  bootstrap: [AppComponent]
+  providers: [SzpekHttpService, NgbActiveModal],
+  bootstrap: [AppComponent],
+  entryComponents: [LocationModalComponent]
 })
 export class AppModule {
   constructor() {

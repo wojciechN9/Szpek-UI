@@ -1,0 +1,14 @@
+<div role="document">
+  <div class="modal-header">
+    <h4 class="modal-title">{{address}}</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>PM10: <b>{{pm10Value}}</b> μg/m3</p>
+    <p>PM25: <b>{{pm25Value}}</b> μg/m3</p>
+    <fa-icon [icon]="['fas', 'clock']"></fa-icon>{{periodTo | date:'hh:mm'}}
+    <a style="float: right" [routerLink]="['/location/', locationId]" [routerLinkActive]='["link-active"]' (click)="modal.dismiss('Cross click')">szczegóły</a>
+  </div>
+</div>
