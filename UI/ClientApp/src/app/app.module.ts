@@ -14,9 +14,10 @@ import { LocationMeassurementsDetailsComponent } from './location-meassurements-
 import { LocationMeassurementsListComponent } from './location-meassurements-list/location-meassurements-list';
 import { LocationMeassurementsListElementComponent } from './location-meassurements-list/location-meassurements-list-element/location-meassurements-list-element.component';
 import { SzpekHttpService } from './app.http.service';
-import { MapComponent } from './utils/map/map.component';
+import { MapFactoryComponent } from './utils/map-factory/map-factory.component';
 import { NgbModule, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { LocationModalComponent } from './utils/map/location-modal/location-modal.component';
+import { LocationModalComponent } from './utils/map-factory/location-modal/location-modal.component';
+import { LocationMapComponent } from './location-map/location-map.component';
 
 @NgModule({
   declarations: [
@@ -27,8 +28,9 @@ import { LocationModalComponent } from './utils/map/location-modal/location-moda
     SidebarComponent,
     LocationMeassurementsListComponent,
     LocationMeassurementsListElementComponent,
-    MapComponent,
-    LocationModalComponent
+    MapFactoryComponent,
+    LocationModalComponent,
+    LocationMapComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -40,7 +42,7 @@ import { LocationModalComponent } from './utils/map/location-modal/location-moda
       { path: '', component: LocationMeassurementsComponent, pathMatch: 'prefix' },
       { path: 'location', component: LocationMeassurementsComponent },
       { path: 'location/:id', component: LocationMeassurementsDetailsComponent },
-      { path: 'map', component: MapComponent },
+      { path: 'map', component: LocationMapComponent },
       { path: '**', redirectTo: '' }
     ])
   ],

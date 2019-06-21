@@ -1,6 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { SzpekHttpService } from '../../app.http.service';
 import { LocationModalComponent } from './location-modal/location-modal.component';
 
 import OlMap from 'ol/Map';
@@ -19,11 +18,14 @@ import Overlay from 'ol/overlay';
 
 
 @Component({
-  selector: 'app-map',
-  templateUrl: './map.component.html',
-  styleUrls: ['./map.component.css']
+  selector: 'map-factory',
+  templateUrl: './map-factory.component.html',
+  styleUrls: ['./map-factory.component.css']
 })
-export class MapComponent {
+export class MapFactoryComponent implements OnChanges {
+  @Input() locationsMeassurements: LocationMeassurements[];
+  @Input() modalOnClick?: boolean = true;
+
   map: OlMap;
   source: OlXYZ;
   layer: OlTileLayer;
@@ -31,14 +33,12 @@ export class MapComponent {
   popup: Overlay;
   tooltip: any;
 
+  ngOnChanges() {
+    this.createMap(this.locationsMeassurements);
+  }
+
   constructor(
-    szpekService: SzpekHttpService,
     private modalService: NgbModal) {
-    szpekService.getLocationsMeassures().subscribe(
-      result => {
-        this.createMap(result);
-      },
-      error => console.error(error));
   }
 
   createMap(locationsMeassurements: LocationMeassurements[]) {
@@ -48,7 +48,6 @@ export class MapComponent {
 
     this.view = new OlView({
       center: fromLonLat([19.1227817, 52.2220688]),
-      zoom: 6,
       maxZoom: 15
     });
 
@@ -66,8 +65,14 @@ export class MapComponent {
 
     var fullScreen = new FullScreen();
     this.map.addControl(fullScreen);
-    this.fitToAllLocations(locationLayer);
-    this.createOnMapClickEvent();
+
+    if (locationsMeassurements.length !== 0) {
+      this.fitToAllLocations(locationLayer);
+    }
+
+    if (this.modalOnClick) {
+      this.createOnMapClickEvent();
+    }
   }
 
   createOnMapClickEvent() {
