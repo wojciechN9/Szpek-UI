@@ -1,21 +1,44 @@
-
+<div class="container">
   <h1>{{ locationMeassurements?.address.city}}</h1>
-  <p>Pm10: {{ currentMeassurement?.pm10Value}}</p>
-  <p>Pm25: {{ currentMeassurement?.pm25Value}}</p>
-  <p>periodTo: {{ currentMeassurement?.periodTo | date:'hh:mm'}}</p>
-<table class='table table-striped' *ngIf="currentMeassurement">
-  <thead>
-    <tr>
-      <th>pm10Value</th>
-      <th>pm25Value</th>
-      <th>periodTo</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let meassurement of locationMeassurements.meassurements">
-      <td>{{ meassurement.pm10Value }}</td>
-      <td>{{ meassurement.pm25Value }}</td>
-      <td>{{ meassurement.periodTo | date:'hh:mm'}}</td>
-    </tr>
-  </tbody>
-</table>
+  <h3>{{ locationMeassurements?.address.street}}</h3>
+  <div class="row pt-4">
+    <div class="col-md-6 pl-4">
+      <h4 class="pb-2">Aktualny poziom smogu</h4>
+      <p>PM10: <b>{{ currentMeassurement?.pm10Value}}</b> μg/m3</p>
+      <p>PM25: <b>{{ currentMeassurement?.pm25Value}}</b> μg/m3</p>
+      <p>Stan powietrza: <b>TODO</b></p>
+      <fa-icon [icon]="['fas', 'clock']"></fa-icon>{{ currentMeassurement?.periodTo | date:'hh:mm'}}
+    </div>
+    <div class="col-md-6">
+        <map-factory *ngIf="locationMeassurements" [locationsMeassurements]="[locationMeassurements]" [modalOnClick]="false"></map-factory>
+    </div>
+  </div>
+  <div class="row pt-4 pl-4">
+    <!-- TODO chart from szpek.pl, for now table -->
+    <h4>Ostatnie 24 godziny</h4>
+    <table class='table table-striped' *ngIf="locationMeassurements">
+      <thead>
+        <tr>
+          <th>PM10</th>
+          <th>PM25</th>
+          <th>Data badania</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let meassurement of locationMeassurements.meassurements">
+          <td>{{ meassurement.pm10Value }} μg/m3</td>
+          <td>{{ meassurement.pm25Value }} μg/m3</td>
+          <td>{{ meassurement.periodTo | date:'dd.MM.yyyy hh:mm'}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="row pt-2 pl-4">
+    <!-- TODO comments -->
+    <h4>Komentarze</h4>
+  </div>
+</div>
+
+
+
+

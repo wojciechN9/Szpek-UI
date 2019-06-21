@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { SzpekHttpService } from '../app.http.service';
 
@@ -7,7 +7,7 @@ import { SzpekHttpService } from '../app.http.service';
   selector: 'location-meassurements-details',
   templateUrl: './location-meassurements-details.component.html'
 })
-export class LocationMeassurementsDetailsComponent {
+export class LocationMeassurementsDetailsComponent implements OnInit {
   public locationMeassurements: LocationMeassurements;
   public currentMeassurement: Meassurement;
   public id: number;
@@ -16,14 +16,15 @@ export class LocationMeassurementsDetailsComponent {
     this.route.params.subscribe(params => {
       this.id = +params['id'];
     });
-  }
 
-  constructor(
-    szpekService: SzpekHttpService,
-    private route: ActivatedRoute) {
-    szpekService.getLocationsMeassuresDetails(this.id).subscribe(result => {
+    this.szpekService.getLocationsMeassuresDetails(this.id).subscribe(result => {
       this.locationMeassurements = result;
       this.currentMeassurement = this.locationMeassurements.meassurements[0];
     }, error => console.error(error));
+  }
+
+  constructor(
+    private szpekService: SzpekHttpService,
+    private route: ActivatedRoute) {
   }
 }

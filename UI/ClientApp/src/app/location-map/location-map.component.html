@@ -1,3 +1,3 @@
 <h1>Mapa czujników</h1>
 <p>Kliknij na punkt znajdujący się na mapie, żeby uzyskać więcej informacji</p>
-<div id="map" class="map"></div>
+<map-factory *ngIf="locationsMeassurements" [locationsMeassurements]="locationsMeassurements"></map-factory>
