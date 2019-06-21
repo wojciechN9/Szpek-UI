@@ -1,6 +1,7 @@
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { LocationMeassurements } from './location-meassurements/location-meassurements.type';
 
 @Injectable()
 export class SzpekHttpService {

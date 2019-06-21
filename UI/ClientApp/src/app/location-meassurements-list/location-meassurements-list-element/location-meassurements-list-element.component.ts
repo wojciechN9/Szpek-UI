@@ -1,4 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { LocationMeassurements } from '../../location-meassurements/location-meassurements.type';
+import { AirQualityEnum } from '../../location-meassurements/air-quality.type';
+import { getAirQualityColor } from '../../utils/enum/air-quality';
 
 @Component({
   selector: 'location-meassurements-list-element',
@@ -13,5 +16,9 @@ export class LocationMeassurementsListElementComponent {
   onClickFavourite() {
     this.isFavourite = !this.isFavourite;
     this.favouriteStatusChanged.emit(this.locationMeassurements.id);
+  }
+
+  getQualityColor(airQuality: AirQualityEnum) {
+    return getAirQualityColor(airQuality);
   }
 }

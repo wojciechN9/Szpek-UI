@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { SzpekHttpService } from '../app.http.service';
+import { LocationMeassurements } from './location-meassurements.type';
 
 @Component({
   selector: 'location-meassurements',

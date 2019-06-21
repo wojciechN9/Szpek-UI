@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { LocationMeassurements } from '../location-meassurements/location-meassurements.type';
 
 @Component({
   selector: 'location-meassurements-list',
