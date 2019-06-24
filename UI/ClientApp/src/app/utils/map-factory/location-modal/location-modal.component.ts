@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
 import { AirQualityEnum } from "../../../location-meassurements/air-quality.type";
-import { getAirQualityText, getAirQualityClass } from "../../enum/air-quality";
+import { getAirQualityText, getAirQualityColor } from "../../enum/air-quality";
 
 @Component({
   selector: 'location-modal',
@@ -22,11 +22,11 @@ export class LocationModalComponent implements OnInit {
   ngOnInit() {
   }
 
-  getQualityText(airQuality: AirQualityEnum) {
+  getQualityText(airQuality: any) {
     return getAirQualityText(airQuality);
   }
 
-  getQualityClass(airQuality: AirQualityEnum) {
-    return getAirQualityClass(airQuality);
+  getQualityColor(airQuality: any) {
+    return getAirQualityColor(airQuality);
   }
 }
