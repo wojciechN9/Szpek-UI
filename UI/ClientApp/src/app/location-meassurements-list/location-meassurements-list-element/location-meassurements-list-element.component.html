@@ -1,3 +1,5 @@
+<!--maybe background should depend on air quality not for each PM?-->
+
 <div class="location-meassurements-list">
   <div class="location-meassurements-data" [routerLink]="['/location/', locationMeassurements.id]" [routerLinkActive]='["link-active"]'>
     <div class="location-meassurements-list-location">
@@ -12,14 +14,14 @@
       </div>
     </div>
     <div class="location-meassurements-list-values">
-      <div class="location-meassurements-list-value poor-quality">
+      <div class="location-meassurements-list-value" [ngStyle]="{'background-color': getQualityColor(locationMeassurements.meassurements[0].pm25Quality)}">
         <div class="location-meassurements-list-value-content">
           <div class="location-meassurements-list-value-unit">PM 2.5</div>
           <div class="location-meassurements-list-value-pollution">{{locationMeassurements.meassurements[0].pm25Value}}</div>
           <div class="location-meassurements-list-value-info">μg/m3</div>
         </div>
       </div>
-      <div class="location-meassurements-list-value poor-quality">
+      <div class="location-meassurements-list-value" [ngStyle]="{'background-color': getQualityColor(locationMeassurements.meassurements[0].pm10Quality)}">
         <div class="location-meassurements-list-value-content">
           <div class="location-meassurements-list-value-unit">PM 10</div>
           <div class="location-meassurements-list-value-pollution">{{locationMeassurements.meassurements[0].pm10Value}}</div>

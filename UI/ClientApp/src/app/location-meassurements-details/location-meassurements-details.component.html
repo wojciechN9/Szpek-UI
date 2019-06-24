@@ -6,7 +6,7 @@
       <h4 class="pb-2">Aktualny poziom smogu</h4>
       <p>PM10: <b>{{ currentMeassurement?.pm10Value}}</b> μg/m3</p>
       <p>PM25: <b>{{ currentMeassurement?.pm25Value}}</b> μg/m3</p>
-      <p>Stan powietrza: <b>TODO</b></p>
+      <p>Stan powietrza: <b [ngStyle]="{'color': getQualityColor(currentMeassurement?.airQuality)}">{{ getQualityText(currentMeassurement?.airQuality) }}</b></p>
       <fa-icon [icon]="['fas', 'clock']"></fa-icon>{{ currentMeassurement?.periodTo | date:'hh:mm'}}
     </div>
     <div class="col-md-6">
@@ -36,6 +36,7 @@
   <div class="row pt-2 pl-4">
     <!-- TODO comments -->
     <h4>Komentarze</h4>
+    <p>wkrótce...</p>
   </div>
 </div>
 

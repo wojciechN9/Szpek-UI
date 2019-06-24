@@ -15,6 +15,10 @@ import LayerVector from 'ol/layer/Vector';
 import FullScreen from 'ol/control/FullScreen';
 import { createEmpty, extend } from 'ol/extent';
 import Overlay from 'ol/overlay';
+import { LocationMeassurements } from '../../location-meassurements/location-meassurements.type';
+import { AirQualityEnum } from '../../location-meassurements/air-quality.type';
+import { getAirQualityColor } from '../enum/air-quality';
+import { getEnumValues } from '../enum/enum-conversion';
 
 
 @Component({
@@ -48,18 +52,20 @@ export class MapFactoryComponent implements OnChanges {
 
     this.view = new OlView({
       center: fromLonLat([19.1227817, 52.2220688]),
-      maxZoom: 15
+      maxZoom: 15,
+      zoom: 6
     });
 
     this.layer = new OlTileLayer({
       source: this.source
     });
 
-    var locationLayer = this.getLocationLayer(locationsMeassurements);
+    var locationLayers = this.getLocationLayers(locationsMeassurements);
+    var layers = [this.layer].concat(locationLayers);
 
     this.map = new OlMap({
       target: 'map',
-      layers: [this.layer, locationLayer],
+      layers: layers,
       view: this.view
     });
 
@@ -67,7 +73,7 @@ export class MapFactoryComponent implements OnChanges {
     this.map.addControl(fullScreen);
 
     if (locationsMeassurements.length !== 0) {
-      this.fitToAllLocations(locationLayer);
+      this.fitToAllLocations(locationLayers);
     }
 
     if (this.modalOnClick) {
@@ -86,6 +92,7 @@ export class MapFactoryComponent implements OnChanges {
         var featureProperties = feature.getProperties();
         modalRef.componentInstance.locationId = featureProperties.locationId;
         modalRef.componentInstance.address = featureProperties.address;
+        modalRef.componentInstance.airQuality = featureProperties.airQuality;
         modalRef.componentInstance.pm10Value = featureProperties.pm10Value;
         modalRef.componentInstance.pm25Value = featureProperties.pm25Value;
         modalRef.componentInstance.periodTo = featureProperties.periodTo;
@@ -93,8 +100,40 @@ export class MapFactoryComponent implements OnChanges {
     });
   }
 
-  getLocationLayer(locationsMeassurements: LocationMeassurements[]) {
-    var circleStyle = new Style({
+  getLocationLayers(locationsMeassurements: LocationMeassurements[]) {
+    var layers = new Array<LayerVector>();
+    var transform = getTransform('EPSG:4326', 'EPSG:3857');
+
+    for (let quality in getEnumValues(AirQualityEnum)) {
+      var qualityLocations = locationsMeassurements.filter(l => l.meassurements[0].airQuality === +quality);
+
+      if (qualityLocations.length !== 0) {
+        var circleStyle = this.getCircleStyle(getAirQualityColor(+quality));
+        var locationsSource = new VectorSource();
+
+        for (var i = 0; i < qualityLocations.length; i++) {
+          var feature = new Feature();
+          var coordinate = transform([qualityLocations[i].address.longitude, qualityLocations[i].address.latitude]);
+          var geometry = new Point(coordinate);
+          feature.setGeometry(geometry);
+
+          feature.setProperties(this.setFeatureProperties(qualityLocations[i]));
+          locationsSource.addFeature(feature);
+        }
+
+        layers.push(
+          new LayerVector({
+            source: locationsSource,
+            style: circleStyle
+          }));
+      }
+    }
+
+    return layers;
+  }
+
+  getCircleStyle(color: string) {
+    return new Style({
       image: new Circle({
         radius: 6,
         stroke: new Stroke({
@@ -102,27 +141,9 @@ export class MapFactoryComponent implements OnChanges {
           width: 2
         }),
         fill: new Fill({
-          color: 'green'
+          color: color
         })
       })
-    });
-
-    var locationsSource = new VectorSource();
-    var transform = getTransform('EPSG:4326', 'EPSG:3857');
-
-    for (var i = 0; i < locationsMeassurements.length; i++) {
-      var feature = new Feature();
-      var coordinate = transform([locationsMeassurements[i].address.longitude, locationsMeassurements[i].address.latitude]);
-      var geometry = new Point(coordinate);
-      feature.setGeometry(geometry);
-
-      feature.setProperties(this.setFeatureProperties(locationsMeassurements[i]));
-      locationsSource.addFeature(feature);
-    }
-
-    return new LayerVector({
-      source: locationsSource,
-      style: circleStyle
     });
   }
 
@@ -130,15 +151,19 @@ export class MapFactoryComponent implements OnChanges {
     return {
       'locationId': locationMeassurement.id,
       'address': locationMeassurement.address.city + ', ' + locationMeassurement.address.street,
+      'airQuality': locationMeassurement.meassurements[0].airQuality,
       'pm10Value': locationMeassurement.meassurements[0].pm10Value,
       'pm25Value': locationMeassurement.meassurements[0].pm25Value,
       'periodTo': locationMeassurement.meassurements[0].periodTo
     }
   }
 
-  fitToAllLocations(locationLayer) {
+  fitToAllLocations(locationsLayer: any[]) {
     var extent = createEmpty();
-    extend(extent, locationLayer.getSource().getExtent());
+    for (var i = 0; i < locationsLayer.length; i++) {
+      extend(extent, locationsLayer[i].getSource().getExtent());
+    }
+
     this.map.getView().fit(extent, this.map.getSize());
   }
 }

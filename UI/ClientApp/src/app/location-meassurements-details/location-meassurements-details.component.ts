@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { SzpekHttpService } from '../app.http.service';
+import { getAirQualityText, getAirQualityColor } from '../utils/enum/air-quality';
+import { AirQualityEnum } from '../location-meassurements/air-quality.type';
+import { LocationMeassurements } from '../location-meassurements/location-meassurements.type';
+import { Meassurement } from '../location-meassurements/meassurement.type';
 
 
 @Component({
@@ -26,5 +30,13 @@ export class LocationMeassurementsDetailsComponent implements OnInit {
   constructor(
     private szpekService: SzpekHttpService,
     private route: ActivatedRoute) {
+  }
+
+  getQualityText(airQuality: AirQualityEnum) {
+    return getAirQualityText(airQuality);
+  }
+
+  getQualityColor(airQuality: AirQualityEnum) {
+    return getAirQualityColor(airQuality);
   }
 }
