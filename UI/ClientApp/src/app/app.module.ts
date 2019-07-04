@@ -11,7 +11,7 @@ import { NavMenuComponent } from './utils/nav-menu/nav-menu.component';
 import { SidebarComponent } from './utils/sidebar/sidebar.component';
 import { LocationMeassurementsComponent } from './location-meassurements/location-meassurements.component';
 import { LocationMeassurementsDetailsComponent } from './location-meassurements-details/location-meassurements-details.component';
-import { LocationMeassurementsListComponent } from './location-meassurements-list/location-meassurements-list';
+import { LocationMeassurementsListComponent } from './location-meassurements-list/location-meassurements-list.component';
 import { LocationMeassurementsListElementComponent } from './location-meassurements-list/location-meassurements-list-element/location-meassurements-list-element.component';
 import { SzpekHttpService } from './app.http.service';
 import { MapFactoryComponent } from './utils/map-factory/map-factory.component';

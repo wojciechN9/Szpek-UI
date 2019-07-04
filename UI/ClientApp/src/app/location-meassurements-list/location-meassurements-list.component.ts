@@ -15,6 +15,9 @@ export class LocationMeassurementsListComponent implements OnInit {
   }
 
   isFavourite(locationId: number) {
+    if (this.favouritesIds == null) {
+      return false;
+    }
     if (this.favouritesIds.indexOf(locationId) === -1) {
       return false;
     }
@@ -41,11 +44,13 @@ export class LocationMeassurementsListComponent implements OnInit {
   sortByFavourites() {
     this.favouritesIds = JSON.parse(localStorage.getItem(this.favouritesStorageName));
 
-    //show favourites first
-    this.locationsMeassurements.sort((a, b) => {
-      if (this.isFavourite(a.id) == this.isFavourite(b.id)) return 0;
-      if (this.isFavourite(a.id)) return -1;
-      return 1;
-    });
+    if (this.favouritesIds != null) {
+      //show favourites first
+      this.locationsMeassurements.sort((a, b) => {
+        if (this.isFavourite(a.id) == this.isFavourite(b.id)) return 0;
+        if (this.isFavourite(a.id)) return -1;
+        return 1;
+      });
+    }
   }
 }
