@@ -13,7 +13,7 @@ export class LocationMapComponent implements OnInit {
   ngOnInit() {
     this.szpekService.getLocationsMeassures().subscribe(result => {
       this.locationsMeassurements = result;
-    }, error => console.error(error));
+    });
   }
 
   constructor(

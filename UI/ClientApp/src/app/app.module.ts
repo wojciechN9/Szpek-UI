@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -18,6 +18,8 @@ import { MapFactoryComponent } from './utils/map-factory/map-factory.component';
 import { NgbModule, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { LocationModalComponent } from './utils/map-factory/location-modal/location-modal.component';
 import { LocationMapComponent } from './location-map/location-map.component';
+import { HttpConfigInterceptor } from './utils/http-error-interceptor/http-error-interceptor';
+import { ErrorPageComponent } from './utils/http-error-interceptor/error-page/error-page.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,8 @@ import { LocationMapComponent } from './location-map/location-map.component';
     LocationMeassurementsListElementComponent,
     MapFactoryComponent,
     LocationModalComponent,
-    LocationMapComponent
+    LocationMapComponent,
+    ErrorPageComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -43,10 +46,15 @@ import { LocationMapComponent } from './location-map/location-map.component';
       { path: 'location', component: LocationMeassurementsComponent },
       { path: 'location/:id', component: LocationMeassurementsDetailsComponent },
       { path: 'map', component: LocationMapComponent },
+      { path: 'error', component: ErrorPageComponent },
       { path: '**', redirectTo: '' }
     ])
   ],
-  providers: [SzpekHttpService, NgbActiveModal],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: HttpConfigInterceptor, multi: true },
+    SzpekHttpService,
+    NgbActiveModal,
+    ],
   bootstrap: [AppComponent],
   entryComponents: [LocationModalComponent]
 })

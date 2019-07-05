@@ -24,7 +24,7 @@ export class LocationMeassurementsDetailsComponent implements OnInit {
     this.szpekService.getLocationsMeassuresDetails(this.id).subscribe(result => {
       this.locationMeassurements = result;
       this.currentMeassurement = this.locationMeassurements.meassurements[0];
-    }, error => console.error(error));
+    });
   }
 
   constructor(
