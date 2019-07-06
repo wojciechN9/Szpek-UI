@@ -13,27 +13,25 @@
 }
 
 .sidebar {
+  margin-top: 40px;
+  width: 100%;
   float: left;
-  padding-left: 20px;
-  padding-right: 20px;
-  position: inherit;
-  padding-top: 40px;
+}
+
+.sidebar-picture {
+  text-align: center;
 }
 
 @media (min-width: 992px) {
   .main {
     float: left;
-    width: 70%;
+    max-width: 70%;
   }
 
   .sidebar {
-    max-width: 320px;
-    padding-right: unset;
     width: 30%;
-    position: fixed;
     float: right;
     height: 100%;
-    overflow-x: visible;
   }
 }
 

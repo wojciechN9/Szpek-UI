@@ -1,5 +1,7 @@
-<h1>AKTUALNY STAN ZANIECZYSZCZENIA POWIETRZA</h1>
+<div class="container">
+  <h1>Stan jakości powietrza</h1>
 
-<location-meassurements-list *ngIf="locationsMeassurements" [locationsMeassurements]="locationsMeassurements"></location-meassurements-list>
-<h2 *ngIf="locationsMeassurements?.length === 0">Brak aktualnych lokalizacji</h2>
-<p>Jeśli lokalizacji nie ma na liście to znaczy, że sensor nie wysłał żadnych danych w ciągu ostatnich 24 godzin</p>
+  <location-meassurements-list *ngIf="locationsMeassurements" [locationsMeassurements]="locationsMeassurements"></location-meassurements-list>
+  <h2 *ngIf="locationsMeassurements?.length === 0">Brak aktualnych lokalizacji</h2>
+  <p>Jeśli lokalizacji nie ma na liście to znaczy, że sensor nie wysłał żadnych danych w ciągu ostatnich 24 godzin</p>
+</div>

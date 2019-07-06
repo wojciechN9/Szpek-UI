@@ -10,7 +10,7 @@
   </div>
   <div class="row pt-4">
     <div class="col-md-6 pl-4">
-      <h4 class="pb-2">Aktualny poziom smogu</h4>
+      <h4 class="pb-2">Aktualny stan powietrza</h4>
       <p>PM10: <b>{{ currentMeassurement?.pm10Value}}</b> μg/m3</p>
       <p>PM25: <b>{{ currentMeassurement?.pm25Value}}</b> μg/m3</p>
       <p>Stan powietrza: <b [ngStyle]="{'color': getQualityColor(currentMeassurement?.airQuality)}">{{ getQualityText(currentMeassurement?.airQuality) }}</b></p>
