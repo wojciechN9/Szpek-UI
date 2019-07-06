@@ -29,12 +29,7 @@ export class HttpConfigInterceptor implements HttpInterceptor {
 
     return next.handle(request).pipe(
       catchError((error: HttpErrorResponse) => {
-        let data = {};
-        data = {
-          reason: error.error ? error.error : '',
-          status: error.status
-        };
-        this.router.navigate(['/error', { statusCode: data.status, reason: data.reason }]);
+        this.router.navigate(['/error', { statusCode: error.status, reason: error.error ? error.error : '' }]);
         return throwError(error);
       }));
   }

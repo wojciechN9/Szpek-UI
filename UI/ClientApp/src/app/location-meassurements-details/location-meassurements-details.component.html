@@ -1,6 +1,13 @@
 <div class="container">
-  <h1>{{ locationMeassurements?.address.city}}</h1>
-  <h3>{{ locationMeassurements?.address.street}}</h3>
+  <div class="row">
+    <div class="col-11">
+      <h1>{{ locationMeassurements?.address.city}}</h1>
+      <h3>{{ locationMeassurements?.address.street}}</h3>
+    </div>
+    <div class="col-1 align-self-center" (click)="onClickFavourite()">
+      <fa-icon [ngClass]="{'fav-checked': isFavourite(), 'fav-unchecked': !isFavourite()}" [icon]="['fas', 'star']" size="3x" [styles]="{'stroke': 'black'}"></fa-icon>
+    </div>
+  </div>
   <div class="row pt-4">
     <div class="col-md-6 pl-4">
       <h4 class="pb-2">Aktualny poziom smogu</h4>
@@ -10,7 +17,7 @@
       <fa-icon [icon]="['fas', 'clock']"></fa-icon>{{ currentMeassurement?.periodTo | date:'hh:mm'}}
     </div>
     <div class="col-md-6">
-        <map-factory *ngIf="locationMeassurements" [locationsMeassurements]="[locationMeassurements]" [modalOnClick]="false"></map-factory>
+      <map-factory *ngIf="locationMeassurements" [locationsMeassurements]="[locationMeassurements]" [modalOnClick]="false"></map-factory>
     </div>
   </div>
   <div class="row pt-4 pl-4">

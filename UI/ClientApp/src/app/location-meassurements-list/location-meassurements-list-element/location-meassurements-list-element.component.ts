@@ -6,7 +6,7 @@ import { getAirQualityColor } from '../../utils/enum/air-quality';
 @Component({
   selector: 'location-meassurements-list-element',
   templateUrl: './location-meassurements-list-element.component.html',
-  styleUrls: ['./location-meassurements-list-element.component.css']
+  styleUrls: ['./location-meassurements-list-element.component.css', '../../app.component.css']
 })
 export class LocationMeassurementsListElementComponent {
   @Input() locationMeassurements: LocationMeassurements;

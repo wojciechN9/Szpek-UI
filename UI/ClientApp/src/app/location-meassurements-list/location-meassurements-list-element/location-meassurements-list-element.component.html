@@ -31,6 +31,6 @@
     </div>
   </div>
   <div (click)="onClickFavourite()">
-    <fa-icon [ngClass]="{'fav-checked': isFavourite, 'fav-unchecked': !isFavourite}" [icon]="['fas', 'star']"></fa-icon>
+    <fa-icon [ngClass]="{'fav-checked': isFavourite, 'fav-unchecked': !isFavourite}" [icon]="['fas', 'star']" size="3x" [styles]="{'stroke': 'black'}"></fa-icon>
   </div>
 </div>

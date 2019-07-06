@@ -20,6 +20,7 @@ import { LocationModalComponent } from './utils/map-factory/location-modal/locat
 import { LocationMapComponent } from './location-map/location-map.component';
 import { HttpConfigInterceptor } from './utils/http-error-interceptor/http-error-interceptor';
 import { ErrorPageComponent } from './utils/http-error-interceptor/error-page/error-page.component';
+import { FavouriteLocationsService } from './utils/favourite-locations-service/favourite-locations-service';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { ErrorPageComponent } from './utils/http-error-interceptor/error-page/er
     { provide: HTTP_INTERCEPTORS, useClass: HttpConfigInterceptor, multi: true },
     SzpekHttpService,
     NgbActiveModal,
+    FavouriteLocationsService
     ],
   bootstrap: [AppComponent],
   entryComponents: [LocationModalComponent]
