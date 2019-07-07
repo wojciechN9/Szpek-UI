@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { LocationMeassurements } from '../location-meassurements/location-meassurements.type';
 import { FavouriteLocationsService } from '../utils/favourite-locations-service/favourite-locations-service';
+import { retry } from 'rxjs/operators';
 
 @Component({
   selector: 'location-meassurements-list',
@@ -14,7 +15,7 @@ export class LocationMeassurementsListComponent implements OnInit {
 
   ngOnInit(): void {
     this.favouritesIds = this.favouriteLocations.getFavouriteLocationsIds();
-    this.sortByFavourites();
+    this.sortLocations();
   }
 
   isFavourite(locationId: number) {
@@ -30,13 +31,17 @@ export class LocationMeassurementsListComponent implements OnInit {
 
     this.favouriteLocations.setFavouriteLocationsIds(this.favouritesIds);
 
-    this.sortByFavourites();
+    this.sortLocations();
   }
 
-  sortByFavourites() {
-      //show favourites first
+  sortLocations() {
+      //show favourites first and order by name
       this.locationsMeassurements.sort((a, b) => {
-        if (this.isFavourite(a.id) == this.isFavourite(b.id)) return 0;
+        if (this.isFavourite(a.id) == this.isFavourite(b.id)) {
+          if (a.address.city < b.address.city) { return -1; }
+          if (a.address.city > b.address.city) { return 1; }
+          return 0;
+        };
         if (this.isFavourite(a.id)) return -1;
         return 1;
       });
