@@ -21,6 +21,7 @@ import { LocationMapComponent } from './location-map/location-map.component';
 import { HttpConfigInterceptor } from './utils/http-error-interceptor/http-error-interceptor';
 import { ErrorPageComponent } from './utils/http-error-interceptor/error-page/error-page.component';
 import { FavouriteLocationsService } from './utils/favourite-locations-service/favourite-locations-service';
+import { LegendComponent } from './legend/legend.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { FavouriteLocationsService } from './utils/favourite-locations-service/f
     MapFactoryComponent,
     LocationModalComponent,
     LocationMapComponent,
-    ErrorPageComponent
+    ErrorPageComponent,
+    LegendComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -48,6 +50,7 @@ import { FavouriteLocationsService } from './utils/favourite-locations-service/f
       { path: 'location/:id', component: LocationMeassurementsDetailsComponent },
       { path: 'map', component: LocationMapComponent },
       { path: 'error', component: ErrorPageComponent },
+      { path: 'legend', component: LegendComponent },
       { path: '**', redirectTo: '' }
     ])
   ],

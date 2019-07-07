@@ -33,6 +33,10 @@
     float: right;
     height: 100%;
   }
+
+  .sidebar-picture{
+    width: 300px;
+  }
 }
 
 .fav-unchecked {
