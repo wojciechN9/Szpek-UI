@@ -1,7 +1,8 @@
-<div *ngFor="let locationMeassurements of locationsMeassurements">
-  <location-meassurements-list-element
-                                       [locationMeassurements]="locationMeassurements"
-                                       [isFavourite]="isFavourite(locationMeassurements.id)"
-                                       (favouriteStatusChanged)="favouriteStatusChangedEvent($event)">
-  </location-meassurements-list-element>
+<div class="row">
+  <div class="col-md-6" *ngFor="let locationMeassurements of locationsMeassurements">
+    <location-meassurements-list-element [locationMeassurements]="locationMeassurements"
+                                         [isFavourite]="isFavourite(locationMeassurements.id)"
+                                         (favouriteStatusChanged)="favouriteStatusChangedEvent($event)">
+    </location-meassurements-list-element>
+  </div>
 </div>

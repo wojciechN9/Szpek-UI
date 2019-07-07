@@ -1,27 +1,3 @@
-.location-meassurements-list {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: lightblue;
-  border-radius: 2rem;
-  margin-bottom: 0.5rem;
-  line-height: normal;
-}
-
-.location-meassurements-data {
-  display: flex;
-  flex-wrap: wrap;
-  flex: 4;
-  align-content: flex-start;
-}
-
-.location-meassurements-list-location {
-  padding: 0rem 0.5rem;
-  flex: 2;
-  flex-wrap: nowrap;
-}
-
 .location-meassurements-list-location-city {
   font-size: 1.75rem;
 }
@@ -33,11 +9,6 @@
 
 .location-meassurements-list-location-time {
   font-size: 0.75rem;
-}
-
-.location-meassurements-list-values {
-  display: flex;
-  flex: 2;
 }
 
 .location-meassurements-list-value {
@@ -54,9 +25,6 @@
   border-style: solid;
 }
 
-.location-meassurements-list-value-content {
-}
-
 .location-meassurements-list-value-unit {
   font-size: 0.75rem;
   color: black;
@@ -71,8 +39,4 @@
 .location-meassurements-list-value-info {
   font-size: 0.5rem;
   color: black;
-}
-
-.star {
-  text-align: center;
 }
