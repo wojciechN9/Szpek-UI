@@ -24,6 +24,8 @@ import { LoginComponent } from './login/login.component';
 import { InputError } from './utils/input-error/input-error.component';
 import { ErrorPageComponent } from './utils/http-interceptor/error-page/error-page.component';
 import { HttpConfigInterceptor } from './utils/http-interceptor/http-interceptor';
+import { registerLocaleData } from '@angular/common';
+import localePl from '@angular/common/locales/pl';
 
 @NgModule({
   declarations: [
@@ -72,5 +74,6 @@ import { HttpConfigInterceptor } from './utils/http-interceptor/http-interceptor
 export class AppModule {
   constructor() {
     library.add(faStar, faClock);
+    registerLocaleData(localePl);
   }
 }
