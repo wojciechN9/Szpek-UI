@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, ErrorHandler } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -18,10 +18,12 @@ import { MapFactoryComponent } from './utils/map-factory/map-factory.component';
 import { NgbModule, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { LocationModalComponent } from './utils/map-factory/location-modal/location-modal.component';
 import { LocationMapComponent } from './location-map/location-map.component';
-import { HttpConfigInterceptor } from './utils/http-error-interceptor/http-error-interceptor';
-import { ErrorPageComponent } from './utils/http-error-interceptor/error-page/error-page.component';
 import { FavouriteLocationsService } from './utils/favourite-locations-service/favourite-locations-service';
 import { LegendComponent } from './legend/legend.component';
+import { LoginComponent } from './login/login.component';
+import { InputError } from './utils/input-error/input-error.component';
+import { ErrorPageComponent } from './utils/http-interceptor/error-page/error-page.component';
+import { HttpConfigInterceptor } from './utils/http-interceptor/http-interceptor';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import { LegendComponent } from './legend/legend.component';
     LocationModalComponent,
     LocationMapComponent,
     ErrorPageComponent,
-    LegendComponent
+    LegendComponent,
+    LoginComponent,
+    InputError
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -44,6 +48,7 @@ import { LegendComponent } from './legend/legend.component';
     FormsModule,
     FontAwesomeModule,
     NgbModule,
+    ReactiveFormsModule,
     RouterModule.forRoot([
       { path: '', component: LocationMeassurementsComponent, pathMatch: 'prefix' },
       { path: 'location', component: LocationMeassurementsComponent },
@@ -51,6 +56,7 @@ import { LegendComponent } from './legend/legend.component';
       { path: 'map', component: LocationMapComponent },
       { path: 'error', component: ErrorPageComponent },
       { path: 'legend', component: LegendComponent },
+      { path: 'login', component: LoginComponent },
       { path: '**', redirectTo: '' }
     ])
   ],
