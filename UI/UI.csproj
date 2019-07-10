@@ -27,6 +27,7 @@
 
   <ItemGroup>
     <None Remove="ClientApp\src\app\app.http.service.ts" />
+    <None Remove="ClientApp\src\app\contact\contact.component.ts" />
     <None Remove="ClientApp\src\app\legend\legend.component.ts" />
     <None Remove="ClientApp\src\app\location-map\location-map.component.ts" />
     <None Remove="ClientApp\src\app\location-meassurements-details\location-meassurements-details.component.ts" />
@@ -37,17 +38,21 @@
     <None Remove="ClientApp\src\app\location-meassurements\location-meassurements.component.ts" />
     <None Remove="ClientApp\src\app\location-meassurements\location-meassurements.type.ts" />
     <None Remove="ClientApp\src\app\location-meassurements\meassurement.type.ts" />
+    <None Remove="ClientApp\src\app\login\login.component.ts" />
+    <None Remove="ClientApp\src\app\login\userLogin.type.ts" />
     <None Remove="ClientApp\src\app\utils\enum\air-quality.ts" />
     <None Remove="ClientApp\src\app\utils\enum\enum-conversion.ts" />
     <None Remove="ClientApp\src\app\utils\favourite-locations-service\favourite-locations-service.ts" />
-    <None Remove="ClientApp\src\app\utils\http-error-interceptor\error-page\error-page.component.ts" />
-    <None Remove="ClientApp\src\app\utils\http-error-interceptor\http-error-interceptor.ts" />
+    <None Remove="ClientApp\src\app\utils\http-interceptor\error-page\error-page.component.ts" />
+    <None Remove="ClientApp\src\app\utils\http-interceptor\http-interceptor.ts" />
+    <None Remove="ClientApp\src\app\utils\input-error\input-error.component.ts" />
     <None Remove="ClientApp\src\app\utils\map-factory\location-modal\location-modal.component.ts" />
     <None Remove="ClientApp\src\app\utils\sidebar\sidebar.component.ts" />
   </ItemGroup>
 
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\src\app\app.http.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\contact\contact.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\legend\legend.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\location-map\location-map.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\location-meassurements-details\location-meassurements-details.component.ts" />
@@ -58,11 +63,14 @@
     <TypeScriptCompile Include="ClientApp\src\app\location-meassurements\location-meassurements.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\location-meassurements\location-meassurements.type.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\location-meassurements\meassurement.type.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\login\login.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\login\userLogin.type.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\utils\enum\air-quality.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\utils\enum\enum-conversion.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\utils\favourite-locations-service\favourite-locations-service.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\utils\http-error-interceptor\error-page\error-page.component.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\utils\http-error-interceptor\http-error-interceptor.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\utils\http-interceptor\error-page\error-page.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\utils\http-interceptor\http-interceptor.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\utils\input-error\input-error.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\utils\map-factory\location-modal\location-modal.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\utils\sidebar\sidebar.component.ts" />
   </ItemGroup>

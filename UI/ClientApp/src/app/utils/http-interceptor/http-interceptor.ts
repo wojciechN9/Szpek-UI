@@ -15,7 +15,7 @@ import { Router } from '@angular/router';
 export class HttpConfigInterceptor implements HttpInterceptor {
   constructor(private router: Router) { }
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    const token: string = localStorage.getItem('token');
+    const token: string = localStorage.getItem('id_token');
 
     if (token) {
       request = request.clone({ headers: request.headers.set('Authorization', 'Bearer ' + token) });

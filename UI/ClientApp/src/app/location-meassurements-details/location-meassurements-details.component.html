@@ -1,10 +1,10 @@
 <div class="container">
   <div class="row">
-    <div class="col-11">
+    <div style="flex: 1">
       <h1>{{ locationMeassurements?.address.city}}</h1>
       <h3>{{ locationMeassurements?.address.street}}</h3>
     </div>
-    <div class="col-1 align-self-center" (click)="onClickFavourite()">
+    <div class="align-self-center" (click)="onClickFavourite()">
       <fa-icon [ngClass]="{'fav-checked': isFavourite(), 'fav-unchecked': !isFavourite()}" [icon]="['fas', 'star']" size="3x" [styles]="{'stroke': 'black'}"></fa-icon>
     </div>
   </div>
@@ -12,7 +12,7 @@
     <div class="col-md-6 pl-4">
       <h4 class="pb-2">Aktualny stan powietrza</h4>
       <p>PM10: <b>{{ currentMeassurement?.pm10Value}}</b> μg/m3</p>
-      <p>PM25: <b>{{ currentMeassurement?.pm25Value}}</b> μg/m3</p>
+      <p>PM2.5: <b>{{ currentMeassurement?.pm25Value}}</b> μg/m3</p>
       <p>Stan powietrza: <b [ngStyle]="{'color': getQualityColor(currentMeassurement?.airQuality)}">{{ getQualityText(currentMeassurement?.airQuality) }}</b></p>
       <fa-icon [icon]="['fas', 'clock']"></fa-icon>{{ currentMeassurement?.periodTo | date:'hh:mm'}}
     </div>
@@ -27,7 +27,7 @@
       <thead>
         <tr>
           <th>PM10</th>
-          <th>PM25</th>
+          <th>PM2.5</th>
           <th>Data badania</th>
         </tr>
       </thead>

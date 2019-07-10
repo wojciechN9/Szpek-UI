@@ -1,0 +1,25 @@
+<div class="card m-3">
+  <h5 class="card-header">Zaloguj się</h5>
+  <div class="card-body">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div class="form-row">
+        <div class="form-group col">
+          <label>Username</label>
+          <input type="text" formControlName="username" class="form-control" />
+          <input-error [control]="loginForm.controls.username"></input-error>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col">
+          <label>Password</label>
+          <input type="password" formControlName="password" class="form-control" />
+          <input-error [control]="loginForm.controls.password"></input-error>
+        </div>
+      </div>
+      <div class="text-center">
+        <button class="btn btn-primary mr-1">Login</button>
+        <button class="btn btn-secondary" type="reset" (click)="onReset()">Anuluj</button>
+      </div>
+    </form>
+  </div>
+</div>

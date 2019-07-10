@@ -25,7 +25,7 @@ export class LocationMeassurementsDetailsComponent implements OnInit {
     });
 
     this.szpekService.getLocationsMeassuresDetails(this.id).subscribe(result => {
-      this.locationMeassurements = result;
+      this.locationMeassurements = this.orderMeassurementsByDateTimeDesc(result);
       this.currentMeassurement = this.locationMeassurements.meassurements[0];
     });
 
@@ -36,6 +36,16 @@ export class LocationMeassurementsDetailsComponent implements OnInit {
     private szpekService: SzpekHttpService,
     private route: ActivatedRoute,
     private favouriteLocations: FavouriteLocationsService) {
+  }
+
+  orderMeassurementsByDateTimeDesc(locationMeassurements: LocationMeassurements) {
+    locationMeassurements.meassurements = locationMeassurements.meassurements.sort((a, b) => {
+      if (a.periodTo < b.periodTo) { return 1; }
+      if (a.periodTo > b.periodTo) { return -1; }
+      if (a.periodTo == b.periodTo) { return 0; }
+    });
+
+    return locationMeassurements;
   }
 
   getQualityText(airQuality: AirQualityEnum) {
