@@ -63,7 +63,7 @@ import { ContactComponent } from './contact/contact.component';
       { path: 'login', component: LoginComponent },
       { path: 'contact', component: ContactComponent },
       { path: '**', redirectTo: '' }
-    ])
+    ], { useHash: true })
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: HttpConfigInterceptor, multi: true },
