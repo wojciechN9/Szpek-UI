@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'http://szpek.westeurope.cloudapp.azure.com/api/'
+  apiUrl: 'https://localhost:44319/api/'
 };
