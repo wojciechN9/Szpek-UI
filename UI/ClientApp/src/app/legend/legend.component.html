@@ -1,4 +1,16 @@
 <div class="container">
-  <h1>LEGENDA</h1>
-  <p>ble ble</p>
+  <h1>Legenda</h1>
+  <table class="table table-bordered">
+    <tr class="thead-light" >
+      <th scope="col">Stan powietrza</th>
+      <th scope="col">PM10 (μg/m3)</th>
+      <th scope="col">PM2.5 (μg/m3)</th>
+    </tr>
+    <tr *ngFor="let airQuality of airQualities">
+      <td [ngStyle]="{'background-color': getQualityColor(airQuality)}"><b>{{ getQualityText(airQuality) }}</b></td>
+      <td>{{ getPM10Range(airQuality) }}</td>
+      <td>{{ getPM25Range(airQuality) }}</td>
+    </tr>
+  </table>
+  <p>Tabela przedstawia stan powietrza odpowiadający poziomowi pyłów w powietrzu. Przedziały są lewostronnie domknięte. Informacje o poziomach jakości powietrza pochodzą ze strony Inspekcji Ochorny Środowiska <a href="http://powietrze.gios.gov.pl">http://powietrze.gios.gov.pl</a> </p>
 </div>

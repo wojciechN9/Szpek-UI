@@ -51,3 +51,55 @@ export function getAirQualityColor(airQuality: AirQualityEnum) {
     }
   }
 }
+
+export function getPM10QualityRange(airQuality: AirQualityEnum) {
+  switch (airQuality) {
+    case AirQualityEnum.VeryGood: {
+      return "0 - 21";
+    }
+    case AirQualityEnum.Good: {
+      return "21 - 61";
+    }
+    case AirQualityEnum.Ok: {
+      return "61 - 101";
+    }
+    case AirQualityEnum.Poor: {
+      return "101 - 141";
+    }
+    case AirQualityEnum.Bad: {
+      return "141 - 201";
+    }
+    case AirQualityEnum.VeryBad: {
+      return "> 201";
+    }
+    case AirQualityEnum.Error: {
+      return "-";
+    }
+  }
+}
+
+export function getPM25QualityRange(airQuality: AirQualityEnum) {
+  switch (airQuality) {
+    case AirQualityEnum.VeryGood: {
+      return "0 - 13";
+    }
+    case AirQualityEnum.Good: {
+      return "13 - 37";
+    }
+    case AirQualityEnum.Ok: {
+      return "37 - 61";
+    }
+    case AirQualityEnum.Poor: {
+      return "61 - 85";
+    }
+    case AirQualityEnum.Bad: {
+      return "85 - 121";
+    }
+    case AirQualityEnum.VeryBad: {
+      return "> 121";
+    }
+    case AirQualityEnum.Error: {
+      return "-";
+    }
+  }
+}

@@ -1,10 +1,10 @@
-.location-meassurements-list-element { 
+.location-meassurements-list-element {
   border-radius: 2rem;
 }
 
 .location-meassurements-list-content {
   padding-left: 1.5rem;
-  margin: 1rem 0rem 0.5rem 1rem;
+  margin: 1rem 0.5rem 0.5rem 1rem;
 }
 
 .location-meassurements-list-values {
