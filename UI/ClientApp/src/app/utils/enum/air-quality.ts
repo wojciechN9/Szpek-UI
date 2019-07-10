@@ -21,7 +21,7 @@ export function getAirQualityText(airQuality: AirQualityEnum) {
       return "Bardzo zły";
     }
     case AirQualityEnum.Error: {
-      return "Bład pomiaru";
+      return "Błąd pomiaru";
     }
   }
 }
