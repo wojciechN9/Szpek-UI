@@ -6,10 +6,10 @@
     </button>
   </div>
   <div class="modal-body">
-    <p>PM10: <b>{{pm10Value}}</b> μg/m3</p>
-    <p>PM25: <b>{{pm25Value}}</b> μg/m3</p>
+    <p>PM10: <b>{{pm10Value | number:'1.0-2':'pl'}}</b> μg/m3</p>
+    <p>PM25: <b>{{pm25Value | number:'1.0-2':'pl'}}</b> μg/m3</p>
     <p>Stan powietrza: <b [ngStyle]="{'color': getQualityColor(airQuality)}">{{ getQualityText(airQuality) }}</b></p>
-    <fa-icon [icon]="['fas', 'clock']"></fa-icon> {{ periodTo | date:'hh:mm' }}
+    <fa-icon [icon]="['fas', 'clock']"></fa-icon> {{ periodTo | date:'HH:mm' }}
     <a class="nav-link" style="float: right" [routerLink]="['/location/', locationId]" [routerLinkActive]='["link-active"]' (click)="modal.dismiss('Cross click')">szczegóły</a>
   </div>
 </div>

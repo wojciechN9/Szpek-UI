@@ -11,10 +11,10 @@
   <div class="row pt-4">
     <div class="col-md-6 pl-4">
       <h4 class="pb-2">Aktualny stan powietrza</h4>
-      <p>PM10: <b>{{ currentMeassurement?.pm10Value}}</b> μg/m3</p>
-      <p>PM2.5: <b>{{ currentMeassurement?.pm25Value}}</b> μg/m3</p>
+      <p>PM10: <b>{{ currentMeassurement?.pm10Value | number:'1.0-2':'pl'}}</b> μg/m3</p>
+      <p>PM2.5: <b>{{ currentMeassurement?.pm25Value | number:'1.0-2':'pl'}}</b> μg/m3</p>
       <p>Stan powietrza: <b [ngStyle]="{'color': getQualityColor(currentMeassurement?.airQuality)}">{{ getQualityText(currentMeassurement?.airQuality) }}</b></p>
-      <fa-icon [icon]="['fas', 'clock']"></fa-icon>{{ currentMeassurement?.periodTo | date:'hh:mm'}}
+      <fa-icon [icon]="['fas', 'clock']"></fa-icon>{{ currentMeassurement?.periodTo | date:'HH:mm'}}
     </div>
     <div class="col-md-6">
       <map-factory *ngIf="locationMeassurements" [locationsMeassurements]="[locationMeassurements]" [modalOnClick]="false"></map-factory>
@@ -33,9 +33,9 @@
       </thead>
       <tbody>
         <tr *ngFor="let meassurement of locationMeassurements.meassurements">
-          <td>{{ meassurement.pm10Value }} μg/m3</td>
-          <td>{{ meassurement.pm25Value }} μg/m3</td>
-          <td>{{ meassurement.periodTo | date:'dd.MM.yyyy hh:mm'}}</td>
+          <td>{{ meassurement.pm10Value | number:'1.0-2':'pl' }} μg/m3</td>
+          <td>{{ meassurement.pm25Value | number:'1.0-2':'pl' }} μg/m3</td>
+          <td>{{ meassurement.periodTo | date:'dd.MM.yyyy HH:mm'}}</td>
         </tr>
       </tbody>
     </table>
