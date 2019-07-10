@@ -1,36 +1,38 @@
-<!--maybe background should depend on air quality not for each PM?-->
-
-<div class="location-meassurements-list">
-  <div class="location-meassurements-data" [routerLink]="['/location/', locationMeassurements.id]" [routerLinkActive]='["link-active"]'>
-    <div class="location-meassurements-list-location">
-      <div class="location-meassurements-list-location-city">
-        {{locationMeassurements.address.city}}
-      </div>
-      <div class="location-meassurements-list-location-name">
-        {{locationMeassurements.address.street}}
-      </div>
-      <div class="location-meassurements-list-location-time">
-        <fa-icon [icon]="['fas', 'clock']"></fa-icon>{{locationMeassurements.meassurements[0].periodTo | date:'hh:mm'}}
-      </div>
-    </div>
-    <div class="location-meassurements-list-values">
-      <div class="location-meassurements-list-value" [ngStyle]="{'background-color': getQualityColor(locationMeassurements.meassurements[0].pm25Quality)}">
-        <div class="location-meassurements-list-value-content">
-          <div class="location-meassurements-list-value-unit">PM 2.5</div>
-          <div class="location-meassurements-list-value-pollution">{{locationMeassurements.meassurements[0].pm25Value}}</div>
-          <div class="location-meassurements-list-value-info">μg/m3</div>
+<div style="margin: 1rem">
+  <div [ngStyle]="{'background-color': getQualityColor(locationMeassurements.meassurements[0].airQuality)}">
+    <div class="row">
+      <div class="col-10" [routerLink]="['/location/', locationMeassurements.id]" [routerLinkActive]='["link-active"]'>
+        <div class="row">
+          <div class="location-meassurements-list-value">
+            <div class="location-meassurements-list-value-content">
+              <div class="location-meassurements-list-value-unit">PM 2.5</div>
+              <div class="location-meassurements-list-value-pollution">{{locationMeassurements.meassurements[0].pm25Value}}</div>
+              <div class="location-meassurements-list-value-info">μg/m3</div>
+            </div>
+          </div>
+          <div class="location-meassurements-list-value">
+            <div class="location-meassurements-list-value-content">
+              <div class="location-meassurements-list-value-unit">PM 10</div>
+              <div class="location-meassurements-list-value-pollution">{{locationMeassurements.meassurements[0].pm10Value}}</div>
+              <div class="location-meassurements-list-value-info">μg/m3</div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="location-meassurements-list-location-city">
+            {{locationMeassurements.address.city}}
+          </div>
+          <div class="location-meassurements-list-location-name">
+            {{locationMeassurements.address.street}}
+          </div>
+          <div class="location-meassurements-list-location-time">
+            <fa-icon [icon]="['fas', 'clock']"></fa-icon>{{locationMeassurements.meassurements[0].periodTo | date:'hh:mm'}}
+          </div>
         </div>
       </div>
-      <div class="location-meassurements-list-value" [ngStyle]="{'background-color': getQualityColor(locationMeassurements.meassurements[0].pm10Quality)}">
-        <div class="location-meassurements-list-value-content">
-          <div class="location-meassurements-list-value-unit">PM 10</div>
-          <div class="location-meassurements-list-value-pollution">{{locationMeassurements.meassurements[0].pm10Value}}</div>
-          <div class="location-meassurements-list-value-info">μg/m3</div>
-        </div>
+      <div class="col-2" (click)="onClickFavourite()">
+        <fa-icon [ngClass]="{'fav-checked': isFavourite, 'fav-unchecked': !isFavourite}" [icon]="['fas', 'star']" size="3x" [styles]="{'stroke': 'black'}"></fa-icon>
       </div>
     </div>
-  </div>
-  <div (click)="onClickFavourite()">
-    <fa-icon [ngClass]="{'fav-checked': isFavourite, 'fav-unchecked': !isFavourite}" [icon]="['fas', 'star']"></fa-icon>
   </div>
 </div>

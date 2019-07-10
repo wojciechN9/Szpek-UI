@@ -5,16 +5,19 @@ import { getAirQualityText, getAirQualityColor } from '../utils/enum/air-quality
 import { AirQualityEnum } from '../location-meassurements/air-quality.type';
 import { LocationMeassurements } from '../location-meassurements/location-meassurements.type';
 import { Meassurement } from '../location-meassurements/meassurement.type';
+import { FavouriteLocationsService } from '../utils/favourite-locations-service/favourite-locations-service';
 
 
 @Component({
   selector: 'location-meassurements-details',
-  templateUrl: './location-meassurements-details.component.html'
+  templateUrl: './location-meassurements-details.component.html',
+  styleUrls: ['../app.component.css']
 })
 export class LocationMeassurementsDetailsComponent implements OnInit {
   public locationMeassurements: LocationMeassurements;
   public currentMeassurement: Meassurement;
   public id: number;
+  favouritesIds: Array<number>;
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -24,12 +27,15 @@ export class LocationMeassurementsDetailsComponent implements OnInit {
     this.szpekService.getLocationsMeassuresDetails(this.id).subscribe(result => {
       this.locationMeassurements = result;
       this.currentMeassurement = this.locationMeassurements.meassurements[0];
-    }, error => console.error(error));
+    });
+
+    this.favouritesIds = this.favouriteLocations.getFavouriteLocationsIds();
   }
 
   constructor(
     private szpekService: SzpekHttpService,
-    private route: ActivatedRoute) {
+    private route: ActivatedRoute,
+    private favouriteLocations: FavouriteLocationsService) {
   }
 
   getQualityText(airQuality: AirQualityEnum) {
@@ -38,5 +44,19 @@ export class LocationMeassurementsDetailsComponent implements OnInit {
 
   getQualityColor(airQuality: AirQualityEnum) {
     return getAirQualityColor(airQuality);
+  }
+
+  onClickFavourite() {
+    this.favouritesIds = this.favouriteLocations.toggleLocation(this.favouritesIds, this.id);
+
+    this.favouriteLocations.setFavouriteLocationsIds(this.favouritesIds);
+  }
+
+  isFavourite() {
+    if (this.favouritesIds.indexOf(this.id) === -1) {
+      return false;
+    }
+
+    return true;
   }
 }

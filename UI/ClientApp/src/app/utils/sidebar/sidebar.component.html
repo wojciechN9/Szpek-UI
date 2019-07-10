@@ -1,7 +1,20 @@
-<div>
-  <p>MAJORKAAAA</p>
-  <div>
-    Czym jest Lorem Ipsum?
-    Lorem Ipsum jest tekstem stosowanym jako przykładowy wypełniacz w przemyśle poligraficznym. Został po raz pierwszy użyty w XV w. przez nieznanego drukarza do wypełnienia tekstem próbnej książki. Pięć wieków później zaczął być używany przemyśle elektronicznym, pozostając praktycznie niezmienionym. Spopularyzował się w latach 60. XX w. wraz z publikacją arkuszy Letrasetu, zawierających fragmenty Lorem Ipsum, a ostatnio z zawierającym różne wersje Lorem Ipsum oprogramowaniem przeznaczonym do realizacji druków na komputerach osobistych, jak Aldus PageMaker
+<div class="cotainer text-center">
+  <h5>Polub nas na FB</h5>
+  <div class="sidebar-picture">
+    <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FsmogSzpek%2F&width=300&height=500&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=true&appId=376885252927590" width="340" style="border:none;overflow:hidden;" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
+  </div>
+  <h5>Legenda</h5>
+  <p>Poziom jakości powietrza</p>
+  <div class="sidebar-picture">
+    <figure>
+      <ul class="list-unstyled">
+        <li *ngFor="let airQuality of airQualities" [ngStyle]="{'background-color': getQualityColor(airQuality)}">
+          {{ getQualityText(airQuality) }}
+        </li>
+      </ul>
+      <figcaption>
+        <a class="nav-link" [routerLink]='["/legend"]' [routerLinkActive]='["link-active"]'>Więcej informacji</a>
+      </figcaption>
+    </figure>
   </div>
 </div>

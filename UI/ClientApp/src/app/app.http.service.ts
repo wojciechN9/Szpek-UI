@@ -1,20 +1,23 @@
-import { HttpClient, HttpResponse } from '@angular/common/http';
-import { Inject, Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from '../environments/environment.prod';
 import { LocationMeassurements } from './location-meassurements/location-meassurements.type';
 
 @Injectable()
 export class SzpekHttpService {
-  private baseUrl;
-  constructor(private http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
-    this.baseUrl = baseUrl;
+  private readonly apiEndpoint;
+  constructor(private http: HttpClient) {
+    this.apiEndpoint = environment.apiUrl;
+    //TODO delete this
+    console.log("isProd: " + environment.production);
   }
 
   getLocationsMeassures(): Observable<LocationMeassurements[]> {
-    return this.http.get<LocationMeassurements[]>(this.baseUrl + 'api/LocationMeassurements');
+    return this.http.get<LocationMeassurements[]>(this.apiEndpoint + 'Meassurements');
   }
 
   getLocationsMeassuresDetails(id: number): Observable<LocationMeassurements> {
-    return this.http.get<LocationMeassurements>(this.baseUrl + 'api/LocationMeassurements/' + id);
+    return this.http.get<LocationMeassurements>(this.apiEndpoint + 'Meassurements/' + id);
   }
 }

@@ -11,7 +11,6 @@ export class LocationMeassurementsComponent {
 
   constructor(szpekService: SzpekHttpService) {
     szpekService.getLocationsMeassures().subscribe(
-      result => { this.locationsMeassurements = result },
-      error => console.error(error));
+      result => { this.locationsMeassurements = result });
   }
 }
