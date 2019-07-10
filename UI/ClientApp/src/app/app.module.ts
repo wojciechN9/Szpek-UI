@@ -26,6 +26,7 @@ import { ErrorPageComponent } from './utils/http-interceptor/error-page/error-pa
 import { HttpConfigInterceptor } from './utils/http-interceptor/http-interceptor';
 import { registerLocaleData } from '@angular/common';
 import localePl from '@angular/common/locales/pl';
+import { ContactComponent } from './contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import localePl from '@angular/common/locales/pl';
     ErrorPageComponent,
     LegendComponent,
     LoginComponent,
-    InputError
+    InputError,
+    ContactComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -59,6 +61,7 @@ import localePl from '@angular/common/locales/pl';
       { path: 'error', component: ErrorPageComponent },
       { path: 'legend', component: LegendComponent },
       { path: 'login', component: LoginComponent },
+      { path: 'contact', component: ContactComponent },
       { path: '**', redirectTo: '' }
     ])
   ],
