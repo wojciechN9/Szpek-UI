@@ -6,7 +6,7 @@ import { Component } from "@angular/core";
   styleUrls: ['./cookie-consent.component.css']
 })
 export class CookieConsentComponent {
-  private isConsented: boolean = false;
+  public isConsented: boolean = false;
   private readonly COOKIE_CONSENT = "cookie_consent";
   private readonly COOKIE_CONSENT_EXPIRE_DAYS = 365;
 
