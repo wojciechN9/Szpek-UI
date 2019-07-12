@@ -27,6 +27,7 @@ import { HttpConfigInterceptor } from './utils/http-interceptor/http-interceptor
 import { registerLocaleData } from '@angular/common';
 import localePl from '@angular/common/locales/pl';
 import { ContactComponent } from './contact/contact.component';
+import { CookieConsentComponent } from './utils/cookie-consent/cookie-consent.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { ContactComponent } from './contact/contact.component';
     LegendComponent,
     LoginComponent,
     InputError,
-    ContactComponent
+    ContactComponent,
+    CookieConsentComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

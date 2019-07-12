@@ -40,6 +40,7 @@
     <None Remove="ClientApp\src\app\location-meassurements\meassurement.type.ts" />
     <None Remove="ClientApp\src\app\login\login.component.ts" />
     <None Remove="ClientApp\src\app\login\userLogin.type.ts" />
+    <None Remove="ClientApp\src\app\utils\cookie-consent\cookie-consent.component.ts" />
     <None Remove="ClientApp\src\app\utils\enum\air-quality.ts" />
     <None Remove="ClientApp\src\app\utils\enum\enum-conversion.ts" />
     <None Remove="ClientApp\src\app\utils\favourite-locations-service\favourite-locations-service.ts" />
@@ -65,6 +66,7 @@
     <TypeScriptCompile Include="ClientApp\src\app\location-meassurements\meassurement.type.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\login\login.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\login\userLogin.type.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\utils\cookie-consent\cookie-consent.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\utils\enum\air-quality.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\utils\enum\enum-conversion.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\utils\favourite-locations-service\favourite-locations-service.ts" />
