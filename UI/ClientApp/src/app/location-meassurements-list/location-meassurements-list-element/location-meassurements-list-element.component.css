@@ -9,6 +9,7 @@
 
 .location-meassurements-list-values {
   flex: 1;
+  cursor: pointer;
 }
 
 .location-meassurements-list-location{
@@ -59,6 +60,10 @@
   color: black;
 }
 
-.star {
+.star-component {
   padding-top: 0.5rem;
+}
+
+.star {
+  cursor: pointer;
 }
