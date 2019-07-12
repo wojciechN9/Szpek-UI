@@ -4,7 +4,7 @@
       <h1>{{ locationMeassurements?.address.city}}</h1>
       <h3>{{ locationMeassurements?.address.street}}</h3>
     </div>
-    <div class="align-self-center" (click)="onClickFavourite()">
+    <div class="align-self-center" style="cursor: pointer" (click)="onClickFavourite()">
       <fa-icon [ngClass]="{'fav-checked': isFavourite(), 'fav-unchecked': !isFavourite()}" [icon]="['fas', 'star']" size="3x" [styles]="{'stroke': 'black'}"></fa-icon>
     </div>
   </div>

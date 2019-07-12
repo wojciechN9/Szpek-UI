@@ -1,0 +1,19 @@
+.cookie-bar {
+  border: 0;
+  font-size: 12pt;
+  margin: 0 auto;
+  padding: 13px 10px;
+  position: absolute;
+  text-align: center;
+  box-sizing: border-box;
+  width: 100%;
+  z-index: 9999;
+  box-shadow: rgba(0,0,0,.5) 0px 5px 50px;
+  left: 0px;
+  bottom: 0px;
+  color: #fff;
+}
+
+.btn{
+  margin: 5px;
+}

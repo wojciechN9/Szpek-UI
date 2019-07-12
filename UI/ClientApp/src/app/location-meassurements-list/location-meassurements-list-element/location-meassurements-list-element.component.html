@@ -29,8 +29,8 @@
         </div>
       </div>
     </div>
-    <div class="star" (click)="onClickFavourite()">
-      <fa-icon [ngClass]="{'fav-checked': isFavourite, 'fav-unchecked': !isFavourite}" [icon]="['fas', 'star']" size="3x" [styles]="{'stroke': 'black'}"></fa-icon>
+    <div class="star-component" (click)="onClickFavourite()">
+      <fa-icon class="star" [ngClass]="{'fav-checked': isFavourite, 'fav-unchecked': !isFavourite}" [icon]="['fas', 'star']" size="3x" [styles]="{'stroke': 'black'}"></fa-icon>
     </div>
   </div>
 </div>
