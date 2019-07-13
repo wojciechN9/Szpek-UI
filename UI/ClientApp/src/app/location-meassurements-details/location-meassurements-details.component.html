@@ -21,31 +21,22 @@
     </div>
   </div>
   <div class="row pt-4 pl-4">
-    <!-- TODO chart from szpek.pl, for now table -->
     <h4>Ostatnie 24 godziny</h4>
-    <table class='table table-striped' *ngIf="locationMeassurements">
-      <thead>
-        <tr>
-          <th>PM10</th>
-          <th>PM2.5</th>
-          <th>Data badania</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let meassurement of locationMeassurements.meassurements">
-          <td>{{ meassurement.pm10Value | number:'1.0-2':'pl' }} μg/m3</td>
-          <td>{{ meassurement.pm25Value | number:'1.0-2':'pl' }} μg/m3</td>
-          <td>{{ meassurement.periodTo | date:'dd.MM.yyyy HH:mm'}}</td>
-        </tr>
-      </tbody>
-    </table>
   </div>
-  <div class="row pt-2 pl-4">
-    <!-- TODO comments -->
-    <h4>Komentarze</h4>
-    <p>wkrótce...</p>
+  <div class="row">
+    <div class="col-md-6">
+      <meassurements-chart *ngIf="pm10Meassurements" chartName="PM10" [data]="pm10Meassurements"></meassurements-chart>
+    </div>
+    <div class="col-md-6">
+      <meassurements-chart *ngIf="pm25Meassurements" chartName="PM2.5" [data]="pm25Meassurements"></meassurements-chart>
+    </div>
   </div>
-</div>
+    <div class="row pt-2 pl-4">
+      <!-- TODO comments -->
+      <h4>Komentarze</h4>
+      <p>wkrótce...</p>
+    </div>
+  </div>
 
 
 
