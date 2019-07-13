@@ -52,6 +52,21 @@ export function getAirQualityColor(airQuality: AirQualityEnum) {
   }
 }
 
+export function getAirQualityColorInRgba(airQuality: AirQualityEnum) {
+  var hexColor = getAirQualityColor(airQuality);
+
+  var c;
+  if (/^#([A-Fa-f0-9]{3}){1,2}$/.test(hexColor)) {
+    c = hexColor.substring(1).split('');
+    if (c.length == 3) {
+      c = [c[0], c[0], c[1], c[1], c[2], c[2]];
+    }
+    c = '0x' + c.join('');
+    return 'rgba(' + [(c >> 16) & 255, (c >> 8) & 255, c & 255].join(',') + ',0.7)';
+  }
+  throw new Error('Bad Hex');
+}
+
 export function getPM10QualityRange(airQuality: AirQualityEnum) {
   switch (airQuality) {
     case AirQualityEnum.VeryGood: {

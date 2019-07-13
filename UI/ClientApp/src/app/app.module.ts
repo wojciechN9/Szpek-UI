@@ -24,10 +24,12 @@ import { LoginComponent } from './login/login.component';
 import { InputError } from './utils/input-error/input-error.component';
 import { ErrorPageComponent } from './utils/http-interceptor/error-page/error-page.component';
 import { HttpConfigInterceptor } from './utils/http-interceptor/http-interceptor';
-import { registerLocaleData } from '@angular/common';
+import { registerLocaleData, DatePipe } from '@angular/common';
 import localePl from '@angular/common/locales/pl';
 import { ContactComponent } from './contact/contact.component';
 import { CookieConsentComponent } from './utils/cookie-consent/cookie-consent.component';
+import { MeassurementsChartComponent } from './utils/meassurements-chart/meassurements-chart.component';
+import { ChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -46,7 +48,8 @@ import { CookieConsentComponent } from './utils/cookie-consent/cookie-consent.co
     LoginComponent,
     InputError,
     ContactComponent,
-    CookieConsentComponent
+    CookieConsentComponent,
+    MeassurementsChartComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -55,6 +58,7 @@ import { CookieConsentComponent } from './utils/cookie-consent/cookie-consent.co
     FontAwesomeModule,
     NgbModule,
     ReactiveFormsModule,
+    ChartsModule,
     RouterModule.forRoot([
       { path: '', component: LocationMeassurementsComponent, pathMatch: 'prefix' },
       { path: 'location', component: LocationMeassurementsComponent },
@@ -71,7 +75,8 @@ import { CookieConsentComponent } from './utils/cookie-consent/cookie-consent.co
     { provide: HTTP_INTERCEPTORS, useClass: HttpConfigInterceptor, multi: true },
     SzpekHttpService,
     NgbActiveModal,
-    FavouriteLocationsService
+    FavouriteLocationsService,
+    DatePipe
     ],
   bootstrap: [AppComponent],
   entryComponents: [LocationModalComponent]

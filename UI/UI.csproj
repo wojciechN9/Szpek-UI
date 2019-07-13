@@ -48,6 +48,8 @@
     <None Remove="ClientApp\src\app\utils\http-interceptor\http-interceptor.ts" />
     <None Remove="ClientApp\src\app\utils\input-error\input-error.component.ts" />
     <None Remove="ClientApp\src\app\utils\map-factory\location-modal\location-modal.component.ts" />
+    <None Remove="ClientApp\src\app\utils\meassurements-chart.ts" />
+    <None Remove="ClientApp\src\app\utils\meassurements-chart\meassurement-chart.type.ts" />
     <None Remove="ClientApp\src\app\utils\sidebar\sidebar.component.ts" />
   </ItemGroup>
 
@@ -74,6 +76,8 @@
     <TypeScriptCompile Include="ClientApp\src\app\utils\http-interceptor\http-interceptor.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\utils\input-error\input-error.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\utils\map-factory\location-modal\location-modal.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\utils\meassurements-chart\meassurement-chart.type.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\utils\meassurements-chart\meassurements-chart.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\utils\sidebar\sidebar.component.ts" />
   </ItemGroup>
 

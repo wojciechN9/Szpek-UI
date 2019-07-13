@@ -6,7 +6,7 @@ import { AirQualityEnum } from '../location-meassurements/air-quality.type';
 import { LocationMeassurements } from '../location-meassurements/location-meassurements.type';
 import { Meassurement } from '../location-meassurements/meassurement.type';
 import { FavouriteLocationsService } from '../utils/favourite-locations-service/favourite-locations-service';
-
+import { MeassurementChart } from '../utils/meassurements-chart/meassurement-chart.type';
 
 @Component({
   selector: 'location-meassurements-details',
@@ -16,6 +16,8 @@ import { FavouriteLocationsService } from '../utils/favourite-locations-service/
 export class LocationMeassurementsDetailsComponent implements OnInit {
   public locationMeassurements: LocationMeassurements;
   public currentMeassurement: Meassurement;
+  public pm10Meassurements: MeassurementChart[];
+  public pm25Meassurements: MeassurementChart[];
   public id: number;
   favouritesIds: Array<number>;
 
@@ -27,6 +29,8 @@ export class LocationMeassurementsDetailsComponent implements OnInit {
     this.szpekService.getLocationsMeassuresDetails(this.id).subscribe(result => {
       this.locationMeassurements = this.orderMeassurementsByDateTimeDesc(result);
       this.currentMeassurement = this.locationMeassurements.meassurements[0];
+      this.pm10Meassurements = this.convertToPM10(this.locationMeassurements.meassurements);
+      this.pm25Meassurements = this.convertToPM25(this.locationMeassurements.meassurements);
     });
 
     this.favouritesIds = this.favouriteLocations.getFavouriteLocationsIds();
@@ -46,6 +50,23 @@ export class LocationMeassurementsDetailsComponent implements OnInit {
     });
 
     return locationMeassurements;
+  }
+
+  convertToPM10(meassurements: Array<Meassurement>) {
+    return meassurements.map(m => this.convertToChart(m.id, m.pm10Quality, m.pm10Value, m.periodTo));
+  }
+
+  convertToPM25(meassurements: Array<Meassurement>) {
+    return meassurements.map(m => this.convertToChart(m.id, m.pm25Quality, m.pm25Value, m.periodTo));
+  }
+
+  convertToChart(id: number, airQuality: AirQualityEnum, value: number, periodTo: Date) {
+    return <MeassurementChart>{
+      id: id,
+      airQuality: airQuality,
+      value: value,
+      periodTo: periodTo
+    }
   }
 
   getQualityText(airQuality: AirQualityEnum) {
