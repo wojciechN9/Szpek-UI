@@ -10,7 +10,7 @@ import { getAirQualityColor, getAirQualityColorInRgba } from '../enum/air-qualit
   templateUrl: './meassurements-chart.component.html'
 })
 export class MeassurementsChartComponent {
-  @ViewChild("chartCanvas") canvas: ElementRef;
+  @ViewChild("chartCanvas", { static: true }) canvas: ElementRef;
   @Input() chartName: string;
   @Input() data: MeassurementChart[];
 
