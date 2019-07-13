@@ -1,9 +1,9 @@
-import { Component, Input, ViewChild, ElementRef } from '@angular/core';
+import { DatePipe } from '@angular/common';
+import { Component, ElementRef, Input, ViewChild } from '@angular/core';
 import { ChartDataSets, ChartOptions } from 'chart.js';
 import { Color, Label } from 'ng2-charts';
-import { MeassurementChart } from './meassurement-chart.type';
-import { DatePipe } from '@angular/common';
 import { getAirQualityColor, getAirQualityColorInRgba } from '../enum/air-quality';
+import { MeassurementChart } from './meassurement-chart.type';
 
 @Component({
   selector: 'meassurements-chart',
@@ -33,7 +33,10 @@ export class MeassurementsChartComponent {
     this.data = this.orderMeassurementsByDateTimeAsc(this.data);
 
     this.chartData = [
-      { data: this.data.map(d => d.value), label: this.chartName + ' (μg/m3)', pointHoverRadius: 7, pointHitRadius: 5 },
+      {
+        data: this.data.map(d => this.roundTwoDigits(d.value)),
+        label: this.chartName + ' (μg/m3)', pointHoverRadius: 7, pointHitRadius: 5
+      },
     ];
 
     this.chartLabels = this.data.map(d => this.datePipe.transform(d.periodTo, "HH:mm"));
@@ -58,5 +61,9 @@ export class MeassurementsChartComponent {
     });
 
     return meassurements;
+  }
+
+  roundTwoDigits(num: number) {
+    return Math.round(num * 100) / 100;
   }
 }
