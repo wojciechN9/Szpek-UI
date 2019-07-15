@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
 
     this.httpService.login(userLogin).subscribe(
       () => {
-        this.router.navigateByUrl('/');
+        this.router.navigate(['/dashboard']);
       });
   }
 

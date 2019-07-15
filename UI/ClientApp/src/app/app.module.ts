@@ -30,6 +30,8 @@ import { ContactComponent } from './contact/contact.component';
 import { CookieConsentComponent } from './utils/cookie-consent/cookie-consent.component';
 import { MeassurementsChartComponent } from './utils/meassurements-chart/meassurements-chart.component';
 import { ChartsModule } from 'ng2-charts';
+import { MySensorsComponent } from './dashboard/my-sensors/my-sensors.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +51,9 @@ import { ChartsModule } from 'ng2-charts';
     InputError,
     ContactComponent,
     CookieConsentComponent,
-    MeassurementsChartComponent
+    MeassurementsChartComponent,
+    DashboardComponent,
+    MySensorsComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -68,6 +72,8 @@ import { ChartsModule } from 'ng2-charts';
       { path: 'legend', component: LegendComponent },
       { path: 'login', component: LoginComponent },
       { path: 'contact', component: ContactComponent },
+      { path: 'dashboard', component: DashboardComponent },
+      { path: 'sensors/my', component: MySensorsComponent },
       { path: '**', redirectTo: '' }
     ], { useHash: true })
   ],
