@@ -2,6 +2,7 @@ import { OnInit, Component } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { SzpekHttpService } from "../app.http.service";
 import { Router } from "@angular/router";
+import { AuthenticationService } from "../utils/authentication/authentication.service";
 
 @Component({
   selector: 'login',
@@ -12,8 +13,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private httpService: SzpekHttpService,
-    private router: Router) { }
+    private router: Router,
+    private authenticationService: AuthenticationService) { }
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
@@ -31,7 +32,7 @@ export class LoginComponent implements OnInit {
       password: this.loginForm.controls.password.value
     };
 
-    this.httpService.login(userLogin).subscribe(
+    this.authenticationService.login(userLogin).subscribe(
       () => {
         this.router.navigate(['/dashboard']);
       });

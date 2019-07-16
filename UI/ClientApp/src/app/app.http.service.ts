@@ -14,18 +14,6 @@ export class SzpekHttpService {
     console.log("isProd: " + environment.production);
   }
 
-  //User
-  login(userLogin: UserLogin): Observable<UserLogin> {
-    return this.http.post<UserLogin>(this.apiEndpoint + 'Users/login', userLogin)
-      .pipe(
-        tap(res => this.setSession(res)),
-        shareReplay());
-  }
-
-  private setSession(token) {
-    localStorage.setItem('id_token', token);
-  }    
-
   //Meassurements
   getLocationsMeassures(): Observable<LocationMeassurements[]> {
     return this.http.get<LocationMeassurements[]>(this.apiEndpoint + 'Meassurements');

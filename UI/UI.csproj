@@ -26,6 +26,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\src\app\admin\admin-panel\admin-panel.component.ts" />
     <None Remove="ClientApp\src\app\app.http.service.ts" />
     <None Remove="ClientApp\src\app\contact\contact.component.ts" />
     <None Remove="ClientApp\src\app\dashboard\dashboard.component.ts" />
@@ -42,6 +43,10 @@
     <None Remove="ClientApp\src\app\location-meassurements\meassurement.type.ts" />
     <None Remove="ClientApp\src\app\login\login.component.ts" />
     <None Remove="ClientApp\src\app\login\userLogin.type.ts" />
+    <None Remove="ClientApp\src\app\utils\authentication\auth.guard.ts" />
+    <None Remove="ClientApp\src\app\utils\authentication\authentication.service.ts" />
+    <None Remove="ClientApp\src\app\utils\authentication\role.type.ts" />
+    <None Remove="ClientApp\src\app\utils\authentication\user.type.ts" />
     <None Remove="ClientApp\src\app\utils\cookie-consent\cookie-consent.component.ts" />
     <None Remove="ClientApp\src\app\utils\enum\air-quality.ts" />
     <None Remove="ClientApp\src\app\utils\enum\enum-conversion.ts" />
@@ -56,6 +61,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\app\admin\admin-panel\admin-panel.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\app.http.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\contact\contact.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\dashboard\dashboard.component.ts" />
@@ -72,6 +78,10 @@
     <TypeScriptCompile Include="ClientApp\src\app\location-meassurements\meassurement.type.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\login\login.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\login\userLogin.type.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\utils\authentication\auth.guard.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\utils\authentication\authentication.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\utils\authentication\role.type.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\utils\authentication\user.type.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\utils\cookie-consent\cookie-consent.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\utils\enum\air-quality.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\utils\enum\enum-conversion.ts" />
@@ -83,6 +93,10 @@
     <TypeScriptCompile Include="ClientApp\src\app\utils\meassurements-chart\meassurement-chart.type.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\utils\meassurements-chart\meassurements-chart.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\utils\sidebar\sidebar.component.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ClientApp\src\app\admin\NewFolder\" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

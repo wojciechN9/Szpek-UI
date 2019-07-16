@@ -32,6 +32,10 @@ import { MeassurementsChartComponent } from './utils/meassurements-chart/meassur
 import { ChartsModule } from 'ng2-charts';
 import { MySensorsComponent } from './dashboard/my-sensors/my-sensors.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { AdminPanelComponent } from './admin/admin-panel/admin-panel.component';
+import { AuthenticationService } from './utils/authentication/authentication.service';
+import { AuthGuard } from './utils/authentication/auth.guard';
+import { Role } from './utils/authentication/role.type';
 
 @NgModule({
   declarations: [
@@ -53,7 +57,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     CookieConsentComponent,
     MeassurementsChartComponent,
     DashboardComponent,
-    MySensorsComponent
+    MySensorsComponent,
+    AdminPanelComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -72,8 +77,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
       { path: 'legend', component: LegendComponent },
       { path: 'login', component: LoginComponent },
       { path: 'contact', component: ContactComponent },
-      { path: 'dashboard', component: DashboardComponent },
-      { path: 'sensors/my', component: MySensorsComponent },
+      { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
+      { path: 'sensors/my', component: MySensorsComponent, canActivate: [AuthGuard], data: { roles: [Role.SensorOwner] } },
       { path: '**', redirectTo: '' }
     ], { useHash: true })
   ],
@@ -82,7 +87,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     SzpekHttpService,
     NgbActiveModal,
     FavouriteLocationsService,
-    DatePipe
+    DatePipe,
+    AuthenticationService,
+    AuthGuard
     ],
   bootstrap: [AppComponent],
   entryComponents: [LocationModalComponent]
