@@ -17,4 +17,8 @@ export class DashboardComponent {
   get isAdmin() {
     return this.currentUser && this.currentUser.roles.indexOf(Role.Admin) !== -1;
   }
+
+  get isSensorOwner() {
+    return this.currentUser && this.currentUser.roles.indexOf(Role.SensorOwner) !== -1;
+  }
 }

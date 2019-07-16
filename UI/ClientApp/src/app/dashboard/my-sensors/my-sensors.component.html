@@ -1,1 +1,32 @@
-<h1>Moje czujniki</h1>
+<div class="container">
+  <h1>Właściciel czujników</h1>
+  <div class="form-group">
+    <div class="row">
+      <label class="col-sm-2"><b>Imie</b></label>
+      <div class="col-sm-10"><p>{{sensorOwner.name}}</p></div>
+    </div>
+    <div class="row">
+      <label class="col-sm-2"><b>Adres</b></label>
+      <div class="col-sm-10"><p>{{sensorOwner.address}}</p></div>
+    </div>
+    <div class="row">
+      <label class="col-sm-2"><b>Firma</b></label>
+      <div class="col-sm-10"><input type="checkbox"[checked]="sensorOwner.isCompany" disabled="disabled"/></div>
+    </div>
+  </div>
+  <h4>Moje czujniki</h4>
+  <table class="table table-bordered">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">Kod czujnika</th>
+        <th scope="col">Prywatny</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let sensor of sensorOwner.sensors">
+        <td>{{sensor.code}}</td>
+        <td><input type="checkbox"[checked]="sensor.isPrivate" disabled="disabled"/></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

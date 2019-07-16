@@ -2,8 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from '../environments/environment.prod';
+import { SensorOwner } from './dashboard/my-sensors/sensor-owner.type';
 import { LocationMeassurements } from './location-meassurements/location-meassurements.type';
-import { tap, shareReplay } from 'rxjs/operators';
 
 @Injectable()
 export class SzpekHttpService {
@@ -21,5 +21,10 @@ export class SzpekHttpService {
 
   getLocationsMeassuresDetails(id: number): Observable<LocationMeassurements> {
     return this.http.get<LocationMeassurements>(this.apiEndpoint + 'Meassurements/' + id);
+  }
+
+  //SensorOwners
+  getMySensors(): Observable<SensorOwner> {
+    return this.http.get<SensorOwner>(this.apiEndpoint + 'SensorsOwners/my');
   }
 }
