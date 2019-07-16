@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { SzpekHttpService } from '../app.http.service';
 import { getAirQualityText, getAirQualityColor } from '../utils/enum/air-quality';
 import { AirQualityEnum } from '../location-meassurements/air-quality.type';
 import { LocationMeassurements } from '../location-meassurements/location-meassurements.type';
 import { Meassurement } from '../location-meassurements/meassurement.type';
 import { FavouriteLocationsService } from '../utils/favourite-locations-service/favourite-locations-service';
 import { MeassurementChart } from '../utils/meassurements-chart/meassurement-chart.type';
+import { MeassurementsHttpService } from '../utils/http-services/meassurements.http.service';
 
 @Component({
   selector: 'location-meassurements-details',
@@ -26,7 +26,7 @@ export class LocationMeassurementsDetailsComponent implements OnInit {
       this.id = +params['id'];
     });
 
-    this.szpekService.getLocationsMeassuresDetails(this.id).subscribe(result => {
+    this.meassurementsService.getLocationsMeassuresDetails(this.id).subscribe(result => {
       this.locationMeassurements = this.orderMeassurementsByDateTimeDesc(result);
       this.currentMeassurement = this.locationMeassurements.meassurements[0];
       this.pm10Meassurements = this.convertToPM10(this.locationMeassurements.meassurements);
@@ -37,7 +37,7 @@ export class LocationMeassurementsDetailsComponent implements OnInit {
   }
 
   constructor(
-    private szpekService: SzpekHttpService,
+    private meassurementsService: MeassurementsHttpService,
     private route: ActivatedRoute,
     private favouriteLocations: FavouriteLocationsService) {
   }

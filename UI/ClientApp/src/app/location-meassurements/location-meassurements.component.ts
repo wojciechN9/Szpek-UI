@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { SzpekHttpService } from '../app.http.service';
 import { LocationMeassurements } from './location-meassurements.type';
+import { MeassurementsHttpService } from '../utils/http-services/meassurements.http.service';
 
 @Component({
   selector: 'location-meassurements',
@@ -9,8 +9,8 @@ import { LocationMeassurements } from './location-meassurements.type';
 export class LocationMeassurementsComponent {
   public locationsMeassurements: LocationMeassurements[];
 
-  constructor(szpekService: SzpekHttpService) {
-    szpekService.getLocationsMeassures().subscribe(
+  constructor(meassurementsService: MeassurementsHttpService) {
+    meassurementsService.getLocationsMeassures().subscribe(
       result => { this.locationsMeassurements = result });
   }
 }

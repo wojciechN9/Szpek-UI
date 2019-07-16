@@ -1,6 +1,5 @@
 import { OnInit, Component } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
-import { SzpekHttpService } from "../app.http.service";
 import { Router } from "@angular/router";
 import { AuthenticationService } from "../utils/authentication/authentication.service";
 

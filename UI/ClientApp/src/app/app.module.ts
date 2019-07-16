@@ -13,7 +13,6 @@ import { LocationMeassurementsComponent } from './location-meassurements/locatio
 import { LocationMeassurementsDetailsComponent } from './location-meassurements-details/location-meassurements-details.component';
 import { LocationMeassurementsListComponent } from './location-meassurements-list/location-meassurements-list.component';
 import { LocationMeassurementsListElementComponent } from './location-meassurements-list/location-meassurements-list-element/location-meassurements-list-element.component';
-import { SzpekHttpService } from './app.http.service';
 import { MapFactoryComponent } from './utils/map-factory/map-factory.component';
 import { NgbModule, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { LocationModalComponent } from './utils/map-factory/location-modal/location-modal.component';
@@ -36,6 +35,8 @@ import { AdminPanelComponent } from './admin/admin-panel/admin-panel.component';
 import { AuthenticationService } from './utils/authentication/authentication.service';
 import { AuthGuard } from './utils/authentication/auth.guard';
 import { Role } from './utils/authentication/role.type';
+import { SensorsOwnersHttpService } from './utils/http-services/sensor-owners.service';
+import { MeassurementsHttpService } from './utils/http-services/meassurements.http.service';
 
 @NgModule({
   declarations: [
@@ -84,7 +85,8 @@ import { Role } from './utils/authentication/role.type';
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: HttpConfigInterceptor, multi: true },
-    SzpekHttpService,
+    SensorsOwnersHttpService,
+    MeassurementsHttpService,
     NgbActiveModal,
     FavouriteLocationsService,
     DatePipe,

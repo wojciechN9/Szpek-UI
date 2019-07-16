@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
-import { SzpekHttpService } from "../../app.http.service";
 import { SensorOwner } from "./sensor-owner.type";
+import { SensorsOwnersHttpService } from "../../utils/http-services/sensor-owners.service";
 
 @Component({
   selector: 'my-sensors',
@@ -9,8 +9,8 @@ import { SensorOwner } from "./sensor-owner.type";
 export class MySensorsComponent {
   public sensorOwner: SensorOwner;
 
-  constructor(szpekService: SzpekHttpService) {
-    szpekService.getMySensors().subscribe(
+  constructor(sensorsOwnersService: SensorsOwnersHttpService) {
+    sensorsOwnersService.getMySensors().subscribe(
       result => { this.sensorOwner = result });
   }
 }

@@ -55,6 +55,7 @@
     <None Remove="ClientApp\src\app\utils\favourite-locations-service\favourite-locations-service.ts" />
     <None Remove="ClientApp\src\app\utils\http-interceptor\error-page\error-page.component.ts" />
     <None Remove="ClientApp\src\app\utils\http-interceptor\http-interceptor.ts" />
+    <None Remove="ClientApp\src\app\utils\http-services\sensor-owners.service.ts" />
     <None Remove="ClientApp\src\app\utils\input-error\input-error.component.ts" />
     <None Remove="ClientApp\src\app\utils\map-factory\location-modal\location-modal.component.ts" />
     <None Remove="ClientApp\src\app\utils\meassurements-chart.ts" />
@@ -64,7 +65,7 @@
 
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\src\app\admin\admin-panel\admin-panel.component.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\app.http.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\utils\http-services\meassurements.http.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\contact\contact.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\dashboard\dashboard.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\dashboard\my-sensors\my-sensors.component.ts" />
@@ -92,6 +93,7 @@
     <TypeScriptCompile Include="ClientApp\src\app\utils\favourite-locations-service\favourite-locations-service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\utils\http-interceptor\error-page\error-page.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\utils\http-interceptor\http-interceptor.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\utils\http-services\sensor-owners.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\utils\input-error\input-error.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\utils\map-factory\location-modal\location-modal.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\utils\meassurements-chart\meassurement-chart.type.ts" />
