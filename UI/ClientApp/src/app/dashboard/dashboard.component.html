@@ -1,0 +1,3 @@
+<h1>Dashboard</h1>
+<a *ngIf="isSensorOwner" class="nav-link" [routerLink]='["/sensors/my"]'>Moje czujniki</a>
+<admin-panel *ngIf="isAdmin"></admin-panel>

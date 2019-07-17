@@ -13,7 +13,6 @@ import { LocationMeassurementsComponent } from './location-meassurements/locatio
 import { LocationMeassurementsDetailsComponent } from './location-meassurements-details/location-meassurements-details.component';
 import { LocationMeassurementsListComponent } from './location-meassurements-list/location-meassurements-list.component';
 import { LocationMeassurementsListElementComponent } from './location-meassurements-list/location-meassurements-list-element/location-meassurements-list-element.component';
-import { SzpekHttpService } from './app.http.service';
 import { MapFactoryComponent } from './utils/map-factory/map-factory.component';
 import { NgbModule, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { LocationModalComponent } from './utils/map-factory/location-modal/location-modal.component';
@@ -30,6 +29,14 @@ import { ContactComponent } from './contact/contact.component';
 import { CookieConsentComponent } from './utils/cookie-consent/cookie-consent.component';
 import { MeassurementsChartComponent } from './utils/meassurements-chart/meassurements-chart.component';
 import { ChartsModule } from 'ng2-charts';
+import { MySensorsComponent } from './dashboard/my-sensors/my-sensors.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { AdminPanelComponent } from './admin/admin-panel/admin-panel.component';
+import { AuthenticationService } from './utils/authentication/authentication.service';
+import { AuthGuard } from './utils/authentication/auth.guard';
+import { Role } from './utils/authentication/role.type';
+import { SensorsOwnersHttpService } from './utils/http-services/sensor-owners.service';
+import { MeassurementsHttpService } from './utils/http-services/meassurements.http.service';
 
 @NgModule({
   declarations: [
@@ -49,7 +56,10 @@ import { ChartsModule } from 'ng2-charts';
     InputError,
     ContactComponent,
     CookieConsentComponent,
-    MeassurementsChartComponent
+    MeassurementsChartComponent,
+    DashboardComponent,
+    MySensorsComponent,
+    AdminPanelComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -68,15 +78,20 @@ import { ChartsModule } from 'ng2-charts';
       { path: 'legend', component: LegendComponent },
       { path: 'login', component: LoginComponent },
       { path: 'contact', component: ContactComponent },
+      { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
+      { path: 'sensors/my', component: MySensorsComponent, canActivate: [AuthGuard], data: { roles: [Role.SensorOwner] } },
       { path: '**', redirectTo: '' }
     ], { useHash: true })
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: HttpConfigInterceptor, multi: true },
-    SzpekHttpService,
+    SensorsOwnersHttpService,
+    MeassurementsHttpService,
     NgbActiveModal,
     FavouriteLocationsService,
-    DatePipe
+    DatePipe,
+    AuthenticationService,
+    AuthGuard
     ],
   bootstrap: [AppComponent],
   entryComponents: [LocationModalComponent]
