@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
-import { SensorOwner } from "./sensor-owner.type";
 import { SensorsOwnersHttpService } from "../../utils/http-services/sensor-owners.service";
+import { SensorOwner } from "../../admin/sensors-owners/sensor-owner.type";
 
 @Component({
   selector: 'my-sensors',

@@ -37,6 +37,9 @@ import { AuthGuard } from './utils/authentication/auth.guard';
 import { Role } from './utils/authentication/role.type';
 import { SensorsOwnersHttpService } from './utils/http-services/sensor-owners.service';
 import { MeassurementsHttpService } from './utils/http-services/meassurements.http.service';
+import { SensorsOwnersComponent } from './admin/sensors-owners/sensors-owners.component';
+import { SensorsOwnersDetailsComponent } from './admin/sensors-owners/sensors-owners-details/sensors-owners-details.component';
+import { UsersHttpService } from './utils/http-services/users.service';
 
 @NgModule({
   declarations: [
@@ -59,7 +62,9 @@ import { MeassurementsHttpService } from './utils/http-services/meassurements.ht
     MeassurementsChartComponent,
     DashboardComponent,
     MySensorsComponent,
-    AdminPanelComponent
+    AdminPanelComponent,
+    SensorsOwnersComponent,
+    SensorsOwnersDetailsComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -80,6 +85,8 @@ import { MeassurementsHttpService } from './utils/http-services/meassurements.ht
       { path: 'contact', component: ContactComponent },
       { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
       { path: 'sensors/my', component: MySensorsComponent, canActivate: [AuthGuard], data: { roles: [Role.SensorOwner] } },
+      { path: 'admin/sensorsOwners', component: SensorsOwnersComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin] } },
+      { path: 'admin/sensorsOwners/:id', component: SensorsOwnersDetailsComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin] } },
       { path: '**', redirectTo: '' }
     ], { useHash: true })
   ],
@@ -87,6 +94,7 @@ import { MeassurementsHttpService } from './utils/http-services/meassurements.ht
     { provide: HTTP_INTERCEPTORS, useClass: HttpConfigInterceptor, multi: true },
     SensorsOwnersHttpService,
     MeassurementsHttpService,
+    UsersHttpService,
     NgbActiveModal,
     FavouriteLocationsService,
     DatePipe,

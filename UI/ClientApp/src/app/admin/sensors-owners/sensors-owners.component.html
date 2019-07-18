@@ -1,0 +1,56 @@
+<div class="container">
+  <h1>Sensors Owners</h1>
+  <div *ngIf="isAddFormVisible" class="jumbotron">
+    <button (click)="triggerFormVisible()" class="btn btn-primary mb-4">x</button>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="user">User</label>
+        <select class="form-control" id="user" formControlName="userId">
+          <option *ngFor="let user of users" [value]="user.userId">{{user.userName}}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="name">Nazwa</label>
+        <input type="text" class="form-control" id="name" formControlName="name" />
+        <input-error [control]="form.controls.name"></input-error>
+      </div>
+      <div class="form-group">
+        <label for="address">Adres</label>
+        <input type="text" class="form-control" id="address" formControlName="address" />
+        <input-error [control]="form.controls.address"></input-error>
+      </div>
+      <div class="form-group form-check">
+        <input type="checkbox" class="form-check-input" id="isCompany" formControlName="isCompany" />
+        <label class="form-check-label" for="isCompany">Firma</label>
+        <input-error [control]="form.controls.isCompany"></input-error>
+      </div>
+      <button type="submit" class="btn btn-primary">Dodaj</button>
+      <button class="btn btn-secondary" type="reset" (click)="onReset()">Anuluj</button>
+    </form>
+  </div>
+  <button *ngIf="!isAddFormVisible" (click)="triggerFormVisible()" class="btn btn-primary float-right">Dodaj Nowy</button>
+  <table class="table table-bordered">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">Nazwa</th>
+        <th scope="col">Adres</th>
+        <th scope="col">Prywatny</th>
+        <th scope="col">Ilość Sensorów</th>
+        <th scope="col">Szczegóły</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let sensorOwner of sensorsOwners">
+        <td>{{sensorOwner.name}}</td>
+        <td>{{sensorOwner.address}}</td>
+        <td class="text-center"><input type="checkbox" [checked]="sensorOwner.isPrivate" disabled="disabled" /></td>
+        <td class="text-center">
+          <span *ngFor="let sensor of sensorOwner.sensors">
+            <a [routerLink]="['/admin/sensors/', sensor.id]" [routerLinkActive]='["link-active"]'>{{sensor.code}}</a>,
+          </span>
+        </td>
+        <td class="text-center"><a [routerLink]="['/admin/sensorsOwners/', sensorOwner.id]" [routerLinkActive]='["link-active"]'>>></a></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

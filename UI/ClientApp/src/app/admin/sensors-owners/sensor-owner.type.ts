@@ -1,4 +1,4 @@
-import { Sensor } from "./sensor.type";
+import { Sensor } from "../sensors/sensor.type";
 
 export interface SensorOwner {
   id: number;
