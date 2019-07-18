@@ -34,7 +34,7 @@
       <tr>
         <th scope="col">Nazwa</th>
         <th scope="col">Adres</th>
-        <th scope="col">Prywatny</th>
+        <th scope="col">Firma</th>
         <th scope="col">Ilość Sensorów</th>
         <th scope="col">Szczegóły</th>
       </tr>
@@ -43,7 +43,7 @@
       <tr *ngFor="let sensorOwner of sensorsOwners">
         <td>{{sensorOwner.name}}</td>
         <td>{{sensorOwner.address}}</td>
-        <td class="text-center"><input type="checkbox" [checked]="sensorOwner.isPrivate" disabled="disabled" /></td>
+        <td class="text-center"><input type="checkbox" [checked]="sensorOwner.isCompany" disabled="disabled" /></td>
         <td class="text-center">
           <span *ngFor="let sensor of sensorOwner.sensors">
             <a [routerLink]="['/admin/sensors/', sensor.id]" [routerLinkActive]='["link-active"]'>{{sensor.code}}</a>,

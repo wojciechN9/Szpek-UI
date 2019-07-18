@@ -12,7 +12,7 @@ import { FormBuilder, Validators, FormGroup } from "@angular/forms";
 export class SensorsOwnersDetailsComponent implements OnInit {
   public form: FormGroup;
   public sensorsOwner: SensorOwner;
-  public sensorId: number;
+  public sensorOwnerId: number;
 
   constructor(
     private sensorsOwnersService: SensorsOwnersHttpService,
@@ -20,8 +20,8 @@ export class SensorsOwnersDetailsComponent implements OnInit {
     private formBuilder: FormBuilder) { }
 
   ngOnInit() {
-    this.sensorId = +this.route.snapshot.params['id'];
-    this.sensorsOwnersService.getSensorsOwner(this.sensorId).subscribe(
+    this.sensorOwnerId = +this.route.snapshot.params['id'];
+    this.sensorsOwnersService.getSensorsOwner(this.sensorOwnerId).subscribe(
       result => {
         this.sensorsOwner = result;
         this.form = this.formBuilder.group({

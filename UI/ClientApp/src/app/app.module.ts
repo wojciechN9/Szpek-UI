@@ -40,6 +40,9 @@ import { MeassurementsHttpService } from './utils/http-services/meassurements.ht
 import { SensorsOwnersComponent } from './admin/sensors-owners/sensors-owners.component';
 import { SensorsOwnersDetailsComponent } from './admin/sensors-owners/sensors-owners-details/sensors-owners-details.component';
 import { UsersHttpService } from './utils/http-services/users.service';
+import { SensorsHttpService } from './utils/http-services/sensors.service';
+import { SensorsComponent } from './admin/sensors/sensors.component';
+import { SensorsDetailsComponent } from './admin/sensors/sensors-details/sensors-details.component';
 
 @NgModule({
   declarations: [
@@ -64,7 +67,9 @@ import { UsersHttpService } from './utils/http-services/users.service';
     MySensorsComponent,
     AdminPanelComponent,
     SensorsOwnersComponent,
-    SensorsOwnersDetailsComponent
+    SensorsOwnersDetailsComponent,
+    SensorsComponent,
+    SensorsDetailsComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -87,6 +92,8 @@ import { UsersHttpService } from './utils/http-services/users.service';
       { path: 'sensors/my', component: MySensorsComponent, canActivate: [AuthGuard], data: { roles: [Role.SensorOwner] } },
       { path: 'admin/sensorsOwners', component: SensorsOwnersComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin] } },
       { path: 'admin/sensorsOwners/:id', component: SensorsOwnersDetailsComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin] } },
+      { path: 'admin/sensors', component: SensorsComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin] } },
+      { path: 'admin/sensors/:id', component: SensorsDetailsComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin] } },
       { path: '**', redirectTo: '' }
     ], { useHash: true })
   ],
@@ -95,6 +102,7 @@ import { UsersHttpService } from './utils/http-services/users.service';
     SensorsOwnersHttpService,
     MeassurementsHttpService,
     UsersHttpService,
+    SensorsHttpService,
     NgbActiveModal,
     FavouriteLocationsService,
     DatePipe,

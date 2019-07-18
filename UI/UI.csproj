@@ -27,10 +27,16 @@
 
   <ItemGroup>
     <None Remove="ClientApp\src\app\admin\admin-panel\admin-panel.component.ts" />
+    <None Remove="ClientApp\src\app\admin\locations\location.type.ts" />
     <None Remove="ClientApp\src\app\admin\sensors-owners\sensor-owner-post.type.ts" />
     <None Remove="ClientApp\src\app\admin\sensors-owners\sensors-owners-details\sensors-owners-details.component.ts" />
     <None Remove="ClientApp\src\app\admin\sensors-owners\sensors-owners.component.ts" />
     <None Remove="ClientApp\src\app\admin\sensors-owners\user.type.ts" />
+    <None Remove="ClientApp\src\app\admin\sensors\owner.type.ts" />
+    <None Remove="ClientApp\src\app\admin\sensors\sensors-create.type.ts" />
+    <None Remove="ClientApp\src\app\admin\sensors\sensors-details\sensor-details.type.ts" />
+    <None Remove="ClientApp\src\app\admin\sensors\sensors-details\sensors-details.component.ts" />
+    <None Remove="ClientApp\src\app\admin\sensors\sensors.component.ts" />
     <None Remove="ClientApp\src\app\app.http.service.ts" />
     <None Remove="ClientApp\src\app\contact\contact.component.ts" />
     <None Remove="ClientApp\src\app\dashboard\dashboard.component.ts" />
@@ -60,6 +66,7 @@
     <None Remove="ClientApp\src\app\utils\http-interceptor\error-page\error-page.component.ts" />
     <None Remove="ClientApp\src\app\utils\http-interceptor\http-interceptor.ts" />
     <None Remove="ClientApp\src\app\utils\http-services\sensor-owners.service.ts" />
+    <None Remove="ClientApp\src\app\utils\http-services\sensors.service.ts" />
     <None Remove="ClientApp\src\app\utils\http-services\users.service.ts" />
     <None Remove="ClientApp\src\app\utils\input-error\input-error.component.ts" />
     <None Remove="ClientApp\src\app\utils\map-factory\location-modal\location-modal.component.ts" />
@@ -70,10 +77,16 @@
 
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\src\app\admin\admin-panel\admin-panel.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\admin\locations\location.type.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\admin\sensors-owners\sensor-owner-post.type.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\admin\sensors-owners\sensors-owners-details\sensors-owners-details.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\admin\sensors-owners\sensors-owners.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\admin\sensors-owners\user.type.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\admin\sensors\owner.type.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\admin\sensors\sensors-create.type.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\admin\sensors\sensors-details\sensor-details.type.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\admin\sensors\sensors-details\sensors-details.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\admin\sensors\sensors.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\utils\http-services\meassurements.http.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\contact\contact.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\dashboard\dashboard.component.ts" />
@@ -103,6 +116,7 @@
     <TypeScriptCompile Include="ClientApp\src\app\utils\http-interceptor\error-page\error-page.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\utils\http-interceptor\http-interceptor.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\utils\http-services\sensor-owners.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\utils\http-services\sensors.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\utils\http-services\users.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\utils\input-error\input-error.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\utils\map-factory\location-modal\location-modal.component.ts" />
