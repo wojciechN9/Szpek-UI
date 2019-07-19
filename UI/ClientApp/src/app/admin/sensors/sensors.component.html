@@ -1,0 +1,50 @@
+<div class="container">
+  <h1>Sensors</h1>
+  <div *ngIf="isAddFormVisible" class="jumbotron">
+    <button (click)="triggerFormVisible()" class="btn btn-primary mb-4">x</button>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="code">Kod</label>
+        <input type="text" class="form-control" id="code" formControlName="code" />
+        <input-error [control]="form.controls.code"></input-error>
+      </div>
+      <div class="form-group">
+        <label for="publicKey">Klucz publiczny</label>
+        <input type="text" class="form-control" id="publicKey" formControlName="publicKey" />
+        <input-error [control]="form.controls.publicKey"></input-error>
+      </div>
+      <div class="form-group">
+        <label for="owner">Sensor Owner</label>
+        <select class="form-control" id="owner" formControlName="ownerId">
+          <option *ngFor="let sensorsOwner of sensorsOwners" [value]="sensorsOwner.id">{{sensorsOwner.name}}</option>
+        </select>
+      </div>
+      <div class="form-group form-check">
+        <input type="checkbox" class="form-check-input" id="isPrivate" formControlName="isPrivate" />
+        <label class="form-check-label" for="isPrivate">Prywatny</label>
+        <input-error [control]="form.controls.isPrivate"></input-error>
+      </div>
+      <button type="submit" class="btn btn-primary">Dodaj</button>
+      <button class="btn btn-secondary" type="reset" (click)="onReset()">Anuluj</button>
+    </form>
+  </div>
+  <button *ngIf="!isAddFormVisible" (click)="triggerFormVisible()" class="btn btn-primary float-right">Dodaj Nowy</button>
+  <table class="table table-bordered">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">Code</th>
+        <th scope="col">Prywatny</th>
+        <th scope="col">Owner</th>
+        <th scope="col">Szczegóły</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let sensor of sensors">
+        <td>{{sensor.code}}</td>
+        <td class="text-center"><input type="checkbox" [checked]="sensor.isPrivate" disabled="disabled" /></td>
+        <td><a [routerLink]="['/admin/sensorsOwners/', sensor.owner.id]" [routerLinkActive]='["link-active"]'>{{sensor.owner.name}}</a></td>
+        <td class="text-center"><a [routerLink]="['/admin/sensors/', sensor.id]" [routerLinkActive]='["link-active"]'>>></a></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

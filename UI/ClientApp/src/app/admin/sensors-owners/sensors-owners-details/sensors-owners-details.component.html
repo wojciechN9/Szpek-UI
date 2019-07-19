@@ -1,0 +1,35 @@
+<div class="container">
+  <h1>Sensor Owner</h1>
+  <form *ngIf="form" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">Nazwa</label>
+      <input type="text" class="form-control" id="name" formControlName="name" />
+    </div>
+    <div class="form-group">
+      <label for="address">Adres</label>
+      <input type="text" class="form-control" id="address" formControlName="address" />
+    </div>
+    <div class="form-group form-check">
+      <input type="checkbox" class="form-check-input" id="isCompany" formControlName="isCompany" />
+      <label class="form-check-label" for="isCompany">Firma</label>
+    </div>
+    <button type="submit" class="btn btn-primary">Edytuj</button>
+  </form>
+  <h4 class="mt-4">Czujniki</h4>
+  <table *ngIf="sensorsOwner" class="table table-bordered">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">Kod czujnika</th>
+        <th scope="col">Prywatny</th>
+        <th scope="col">Szczegóły</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let sensor of sensorsOwner.sensors">
+        <td>{{sensor.code}}</td>
+        <td class="text-center"><input type="checkbox" [checked]="sensor.isPrivate" disabled="disabled" /></td>
+        <td class="text-center"><a [routerLink]="['/admin/sensors/', sensor.id]" [routerLinkActive]='["link-active"]'>>></a></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

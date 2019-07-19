@@ -1,0 +1,37 @@
+<div class="container">
+  <h1>Sensor</h1>
+  <form *ngIf="form" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="code">Kod</label>
+      <input type="text" class="form-control" id="code" formControlName="code" />
+    </div>
+    <div class="form-group form-check">
+      <input type="checkbox" class="form-check-input" id="isPrivate" formControlName="isPrivate" />
+      <label class="form-check-label" for="isPrivate">Prywatny</label>
+    </div>
+    <div class="form-group">
+      <label for="sensorOwner">Właściciel</label>
+      <select class="form-control" id="sensorOwner" formControlName="ownerId">
+        <option [ngValue]="sensor.owner.id" [selected]="sensor.owner.id">{{sensor.owner.name}}</option>
+      </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Edytuj</button>
+  </form>
+  <h4 class="mt-4">Loalizacje</h4>
+  <table *ngIf="sensor" class="table table-bordered">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">Adres</th>
+        <th scope="col">Aktywna</th>
+        <th scope="col">Szczegóły</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let location of sensor.locations">
+        <td>{{location.address.city}}, {{location.address.street}}</td>
+        <td class="text-center"><input type="checkbox" [checked]="location.isActive" disabled="disabled" /></td>
+        <td class="text-center"><a [routerLink]="['/admin/locations/', location.id]" [routerLinkActive]='["link-active"]'>>></a></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

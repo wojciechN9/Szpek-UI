@@ -1,0 +1,83 @@
+<div class="container">
+  <h1>Locations</h1>
+  <div *ngIf="isAddFormVisible" class="jumbotron">
+    <button (click)="triggerFormVisible()" class="btn btn-primary mb-4">x</button>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="code">Sensor</label>
+        <input type="text" class="form-control" id="sensorId" formControlName="sensorId" />
+        <input-error [control]="form.controls.sensorId"></input-error>
+      </div>
+      <div formGroupName="address">
+        <div class="form-group">
+          <label for="publicKey">City</label>
+          <input type="text" class="form-control" id="city" formControlName="city" />
+          <input-error [control]="form.controls.address.controls.city"></input-error>
+        </div>
+        <div class="form-group">
+          <label for="publicKey">Street</label>
+          <input type="text" class="form-control" id="street" formControlName="street" />
+          <input-error [control]="form.controls.address.controls.street"></input-error>
+        </div>
+        <div class="form-group">
+          <label for="publicKey">PostCode</label>
+          <input type="text" class="form-control" id="postCode" formControlName="postCode" />
+          <input-error [control]="form.controls.address.controls.postCode"></input-error>
+        </div>
+        <div class="form-group">
+          <label for="publicKey">Voivodeship</label>
+          <input type="text" class="form-control" id="voivodeship" formControlName="voivodeship" />
+          <input-error [control]="form.controls.address.controls.voivodeship"></input-error>
+        </div>
+        <div class="form-group">
+          <label for="publicKey">CountryCode</label>
+          <input type="text" class="form-control" id="countryCode" formControlName="countryCode" />
+          <input-error [control]="form.controls.address.controls.countryCode"></input-error>
+        </div>
+        <div class="form-group">
+          <label for="publicKey">Latitude</label>
+          <input type="text" class="form-control" id="latitude" formControlName="latitude" />
+          <input-error [control]="form.controls.address.controls.latitude"></input-error>
+        </div>
+        <div class="form-group">
+          <label for="publicKey">Longitude</label>
+          <input type="text" class="form-control" id="longitude" formControlName="longitude" />
+          <input-error [control]="form.controls.address.controls.longitude"></input-error>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary">Dodaj</button>
+      <button class="btn btn-secondary" type="reset" (click)="onReset()">Anuluj</button>
+    </form>
+  </div>
+  <button *ngIf="!isAddFormVisible" (click)="triggerFormVisible()" class="btn btn-primary float-right">Dodaj Nowy</button>
+  <table class="table table-bordered">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">isActive</th>
+        <th scope="col">SensorId</th>
+        <th scope="col">City</th>
+        <th scope="col">Street</th>
+        <th scope="col">PostCode</th>
+        <th scope="col">Voivodeship</th>
+        <th scope="col">CountryCode</th>
+        <th scope="col">Latitude</th>
+        <th scope="col">Longitude</th>
+        <th scope="col">Details</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let location of locations">
+        <td class="text-center"><input type="checkbox" [checked]="location.isActive" disabled="disabled" /></td>
+        <td><a [routerLink]="['/admin/sensors/', location.sensorId]" [routerLinkActive]='["link-active"]'>{{getSensorCode(location.sensorId)}}</a></td>
+        <td>{{location.address.city}}</td>
+        <td>{{location.address.street}}</td>
+        <td>{{location.address.postCode}}</td>
+        <td>{{location.address.voivodeship}}</td>
+        <td>{{location.address.countryCode}}</td>
+        <td>{{location.address.latitude}}</td>
+        <td>{{location.address.longitude}}</td>
+        <td class="text-center"><a [routerLink]="['/admin/locations/', location.id]" [routerLinkActive]='["link-active"]'>>></a></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

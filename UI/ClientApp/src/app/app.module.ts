@@ -37,6 +37,15 @@ import { AuthGuard } from './utils/authentication/auth.guard';
 import { Role } from './utils/authentication/role.type';
 import { SensorsOwnersHttpService } from './utils/http-services/sensor-owners.service';
 import { MeassurementsHttpService } from './utils/http-services/meassurements.http.service';
+import { SensorsOwnersComponent } from './admin/sensors-owners/sensors-owners.component';
+import { SensorsOwnersDetailsComponent } from './admin/sensors-owners/sensors-owners-details/sensors-owners-details.component';
+import { UsersHttpService } from './utils/http-services/users.service';
+import { SensorsHttpService } from './utils/http-services/sensors.service';
+import { SensorsComponent } from './admin/sensors/sensors.component';
+import { SensorsDetailsComponent } from './admin/sensors/sensors-details/sensors-details.component';
+import { LocationsHttpService } from './utils/http-services/locations.http.service';
+import { LocationsComponent } from './admin/locations/locations.component';
+import { LocationsDetailsComponent } from './admin/locations/locations-details/locations-details.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +68,13 @@ import { MeassurementsHttpService } from './utils/http-services/meassurements.ht
     MeassurementsChartComponent,
     DashboardComponent,
     MySensorsComponent,
-    AdminPanelComponent
+    AdminPanelComponent,
+    SensorsOwnersComponent,
+    SensorsOwnersDetailsComponent,
+    SensorsComponent,
+    SensorsDetailsComponent,
+    LocationsComponent,
+    LocationsDetailsComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -80,6 +95,12 @@ import { MeassurementsHttpService } from './utils/http-services/meassurements.ht
       { path: 'contact', component: ContactComponent },
       { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
       { path: 'sensors/my', component: MySensorsComponent, canActivate: [AuthGuard], data: { roles: [Role.SensorOwner] } },
+      { path: 'admin/sensorsOwners', component: SensorsOwnersComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin] } },
+      { path: 'admin/sensorsOwners/:id', component: SensorsOwnersDetailsComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin] } },
+      { path: 'admin/sensors', component: SensorsComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin] } },
+      { path: 'admin/sensors/:id', component: SensorsDetailsComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin] } },
+      { path: 'admin/locations', component: LocationsComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin] } },
+      { path: 'admin/locations/:id', component: LocationsDetailsComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin] } },
       { path: '**', redirectTo: '' }
     ], { useHash: true })
   ],
@@ -87,6 +108,9 @@ import { MeassurementsHttpService } from './utils/http-services/meassurements.ht
     { provide: HTTP_INTERCEPTORS, useClass: HttpConfigInterceptor, multi: true },
     SensorsOwnersHttpService,
     MeassurementsHttpService,
+    UsersHttpService,
+    SensorsHttpService,
+    LocationsHttpService,
     NgbActiveModal,
     FavouriteLocationsService,
     DatePipe,
