@@ -27,7 +27,12 @@
 
   <ItemGroup>
     <None Remove="ClientApp\src\app\admin\admin-panel\admin-panel.component.ts" />
+    <None Remove="ClientApp\src\app\admin\locations\address-create.type.ts" />
+    <None Remove="ClientApp\src\app\admin\locations\location-create.type.ts" />
     <None Remove="ClientApp\src\app\admin\locations\location.type.ts" />
+    <None Remove="ClientApp\src\app\admin\locations\locations-details\location-details.type.ts" />
+    <None Remove="ClientApp\src\app\admin\locations\locations-details\locations-details.component.ts" />
+    <None Remove="ClientApp\src\app\admin\locations\locations.component.ts" />
     <None Remove="ClientApp\src\app\admin\sensors-owners\sensor-owner-post.type.ts" />
     <None Remove="ClientApp\src\app\admin\sensors-owners\sensors-owners-details\sensors-owners-details.component.ts" />
     <None Remove="ClientApp\src\app\admin\sensors-owners\sensors-owners.component.ts" />
@@ -65,6 +70,7 @@
     <None Remove="ClientApp\src\app\utils\favourite-locations-service\favourite-locations-service.ts" />
     <None Remove="ClientApp\src\app\utils\http-interceptor\error-page\error-page.component.ts" />
     <None Remove="ClientApp\src\app\utils\http-interceptor\http-interceptor.ts" />
+    <None Remove="ClientApp\src\app\utils\http-services\locations.http.service.ts" />
     <None Remove="ClientApp\src\app\utils\http-services\sensor-owners.service.ts" />
     <None Remove="ClientApp\src\app\utils\http-services\sensors.service.ts" />
     <None Remove="ClientApp\src\app\utils\http-services\users.service.ts" />
@@ -77,7 +83,12 @@
 
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\src\app\admin\admin-panel\admin-panel.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\admin\locations\address-create.type.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\admin\locations\location-create.type.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\admin\locations\location.type.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\admin\locations\locations-details\location-details.type.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\admin\locations\locations-details\locations-details.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\admin\locations\locations.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\admin\sensors-owners\sensor-owner-post.type.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\admin\sensors-owners\sensors-owners-details\sensors-owners-details.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\admin\sensors-owners\sensors-owners.component.ts" />
@@ -87,6 +98,7 @@
     <TypeScriptCompile Include="ClientApp\src\app\admin\sensors\sensors-details\sensor-details.type.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\admin\sensors\sensors-details\sensors-details.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\admin\sensors\sensors.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\utils\http-services\locations.http.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\utils\http-services\meassurements.http.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\contact\contact.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\dashboard\dashboard.component.ts" />

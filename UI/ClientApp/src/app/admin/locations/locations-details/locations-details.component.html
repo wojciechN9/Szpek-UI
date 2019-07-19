@@ -1,0 +1,73 @@
+<div class="container">
+  <h1>Location</h1>
+  <form *ngIf="form" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="code">Sensor</label>
+      <select class="form-control" id="sensorId" formControlName="sensorId">
+        <option [ngValue]="location.sensorId" [selected]="location.sensorId">{{location.sensorCode}}</option>
+      </select>
+      <input-error [control]="form.controls.sensorId"></input-error>
+    </div>
+    <div formGroupName="address">
+      <div class="form-group">
+        <label for="publicKey">City</label>
+        <input type="text" class="form-control" id="city" formControlName="city" />
+        <input-error [control]="form.controls.address.controls.city"></input-error>
+      </div>
+      <div class="form-group">
+        <label for="publicKey">Street</label>
+        <input type="text" class="form-control" id="street" formControlName="street" />
+        <input-error [control]="form.controls.address.controls.street"></input-error>
+      </div>
+      <div class="form-group">
+        <label for="publicKey">PostCode</label>
+        <input type="text" class="form-control" id="postCode" formControlName="postCode" />
+        <input-error [control]="form.controls.address.controls.postCode"></input-error>
+      </div>
+      <div class="form-group">
+        <label for="publicKey">Voivodeship</label>
+        <input type="text" class="form-control" id="voivodeship" formControlName="voivodeship" />
+        <input-error [control]="form.controls.address.controls.voivodeship"></input-error>
+      </div>
+      <div class="form-group">
+        <label for="publicKey">CountryCode</label>
+        <input type="text" class="form-control" id="countryCode" formControlName="countryCode" />
+        <input-error [control]="form.controls.address.controls.countryCode"></input-error>
+      </div>
+      <div class="form-group">
+        <label for="publicKey">Latitude</label>
+        <input type="text" class="form-control" id="latitude" formControlName="latitude" />
+        <input-error [control]="form.controls.address.controls.latitude"></input-error>
+      </div>
+      <div class="form-group">
+        <label for="publicKey">Longitude</label>
+        <input type="text" class="form-control" id="longitude" formControlName="longitude" />
+        <input-error [control]="form.controls.address.controls.longitude"></input-error>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Edytuj</button>
+  </form>
+  <h4 class="mt-4">Ostatnie 100 pomiarów</h4>
+  <table *ngIf="location" class="table table-bordered">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">Stan Powietrza</th>
+        <th scope="col">Stan PM10</th>
+        <th scope="col">Wartość PM10</th>
+        <th scope="col">Stan PM2.5</th>
+        <th scope="col">Wartość PM2.5</th>
+        <th scope="col">Godzina pomiaru</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let meassurement of location.meassurements">
+        <td><b [ngStyle]="{'color': getQualityColor(meassurement?.airQuality)}">{{ getQualityText(meassurement?.airQuality) }}</b></td>
+        <td><b [ngStyle]="{'color': getQualityColor(meassurement?.pm10Quality)}">{{ getQualityText(meassurement?.pm10Quality) }}</b></td>
+        <td>{{meassurement.pm10Value | number:'1.0-2':'pl'}}</td>
+        <td><b [ngStyle]="{'color': getQualityColor(meassurement?.pm25Quality)}">{{ getQualityText(meassurement?.pm25Quality) }}</b></td>
+        <td>{{meassurement.pm25Value | number:'1.0-2':'pl'}}</td>
+        <td>{{meassurement.periodTo | date:'dd-MM-yyyy, HH:mm'}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
