@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { AuthenticationService } from '../authentication/authentication.service';
+import { User } from '../authentication/user.type';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nav-menu',
@@ -6,6 +9,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./nav-menu.component.css']
 })
 export class NavMenuComponent {
+  currentUser: User;
+
+  constructor(
+    private authenticationService: AuthenticationService,
+    private router: Router) {
+    this.authenticationService.currentUser.subscribe(x => this.currentUser = x)
+  }
+
   isExpanded = false;
 
   collapse() {
@@ -14,5 +25,14 @@ export class NavMenuComponent {
 
   toggle() {
     this.isExpanded = !this.isExpanded;
+  }
+
+  get isUserLogged() {
+    return this.currentUser ? true : false;
+  }
+
+  public logout() {
+    this.authenticationService.logout();
+    this.router.navigate(['/']);
   }
 }
