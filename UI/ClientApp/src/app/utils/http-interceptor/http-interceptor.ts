@@ -8,7 +8,7 @@ import {
 } from '@angular/common/http';
 
 import { Observable, throwError } from 'rxjs';
-import { map, catchError } from 'rxjs/operators';
+import { catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { User } from '../authentication/user.type';
 import { AuthenticationService } from '../authentication/authentication.service';
@@ -34,7 +34,12 @@ export class HttpConfigInterceptor implements HttpInterceptor {
 
     return next.handle(request).pipe(
       catchError((error: HttpErrorResponse) => {
-        this.router.navigate(['/error', { statusCode: error.status, reason: error.error ? error.error : '' }]);
+        if (error.status == 0) {
+          this.router.navigate(['/error', { reason: 'Nie można połączyć się z serwerem. Spróbuj ponownie później' }]);
+        }
+        else {
+          this.router.navigate(['/error', { statusCode: error.status, reason: error.message || error.error || '' }]);
+        }
         return throwError(error);
       }));
   }
