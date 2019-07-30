@@ -42,9 +42,12 @@
     <None Remove="ClientApp\src\app\admin\sensors\sensors-details\sensor-details.type.ts" />
     <None Remove="ClientApp\src\app\admin\sensors\sensors-details\sensors-details.component.ts" />
     <None Remove="ClientApp\src\app\admin\sensors\sensors.component.ts" />
+    <None Remove="ClientApp\src\app\admin\users\user-create.type.ts" />
+    <None Remove="ClientApp\src\app\admin\users\users-component.ts" />
     <None Remove="ClientApp\src\app\app.http.service.ts" />
     <None Remove="ClientApp\src\app\contact\contact.component.ts" />
     <None Remove="ClientApp\src\app\dashboard\dashboard.component.ts" />
+    <None Remove="ClientApp\src\app\dashboard\instruction\instruction.component.ts" />
     <None Remove="ClientApp\src\app\dashboard\my-sensors\my-sensors.component.ts" />
     <None Remove="ClientApp\src\app\dashboard\my-sensors\sensor-owner.type.ts" />
     <None Remove="ClientApp\src\app\dashboard\my-sensors\sensor.type.ts" />
@@ -66,10 +69,10 @@
     <None Remove="ClientApp\src\app\password-remind\remind-password-ok\remind-password-ok.component.ts" />
     <None Remove="ClientApp\src\app\password-remind\remind-password.component.ts" />
     <None Remove="ClientApp\src\app\password-remind\user-remind-password.type.ts" />
+    <None Remove="ClientApp\src\app\utils\authentication\auth-user.type.ts" />
     <None Remove="ClientApp\src\app\utils\authentication\auth.guard.ts" />
     <None Remove="ClientApp\src\app\utils\authentication\authentication.service.ts" />
     <None Remove="ClientApp\src\app\utils\authentication\role.type.ts" />
-    <None Remove="ClientApp\src\app\utils\authentication\user.type.ts" />
     <None Remove="ClientApp\src\app\utils\cookie-consent\cookie-consent.component.ts" />
     <None Remove="ClientApp\src\app\utils\enum\air-quality.ts" />
     <None Remove="ClientApp\src\app\utils\enum\enum-conversion.ts" />
@@ -79,7 +82,6 @@
     <None Remove="ClientApp\src\app\utils\http-services\locations.http.service.ts" />
     <None Remove="ClientApp\src\app\utils\http-services\sensor-owners.service.ts" />
     <None Remove="ClientApp\src\app\utils\http-services\sensors.service.ts" />
-    <None Remove="ClientApp\src\app\utils\http-services\users.service.ts" />
     <None Remove="ClientApp\src\app\utils\input-error\input-error.component.ts" />
     <None Remove="ClientApp\src\app\utils\input-error\must-match.validator.ts" />
     <None Remove="ClientApp\src\app\utils\input-error\password.validator.ts" />
@@ -101,12 +103,15 @@
     <TypeScriptCompile Include="ClientApp\src\app\admin\sensors-owners\sensor-owner-post.type.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\admin\sensors-owners\sensors-owners-details\sensors-owners-details.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\admin\sensors-owners\sensors-owners.component.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\admin\sensors-owners\user.type.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\admin\users\user-create.type.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\admin\users\user.type.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\admin\sensors\owner.type.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\admin\sensors\sensors-create.type.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\admin\sensors\sensors-details\sensor-details.type.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\admin\sensors\sensors-details\sensors-details.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\admin\sensors\sensors.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\admin\users\users-component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\dashboard\instruction\instruction.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\password-change\password-change-ok\password-change-ok.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\password-change\password-change.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\password-change\user-password-reset.type.ts" />
@@ -135,7 +140,7 @@
     <TypeScriptCompile Include="ClientApp\src\app\utils\authentication\auth.guard.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\utils\authentication\authentication.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\utils\authentication\role.type.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\utils\authentication\user.type.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\utils\authentication\auth-user.type.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\utils\cookie-consent\cookie-consent.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\utils\enum\air-quality.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\utils\enum\enum-conversion.ts" />
@@ -144,7 +149,6 @@
     <TypeScriptCompile Include="ClientApp\src\app\utils\http-interceptor\http-interceptor.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\utils\http-services\sensor-owners.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\utils\http-services\sensors.service.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\utils\http-services\users.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\utils\input-error\input-error.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\utils\input-error\must-match.validator.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\utils\input-error\password.validator.ts" />

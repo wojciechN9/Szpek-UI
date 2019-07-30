@@ -39,7 +39,6 @@ import { SensorsOwnersHttpService } from './utils/http-services/sensor-owners.se
 import { MeassurementsHttpService } from './utils/http-services/meassurements.http.service';
 import { SensorsOwnersComponent } from './admin/sensors-owners/sensors-owners.component';
 import { SensorsOwnersDetailsComponent } from './admin/sensors-owners/sensors-owners-details/sensors-owners-details.component';
-import { UsersHttpService } from './utils/http-services/users.service';
 import { SensorsHttpService } from './utils/http-services/sensors.service';
 import { SensorsComponent } from './admin/sensors/sensors.component';
 import { SensorsDetailsComponent } from './admin/sensors/sensors-details/sensors-details.component';
@@ -51,6 +50,8 @@ import { RemindPasswordComponent } from './password-remind/remind-password.compo
 import { PasswordChangeComponent } from './password-change/password-change.component';
 import { PasswordChangeOkComponent } from './password-change/password-change-ok/password-change-ok.component';
 import TokenUrlSerializer from './utils/token-serializer/token-serializer';
+import { UsersComponent } from './admin/users/users-component';
+import { InstructionComponent } from './dashboard/instruction/instruction.component';
 
 @NgModule({
   declarations: [
@@ -83,7 +84,9 @@ import TokenUrlSerializer from './utils/token-serializer/token-serializer';
     RemindPasswordComponent,
     RemindPasswordOkComponent,
     PasswordChangeComponent,
-    PasswordChangeOkComponent
+    PasswordChangeOkComponent,
+    UsersComponent,
+    InstructionComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -107,7 +110,9 @@ import TokenUrlSerializer from './utils/token-serializer/token-serializer';
       { path: 'passwordChange', component: PasswordChangeComponent },
       { path: 'passwordChange/ok', component: PasswordChangeOkComponent },
       { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
+      { path: 'dashboard/instruction', component: InstructionComponent, canActivate: [AuthGuard], data: { roles: [Role.SensorOwner] } },
       { path: 'sensors/my', component: MySensorsComponent, canActivate: [AuthGuard], data: { roles: [Role.SensorOwner] } },
+      { path: 'admin/users', component: UsersComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin] } },
       { path: 'admin/sensorsOwners', component: SensorsOwnersComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin] } },
       { path: 'admin/sensorsOwners/:id', component: SensorsOwnersDetailsComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin] } },
       { path: 'admin/sensors', component: SensorsComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin] } },
@@ -122,7 +127,6 @@ import TokenUrlSerializer from './utils/token-serializer/token-serializer';
     { provide: UrlSerializer, useClass: TokenUrlSerializer },
     SensorsOwnersHttpService,
     MeassurementsHttpService,
-    UsersHttpService,
     SensorsHttpService,
     LocationsHttpService,
     NgbActiveModal,

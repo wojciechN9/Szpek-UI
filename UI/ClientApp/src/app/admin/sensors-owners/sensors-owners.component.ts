@@ -4,8 +4,8 @@ import { SensorOwner } from "./sensor-owner.type";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { SensorOwnerPost } from "./sensor-owner-post.type";
 import { Router } from "@angular/router";
-import { UsersHttpService } from "../../utils/http-services/users.service";
-import { User } from "./user.type";
+import { User } from "../users/user.type";
+import { AuthenticationService } from "../../utils/authentication/authentication.service";
 
 @Component({
   selector: 'sensors-owners',
@@ -19,13 +19,13 @@ export class SensorsOwnersComponent implements OnInit {
 
   constructor(
     private sensorsOwnersService: SensorsOwnersHttpService,
-    private usersService: UsersHttpService,
+    private authenticationService: AuthenticationService,
     private formBuilder: FormBuilder,
     private router: Router) {
     sensorsOwnersService.getSensorsOwners().subscribe(
       result => { this.sensorsOwners = result });
 
-    usersService.getUsersWithoutOwner().subscribe(
+    authenticationService.getUsersWithoutOwner().subscribe(
       result => { this.users = result });
   }
 

@@ -1,14 +1,14 @@
 import { Component } from "@angular/core";
 import { AuthenticationService } from "../utils/authentication/authentication.service";
-import { User } from "../utils/authentication/user.type";
 import { Role } from "../utils/authentication/role.type";
+import { AuthUser } from "../utils/authentication/auth-user.type";
 
 @Component({
   selector: 'dashboard',
   templateUrl: './dashboard.component.html'
 })
 export class DashboardComponent {
-  currentUser: User;
+  currentUser: AuthUser;
 
   constructor(private authenticationService: AuthenticationService) {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
