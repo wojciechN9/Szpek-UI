@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { RouterModule } from '@angular/router';
+import { RouterModule, UrlSerializer } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faStar, faClock } from '@fortawesome/free-solid-svg-icons';
@@ -46,6 +46,11 @@ import { SensorsDetailsComponent } from './admin/sensors/sensors-details/sensors
 import { LocationsHttpService } from './utils/http-services/locations.http.service';
 import { LocationsComponent } from './admin/locations/locations.component';
 import { LocationsDetailsComponent } from './admin/locations/locations-details/locations-details.component';
+import { RemindPasswordOkComponent } from './password-remind/remind-password-ok/remind-password-ok.component';
+import { RemindPasswordComponent } from './password-remind/remind-password.component';
+import { PasswordChangeComponent } from './password-change/password-change.component';
+import { PasswordChangeOkComponent } from './password-change/password-change-ok/password-change-ok.component';
+import TokenUrlSerializer from './utils/token-serializer/token-serializer';
 
 @NgModule({
   declarations: [
@@ -74,7 +79,11 @@ import { LocationsDetailsComponent } from './admin/locations/locations-details/l
     SensorsComponent,
     SensorsDetailsComponent,
     LocationsComponent,
-    LocationsDetailsComponent
+    LocationsDetailsComponent,
+    RemindPasswordComponent,
+    RemindPasswordOkComponent,
+    PasswordChangeComponent,
+    PasswordChangeOkComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -93,6 +102,10 @@ import { LocationsDetailsComponent } from './admin/locations/locations-details/l
       { path: 'legend', component: LegendComponent },
       { path: 'login', component: LoginComponent },
       { path: 'contact', component: ContactComponent },
+      { path: 'remindPassword', component: RemindPasswordComponent },
+      { path: 'remindPassword/ok', component: RemindPasswordOkComponent },
+      { path: 'passwordChange', component: PasswordChangeComponent },
+      { path: 'passwordChange/ok', component: PasswordChangeOkComponent },
       { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
       { path: 'sensors/my', component: MySensorsComponent, canActivate: [AuthGuard], data: { roles: [Role.SensorOwner] } },
       { path: 'admin/sensorsOwners', component: SensorsOwnersComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin] } },
@@ -106,6 +119,7 @@ import { LocationsDetailsComponent } from './admin/locations/locations-details/l
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: HttpConfigInterceptor, multi: true },
+    { provide: UrlSerializer, useClass: TokenUrlSerializer },
     SensorsOwnersHttpService,
     MeassurementsHttpService,
     UsersHttpService,

@@ -4,6 +4,8 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from '../../../environments/environment.prod';
 import { User } from './user.type';
+import { UserRemindPassword } from '../../password-remind/user-remind-password.type';
+import { UserPasswordReset } from '../../password-change/user-password-reset.type';
 
 @Injectable()
 export class AuthenticationService {
@@ -20,7 +22,7 @@ export class AuthenticationService {
     return this.currentUserSubject.value;
   }
 
-  login(userLogin :UserLogin) {
+  login(userLogin: UserLogin) {
     return this.http.post<any>(environment.apiUrl + 'Users/login', userLogin)
       .pipe(map(user => {
         // login successful if there's a jwt token in the response
@@ -32,6 +34,14 @@ export class AuthenticationService {
 
         return user;
       }));
+  }
+
+  remindPassword(userRemindPassword: UserRemindPassword) {
+    return this.http.post<any>(environment.apiUrl + 'Users/remindPassword', userRemindPassword);
+  }
+
+  resetPassword(userPasswordReset: UserPasswordReset) {
+    return this.http.post<any>(environment.apiUrl + 'Users/resetPassword', userPasswordReset);
   }
 
   logout() {
