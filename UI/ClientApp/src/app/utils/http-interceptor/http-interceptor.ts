@@ -10,12 +10,12 @@ import {
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
-import { User } from '../authentication/user.type';
 import { AuthenticationService } from '../authentication/authentication.service';
+import { AuthUser } from '../authentication/auth-user.type';
 
 @Injectable()
 export class HttpConfigInterceptor implements HttpInterceptor {
-  currentUser: User;
+  currentUser: AuthUser;
   constructor(
     private router: Router,
     private authenticationService: AuthenticationService) {

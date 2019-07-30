@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { RouterModule } from '@angular/router';
+import { RouterModule, UrlSerializer } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faStar, faClock } from '@fortawesome/free-solid-svg-icons';
@@ -39,13 +39,19 @@ import { SensorsOwnersHttpService } from './utils/http-services/sensor-owners.se
 import { MeassurementsHttpService } from './utils/http-services/meassurements.http.service';
 import { SensorsOwnersComponent } from './admin/sensors-owners/sensors-owners.component';
 import { SensorsOwnersDetailsComponent } from './admin/sensors-owners/sensors-owners-details/sensors-owners-details.component';
-import { UsersHttpService } from './utils/http-services/users.service';
 import { SensorsHttpService } from './utils/http-services/sensors.service';
 import { SensorsComponent } from './admin/sensors/sensors.component';
 import { SensorsDetailsComponent } from './admin/sensors/sensors-details/sensors-details.component';
 import { LocationsHttpService } from './utils/http-services/locations.http.service';
 import { LocationsComponent } from './admin/locations/locations.component';
 import { LocationsDetailsComponent } from './admin/locations/locations-details/locations-details.component';
+import { RemindPasswordOkComponent } from './password-remind/remind-password-ok/remind-password-ok.component';
+import { RemindPasswordComponent } from './password-remind/remind-password.component';
+import { PasswordChangeComponent } from './password-change/password-change.component';
+import { PasswordChangeOkComponent } from './password-change/password-change-ok/password-change-ok.component';
+import TokenUrlSerializer from './utils/token-serializer/token-serializer';
+import { UsersComponent } from './admin/users/users-component';
+import { InstructionComponent } from './dashboard/instruction/instruction.component';
 
 @NgModule({
   declarations: [
@@ -74,7 +80,13 @@ import { LocationsDetailsComponent } from './admin/locations/locations-details/l
     SensorsComponent,
     SensorsDetailsComponent,
     LocationsComponent,
-    LocationsDetailsComponent
+    LocationsDetailsComponent,
+    RemindPasswordComponent,
+    RemindPasswordOkComponent,
+    PasswordChangeComponent,
+    PasswordChangeOkComponent,
+    UsersComponent,
+    InstructionComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -93,8 +105,14 @@ import { LocationsDetailsComponent } from './admin/locations/locations-details/l
       { path: 'legend', component: LegendComponent },
       { path: 'login', component: LoginComponent },
       { path: 'contact', component: ContactComponent },
+      { path: 'remindPassword', component: RemindPasswordComponent },
+      { path: 'remindPassword/ok', component: RemindPasswordOkComponent },
+      { path: 'passwordChange', component: PasswordChangeComponent },
+      { path: 'passwordChange/ok', component: PasswordChangeOkComponent },
       { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
+      { path: 'dashboard/instruction', component: InstructionComponent, canActivate: [AuthGuard], data: { roles: [Role.SensorOwner] } },
       { path: 'sensors/my', component: MySensorsComponent, canActivate: [AuthGuard], data: { roles: [Role.SensorOwner] } },
+      { path: 'admin/users', component: UsersComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin] } },
       { path: 'admin/sensorsOwners', component: SensorsOwnersComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin] } },
       { path: 'admin/sensorsOwners/:id', component: SensorsOwnersDetailsComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin] } },
       { path: 'admin/sensors', component: SensorsComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin] } },
@@ -106,9 +124,9 @@ import { LocationsDetailsComponent } from './admin/locations/locations-details/l
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: HttpConfigInterceptor, multi: true },
+    { provide: UrlSerializer, useClass: TokenUrlSerializer },
     SensorsOwnersHttpService,
     MeassurementsHttpService,
-    UsersHttpService,
     SensorsHttpService,
     LocationsHttpService,
     NgbActiveModal,

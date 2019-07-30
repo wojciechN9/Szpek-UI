@@ -3,24 +3,28 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from '../../../environments/environment.prod';
-import { User } from './user.type';
+import { AuthUser } from './auth-user.type';
+import { UserRemindPassword } from '../../password-remind/user-remind-password.type';
+import { UserPasswordReset } from '../../password-change/user-password-reset.type';
+import { User } from '../../admin/users/user.type';
+import { UserCreate } from '../../admin/users/user-create.type';
 
 @Injectable()
 export class AuthenticationService {
-  private currentUserSubject: BehaviorSubject<User>;
-  public currentUser: Observable<User>;
+  private currentUserSubject: BehaviorSubject<AuthUser>;
+  public currentUser: Observable<AuthUser>;
   private currentUserName = 'currentUser';
 
   constructor(private http: HttpClient) {
-    this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem(this.currentUserName)));
+    this.currentUserSubject = new BehaviorSubject<AuthUser>(JSON.parse(localStorage.getItem(this.currentUserName)));
     this.currentUser = this.currentUserSubject.asObservable();
   }
 
-  public get currentUserValue(): User {
+  public get currentUserValue(): AuthUser {
     return this.currentUserSubject.value;
   }
 
-  login(userLogin :UserLogin) {
+  login(userLogin: UserLogin) {
     return this.http.post<any>(environment.apiUrl + 'Users/login', userLogin)
       .pipe(map(user => {
         // login successful if there's a jwt token in the response
@@ -32,6 +36,26 @@ export class AuthenticationService {
 
         return user;
       }));
+  }
+
+  register(userCreate: UserCreate) {
+    return this.http.post<any>(environment.apiUrl + 'Users/register', userCreate);
+  }
+
+  getAll(): Observable<Array<User>> {
+    return this.http.get<Array<User>>(environment.apiUrl + 'Users');
+  }
+
+  remindPassword(userRemindPassword: UserRemindPassword) {
+    return this.http.post<any>(environment.apiUrl + 'Users/remindPassword', userRemindPassword);
+  }
+
+  resetPassword(userPasswordReset: UserPasswordReset) {
+    return this.http.post<any>(environment.apiUrl + 'Users/resetPassword', userPasswordReset);
+  }
+
+  getUsersWithoutOwner(): Observable<Array<User>> {
+    return this.http.get<Array<User>>(environment.apiUrl + 'Users/UsersWithoutOwner');
   }
 
   logout() {

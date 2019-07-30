@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthenticationService } from '../authentication/authentication.service';
-import { User } from '../authentication/user.type';
 import { Router } from '@angular/router';
+import { AuthUser } from '../authentication/auth-user.type';
 
 @Component({
   selector: 'app-nav-menu',
@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./nav-menu.component.css']
 })
 export class NavMenuComponent {
-  currentUser: User;
+  currentUser: AuthUser;
 
   constructor(
     private authenticationService: AuthenticationService,
