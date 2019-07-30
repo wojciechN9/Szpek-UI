@@ -1,6 +1,6 @@
 import { DefaultUrlSerializer, UrlSerializer, UrlTree } from '@angular/router';
 
-export default class TokenUrlSerializer implements UrlSerializer {
+export class TokenUrlSerializer implements UrlSerializer {
     private _defaultUrlSerializer: DefaultUrlSerializer = new DefaultUrlSerializer();
 
     parse(url: string): UrlTree {

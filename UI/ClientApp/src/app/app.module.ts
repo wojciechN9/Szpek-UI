@@ -49,9 +49,9 @@ import { RemindPasswordOkComponent } from './password-remind/remind-password-ok/
 import { RemindPasswordComponent } from './password-remind/remind-password.component';
 import { PasswordChangeComponent } from './password-change/password-change.component';
 import { PasswordChangeOkComponent } from './password-change/password-change-ok/password-change-ok.component';
-import TokenUrlSerializer from './utils/token-serializer/token-serializer';
 import { UsersComponent } from './admin/users/users-component';
 import { InstructionComponent } from './dashboard/instruction/instruction.component';
+import { TokenUrlSerializer } from './utils/token-serializer/token-serializer';
 
 @NgModule({
   declarations: [
