@@ -51,6 +51,7 @@
     <None Remove="ClientApp\src\app\dashboard\my-sensors\my-sensors.component.ts" />
     <None Remove="ClientApp\src\app\dashboard\my-sensors\sensor-owner.type.ts" />
     <None Remove="ClientApp\src\app\dashboard\my-sensors\sensor.type.ts" />
+    <None Remove="ClientApp\src\app\faq\faq.component.ts" />
     <None Remove="ClientApp\src\app\legend\legend.component.ts" />
     <None Remove="ClientApp\src\app\location-map\location-map.component.ts" />
     <None Remove="ClientApp\src\app\location-meassurements-details\location-meassurements-details.component.ts" />
@@ -112,6 +113,7 @@
     <TypeScriptCompile Include="ClientApp\src\app\admin\sensors\sensors.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\admin\users\users-component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\dashboard\instruction\instruction.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\faq\faq.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\password-change\password-change-ok\password-change-ok.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\password-change\password-change.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\password-change\user-password-reset.type.ts" />

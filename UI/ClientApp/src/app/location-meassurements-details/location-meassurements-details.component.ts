@@ -7,6 +7,7 @@ import { Meassurement } from '../location-meassurements/meassurement.type';
 import { FavouriteLocationsService } from '../utils/favourite-locations-service/favourite-locations-service';
 import { MeassurementChart } from '../utils/meassurements-chart/meassurement-chart.type';
 import { MeassurementsHttpService } from '../utils/http-services/meassurements.http.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'location-meassurements-details',
@@ -31,6 +32,7 @@ export class LocationMeassurementsDetailsComponent implements OnInit {
       this.currentMeassurement = this.locationMeassurements.meassurements[0];
       this.pm10Meassurements = this.convertToPM10(this.locationMeassurements.meassurements);
       this.pm25Meassurements = this.convertToPM25(this.locationMeassurements.meassurements);
+      this.titleService.setTitle(this.locationMeassurements.address.city + ' - Jakość i stan powietrza - Szpek.pl');
     });
 
     this.favouritesIds = this.favouriteLocations.getFavouriteLocationsIds();
@@ -39,7 +41,8 @@ export class LocationMeassurementsDetailsComponent implements OnInit {
   constructor(
     private meassurementsService: MeassurementsHttpService,
     private route: ActivatedRoute,
-    private favouriteLocations: FavouriteLocationsService) {
+    private favouriteLocations: FavouriteLocationsService,
+    private titleService: Title) {
   }
 
   orderMeassurementsByDateTimeDesc(locationMeassurements: LocationMeassurements) {

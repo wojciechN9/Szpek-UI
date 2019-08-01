@@ -52,6 +52,7 @@ import { PasswordChangeOkComponent } from './password-change/password-change-ok/
 import { UsersComponent } from './admin/users/users-component';
 import { InstructionComponent } from './dashboard/instruction/instruction.component';
 import { TokenUrlSerializer } from './utils/token-serializer/token-serializer';
+import { FaqComponent } from './faq/faq.component';
 
 @NgModule({
   declarations: [
@@ -86,7 +87,8 @@ import { TokenUrlSerializer } from './utils/token-serializer/token-serializer';
     PasswordChangeComponent,
     PasswordChangeOkComponent,
     UsersComponent,
-    InstructionComponent
+    InstructionComponent,
+    FaqComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -105,6 +107,7 @@ import { TokenUrlSerializer } from './utils/token-serializer/token-serializer';
       { path: 'legend', component: LegendComponent },
       { path: 'login', component: LoginComponent },
       { path: 'contact', component: ContactComponent },
+      { path: 'faq', component: FaqComponent },
       { path: 'remindPassword', component: RemindPasswordComponent },
       { path: 'remindPassword/ok', component: RemindPasswordOkComponent },
       { path: 'passwordChange', component: PasswordChangeComponent },
