@@ -123,7 +123,7 @@ import { FaqComponent } from './faq/faq.component';
       { path: 'admin/locations', component: LocationsComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin] } },
       { path: 'admin/locations/:id', component: LocationsDetailsComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin] } },
       { path: '**', redirectTo: '' }
-    ], { useHash: true })
+    ])
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: HttpConfigInterceptor, multi: true },
