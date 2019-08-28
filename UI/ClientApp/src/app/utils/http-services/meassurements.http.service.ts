@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment.prod';
 import { LocationMeassurements } from '../../location-meassurements/location-meassurements.type';
+import { LocationMeassurementsDetails } from '../../location-meassurements-details/location-meassurements-details.type';
 
 @Injectable()
 export class MeassurementsHttpService {
@@ -15,7 +16,7 @@ export class MeassurementsHttpService {
     return this.http.get<LocationMeassurements[]>(this.apiEndpoint + 'Meassurements');
   }
 
-  getLocationsMeassuresDetails(id: number): Observable<LocationMeassurements> {
-    return this.http.get<LocationMeassurements>(this.apiEndpoint + 'Meassurements/' + id);
+  getLocationsMeassuresDetails(id: number): Observable<LocationMeassurementsDetails> {
+    return this.http.get<LocationMeassurementsDetails>(this.apiEndpoint + 'Meassurements/' + id);
   }
 }
