@@ -2,12 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { getAirQualityText, getAirQualityColor } from '../utils/enum/air-quality';
 import { AirQualityEnum } from '../location-meassurements/air-quality.type';
-import { LocationMeassurements } from '../location-meassurements/location-meassurements.type';
 import { Meassurement } from '../location-meassurements/meassurement.type';
 import { FavouriteLocationsService } from '../utils/favourite-locations-service/favourite-locations-service';
 import { MeassurementChart } from '../utils/meassurements-chart/meassurement-chart.type';
 import { MeassurementsHttpService } from '../utils/http-services/meassurements.http.service';
 import { Title } from '@angular/platform-browser';
+import { MeassurementDetails } from './meassurement-details.type';
+import { LocationMeassurementsDetails } from './location-meassurements-details.type';
 
 @Component({
   selector: 'location-meassurements-details',
@@ -15,8 +16,8 @@ import { Title } from '@angular/platform-browser';
   styleUrls: ['../app.component.css']
 })
 export class LocationMeassurementsDetailsComponent implements OnInit {
-  public locationMeassurements: LocationMeassurements;
-  public currentMeassurement: Meassurement;
+  public locationMeassurements: LocationMeassurementsDetails;
+  public currentMeassurement: MeassurementDetails;
   public pm10Meassurements: MeassurementChart[];
   public pm25Meassurements: MeassurementChart[];
   public id: number;
@@ -45,7 +46,7 @@ export class LocationMeassurementsDetailsComponent implements OnInit {
     private titleService: Title) {
   }
 
-  orderMeassurementsByDateTimeDesc(locationMeassurements: LocationMeassurements) {
+  orderMeassurementsByDateTimeDesc(locationMeassurements: LocationMeassurementsDetails) {
     locationMeassurements.meassurements = locationMeassurements.meassurements.sort((a, b) => {
       if (a.periodTo < b.periodTo) { return 1; }
       if (a.periodTo > b.periodTo) { return -1; }
