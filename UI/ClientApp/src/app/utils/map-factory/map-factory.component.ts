@@ -12,7 +12,6 @@ import VectorSource from 'ol/source/Vector';
 import Feature from 'ol/Feature';
 import Point from 'ol/geom/Point';
 import LayerVector from 'ol/layer/Vector';
-import FullScreen from 'ol/control/FullScreen';
 import { createEmpty, extend } from 'ol/extent';
 import Overlay from 'ol/overlay';
 import { LocationMeassurements } from '../../location-meassurements/location-meassurements.type';
@@ -47,7 +46,9 @@ export class MapFactoryComponent implements OnChanges {
 
   createMap(locationsMeassurements: LocationMeassurements[]) {
     this.source = new OlXYZ({
-      url: 'https://tile.osm.org/{z}/{x}/{y}.png'
+      url: 'https://tile.osm.org/{z}/{x}/{y}.png',
+      attributions: ["Szpek.pl - I like it"],
+      attributionsCollapsible: false
     });
 
     this.view = new OlView({
@@ -69,9 +70,6 @@ export class MapFactoryComponent implements OnChanges {
       view: this.view
     });
 
-    var fullScreen = new FullScreen();
-    this.map.addControl(fullScreen);
-
     if (locationsMeassurements.length !== 0) {
       this.fitToAllLocations(locationLayers);
     }
@@ -79,6 +77,8 @@ export class MapFactoryComponent implements OnChanges {
     if (this.modalOnClick) {
       this.createOnMapClickEvent();
     }
+
+    this.createOnPointerMoveEvent();
   }
 
   createOnMapClickEvent() {
@@ -96,6 +96,21 @@ export class MapFactoryComponent implements OnChanges {
         modalRef.componentInstance.pm10Value = featureProperties.pm10Value;
         modalRef.componentInstance.pm25Value = featureProperties.pm25Value;
         modalRef.componentInstance.periodTo = featureProperties.periodTo;
+      }
+    });
+  }
+
+  createOnPointerMoveEvent() {
+    this.map.on('pointermove', (evt) => {
+      var feature = this.map.forEachFeatureAtPixel(evt.pixel, function (feature, layer) {
+        return feature;
+      });
+
+      if (feature) {
+        evt.map.getTargetElement().style.cursor = 'pointer';
+      }
+      else {
+        evt.map.getTargetElement().style.cursor = '';
       }
     });
   }
@@ -135,10 +150,10 @@ export class MapFactoryComponent implements OnChanges {
   getCircleStyle(color: string) {
     return new Style({
       image: new Circle({
-        radius: 6,
+        radius: 8,
         stroke: new Stroke({
-          color: 'white',
-          width: 2
+          color: 'darkblue',
+          width: 3
         }),
         fill: new Fill({
           color: color
