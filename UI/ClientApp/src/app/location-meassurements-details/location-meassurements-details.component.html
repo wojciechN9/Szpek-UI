@@ -13,7 +13,7 @@
       <h4 class="pb-2">Aktualny stan powietrza</h4>
       <p>PM10: <b>{{ currentMeassurement?.pm10Value | number:'1.0-2':'pl'}}</b> μg/m3</p>
       <p>PM2.5: <b>{{ currentMeassurement?.pm25Value | number:'1.0-2':'pl'}}</b> μg/m3</p>
-      <p *ngIf="currentMeassurement.pm1Value !== 0">PM1: <b>{{ currentMeassurement?.pm1Value | number:'1.0-2':'pl'}}</b> μg/m3</p>
+      <p *ngIf="currentMeassurement?.pm1Value !== 0">PM1: <b>{{ currentMeassurement?.pm1Value | number:'1.0-2':'pl'}}</b> μg/m3</p>
       <p>Stan powietrza: <b [ngStyle]="{'color': getQualityColor(currentMeassurement?.airQuality)}">{{ getQualityText(currentMeassurement?.airQuality) }}</b></p>
       <fa-icon [icon]="['fas', 'clock']"></fa-icon> {{currentMeassurement?.periodTo | date:'HH:mm'}}
     </div>
