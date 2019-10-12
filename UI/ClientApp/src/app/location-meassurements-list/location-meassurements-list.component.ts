@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { LocationMeassurements } from '../location-meassurements/location-meassurements.type';
 import { FavouriteLocationsService } from '../utils/favourite-locations-service/favourite-locations-service';
-import { retry } from 'rxjs/operators';
+
 
 @Component({
   selector: 'location-meassurements-list',
