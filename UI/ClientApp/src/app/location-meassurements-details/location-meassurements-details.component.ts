@@ -42,7 +42,7 @@ export class LocationMeassurementsDetailsComponent implements OnInit, OnDestroy 
   }
 
   ngOnDestroy() {
-    this.sidebarService.showSidebar();
+    this.sidebarService.hideSidebar();
   }
 
   constructor(
