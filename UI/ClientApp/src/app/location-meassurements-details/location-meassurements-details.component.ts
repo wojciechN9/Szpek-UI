@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { getAirQualityText, getAirQualityColor } from '../utils/enum/air-quality';
 import { AirQualityEnum } from '../location-meassurements/air-quality.type';
@@ -9,13 +9,14 @@ import { MeassurementsHttpService } from '../utils/http-services/meassurements.h
 import { Title } from '@angular/platform-browser';
 import { MeassurementDetails } from './meassurement-details.type';
 import { LocationMeassurementsDetails } from './location-meassurements-details.type';
+import { SidebarService } from '../utils/sidebar-service/sidebar-service';
 
 @Component({
   selector: 'location-meassurements-details',
   templateUrl: './location-meassurements-details.component.html',
   styleUrls: ['../app.component.css']
 })
-export class LocationMeassurementsDetailsComponent implements OnInit {
+export class LocationMeassurementsDetailsComponent implements OnInit, OnDestroy {
   public locationMeassurements: LocationMeassurementsDetails;
   public currentMeassurement: MeassurementDetails;
   public pm10Meassurements: MeassurementChart[];
@@ -37,13 +38,19 @@ export class LocationMeassurementsDetailsComponent implements OnInit {
     });
 
     this.favouritesIds = this.favouriteLocations.getFavouriteLocationsIds();
+    this.sidebarService.showSidebar();
+  }
+
+  ngOnDestroy() {
+    this.sidebarService.showSidebar();
   }
 
   constructor(
     private meassurementsService: MeassurementsHttpService,
     private route: ActivatedRoute,
     private favouriteLocations: FavouriteLocationsService,
-    private titleService: Title) {
+    private titleService: Title,
+    private sidebarService: SidebarService) {
   }
 
   orderMeassurementsByDateTimeDesc(locationMeassurements: LocationMeassurementsDetails) {

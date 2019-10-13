@@ -1,8 +1,10 @@
-<body>
+<body class="d-flex flex-column" style="height: 100vh">
   <app-nav-menu></app-nav-menu>
-  <div class="main">
-    <router-outlet></router-outlet>
+  <div class="d-flex page-layout">
+    <div style="flex: 1 0 auto;" class="content">
+      <router-outlet></router-outlet>
+    </div>
+    <sidebar [hidden]="!isSidebarVisible" class="sidebar" (isSidebarShow)="onSidebarShow($event)"></sidebar>
   </div>
-  <sidebar class="sidebar"></sidebar>
   <cookie-consent></cookie-consent>
 </body>

@@ -53,6 +53,7 @@ import { UsersComponent } from './admin/users/users-component';
 import { InstructionComponent } from './dashboard/instruction/instruction.component';
 import { TokenUrlSerializer } from './utils/token-serializer/token-serializer';
 import { FaqComponent } from './faq/faq.component';
+import { SidebarService } from './utils/sidebar-service/sidebar-service';
 
 @NgModule({
   declarations: [
@@ -136,7 +137,8 @@ import { FaqComponent } from './faq/faq.component';
     FavouriteLocationsService,
     DatePipe,
     AuthenticationService,
-    AuthGuard
+    AuthGuard,
+    SidebarService
     ],
   bootstrap: [AppComponent],
   entryComponents: [LocationModalComponent]

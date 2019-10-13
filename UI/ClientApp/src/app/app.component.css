@@ -5,17 +5,17 @@
   }
 }
 
-.main {
-  float: left;
-  width: 100%;
+.page-layout {
+  flex-direction: column;
+}
+
+.content {
   padding-left: 20px;
   padding-right: 20px;
 }
 
 .sidebar {
   margin-top: 40px;
-  width: 100%;
-  float: left;
 }
 
 .sidebar-picture {
@@ -23,16 +23,13 @@
   margin: 0 auto;
 }
 
-@media (min-width: 992px) {
-  .main {
-    float: left;
-    max-width: 70%;
+@media (min-width: 1200px) {
+  .page-layout {
+    flex-direction: row;
   }
 
   .sidebar {
     width: 30%;
-    float: right;
-    height: 100%;
   }
 }
 
