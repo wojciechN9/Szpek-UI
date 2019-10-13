@@ -4,7 +4,7 @@
     <div style="flex: 1 0 auto;" class="content">
       <router-outlet></router-outlet>
     </div>
-    <sidebar class="sidebar"></sidebar>
+    <sidebar [hidden]="!isSidebarVisible" class="sidebar" (isSidebarShow)="onSidebarShow($event)"></sidebar>
   </div>
   <cookie-consent></cookie-consent>
 </body>
