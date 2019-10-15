@@ -5,6 +5,7 @@
 .location-meassurements-list-content {
   padding-left: 1.5rem;
   margin: 1rem 0.5rem 0.5rem 1rem;
+  line-height: 1.2;
 }
 
 .location-meassurements-list-values {
@@ -31,25 +32,27 @@
 }
 
 .location-meassurements-list-value {
-  height: 5.75rem;
   width: 5.75rem;
+  height: 4rem;
   display: flex;
   margin: 0.25rem;
-  border-radius: 50%;
+  border-radius: 25%;
   background-color: white;
   text-align: center;
   justify-content: center;
   align-items: center;
-  box-shadow: 0.25rem 0.25rem 0.25rem gray;
+  box-shadow: 0.15rem 0.15rem 0.25rem gray;
   border-style: solid;
+  border-width: thin;
 }
 
 .location-meassurements-list-value-unit {
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   color: black;
 }
 
 .location-meassurements-list-value-pollution {
+  margin-top: -0.15em;
   font-size: 2em;
   font-weight: bold;
   color: black;
