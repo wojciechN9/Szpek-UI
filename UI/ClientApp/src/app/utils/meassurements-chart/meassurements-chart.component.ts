@@ -4,6 +4,7 @@ import { ChartDataSets, ChartOptions } from 'chart.js';
 import { Color, Label } from 'ng2-charts';
 import { getAirQualityColor, getAirQualityColorInRgba } from '../enum/air-quality';
 import { MeassurementChart } from './meassurement-chart.type';
+import { AirQualityEnum } from '../../location-meassurements/air-quality.type';
 
 @Component({
   selector: 'meassurements-chart',
@@ -16,7 +17,7 @@ export class MeassurementsChartComponent {
 
   public chartData: ChartDataSets[];
   public chartLabels: Label[];
-  public chartOptions: ChartOptions= {
+  public chartOptions: ChartOptions = {
     responsive: true,
     legend: {
       onClick: (e) => e.stopPropagation()
@@ -42,8 +43,8 @@ export class MeassurementsChartComponent {
     this.chartLabels = this.data.map(d => this.datePipe.transform(d.periodTo, "HH:mm"));
 
     let gradient = this.canvas.nativeElement.getContext('2d').createLinearGradient(500, 0, 100, 0);
-    gradient.addColorStop(1, getAirQualityColorInRgba(this.data[0].airQuality));
-    gradient.addColorStop(0, getAirQualityColorInRgba(this.data[this.data.length - 1].airQuality));
+
+    this.paintGradient(gradient);
 
     this.chartColors = [
       {
@@ -53,8 +54,37 @@ export class MeassurementsChartComponent {
     ];
   }
 
+  paintGradient(gradient: any) {
+    if (this.data.length > 2) {
+      //slice gradient to three parts
+      const gradientStep = 0.5;
+      var gradientValue = 1;
+      var step = Math.floor(this.data.length / 3);
+      var reminder = this.data.length % 3;
+
+      for (var i = 0; i < 3; i++) {
+        var arrayFragment = this.data.slice(0 + step * i, i !== 2 ? (step - 1) + step * i : (step - 1) + step * i + reminder);
+        gradient.addColorStop(gradientValue, getAirQualityColorInRgba(this.countAverageQuality(arrayFragment.map(a => a.airQuality))));
+        gradientValue -= gradientStep;
+      }
+    }
+    else {
+      gradient.addColorStop(1, getAirQualityColorInRgba(this.data[0].airQuality));
+      gradient.addColorStop(0, getAirQualityColorInRgba(this.data[this.data.length - 1].airQuality));
+    }
+  }
+
+  countAverageQuality(airQualites: Array<AirQualityEnum>) {
+    var sum = 0;
+    for (var i = 0; i < airQualites.length; i++) {
+      sum += airQualites[i];
+    }
+
+    return Math.round(sum / airQualites.length);
+  }
+
   orderMeassurementsByDateTimeAsc(meassurements: MeassurementChart[]) {
-     meassurements = meassurements.sort((a, b) => {
+    meassurements = meassurements.sort((a, b) => {
       if (a.periodTo < b.periodTo) { return -1; }
       if (a.periodTo > b.periodTo) { return 1; }
       if (a.periodTo == b.periodTo) { return 0; }
