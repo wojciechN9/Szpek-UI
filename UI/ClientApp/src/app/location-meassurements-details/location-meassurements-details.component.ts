@@ -23,7 +23,7 @@ export class LocationMeassurementsDetailsComponent implements OnInit, OnDestroy 
   public pm25Meassurements: MeassurementChart[];
   public id: number;
   favouritesIds: Array<number>;
-  private loaderActive = true;
+  loaderActive = true;
 
   ngOnInit() {
     this.route.params.subscribe(params => {

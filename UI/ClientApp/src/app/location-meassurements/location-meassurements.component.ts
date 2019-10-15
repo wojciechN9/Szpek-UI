@@ -10,7 +10,7 @@ import { SidebarService } from '../utils/sidebar-service/sidebar-service';
 })
 export class LocationMeassurementsComponent implements OnInit, OnDestroy {
   public locationsMeassurements: LocationMeassurements[];
-  private loaderActive = true;
+  loaderActive = true;
 
   ngOnInit(): void {
     this.titleService.setTitle('Jakość i stan powietrza w twojej miejscowości, mapa  - Szpek.pl');

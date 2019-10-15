@@ -9,7 +9,7 @@ import { Title } from '@angular/platform-browser';
 })
 export class LocationMapComponent implements OnInit {
   public locationsMeassurements: LocationMeassurements[];
-  private loaderActive = true;
+  loaderActive = true;
 
   ngOnInit() {
     this.titleService.setTitle('Mapa jakości, stanu i zanieczyszczenia powietrza - Szpek.pl');
