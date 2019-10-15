@@ -3,5 +3,6 @@
     <h1>Mapa czujników</h1>
     <p>Kliknij na punkt znajdujący się na mapie, żeby uzyskać więcej informacji</p>
   </div>
+  <img *ngIf="loaderActive" class="loader" src="assets/spinner-200px.svg" />
   <map-factory *ngIf="locationsMeassurements" [locationsMeassurements]="locationsMeassurements"></map-factory>
 </div>

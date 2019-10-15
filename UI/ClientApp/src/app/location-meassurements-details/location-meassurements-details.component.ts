@@ -23,6 +23,7 @@ export class LocationMeassurementsDetailsComponent implements OnInit, OnDestroy 
   public pm25Meassurements: MeassurementChart[];
   public id: number;
   favouritesIds: Array<number>;
+  private loaderActive = true;
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -35,6 +36,7 @@ export class LocationMeassurementsDetailsComponent implements OnInit, OnDestroy 
       this.pm10Meassurements = this.convertToPM10(this.locationMeassurements.meassurements);
       this.pm25Meassurements = this.convertToPM25(this.locationMeassurements.meassurements);
       this.titleService.setTitle(this.locationMeassurements.address.city + ' - Jakość i stan powietrza - Szpek.pl');
+      this.loaderActive = false;
     });
 
     this.favouritesIds = this.favouriteLocations.getFavouriteLocationsIds();
