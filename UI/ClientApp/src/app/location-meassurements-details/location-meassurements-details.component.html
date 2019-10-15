@@ -8,6 +8,7 @@
       <fa-icon [ngClass]="{'fav-checked': isFavourite(), 'fav-unchecked': !isFavourite()}" [icon]="['fas', 'star']" size="3x" [styles]="{'stroke': 'black'}"></fa-icon>
     </div>
   </div>
+  <img *ngIf="loaderActive" class="loader" src="assets/spinner-200px.svg" />
   <div class="row pt-4">
     <div class="col-md-6 pl-4">
       <h4 class="pb-2">Aktualny stan powietrza</h4>
@@ -32,12 +33,12 @@
       <meassurements-chart *ngIf="pm25Meassurements" chartName="PM2.5" [data]="pm25Meassurements"></meassurements-chart>
     </div>
   </div>
-    <div class="row pt-2 pl-4">
-      <!-- TODO comments -->
-      <h4>Komentarze</h4>
-      <p>wkrótce...</p>
-    </div>
+  <div class="row pt-2 pl-4">
+    <!-- TODO comments -->
+    <h4>Komentarze</h4>
+    <p>wkrótce...</p>
   </div>
+</div>
 
 
 
