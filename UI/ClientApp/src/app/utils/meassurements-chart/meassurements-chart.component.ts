@@ -63,7 +63,7 @@ export class MeassurementsChartComponent {
       var reminder = this.data.length % 3;
 
       for (var i = 0; i < 3; i++) {
-        var arrayFragment = this.data.slice(0 + step * i, i !== 2 ? (step - 1) + step * i : (step - 1) + step * i + reminder);
+        var arrayFragment = this.data.slice(0 + step * i, i !== 2 ? 1 + (step - 1) + step * i : 1 + (step - 1) + step * i + reminder);
         gradient.addColorStop(gradientValue, getAirQualityColorInRgba(this.countAverageQuality(arrayFragment.map(a => a.airQuality))));
         gradientValue -= gradientStep;
       }
