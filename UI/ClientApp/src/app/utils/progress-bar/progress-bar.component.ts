@@ -18,6 +18,6 @@ export class ProgressBarComponent {
 
   public error() {
     this.pendingChanges = 0;
-    window.alert('błąd ładowania');
+    console.error('błąd ładowania w progress-bar');
   }
 }
