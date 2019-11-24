@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, OnInit, OnChanges, SimpleChanges, ViewChild, AfterViewInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { LocationModalComponent } from './location-modal/location-modal.component';
 
@@ -18,6 +18,7 @@ import { LocationMeassurements } from '../../location-meassurements/location-mea
 import { AirQualityEnum } from '../../location-meassurements/air-quality.type';
 import { getAirQualityColor } from '../enum/air-quality';
 import { getEnumValues } from '../enum/enum-conversion';
+import { ProgressBarComponent } from '../progress-bar/progress-bar.component';
 
 
 @Component({
@@ -25,9 +26,11 @@ import { getEnumValues } from '../enum/enum-conversion';
   templateUrl: './map-factory.component.html',
   styleUrls: ['./map-factory.component.css']
 })
-export class MapFactoryComponent implements OnChanges {
+export class MapFactoryComponent implements OnChanges, AfterViewInit {
   @Input() locationsMeassurements: LocationMeassurements[];
   @Input() modalOnClick?: boolean = true;
+  @ViewChild(ProgressBarComponent, { static: false })
+  private progressBar: ProgressBarComponent;
 
   map: OlMap;
   source: OlXYZ;
@@ -38,6 +41,10 @@ export class MapFactoryComponent implements OnChanges {
 
   ngOnChanges() {
     this.createMap(this.locationsMeassurements);
+  }
+
+  ngAfterViewInit(): void {
+    this.onSourceTitlesLoading();
   }
 
   constructor(
@@ -113,6 +120,12 @@ export class MapFactoryComponent implements OnChanges {
         evt.map.getTargetElement().style.cursor = '';
       }
     });
+  }
+
+  onSourceTitlesLoading() {
+    this.source.on('tileloadstart', () => this.progressBar.addChange());
+    this.source.on('tileloadend', () => this.progressBar.removeChange());
+    this.source.on('tileloaderror', () => this.progressBar.error());
   }
 
   getLocationLayers(locationsMeassurements: LocationMeassurements[]) {

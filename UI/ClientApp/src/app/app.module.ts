@@ -54,6 +54,7 @@ import { InstructionComponent } from './dashboard/instruction/instruction.compon
 import { TokenUrlSerializer } from './utils/token-serializer/token-serializer';
 import { FaqComponent } from './faq/faq.component';
 import { SidebarService } from './utils/sidebar-service/sidebar-service';
+import { ProgressBarComponent } from './utils/progress-bar/progress-bar.component';
 
 @NgModule({
   declarations: [
@@ -89,7 +90,8 @@ import { SidebarService } from './utils/sidebar-service/sidebar-service';
     PasswordChangeOkComponent,
     UsersComponent,
     InstructionComponent,
-    FaqComponent
+    FaqComponent,
+    ProgressBarComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
