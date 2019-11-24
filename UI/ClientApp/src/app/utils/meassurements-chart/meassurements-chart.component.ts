@@ -1,5 +1,5 @@
 import { DatePipe } from '@angular/common';
-import { Component, ElementRef, Input, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, ViewChild, AfterViewInit } from '@angular/core';
 import { ChartDataSets, ChartOptions } from 'chart.js';
 import { Color, Label } from 'ng2-charts';
 import { getAirQualityColor, getAirQualityColorInRgba } from '../enum/air-quality';
@@ -10,7 +10,7 @@ import { AirQualityEnum } from '../../location-meassurements/air-quality.type';
   selector: 'meassurements-chart',
   templateUrl: './meassurements-chart.component.html'
 })
-export class MeassurementsChartComponent {
+export class MeassurementsChartComponent implements AfterViewInit  {
   @ViewChild("chartCanvas", { static: true }) canvas: ElementRef;
   @Input() chartName: string;
   @Input() data: MeassurementChart[];
@@ -42,16 +42,13 @@ export class MeassurementsChartComponent {
 
     this.chartLabels = this.data.map(d => this.datePipe.transform(d.periodTo, "HH:mm"));
 
-    let gradient = this.canvas.nativeElement.getContext('2d').createLinearGradient(500, 0, 100, 0);
+    this.chartColors = [{ pointBackgroundColor: this.data.map(d => getAirQualityColor(d.airQuality)) }];
+  }
 
+  ngAfterViewInit() {
+    let gradient = this.canvas.nativeElement.getContext('2d').createLinearGradient(this.canvas.nativeElement.width, 0, 0, 0);
     this.paintGradient(gradient);
-
-    this.chartColors = [
-      {
-        pointBackgroundColor: this.data.map(d => getAirQualityColor(d.airQuality)),
-        backgroundColor: gradient,
-      },
-    ];
+    this.chartColors = [{ backgroundColor: gradient }];
   }
 
   paintGradient(gradient: any) {
