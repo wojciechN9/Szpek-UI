@@ -1,8 +1,4 @@
-<div style="height: 75vh">
-  <div class="container">
-    <h1>Mapa czujników</h1>
-    <p>Kliknij na punkt znajdujący się na mapie, żeby uzyskać więcej informacji</p>
-  </div>
+<div style="height: 90vh; margin: 0 -20px; margin-top: -1rem">
   <img *ngIf="loaderActive" class="loader" src="assets/spinner-200px.svg" />
   <map-factory *ngIf="locationsMeassurements" [locationsMeassurements]="locationsMeassurements"></map-factory>
 </div>
