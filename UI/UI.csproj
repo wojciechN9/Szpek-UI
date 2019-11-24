@@ -91,6 +91,7 @@
     <None Remove="ClientApp\src\app\utils\map-factory\location-modal\location-modal.component.ts" />
     <None Remove="ClientApp\src\app\utils\meassurements-chart.ts" />
     <None Remove="ClientApp\src\app\utils\meassurements-chart\meassurement-chart.type.ts" />
+    <None Remove="ClientApp\src\app\utils\progress-bar\progress-bar.component.ts" />
     <None Remove="ClientApp\src\app\utils\sidebar-service\sidebar-service.ts" />
     <None Remove="ClientApp\src\app\utils\sidebar\sidebar.component.ts" />
     <None Remove="ClientApp\src\app\utils\token-serializer\token-serializer.ts" />
@@ -162,6 +163,7 @@
     <TypeScriptCompile Include="ClientApp\src\app\utils\map-factory\location-modal\location-modal.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\utils\meassurements-chart\meassurement-chart.type.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\utils\meassurements-chart\meassurements-chart.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\utils\progress-bar\progress-bar.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\utils\sidebar-service\sidebar-service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\utils\sidebar\sidebar.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\utils\token-serializer\token-serializer.ts" />
