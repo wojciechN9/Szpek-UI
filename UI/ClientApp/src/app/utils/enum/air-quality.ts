@@ -70,22 +70,22 @@ export function getAirQualityColorInRgba(airQuality: AirQualityEnum) {
 export function getPM10QualityRange(airQuality: AirQualityEnum) {
   switch (airQuality) {
     case AirQualityEnum.VeryGood: {
-      return "0 - 21";
+      return "0 - 20";
     }
     case AirQualityEnum.Good: {
-      return "21 - 61";
+      return "20 - 50";
     }
     case AirQualityEnum.Ok: {
-      return "61 - 101";
+      return "50 - 80";
     }
     case AirQualityEnum.Poor: {
-      return "101 - 141";
+      return "80 - 110";
     }
     case AirQualityEnum.Bad: {
-      return "141 - 201";
+      return "110 - 150";
     }
     case AirQualityEnum.VeryBad: {
-      return "> 201";
+      return "> 150";
     }
     case AirQualityEnum.Error: {
       return "-";
@@ -99,19 +99,19 @@ export function getPM25QualityRange(airQuality: AirQualityEnum) {
       return "0 - 13";
     }
     case AirQualityEnum.Good: {
-      return "13 - 37";
+      return "13 - 35";
     }
     case AirQualityEnum.Ok: {
-      return "37 - 61";
+      return "35 - 55";
     }
     case AirQualityEnum.Poor: {
-      return "61 - 85";
+      return "55 - 75";
     }
     case AirQualityEnum.Bad: {
-      return "85 - 121";
+      return "75 - 110";
     }
     case AirQualityEnum.VeryBad: {
-      return "> 121";
+      return "> 110";
     }
     case AirQualityEnum.Error: {
       return "-";
