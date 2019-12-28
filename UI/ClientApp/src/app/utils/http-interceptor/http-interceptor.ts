@@ -38,7 +38,7 @@ export class HttpConfigInterceptor implements HttpInterceptor {
           this.router.navigate(['/error', { reason: 'Nie można połączyć się z serwerem. Spróbuj ponownie później' }]);
         }
         else {
-          this.router.navigate(['/error', { statusCode: error.status, reason: error.message || error.error || '' }]);
+          alert(error.error || error.message || '');
         }
         return throwError(error);
       }));
