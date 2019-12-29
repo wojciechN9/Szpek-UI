@@ -66,11 +66,11 @@ export class LocationMeassurementsDetailsComponent implements OnInit, OnDestroy 
   }
 
   convertToPM10(meassurements: Array<Meassurement>) {
-    return meassurements.map(m => this.convertToChart(m.id, m.pm10Quality, m.pm10Value, m.periodTo));
+    return meassurements.map(m => this.convertToChart(m.id, m.pm10Quality, m.pm10Value, new Date(m.periodTo)));
   }
 
   convertToPM25(meassurements: Array<Meassurement>) {
-    return meassurements.map(m => this.convertToChart(m.id, m.pm25Quality, m.pm25Value, m.periodTo));
+    return meassurements.map(m => this.convertToChart(m.id, m.pm25Quality, m.pm25Value, new Date(m.periodTo)));
   }
 
   convertToChart(id: number, airQuality: AirQualityEnum, value: number, periodTo: Date) {

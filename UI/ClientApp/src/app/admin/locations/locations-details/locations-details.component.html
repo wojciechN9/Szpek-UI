@@ -47,27 +47,6 @@
     </div>
     <button type="submit" class="btn btn-primary">Edytuj</button>
   </form>
-  <h4 class="mt-4">Ostatnie 100 pomiarów</h4>
-  <table *ngIf="location" class="table table-bordered">
-    <thead class="thead-light">
-      <tr>
-        <th scope="col">Stan Powietrza</th>
-        <th scope="col">Stan PM10</th>
-        <th scope="col">Wartość PM10</th>
-        <th scope="col">Stan PM2.5</th>
-        <th scope="col">Wartość PM2.5</th>
-        <th scope="col">Godzina pomiaru</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let meassurement of location.meassurements">
-        <td><b [ngStyle]="{'color': getQualityColor(meassurement?.airQuality)}">{{ getQualityText(meassurement?.airQuality) }}</b></td>
-        <td><b [ngStyle]="{'color': getQualityColor(meassurement?.pm10Quality)}">{{ getQualityText(meassurement?.pm10Quality) }}</b></td>
-        <td>{{meassurement.pm10Value | number:'1.0-2':'pl'}}</td>
-        <td><b [ngStyle]="{'color': getQualityColor(meassurement?.pm25Quality)}">{{ getQualityText(meassurement?.pm25Quality) }}</b></td>
-        <td>{{meassurement.pm25Value | number:'1.0-2':'pl'}}</td>
-        <td>{{meassurement.periodTo | date:'dd-MM-yyyy, HH:mm'}}</td>
-      </tr>
-    </tbody>
-  </table>
+  <h4 class="mt-4">Historia pomiarów</h4>
+  <meassurements-calendar [locationId]="location?.id" [initialMeassurementsData]="location?.meassurements" ></meassurements-calendar>
 </div>

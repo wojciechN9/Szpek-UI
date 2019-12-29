@@ -89,6 +89,7 @@
     <None Remove="ClientApp\src\app\utils\input-error\must-match.validator.ts" />
     <None Remove="ClientApp\src\app\utils\input-error\password.validator.ts" />
     <None Remove="ClientApp\src\app\utils\map-factory\location-modal\location-modal.component.ts" />
+    <None Remove="ClientApp\src\app\utils\meassurements-calendar\meassurements-calendar.component.ts" />
     <None Remove="ClientApp\src\app\utils\meassurements-chart.ts" />
     <None Remove="ClientApp\src\app\utils\meassurements-chart\meassurement-chart.type.ts" />
     <None Remove="ClientApp\src\app\utils\progress-bar\progress-bar.component.ts" />
@@ -161,6 +162,7 @@
     <TypeScriptCompile Include="ClientApp\src\app\utils\input-error\must-match.validator.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\utils\input-error\password.validator.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\utils\map-factory\location-modal\location-modal.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\utils\meassurements-calendar\meassurements-calendar.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\utils\meassurements-chart\meassurement-chart.type.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\utils\meassurements-chart\meassurements-chart.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\utils\progress-bar\progress-bar.component.ts" />

@@ -55,6 +55,7 @@ import { TokenUrlSerializer } from './utils/token-serializer/token-serializer';
 import { FaqComponent } from './faq/faq.component';
 import { SidebarService } from './utils/sidebar-service/sidebar-service';
 import { ProgressBarComponent } from './utils/progress-bar/progress-bar.component';
+import { MeassurementsCalendarComponent } from './utils/meassurements-calendar/meassurements-calendar.component';
 
 @NgModule({
   declarations: [
@@ -91,7 +92,8 @@ import { ProgressBarComponent } from './utils/progress-bar/progress-bar.componen
     UsersComponent,
     InstructionComponent,
     FaqComponent,
-    ProgressBarComponent
+    ProgressBarComponent,
+    MeassurementsCalendarComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

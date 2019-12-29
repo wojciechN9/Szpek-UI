@@ -8,5 +8,5 @@ export interface MeassurementDetails {
   pm25Value: number;
   pm25Quality: AirQualityEnum;
   pm1Value: number;
-  periodTo: Date;
+  periodTo: string;
 }
