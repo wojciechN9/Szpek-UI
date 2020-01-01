@@ -56,6 +56,7 @@ import { FaqComponent } from './faq/faq.component';
 import { SidebarService } from './utils/sidebar-service/sidebar-service';
 import { ProgressBarComponent } from './utils/progress-bar/progress-bar.component';
 import { MeassurementsCalendarComponent } from './utils/meassurements-calendar/meassurements-calendar.component';
+import { UserLocationDetailsComonent } from './dashboard/user-location-details/user-location-details.component';
 
 @NgModule({
   declarations: [
@@ -93,7 +94,8 @@ import { MeassurementsCalendarComponent } from './utils/meassurements-calendar/m
     InstructionComponent,
     FaqComponent,
     ProgressBarComponent,
-    MeassurementsCalendarComponent
+    MeassurementsCalendarComponent,
+    UserLocationDetailsComonent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -120,6 +122,7 @@ import { MeassurementsCalendarComponent } from './utils/meassurements-calendar/m
       { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
       { path: 'dashboard/instruction', component: InstructionComponent, canActivate: [AuthGuard], data: { roles: [Role.SensorOwner] } },
       { path: 'sensors/my', component: MySensorsComponent, canActivate: [AuthGuard], data: { roles: [Role.SensorOwner] } },
+      { path: 'userLocations/:id', component: UserLocationDetailsComonent, canActivate: [AuthGuard], data: { roles: [Role.SensorOwner] } },
       { path: 'admin/users', component: UsersComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin] } },
       { path: 'admin/sensorsOwners', component: SensorsOwnersComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin] } },
       { path: 'admin/sensorsOwners/:id', component: SensorsOwnersDetailsComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin] } },

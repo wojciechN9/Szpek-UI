@@ -1,4 +1,4 @@
-<ngb-datepicker #d [(ngModel)]="initialCalendarDay" (select)="onDateSelected($event)"></ngb-datepicker>
+<ngb-datepicker #d [(ngModel)]="currentCalendarDay" (select)="onDateSelected($event)" [maxDate]="initialCalendarDay"></ngb-datepicker>
 <table *ngIf="calendarMeassurements" class="table table-bordered">
   <thead class="thead-light">
     <tr>

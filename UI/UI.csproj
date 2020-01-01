@@ -48,6 +48,7 @@
     <None Remove="ClientApp\src\app\contact\contact.component.ts" />
     <None Remove="ClientApp\src\app\dashboard\dashboard.component.ts" />
     <None Remove="ClientApp\src\app\dashboard\instruction\instruction.component.ts" />
+    <None Remove="ClientApp\src\app\dashboard\user-location-details\user-location-details.component.ts" />
     <None Remove="ClientApp\src\app\dashboard\my-sensors\my-sensors.component.ts" />
     <None Remove="ClientApp\src\app\dashboard\my-sensors\sensor-owner.type.ts" />
     <None Remove="ClientApp\src\app\dashboard\my-sensors\sensor.type.ts" />
@@ -118,6 +119,7 @@
     <TypeScriptCompile Include="ClientApp\src\app\admin\sensors\sensors.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\admin\users\users-component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\dashboard\instruction\instruction.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\dashboard\user-location-details\user-location-details.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\faq\faq.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\location-meassurements-details\location-meassurements-details.type.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\location-meassurements-details\meassurement-details.type.ts" />

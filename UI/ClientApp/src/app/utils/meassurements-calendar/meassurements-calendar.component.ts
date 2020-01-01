@@ -14,18 +14,23 @@ export class MeassurementsCalendarComponent implements OnChanges {
   @Input() initialMeassurementsData: Array<Meassurement>;
   public calendarMeassurements: Array<Meassurement>;
   public loaderActive = false;
+  public currentCalendarDay: NgbDateStruct;
   public initialCalendarDay: NgbDateStruct;
+  public dataFetched = false;
 
   constructor(private meassurementsService: MeassurementsHttpService) {}
 
   ngOnChanges() {
-    if (this.initialMeassurementsData !== null) {
+    if (this.initialMeassurementsData !== null && this.dataFetched === false) {
       this.calendarMeassurements = this.initialMeassurementsData;
       this.initialCalendarDay = {
         year: new Date(this.initialMeassurementsData[0].periodTo).getFullYear(),
         month: new Date(this.initialMeassurementsData[0].periodTo).getMonth() + 1,
         day: new Date(this.initialMeassurementsData[0].periodTo).getDate()
       };
+      this.currentCalendarDay = this.initialCalendarDay;
+
+      this.dataFetched = true;
     }
   }
 
