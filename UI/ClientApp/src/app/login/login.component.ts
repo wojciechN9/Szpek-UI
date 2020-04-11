@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import { AuthenticationService } from "../utils/authentication/authentication.service";
 import { Title } from "@angular/platform-browser";
+import { UserLogin } from "./userLogin.type";
 
 @Component({
   selector: 'login',
@@ -29,7 +30,7 @@ export class LoginComponent implements OnInit {
       return;
     }
 
-    var userLogin = <UserLogin>{
+    const userLogin = <UserLogin> {
       username: this.loginForm.controls.username.value,
       password: this.loginForm.controls.password.value
     };

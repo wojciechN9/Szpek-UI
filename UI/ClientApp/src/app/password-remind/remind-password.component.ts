@@ -27,9 +27,9 @@ export class RemindPasswordComponent implements OnInit {
       return;
     }
 
-    var userRemindPassword = <UserRemindPassword>{
+    const userRemindPassword = {
       email: this.form.controls.email.value
-    };
+    } as UserRemindPassword;
 
     this.authenticationService.remindPassword(userRemindPassword).subscribe(
       () => {
