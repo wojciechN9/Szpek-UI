@@ -29,7 +29,7 @@ import { ProgressBarComponent } from '../progress-bar/progress-bar.component';
 export class MapFactoryComponent implements OnChanges, AfterViewInit {
   @Input() locationsMeassurements: LocationMeassurements[];
   @Input() modalOnClick?: boolean = true;
-  @ViewChild(ProgressBarComponent, { static: false })
+  @ViewChild(ProgressBarComponent)
   private progressBar: ProgressBarComponent;
 
   map: OlMap;
