@@ -1,35 +1,33 @@
 <header>
   <nav class='navbar navbar-light navbar-expand-sm navbar-toggleable-sm navbar-dark bg-primary border-bottom box-shadow mb-3'>
+    <localisation-dropdown></localisation-dropdown>
     <a class="navbar-brand text-uppercase" [routerLink]='["/"]'><b>{{ 'appName' | translateAsync }}</b></a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-label="Toggle navigation"
-        [attr.aria-expanded]="isExpanded" (click)="toggle()">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse" [ngClass]='{"show": isExpanded}'>
-        <ul class="navbar-nav flex-grow">
-          <li class="nav-item" [routerLinkActive]='["link-active"]'>
-            <a class="nav-link text-uppercase" [routerLink]='["/map"]'>{{ 'map' | translateAsync }}</a>
-          </li>
-          <li class="nav-item" [routerLinkActive]='["link-active"]'>
-            <a class="nav-link text-uppercase" [routerLink]='["/legend"]'>{{ 'legend' | translateAsync }}</a>
-          </li>
-          <li class="nav-item" [routerLinkActive]='["link-active"]'>
-            <a class="nav-link text-uppercase" [routerLink]='["/faq"]'>{{ 'faq' | translateAsync }}</a>
-          </li>     
-          <li class="nav-item" [routerLinkActive]='["link-active"]'>
-            <a class="nav-link text-uppercase" [routerLink]='["/contact"]'>{{ 'contact' | translateAsync }}</a>
-          </li>
-          <li *ngIf="isUserLogged" class="nav-item" [routerLinkActive]='["link-active"]'>
-            <a class="nav-link text-uppercase" [routerLink]='["/dashboard"]'></a>
-          </li>
-          <li class="nav-item" [routerLinkActive]='["link-active"]'>
-            <a *ngIf="!isUserLogged" class="nav-link text-uppercase" [routerLink]='["/login"]'>{{ 'logIn' | translateAsync }}</a>
-            <div *ngIf="isUserLogged" (click)="logout()" style="cursor: pointer" class="nav-link text-uppercase">{{ 'logOut' | translateAsync }}</div>
-          </li>
-        </ul>
-      </div>
-    <div>
-      <localisation-dropdown></localisation-dropdown>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-label="Toggle navigation"
+            [attr.aria-expanded]="isExpanded" (click)="toggle()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse" [ngClass]='{"show": isExpanded}'>
+      <ul class="navbar-nav flex-grow">
+        <li class="nav-item" [routerLinkActive]='["link-active"]'>
+          <a class="nav-link text-uppercase" [routerLink]='["/map"]'>{{ 'map' | translateAsync }}</a>
+        </li>
+        <li class="nav-item" [routerLinkActive]='["link-active"]'>
+          <a class="nav-link text-uppercase" [routerLink]='["/legend"]'>{{ 'legend' | translateAsync }}</a>
+        </li>
+        <li class="nav-item" [routerLinkActive]='["link-active"]'>
+          <a class="nav-link text-uppercase" [routerLink]='["/faq"]'>{{ 'faq' | translateAsync }}</a>
+        </li>
+        <li class="nav-item" [routerLinkActive]='["link-active"]'>
+          <a class="nav-link text-uppercase" [routerLink]='["/contact"]'>{{ 'contact' | translateAsync }}</a>
+        </li>
+        <li *ngIf="isUserLogged" class="nav-item" [routerLinkActive]='["link-active"]'>
+          <a class="nav-link text-uppercase" [routerLink]='["/dashboard"]'></a>
+        </li>
+        <li class="nav-item" [routerLinkActive]='["link-active"]'>
+          <a *ngIf="!currentUser" class="nav-link text-uppercase" [routerLink]='["/login"]'>{{ 'logIn' | translateAsync }}</a>
+          <div *ngIf="currentUser" (click)="logout()" style="cursor: pointer" class="nav-link text-uppercase">{{ 'logOut' | translateAsync }}</div>
+        </li>
+      </ul>
     </div>
   </nav>
 </header>

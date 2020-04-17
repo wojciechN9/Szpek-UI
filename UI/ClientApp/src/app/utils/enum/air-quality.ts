@@ -55,7 +55,7 @@ export function getAirQualityColor(airQuality: AirQualityEnum) {
 export function getAirQualityColorInRgba(airQuality: AirQualityEnum) {
   const hexColor = getAirQualityColor(airQuality);
 
-  const c;
+  let c;
   if (/^#([A-Fa-f0-9]{3}){1,2}$/.test(hexColor)) {
     c = hexColor.substring(1).split('');
     if (c.length == 3) {

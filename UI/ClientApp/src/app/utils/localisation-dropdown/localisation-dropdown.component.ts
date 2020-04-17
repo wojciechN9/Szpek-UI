@@ -6,6 +6,7 @@ import {
   L10nLocale,
   L10nTranslationService
 } from "angular-l10n";
+import { Country } from "./country.type";
 
 @Component({
   selector: 'localisation-dropdown',
@@ -14,6 +15,11 @@ import {
 })
 export class LocalisationDropdown implements OnInit {
   schema = this.l10nConfig.schema;
+  currentLocale: L10nLocale;
+  countries: Array<Country> = [
+    { languageCode: 'en-US', flagPath: 'usa.png' },
+    { languageCode: 'pl-PL', flagPath: 'poland.png' }
+  ];
 
   constructor(
     @Inject(L10N_LOCALE) public locale: L10nLocale,
@@ -23,13 +29,17 @@ export class LocalisationDropdown implements OnInit {
 
   ngOnInit() {
     this.translation.onChange().subscribe({
-      next: (locale: L10nLocale) => console.log(locale)
+      next: (locale: L10nLocale) => this.currentLocale = locale
     });
     this.translation.onError().subscribe({
       next: (error: any) => {
         if (error) console.log(error);
       }
     });
+  }
+
+  getFlag(lanuageCode: string) {
+    return 'assets/' + this.countries.find(c => c.languageCode === lanuageCode).flagPath;
   }
 
   setLocale(locale: L10nLocale): void {
