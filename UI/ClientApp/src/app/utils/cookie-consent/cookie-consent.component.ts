@@ -1,4 +1,5 @@
-import { Component } from "@angular/core";
+import { Component, Inject } from "@angular/core";
+import { L10N_LOCALE, L10nLocale } from "angular-l10n";
 
 @Component({
   selector: 'cookie-consent',
@@ -10,7 +11,7 @@ export class CookieConsentComponent {
   private readonly COOKIE_CONSENT = "cookie_consent";
   private readonly COOKIE_CONSENT_EXPIRE_DAYS = 365;
 
-  constructor() {
+  constructor(@Inject(L10N_LOCALE) public locale: L10nLocale) {
     this.isConsented = this.getCookie(this.COOKIE_CONSENT) === '1';
   }
 

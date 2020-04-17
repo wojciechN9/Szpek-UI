@@ -1,28 +1,41 @@
-import { Component, OnInit, OnDestroy } from "@angular/core";
+import { Component, OnInit, OnDestroy, Inject } from "@angular/core";
 import { AirQualityEnum } from "../location-meassurements/air-quality.type";
 import { getEnumValues } from "../utils/enum/enum-conversion";
 import { getAirQualityText, getAirQualityColor, getPM10QualityRange, getPM25QualityRange } from "../utils/enum/air-quality";
 import { Title } from "@angular/platform-browser";
 import { SidebarService } from "../utils/sidebar-service/sidebar-service";
+import { L10nTranslationService, L10nLocale, L10N_LOCALE } from "angular-l10n";
+import { Subscription } from "rxjs";
 
 @Component({
   selector: 'legend',
   templateUrl: './legend.component.html'
 })
 export class LegendComponent implements OnInit, OnDestroy {
+  airQualities: Array<AirQualityEnum> = getEnumValues(AirQualityEnum);
+  private titleTranslationSubscribtion: Subscription;
+
+  constructor(
+    private titleService: Title,
+    private sidebarService: SidebarService,
+    @Inject(L10N_LOCALE) public locale: L10nLocale,
+    private translation: L10nTranslationService) {
+    this.sidebarService.showSidebar();
+  }
+
+  theLegendOfAirQualityConditionAndPollution
 
   ngOnInit(): void {
-    this.titleService.setTitle('Legenda jakości, stanu i zanieczyszczenia powietrza - Szpek.pl');
-    this.sidebarService.showSidebar();
+    this.titleTranslationSubscribtion = this.translation.onChange().subscribe(() => {
+      const title = this.translation.translate('theLegendOfAirQualityConditionAndPollution') + " - " + this.translation.translate('appName');
+      this.titleService.setTitle(title);
+    })
   }
 
   ngOnDestroy(): void {
     this.sidebarService.hideSidebar();
+    this.titleTranslationSubscribtion.unsubscribe();
   }
-
-  constructor(private titleService: Title, private sidebarService: SidebarService) { }
-
-  airQualities: Array<AirQualityEnum> = getEnumValues(AirQualityEnum);
 
   getQualityText(airQuality: AirQualityEnum) {
     return getAirQualityText(airQuality);

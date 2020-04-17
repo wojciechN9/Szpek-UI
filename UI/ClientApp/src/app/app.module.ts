@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, ErrorHandler } from '@angular/core';
+import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule, UrlSerializer } from '@angular/router';
@@ -57,6 +57,9 @@ import { SidebarService } from './utils/sidebar-service/sidebar-service';
 import { ProgressBarComponent } from './utils/progress-bar/progress-bar.component';
 import { MeassurementsCalendarComponent } from './utils/meassurements-calendar/meassurements-calendar.component';
 import { UserLocationDetailsComonent } from './dashboard/user-location-details/user-location-details.component';
+import { L10nTranslationModule, L10nIntlModule, L10nLoader } from 'angular-l10n';
+import { l10nConfig, initL10n } from './l10n-config';
+import { LocalisationDropdown } from './utils/localisation-dropdown/localisation-dropdown.component';
 
 @NgModule({
   declarations: [
@@ -95,7 +98,8 @@ import { UserLocationDetailsComonent } from './dashboard/user-location-details/u
     FaqComponent,
     ProgressBarComponent,
     MeassurementsCalendarComponent,
-    UserLocationDetailsComonent
+    UserLocationDetailsComonent,
+    LocalisationDropdown
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -105,6 +109,8 @@ import { UserLocationDetailsComonent } from './dashboard/user-location-details/u
     NgbModule,
     ReactiveFormsModule,
     ChartsModule,
+    L10nTranslationModule.forRoot(l10nConfig),
+    L10nIntlModule,
     RouterModule.forRoot([
       { path: '', component: LocationMeassurementsComponent, pathMatch: 'prefix' },
       { path: 'location', component: LocationMeassurementsComponent },
@@ -145,7 +151,13 @@ import { UserLocationDetailsComonent } from './dashboard/user-location-details/u
     DatePipe,
     AuthenticationService,
     AuthGuard,
-    SidebarService
+    SidebarService,
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initL10n,
+      deps: [L10nLoader],
+      multi: true
+    }
     ],
   bootstrap: [AppComponent],
   entryComponents: [LocationModalComponent]

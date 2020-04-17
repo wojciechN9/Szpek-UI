@@ -12,12 +12,14 @@ import { catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../authentication/authentication.service';
 import { AuthUser } from '../authentication/auth-user.type';
+import { L10nTranslationService } from 'angular-l10n';
 
 @Injectable()
 export class HttpConfigInterceptor implements HttpInterceptor {
   currentUser: AuthUser;
   constructor(
     private router: Router,
+    private translation: L10nTranslationService,
     private authenticationService: AuthenticationService) {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
   }
@@ -35,7 +37,7 @@ export class HttpConfigInterceptor implements HttpInterceptor {
     return next.handle(request).pipe(
       catchError((error: HttpErrorResponse) => {
         if (error.status == 0) {
-          this.router.navigate(['/error', { reason: 'Nie można połączyć się z serwerem. Spróbuj ponownie później' }]);
+          this.router.navigate(['/error', { reason: this.translation.translate('unableToConnectToTheServer') + ' ' + this.translation.translate('tryAgainLater') }]);
         }
         else {
           alert(error.error || error.message || '');

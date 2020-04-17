@@ -1,7 +1,7 @@
 <section *ngIf="isConsented == false" class="cookie-bar bg-primary">
   <span>
-      Niniejsza strona wykorzystuje pliki cookies w celach statystycznych
-      <button type="button" class="btn btn-outline-light" (click)="consent()">Zaakceptuj</button>
-      <a role="button" class="btn btn-outline-light" href="https://www.facebook.com/smogSzpek/">Wyjdź</a>   
+    {{ 'thisWebsiteUsesCookiesForStatisticalPurposes' | translateAsync }}
+    <button type="button" class="btn btn-outline-light" (click)="consent()">{{ 'iAccept' | translateAsync }}</button>
+    <a role="button" class="btn btn-outline-light" href="https://www.facebook.com/smogSzpek/">{{ 'exit' | translateAsync }}</a>
   </span>
 </section>

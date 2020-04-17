@@ -1,7 +1,7 @@
 <div class="container">
-  <h1>Jakość powietrza</h1>
+  <h1> {{ 'airQuality' | translateAsync }} </h1>
   <img *ngIf="loaderActive" class="loader" src="assets/spinner-200px.svg" />
   <location-meassurements-list *ngIf="locationsMeassurements" [locationsMeassurements]="locationsMeassurements"></location-meassurements-list>
-  <h2 *ngIf="locationsMeassurements?.length === 0">Brak aktualnych lokalizacji</h2>
-  <p>Jeśli lokalizacji nie ma na liście to znaczy, że sensor nie wysłał żadnych danych w ciągu ostatnich 24 godzin</p>
+  <h2 *ngIf="locationsMeassurements?.length === 0"> {{ 'thereAreNoActiveLocations' | translateAsync }}</h2>
+  <p> {{ 'noLocationOnTheList' | translateAsync }}</p>
 </div>

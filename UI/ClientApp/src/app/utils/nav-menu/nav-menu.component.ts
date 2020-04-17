@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { AuthenticationService } from '../authentication/authentication.service';
 import { Router } from '@angular/router';
 import { AuthUser } from '../authentication/auth-user.type';
+import { L10nLocale, L10N_LOCALE } from 'angular-l10n';
 
 @Component({
   selector: 'app-nav-menu',
@@ -13,7 +14,8 @@ export class NavMenuComponent {
 
   constructor(
     private authenticationService: AuthenticationService,
-    private router: Router) {
+    private router: Router,
+    @Inject(L10N_LOCALE) public locale: L10nLocale) {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x)
   }
 
@@ -27,7 +29,8 @@ export class NavMenuComponent {
     this.isExpanded = !this.isExpanded;
   }
 
-  get isUserLogged() {
+  //fix this add get or subscribe it by rxjs events
+  isUserLogged() {
     return this.currentUser ? true : false;
   }
 

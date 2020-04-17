@@ -1,6 +1,6 @@
-<h1>Wystąpił błąd</h1>
+<h1>{{ 'anErrorOccured' | translateAsync }}</h1>
 <h2 *ngIf="statusCode">{{statusCode}}</h2>
 <h3 *ngIf="reason">{{reason}}</h3>
 <nav>
-  <a routerLink="/">Wróć do strony głównej</a>
+  <a routerLink="/">{{ 'returnToTheMainPage' | translateAsync }}</a>
 </nav>
