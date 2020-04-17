@@ -8,8 +8,10 @@
   <div class="modal-body">
     <p>PM10: &nbsp;<b>{{pm10Value | number:'1.0-2':'pl'}}</b> μg/m3</p>
     <p>PM2.5: <b>{{pm25Value | number:'1.0-2':'pl'}}</b> μg/m3</p>
-    <p>Stan powietrza: <b [ngStyle]="{'color': getQualityColor(airQuality)}">{{ getQualityText(airQuality) }}</b></p>
+    <p>{{ 'airQuality' | translateAsync }}: <b [ngStyle]="{'color': getQualityColor(airQuality)}">{{ getQualityText(airQuality) | translateAsync }}</b></p>
     <fa-icon [icon]="['fas', 'clock']"></fa-icon> {{ periodTo | date:'HH:mm' }}
-    <a class="nav-link" style="float: right" [routerLink]="['/location/', locationId]" [routerLinkActive]='["link-active"]' (click)="modal.dismiss('Cross click')">szczegóły</a>
+  <a class="nav-link" style="float: right" [routerLink]="['/location/', locationId]" [routerLinkActive]='["link-active"]' (click)="modal.dismiss('Cross click')">
+    {{ 'moreDetails' | translateAsync }}
+  </a>
   </div>
 </div>

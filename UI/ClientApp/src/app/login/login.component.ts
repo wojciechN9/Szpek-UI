@@ -1,27 +1,41 @@
-import { OnInit, Component } from "@angular/core";
+import { OnInit, Component, OnDestroy, Inject } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import { AuthenticationService } from "../utils/authentication/authentication.service";
 import { Title } from "@angular/platform-browser";
+import { UserLogin } from "./userLogin.type";
+import { Subscription } from "rxjs";
+import { L10N_LOCALE, L10nLocale, L10nTranslationService } from "angular-l10n";
 
 @Component({
   selector: 'login',
   templateUrl: 'login.component.html'
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
   loginForm: FormGroup;
+  private titleTranslationSubscribtion: Subscription;
+
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
     private authenticationService: AuthenticationService,
+    @Inject(L10N_LOCALE) public locale: L10nLocale,
+    private translation: L10nTranslationService,
     private titleService: Title) { }
 
   ngOnInit() {
-    this.titleService.setTitle('Logowanie - Szpek.pl')
+    this.titleTranslationSubscribtion = this.translation.onChange().subscribe(() => {
+      const title = this.translation.translate('logIn') + " - " + this.translation.translate('appName');
+      this.titleService.setTitle(title);
+    });
 
     this.loginForm = this.formBuilder.group({
       username: ['', Validators.required],
       password: ['', Validators.required]});
+  }
+
+  ngOnDestroy() {
+    this.titleTranslationSubscribtion.unsubscribe();
   }
 
   onSubmit() {
@@ -29,7 +43,7 @@ export class LoginComponent implements OnInit {
       return;
     }
 
-    var userLogin = <UserLogin>{
+    const userLogin = <UserLogin> {
       username: this.loginForm.controls.username.value,
       password: this.loginForm.controls.password.value
     };

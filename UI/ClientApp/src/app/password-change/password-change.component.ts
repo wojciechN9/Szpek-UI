@@ -1,10 +1,11 @@
-import { OnInit, Component } from "@angular/core";
-import { FormGroup, FormBuilder, Validators, AbstractControl } from "@angular/forms";
+import { OnInit, Component, Inject } from "@angular/core";
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { Router, ActivatedRoute } from "@angular/router";
 import { AuthenticationService } from "../utils/authentication/authentication.service";
 import { UserPasswordReset } from "./user-password-reset.type";
 import { MustMatch } from "../utils/input-error/must-match.validator";
 import { PasswordValidator } from "../utils/input-error/password.validator";
+import { L10N_LOCALE, L10nLocale } from "angular-l10n";
 
 @Component({
   selector: 'password-change',
@@ -19,6 +20,7 @@ export class PasswordChangeComponent implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router,
     private route: ActivatedRoute,
+    @Inject(L10N_LOCALE) public locale: L10nLocale,
     private authenticationService: AuthenticationService) { }
 
   ngOnInit() {

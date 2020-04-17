@@ -3,25 +3,25 @@ import { AirQualityEnum } from "../../location-meassurements/air-quality.type";
 export function getAirQualityText(airQuality: AirQualityEnum) {
   switch (airQuality) {
     case AirQualityEnum.VeryGood: {
-      return "Bardzo dobry";
+      return "veryGood";
     }
     case AirQualityEnum.Good: {
-      return "Dobry";
+      return "good";
     }
     case AirQualityEnum.Ok: {
-      return "Umiarkowany";
+      return "ok";
     }
     case AirQualityEnum.Poor: {
-      return "Dostateczny";
+      return "poor";
     }
     case AirQualityEnum.Bad: {
-      return "Zły";
+      return "bad";
     }
     case AirQualityEnum.VeryBad: {
-      return "Bardzo zły";
+      return "veryBad";
     }
     case AirQualityEnum.Error: {
-      return "Błąd pomiaru";
+      return "measurementError";
     }
   }
 }
@@ -53,9 +53,9 @@ export function getAirQualityColor(airQuality: AirQualityEnum) {
 }
 
 export function getAirQualityColorInRgba(airQuality: AirQualityEnum) {
-  var hexColor = getAirQualityColor(airQuality);
+  const hexColor = getAirQualityColor(airQuality);
 
-  var c;
+  let c;
   if (/^#([A-Fa-f0-9]{3}){1,2}$/.test(hexColor)) {
     c = hexColor.substring(1).split('');
     if (c.length == 3) {

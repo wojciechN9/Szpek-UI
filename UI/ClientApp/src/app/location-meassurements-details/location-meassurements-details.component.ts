@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { getAirQualityText, getAirQualityColor } from '../utils/enum/air-quality';
 import { AirQualityEnum } from '../location-meassurements/air-quality.type';
@@ -10,6 +10,8 @@ import { Title } from '@angular/platform-browser';
 import { MeassurementDetails } from './meassurement-details.type';
 import { LocationMeassurementsDetails } from './location-meassurements-details.type';
 import { SidebarService } from '../utils/sidebar-service/sidebar-service';
+import { L10N_LOCALE, L10nLocale, L10nTranslationService } from 'angular-l10n';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'location-meassurements-details',
@@ -17,6 +19,7 @@ import { SidebarService } from '../utils/sidebar-service/sidebar-service';
   styleUrls: ['../app.component.css']
 })
 export class LocationMeassurementsDetailsComponent implements OnInit, OnDestroy {
+  private titleTranslationSubscribtion: Subscription;
   public locationMeassurements: LocationMeassurementsDetails;
   public currentMeassurement: MeassurementDetails;
   public pm10Meassurements: MeassurementChart[];
@@ -24,6 +27,17 @@ export class LocationMeassurementsDetailsComponent implements OnInit, OnDestroy 
   public id: number;
   favouritesIds: Array<number>;
   loaderActive = true;
+
+  constructor(
+    private meassurementsService: MeassurementsHttpService,
+    private route: ActivatedRoute,
+    private favouriteLocations: FavouriteLocationsService,
+    @Inject(L10N_LOCALE) public locale: L10nLocale,
+    private translation: L10nTranslationService,
+    private titleService: Title,
+    private sidebarService: SidebarService) {
+    this.sidebarService.showSidebar();
+  }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -35,31 +49,27 @@ export class LocationMeassurementsDetailsComponent implements OnInit, OnDestroy 
       this.currentMeassurement = this.locationMeassurements.meassurements[0];
       this.pm10Meassurements = this.convertToPM10(this.locationMeassurements.meassurements);
       this.pm25Meassurements = this.convertToPM25(this.locationMeassurements.meassurements);
-      this.titleService.setTitle(this.locationMeassurements.address.city + ' - Jakość i stan powietrza - Szpek.pl');
       this.loaderActive = false;
-    });
+
+      this.titleTranslationSubscribtion = this.translation.onChange().subscribe(() => {
+        const title = this.locationMeassurements.address.city + ' - ' + this.translation.translate('airQuality') + " - " + this.translation.translate('appName');
+        this.titleService.setTitle(title);
+      });
+    });        
 
     this.favouritesIds = this.favouriteLocations.getFavouriteLocationsIds();
-    this.sidebarService.showSidebar();
   }
 
   ngOnDestroy() {
     this.sidebarService.hideSidebar();
-  }
-
-  constructor(
-    private meassurementsService: MeassurementsHttpService,
-    private route: ActivatedRoute,
-    private favouriteLocations: FavouriteLocationsService,
-    private titleService: Title,
-    private sidebarService: SidebarService) {
+    this.titleTranslationSubscribtion.unsubscribe();
   }
 
   orderMeassurementsByDateTimeDesc(locationMeassurements: LocationMeassurementsDetails) {
     locationMeassurements.meassurements = locationMeassurements.meassurements.sort((a, b) => {
       if (a.periodTo < b.periodTo) { return 1; }
       if (a.periodTo > b.periodTo) { return -1; }
-      if (a.periodTo == b.periodTo) { return 0; }
+      if (a.periodTo === b.periodTo) { return 0; }
     });
 
     return locationMeassurements;

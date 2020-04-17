@@ -1,12 +1,12 @@
 <div class="text-danger" *ngIf="control && control.errors && (control.dirty || control.touched)">
-  <div *ngIf="control.errors.required"><small>This field is required</small></div>
+  <div *ngIf="control.errors.required"><small>{{ 'thisFieldIsRequired' | translateAsync }}</small></div>
   <div *ngIf="control.errors.unique"><small>{{control.errors.unique}}</small></div>
   <div *ngIf="control.errors.lessThan"><small>{{control.errors.maxLength}}</small></div>
   <div *ngIf="control.errors.greaterThan"><small>{{control.errors.greaterThan}}</small></div>
-  <div *ngIf="control.errors.minlength"><small>Minimalna liczba znaków wynosi {{control.errors.minlength.requiredLength}}</small></div>
-  <div *ngIf="control.errors.maxlength"><small>Maksymalna liczba znaków wynosi {{control.errors.maxlength.requiredLength}}</small></div>
-  <div *ngIf="control.errors.email"><small>Podaj poprawny format email</small></div>
+  <div *ngIf="control.errors.minlength"><small>{{ 'minimumNumberOfCharactersIs' | translateAsync }} {{control.errors.minlength.requiredLength}}</small></div>
+  <div *ngIf="control.errors.maxlength"><small>{{ 'maximumNumberOfCharactersIs' | translateAsync }} {{control.errors.maxlength.requiredLength}}</small></div>
+  <div *ngIf="control.errors.email"><small> {{ 'enterAValidEmailFormat' | translateAsync }}</small></div>
   <div *ngIf="control.errors.mobile"><small>{{control.errors.mobile}}</small></div>
-  <div *ngIf="control.errors.mustMatch"><small>Hasła muszą być takie same</small></div>
-  <div *ngIf="control.errors.passwordStrength"><small>Hasło musi mieć przynajmniej jedną cyfrę, wielką, małą litere i znak specjalny</small></div>
+  <div *ngIf="control.errors.mustMatch"><small>{{ 'passwordsMustBeTheSame' | translateAsync }}</small></div>
+  <div *ngIf="control.errors.passwordStrength"><small>{{ 'passwordMustHaveAtLeastOneNumberUppercaseLetterLowercaseLetterAndSpecialCharacter' | translateAsync }}</small></div>
 </div>

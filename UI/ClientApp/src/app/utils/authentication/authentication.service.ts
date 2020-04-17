@@ -8,6 +8,7 @@ import { UserRemindPassword } from '../../password-remind/user-remind-password.t
 import { UserPasswordReset } from '../../password-change/user-password-reset.type';
 import { User } from '../../admin/users/user.type';
 import { UserCreate } from '../../admin/users/user-create.type';
+import { UserLogin } from '../../login/userLogin.type';
 
 @Injectable()
 export class AuthenticationService {
