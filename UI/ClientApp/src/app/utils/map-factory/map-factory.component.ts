@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, OnChanges, SimpleChanges, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, Input, OnChanges, ViewChild, AfterViewInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { LocationModalComponent } from './location-modal/location-modal.component';
 
@@ -7,7 +7,7 @@ import OlXYZ from 'ol/source/XYZ';
 import OlTileLayer from 'ol/layer/Tile';
 import OlView from 'ol/View';
 import { fromLonLat, getTransform } from 'ol/proj';
-import { Style, Circle, Stroke, Fill } from 'ol/Style';
+import { Style, Circle, Stroke, Fill } from 'ol/style';
 import VectorSource from 'ol/source/Vector';
 import Feature from 'ol/Feature';
 import Point from 'ol/geom/Point';
@@ -39,16 +39,16 @@ export class MapFactoryComponent implements OnChanges, AfterViewInit {
   popup: Overlay;
   tooltip: any;
 
+  constructor(
+    private modalService: NgbModal) {
+  }
+
   ngOnChanges() {
     this.createMap(this.locationsMeassurements);
   }
 
   ngAfterViewInit(): void {
     this.onSourceTitlesLoading();
-  }
-
-  constructor(
-    private modalService: NgbModal) {
   }
 
   createMap(locationsMeassurements: LocationMeassurements[]) {
@@ -83,9 +83,8 @@ export class MapFactoryComponent implements OnChanges, AfterViewInit {
 
     if (this.modalOnClick) {
       this.createOnMapClickEvent();
+      this.createOnPointerMoveEvent();
     }
-
-    this.createOnPointerMoveEvent();
   }
 
   createOnMapClickEvent() {
@@ -109,7 +108,7 @@ export class MapFactoryComponent implements OnChanges, AfterViewInit {
 
   createOnPointerMoveEvent() {
     this.map.on('pointermove', (evt) => {
-      var feature = this.map.forEachFeatureAtPixel(evt.pixel, function (feature, layer) {
+      let feature = this.map.forEachFeatureAtPixel(evt.pixel, function (feature, layer) {
         return feature;
       });
 
@@ -129,20 +128,20 @@ export class MapFactoryComponent implements OnChanges, AfterViewInit {
   }
 
   getLocationLayers(locationsMeassurements: LocationMeassurements[]) {
-    var layers = new Array<LayerVector>();
-    var transform = getTransform('EPSG:4326', 'EPSG:3857');
+    let layers = new Array<LayerVector>();
+    let transform = getTransform('EPSG:4326', 'EPSG:3857');
 
     for (let quality in getEnumValues(AirQualityEnum)) {
-      var qualityLocations = locationsMeassurements.filter(l => l.meassurements[0].airQuality === +quality);
+      let qualityLocations = locationsMeassurements.filter(l => l.meassurements[0].airQuality === +quality);
 
       if (qualityLocations.length !== 0) {
-        var circleStyle = this.getCircleStyle(getAirQualityColor(+quality));
-        var locationsSource = new VectorSource();
+        let circleStyle = this.getCircleStyle(getAirQualityColor(+quality));
+        let locationsSource = new VectorSource();
 
-        for (var i = 0; i < qualityLocations.length; i++) {
-          var feature = new Feature();
-          var coordinate = transform([qualityLocations[i].address.longitude, qualityLocations[i].address.latitude]);
-          var geometry = new Point(coordinate);
+        for (let i = 0; i < qualityLocations.length; i++) {
+          let feature = new Feature();
+          let coordinate = transform([qualityLocations[i].address.longitude, qualityLocations[i].address.latitude]);
+          let geometry = new Point(coordinate);
           feature.setGeometry(geometry);
 
           feature.setProperties(this.setFeatureProperties(qualityLocations[i]));
@@ -187,8 +186,8 @@ export class MapFactoryComponent implements OnChanges, AfterViewInit {
   }
 
   fitToAllLocations(locationsLayer: any[]) {
-    var extent = createEmpty();
-    for (var i = 0; i < locationsLayer.length; i++) {
+    let extent = createEmpty();
+    for (let i = 0; i < locationsLayer.length; i++) {
       extend(extent, locationsLayer[i].getSource().getExtent());
     }
 

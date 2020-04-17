@@ -20,7 +20,7 @@
         <li class="nav-item" [routerLinkActive]='["link-active"]'>
           <a class="nav-link text-uppercase" [routerLink]='["/contact"]'>{{ 'contact' | translateAsync }}</a>
         </li>
-        <li *ngIf="isUserLogged" class="nav-item" [routerLinkActive]='["link-active"]'>
+        <li *ngIf="currentUser" class="nav-item" [routerLinkActive]='["link-active"]'>
           <a class="nav-link text-uppercase" [routerLink]='["/dashboard"]'></a>
         </li>
         <li class="nav-item" [routerLinkActive]='["link-active"]'>

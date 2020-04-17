@@ -3,8 +3,7 @@ import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule, UrlSerializer } from '@angular/router';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { library } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { faStar, faClock } from '@fortawesome/free-solid-svg-icons';
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './utils/nav-menu/nav-menu.component';
@@ -163,8 +162,8 @@ import { LocalisationDropdown } from './utils/localisation-dropdown/localisation
   entryComponents: [LocationModalComponent]
 })
 export class AppModule {
-  constructor() {
-    library.add(faStar, faClock);
+  constructor(library: FaIconLibrary) {
+    library.addIcons(faStar, faClock);
     registerLocaleData(localePl);
   }
 }

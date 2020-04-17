@@ -31,8 +31,7 @@ export class NavMenuComponent implements OnInit {
     this.isExpanded = !this.isExpanded;
   }
 
-  //TODO add dropdown with flags
-  //TODO fix ol map warning, map does not work on click on element
+
   //TODO style app height 100%
   //TODO create a folder for pages and cmponents and services
   //TODO create a separate file for each language
