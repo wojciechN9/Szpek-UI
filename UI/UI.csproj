@@ -75,6 +75,8 @@
     <None Remove="ClientApp\src\app\password-remind\remind-password.component.ts" />
     <None Remove="ClientApp\src\app\password-remind\user-remind-password.type.ts" />
     <None Remove="ClientApp\src\app\text-resources.ts" />
+    <None Remove="ClientApp\src\app\text-resources\en-text-resources.ts" />
+    <None Remove="ClientApp\src\app\text-resources\pl-text-resources.ts" />
     <None Remove="ClientApp\src\app\utils\authentication\auth-user.type.ts" />
     <None Remove="ClientApp\src\app\utils\authentication\auth.guard.ts" />
     <None Remove="ClientApp\src\app\utils\authentication\authentication.service.ts" />
@@ -134,7 +136,8 @@
     <TypeScriptCompile Include="ClientApp\src\app\password-remind\remind-password-ok\remind-password-ok.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\password-remind\remind-password.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\password-remind\user-remind-password.type.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\text-resources.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\text-resources\en-text-resources.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\text-resources\pl-text-resources.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\utils\http-services\locations.http.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\utils\http-services\meassurements.http.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\contact\contact.component.ts" />
