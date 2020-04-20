@@ -19,7 +19,9 @@
       <fa-icon [icon]="['fas', 'clock']"></fa-icon> {{currentMeassurement?.periodTo | date:'HH:mm'}}
     </div>
     <div class="col-md-6">
-      <map-factory *ngIf="locationMeassurements" [locationsMeassurements]="[locationMeassurements]" [modalOnClick]="false"></map-factory>
+      <div style="min-height: 200px; height: 100%">
+        <map-factory *ngIf="locationMeassurements" [locationsMeassurements]="[locationMeassurements]" [modalOnClick]="false"></map-factory>
+      </div>
     </div>
   </div>
   <div class="row pt-4 pl-4">
