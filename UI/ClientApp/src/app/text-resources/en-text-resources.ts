@@ -9,6 +9,7 @@ export const enTextResources = {
   contact: "Contact",
   contactInfo: "The most convenient way to contact us is to write a message on the Szpek.pl funpage on Facebook. The link to it is located on the sidebar",
   currentAirQuality: "Current air quality",
+  dashboard: "Dashboard",
   email: "Email",
   emailHasBeenSended: "Email has been sended",
   enterAValidEmailFormat: "Enter a valid email format",
