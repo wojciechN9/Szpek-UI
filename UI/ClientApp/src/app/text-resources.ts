@@ -22,7 +22,7 @@ export const textResources = {
     ifYouHaveEnteredTheCorrectEmailWeSendLinkToResetThePassword: "If you have entered the correct email, we send a link to reset the password",
     last24hours: "Last 24 hours",
     legend: "Legend",
-    legendInfo: "The table shows the air level corresponding to the level of smog in the air. The compartments are closed on the left side. Information on air quality levels comes from the Polish Environmental Protection Inspectorate",
+    legendInfo: "The table shows the air level corresponding to the level of smog in the air. The intervals are closed on the left side. Information of air quality levels comes from the Polish Inspectorate for Environmental Protection",
     likeUsOnFacebook: "Like us on Facebook",
     logIn: "Log in",
     logOut: "Log out",
