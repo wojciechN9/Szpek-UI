@@ -27,7 +27,7 @@
       <tr *ngFor="let sensor of sensorOwner.sensors">
         <td>{{sensor.code}}</td>
         <td class="text-center"><input type="checkbox" [checked]="sensor.isPrivate" disabled="disabled" /></td>
-        <td class="text-center"><a [routerLink]="['/userLocations/', sensor.activeLocationId]" [routerLinkActive]='["link-active"]'>>></a></td>
+        <td class="text-center"><a [routerLink]="['/dashboard/userLocations/', sensor.activeLocationId]" [routerLinkActive]='["link-active"]'>>></a></td>
       </tr>
     </tbody>
   </table>
