@@ -11,17 +11,17 @@ import { AuthenticationService } from "../../utils/authentication/authentication
 })
 export class UsersComponent implements OnInit {
   public form: FormGroup;
-  public isAddFormVisible: boolean = false;
+  public isAddFormVisible = false;
   public users: Array<User>;
 
   constructor(
     private authenticationService: AuthenticationService,
-    private formBuilder: FormBuilder) {
-    authenticationService.getAll().subscribe(
-      result => { this.users = result });
-  }
+    private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
+    this.authenticationService.getAll().subscribe(
+      result => { this.users = result });
+
     this.form = this.formBuilder.group({
       username: ['', Validators.required],
       email: ['', Validators.required]

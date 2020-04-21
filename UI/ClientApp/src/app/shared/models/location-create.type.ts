@@ -1,4 +1,4 @@
-import { AddressCreate } from "./address-create.type";
+import { AddressCreate } from "../../admin/locations/address-create.type";
 
 export interface LocationCreate {
   sensorId: number;

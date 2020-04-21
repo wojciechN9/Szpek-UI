@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MeassurementsCalendarComponent } from '../utils/meassurements-calendar/meassurements-calendar.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { SensorsOwnersHttpService } from './services/sensor-owners.service';
+import { LocationsHttpService } from './services/locations.http.service';
 
 @NgModule({
   declarations: [
@@ -11,11 +13,17 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   imports: [
     CommonModule,
     NgbModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
+  ],
+  providers: [
+    SensorsOwnersHttpService,
+    LocationsHttpService
   ],
   exports: [
     MeassurementsCalendarComponent,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class SharedModule { }

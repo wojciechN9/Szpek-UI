@@ -13,6 +13,7 @@ import { AuthGuard } from '../utils/authentication/auth.guard';
 import { Role } from '../utils/authentication/role.type';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SharedModule } from '../shared/shared.module';
+import { SensorsHttpService } from './sensors.service';
 
 
 @NgModule({
@@ -40,6 +41,9 @@ import { SharedModule } from '../shared/shared.module';
       { path: 'locations', component: LocationsComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin] } },
       { path: 'locations/:id', component: LocationsDetailsComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin] } },
     ]),
+  ],
+  providers: [
+    SensorsHttpService
   ],
   exports: [
   ]

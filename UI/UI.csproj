@@ -108,12 +108,12 @@
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\src\app\admin\admin-panel\admin-panel.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\admin\locations\address-create.type.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\admin\locations\location-create.type.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\admin\locations\location.type.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\admin\locations\locations-details\location-details.type.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\shared\models\location-create.type.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\shared\models\location.type.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\shared\models\location-details.type.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\admin\locations\locations-details\locations-details.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\admin\locations\locations.component.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\admin\sensors-owners\sensor-owner-post.type.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\shared\models\sensor-owner-post.type.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\admin\sensors-owners\sensors-owners-details\sensors-owners-details.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\admin\sensors-owners\sensors-owners.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\admin\users\user-create.type.ts" />
@@ -138,12 +138,12 @@
     <TypeScriptCompile Include="ClientApp\src\app\password-remind\user-remind-password.type.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\text-resources\en-text-resources.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\text-resources\pl-text-resources.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\utils\http-services\locations.http.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\shared\services\locations.http.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\utils\http-services\meassurements.http.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\contact\contact.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\dashboard\dashboard.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\dashboard\my-sensors\my-sensors.component.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\admin\sensors-owners\sensor-owner.type.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\shared\models\sensor-owner.type.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\admin\sensors\sensor.type.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\legend\legend.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\location-map\location-map.component.ts" />
@@ -167,8 +167,8 @@
     <TypeScriptCompile Include="ClientApp\src\app\utils\favourite-locations-service\favourite-locations-service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\utils\http-interceptor\error-page\error-page.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\utils\http-interceptor\http-interceptor.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\utils\http-services\sensor-owners.service.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\utils\http-services\sensors.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\shared\services\sensor-owners.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\admin\sensors.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\utils\input-error\input-error.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\utils\input-error\must-match.validator.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\utils\input-error\password.validator.ts" />

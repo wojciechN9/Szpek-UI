@@ -30,10 +30,7 @@ import { MeassurementsChartComponent } from './utils/meassurements-chart/meassur
 import { ChartsModule } from 'ng2-charts';
 import { AuthenticationService } from './utils/authentication/authentication.service';
 import { AuthGuard } from './utils/authentication/auth.guard';
-import { SensorsOwnersHttpService } from './utils/http-services/sensor-owners.service';
 import { MeassurementsHttpService } from './utils/http-services/meassurements.http.service';
-import { SensorsHttpService } from './utils/http-services/sensors.service';
-import { LocationsHttpService } from './utils/http-services/locations.http.service';
 import { RemindPasswordOkComponent } from './password-remind/remind-password-ok/remind-password-ok.component';
 import { RemindPasswordComponent } from './password-remind/remind-password.component';
 import { PasswordChangeComponent } from './password-change/password-change.component';
@@ -104,10 +101,7 @@ import { LocalisationDropdown } from './utils/localisation-dropdown/localisation
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: HttpConfigInterceptor, multi: true },
     { provide: UrlSerializer, useClass: TokenUrlSerializer },
-    SensorsOwnersHttpService,
     MeassurementsHttpService,
-    SensorsHttpService,
-    LocationsHttpService,
     NgbActiveModal,
     FavouriteLocationsService,
     DatePipe,

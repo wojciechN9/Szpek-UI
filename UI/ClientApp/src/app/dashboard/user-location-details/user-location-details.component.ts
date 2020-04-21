@@ -1,7 +1,7 @@
 import { OnInit, Component } from "@angular/core";
-import { LocationDetails } from "../../admin/locations/locations-details/location-details.type";
-import { LocationsHttpService } from "../../utils/http-services/locations.http.service";
 import { ActivatedRoute } from "@angular/router";
+import { LocationsHttpService } from "../../shared/services/locations.http.service";
+import { LocationDetails } from "../../shared/models/location-details.type";
 
 @Component({
   selector: 'user-location-details',
@@ -16,7 +16,7 @@ export class UserLocationDetailsComonent implements OnInit {
     private route: ActivatedRoute) { }
 
   ngOnInit() {
-    var locationId = +this.route.snapshot.params['id'];
+   const locationId = +this.route.snapshot.params['id'];
     this.locationsService.getLocationById(locationId).subscribe(
       result => {
         this.location = result;

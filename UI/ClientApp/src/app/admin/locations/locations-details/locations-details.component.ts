@@ -1,8 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
-import { LocationsHttpService } from "../../../utils/http-services/locations.http.service";
 import { ActivatedRoute } from "@angular/router";
-import { LocationDetails } from "./location-details.type";
+import { LocationsHttpService } from "../../../shared/services/locations.http.service";
+import { LocationDetails } from "../../../shared/models/location-details.type";
 
 @Component({
   selector: 'locations-details',
