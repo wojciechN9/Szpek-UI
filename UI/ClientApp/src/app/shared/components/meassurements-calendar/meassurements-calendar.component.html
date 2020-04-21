@@ -1,0 +1,33 @@
+<div class="row">
+  <div class="col-lg-3">
+    <ngb-datepicker #d [(ngModel)]="currentCalendarDay" (select)="onDateSelected($event)" [maxDate]="initialCalendarDay"></ngb-datepicker>
+  </div>
+  <div class="col-lg-9">
+    <table *ngIf="calendarMeassurements" class="table table-bordered">
+      <thead class="thead-light">
+        <tr>
+          <th scope="col">Data pomiaru</th>
+          <th scope="col">Stan Powietrza</th>
+          <th scope="col">Stan PM10</th>
+          <th scope="col">Wartość PM10</th>
+          <th scope="col">Stan PM2.5</th>
+          <th scope="col">Wartość PM2.5</th>
+          <th scope="col">Wartość PM1</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let meassurement of calendarMeassurements">
+          <td>{{meassurement.periodTo | date:'dd-MM-yyyy, HH:mm'}}</td>
+          <td><b [ngStyle]="{'color': getQualityColor(meassurement?.airQuality)}">{{ getQualityText(meassurement?.airQuality) }}</b></td>
+          <td><b [ngStyle]="{'color': getQualityColor(meassurement?.pm10Quality)}">{{ getQualityText(meassurement?.pm10Quality) }}</b></td>
+          <td>{{meassurement.pm10Value | number:'1.0-2':'pl'}}</td>
+          <td><b [ngStyle]="{'color': getQualityColor(meassurement?.pm25Quality)}">{{ getQualityText(meassurement?.pm25Quality) }}</b></td>
+          <td>{{meassurement.pm25Value | number:'1.0-2':'pl'}}</td>
+          <td>{{meassurement.pm1Value | number:'1.0-2':'pl'}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <p *ngIf="calendarMeassurements?.length === 0">Brak pomiarów w tym dniu</p>
+    <img *ngIf="loaderActive" class="loader" src="assets/spinner-200px.svg" />
+  </div>
+</div>

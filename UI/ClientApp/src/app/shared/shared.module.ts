@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MeassurementsCalendarComponent } from '../utils/meassurements-calendar/meassurements-calendar.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SensorsOwnersHttpService } from './services/sensor-owners.service';
 import { LocationsHttpService } from './services/locations.http.service';
+import { MeassurementsCalendarComponent } from './components/meassurements-calendar/meassurements-calendar.component';
 
 @NgModule({
   declarations: [

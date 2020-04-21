@@ -96,7 +96,7 @@
     <None Remove="ClientApp\src\app\utils\localisation-dropdown\country.type.ts" />
     <None Remove="ClientApp\src\app\utils\localisation-dropdown\localisation-dropdown.component.ts" />
     <None Remove="ClientApp\src\app\utils\map-factory\location-modal\location-modal.component.ts" />
-    <None Remove="ClientApp\src\app\utils\meassurements-calendar\meassurements-calendar.component.ts" />
+    <None Remove="ClientApp\src\app\shared\components\meassurements-calendar\meassurements-calendar.component.ts" />
     <None Remove="ClientApp\src\app\utils\meassurements-chart.ts" />
     <None Remove="ClientApp\src\app\utils\meassurements-chart\meassurement-chart.type.ts" />
     <None Remove="ClientApp\src\app\utils\progress-bar\progress-bar.component.ts" />
@@ -141,7 +141,7 @@
     <TypeScriptCompile Include="ClientApp\src\app\shared\services\locations.http.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\utils\http-services\meassurements.http.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\contact\contact.component.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\dashboard\dashboard.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\dashboard\dashboard-panel\dashboard.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\dashboard\my-sensors\my-sensors.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\shared\models\sensor-owner.type.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\admin\sensors\sensor.type.ts" />
@@ -175,7 +175,7 @@
     <TypeScriptCompile Include="ClientApp\src\app\utils\localisation-dropdown\country.type.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\utils\localisation-dropdown\localisation-dropdown.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\utils\map-factory\location-modal\location-modal.component.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\utils\meassurements-calendar\meassurements-calendar.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\shared\components\meassurements-calendar\meassurements-calendar.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\utils\meassurements-chart\meassurement-chart.type.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\utils\meassurements-chart\meassurements-chart.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\utils\progress-bar\progress-bar.component.ts" />

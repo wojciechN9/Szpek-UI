@@ -1,36 +1,42 @@
 <h2>Lokalizacja sensora</h2>
 <div *ngIf="location" class="form-group">
   <div class="row">
-    <label class="col-sm-2"><b>Kod sensora</b></label>
-    <div class="col-sm-10"><p>{{location.sensorCode}}</p></div>
-  </div>
-  <div class="row">
-    <label class="col-sm-2"><b>Miasto</b></label>
-    <div class="col-sm-10"><p>{{location.address.city}}</p></div>
-  </div>
-  <div class="row">
-    <label class="col-sm-2"><b>Ulica</b></label>
-    <div class="col-sm-10"><p>{{location.address.street}}</p></div>
-  </div>
-  <div class="row">
-    <label class="col-sm-2"><b>Kod pocztowy</b></label>
-    <div class="col-sm-10"><p>{{location.address.postCode}}</p></div>
-  </div>
-  <div class="row">
-    <label class="col-sm-2"><b>Województwo</b></label>
-    <div class="col-sm-10"><p>{{location.address.voivodeship}}</p></div>
-  </div>
-  <div class="row">
-    <label class="col-sm-2"><b>Kod kraju</b></label>
-    <div class="col-sm-10"><p>{{location.address.countryCode}}</p></div>
-  </div>
-  <div class="row">
-    <label class="col-sm-2"><b>Szerokość geograficzna</b></label>
-    <div class="col-sm-10"><p>{{location.address.latitude}}</p></div>
-  </div>
-  <div class="row">
-    <label class="col-sm-2"><b>Długość geograficzna</b></label>
-    <div class="col-sm-10"><p>{{location.address.longitude}}</p></div>
+    <div class="col-md-6">
+      <div class="row">
+        <label class="col-sm-6"><b>Kod sensora</b></label>
+        <div class="col-sm-6"><p>{{location.sensorCode}}</p></div>
+      </div>
+      <div class="row">
+        <label class="col-sm-6"><b>Miasto</b></label>
+        <div class="col-sm-6"><p>{{location.address.city}}</p></div>
+      </div>
+      <div class="row">
+        <label class="col-sm-6"><b>Ulica</b></label>
+        <div class="col-sm-6"><p>{{location.address.street}}</p></div>
+      </div>
+      <div class="row">
+        <label class="col-sm-6"><b>Kod pocztowy</b></label>
+        <div class="col-sm-6"><p>{{location.address.postCode}}</p></div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="row">
+        <label class="col-sm-6"><b>Województwo</b></label>
+        <div class="col-sm-6"><p>{{location.address.voivodeship}}</p></div>
+      </div>
+      <div class="row">
+        <label class="col-sm-6"><b>Kod kraju</b></label>
+        <div class="col-sm-6"><p>{{location.address.countryCode}}</p></div>
+      </div>
+      <div class="row">
+        <label class="col-sm-6"><b>Szerokość geograficzna</b></label>
+        <div class="col-sm-6"><p>{{location.address.latitude}}</p></div>
+      </div>
+      <div class="row">
+        <label class="col-sm-6"><b>Długość geograficzna</b></label>
+        <div class="col-sm-6"><p>{{location.address.longitude}}</p></div>
+      </div>
+    </div>
   </div>
 </div>
 <h4 class="mt-4">Historia pomiarów</h4>

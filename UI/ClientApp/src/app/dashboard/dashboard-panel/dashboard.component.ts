@@ -1,8 +1,8 @@
 import { Component, OnInit } from "@angular/core";
-import { AuthenticationService } from "../utils/authentication/authentication.service";
-import { Role } from "../utils/authentication/role.type";
-import { AuthUser } from "../utils/authentication/auth-user.type";
 import { Title } from "@angular/platform-browser";
+import { AuthUser } from "../../utils/authentication/auth-user.type";
+import { AuthenticationService } from "../../utils/authentication/authentication.service";
+import { Role } from "../../utils/authentication/role.type";
 
 @Component({
   selector: 'dashboard',
