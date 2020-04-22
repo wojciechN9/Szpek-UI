@@ -1,10 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Observable } from "rxjs";
 import { Injectable } from "@angular/core";
-import { environment } from '../../environments/environment.prod';
 import { SensorCreate } from './sensors/sensors-create.type';
 import { Sensor } from './sensors/sensor.type';
 import { SensorDetails } from './sensors/sensors-details/sensor-details.type';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class SensorsHttpService {
