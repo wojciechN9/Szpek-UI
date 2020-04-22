@@ -1,9 +1,9 @@
 import { OnInit, Component, Inject } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
-import { AuthenticationService } from "../utils/authentication/authentication.service";
 import { UserRemindPassword } from "./user-remind-password.type";
 import { L10N_LOCALE, L10nLocale } from "angular-l10n";
+import { AuthenticationService } from "../auth/authentication.service";
 
 @Component({
   selector: 'remind-password',

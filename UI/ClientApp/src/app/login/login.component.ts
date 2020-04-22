@@ -1,11 +1,11 @@
 import { OnInit, Component, OnDestroy, Inject } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
-import { AuthenticationService } from "../utils/authentication/authentication.service";
 import { Title } from "@angular/platform-browser";
 import { UserLogin } from "./userLogin.type";
 import { Subscription } from "rxjs";
 import { L10N_LOCALE, L10nLocale, L10nTranslationService } from "angular-l10n";
+import { AuthenticationService } from "../auth/authentication.service";
 
 @Component({
   selector: 'login',

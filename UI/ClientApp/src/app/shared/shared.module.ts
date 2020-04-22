@@ -5,12 +5,14 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SensorsOwnersHttpService } from './services/sensor-owners.service';
 import { LocationsHttpService } from './services/locations.http.service';
 import { MeassurementsCalendarComponent } from './components/meassurements-calendar/meassurements-calendar.component';
+import { AuthModule } from '../auth/auth.module';
 
 @NgModule({
   declarations: [
     MeassurementsCalendarComponent
   ],
   imports: [
+    AuthModule,
     CommonModule,
     NgbModule,
     FormsModule,

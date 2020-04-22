@@ -1,8 +1,8 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { AuthenticationService } from '../authentication/authentication.service';
 import { Router } from '@angular/router';
-import { AuthUser } from '../authentication/auth-user.type';
 import { L10nLocale, L10N_LOCALE } from 'angular-l10n';
+import { AuthenticationService } from '../../auth/authentication.service';
+import { AuthUser } from '../../auth/auth-user.type';
 
 @Component({
   selector: 'app-nav-menu',
@@ -30,11 +30,6 @@ export class NavMenuComponent implements OnInit {
   toggle() {
     this.isExpanded = !this.isExpanded;
   }
-
-
-  //TODO style app height 100%
-  //TODO create a folder for pages and cmponents and services
-  //TODO create a separate file for each language
 
   public logout() {
     this.authenticationService.logout();

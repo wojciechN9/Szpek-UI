@@ -28,8 +28,6 @@ import { ContactComponent } from './contact/contact.component';
 import { CookieConsentComponent } from './utils/cookie-consent/cookie-consent.component';
 import { MeassurementsChartComponent } from './utils/meassurements-chart/meassurements-chart.component';
 import { ChartsModule } from 'ng2-charts';
-import { AuthenticationService } from './utils/authentication/authentication.service';
-import { AuthGuard } from './utils/authentication/auth.guard';
 import { MeassurementsHttpService } from './utils/http-services/meassurements.http.service';
 import { RemindPasswordOkComponent } from './password-remind/remind-password-ok/remind-password-ok.component';
 import { RemindPasswordComponent } from './password-remind/remind-password.component';
@@ -42,6 +40,7 @@ import { ProgressBarComponent } from './utils/progress-bar/progress-bar.componen
 import { L10nTranslationModule, L10nIntlModule, L10nLoader } from 'angular-l10n';
 import { l10nConfig, initL10n } from './l10n-config';
 import { LocalisationDropdown } from './utils/localisation-dropdown/localisation-dropdown.component';
+import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   declarations: [
@@ -71,6 +70,7 @@ import { LocalisationDropdown } from './utils/localisation-dropdown/localisation
     LocalisationDropdown
   ],
   imports: [
+    AuthModule,
     BrowserModule,
     HttpClientModule,
     FontAwesomeModule,
@@ -105,8 +105,6 @@ import { LocalisationDropdown } from './utils/localisation-dropdown/localisation
     NgbActiveModal,
     FavouriteLocationsService,
     DatePipe,
-    AuthenticationService,
-    AuthGuard,
     SidebarService,
     {
       provide: APP_INITIALIZER,

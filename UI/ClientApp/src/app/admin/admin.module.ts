@@ -9,11 +9,11 @@ import { SensorsOwnersDetailsComponent } from './sensors-owners/sensors-owners-d
 import { SensorsOwnersComponent } from './sensors-owners/sensors-owners.component';
 import { UsersComponent } from './users/users-component';
 import { RouterModule } from '@angular/router';
-import { AuthGuard } from '../utils/authentication/auth.guard';
-import { Role } from '../utils/authentication/role.type';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SharedModule } from '../shared/shared.module';
 import { SensorsHttpService } from './sensors.service';
+import { AuthGuard } from '../auth/auth.guard';
+import { Role } from '../auth/role.type';
 
 
 @NgModule({

@@ -2,10 +2,10 @@ import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import { User } from "../users/user.type";
-import { AuthenticationService } from "../../utils/authentication/authentication.service";
 import { SensorsOwnersHttpService } from "../../shared/services/sensor-owners.service";
 import { SensorOwnerPost } from "../../shared/models/sensor-owner-post.type";
 import { SensorOwner } from "../../shared/models/sensor-owner.type";
+import { AuthenticationService } from "../../auth/authentication.service";
 
 @Component({
   selector: 'sensors-owners',

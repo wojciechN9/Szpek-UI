@@ -6,8 +6,8 @@ import { DashboardComponent } from '../dashboard/dashboard-panel/dashboard.compo
 import { InstructionComponent } from '../dashboard/instruction/instruction.component';
 import { MySensorsComponent } from '../dashboard/my-sensors/my-sensors.component';
 import { UserLocationDetailsComonent } from '../dashboard/user-location-details/user-location-details.component';
-import { AuthGuard } from '../utils/authentication/auth.guard';
-import { Role } from '../utils/authentication/role.type';
+import { AuthGuard } from '../auth/auth.guard';
+import { Role } from '../auth/role.type';
 
 
 @NgModule({
