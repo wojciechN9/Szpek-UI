@@ -1,6 +1,7 @@
 {
-  "name": "UI",
-  "version": "0.0.0",
+  "name": "szpek-client-app",
+  "version": "0.96",
+  "author": "Wojciech Nastaj",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
