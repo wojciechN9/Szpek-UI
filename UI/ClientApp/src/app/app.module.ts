@@ -71,7 +71,7 @@ import { LocalisationDropdown } from './utils/localisation-dropdown/localisation
     LocalisationDropdown
   ],
   imports: [
-    BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
+    BrowserModule,
     HttpClientModule,
     FontAwesomeModule,
     NgbModule,
