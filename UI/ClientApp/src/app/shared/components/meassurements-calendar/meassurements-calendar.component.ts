@@ -1,9 +1,10 @@
-import { Component, Input, OnInit, OnChanges } from "@angular/core";
-import { MeassurementsHttpService } from "../http-services/meassurements.http.service";
-import { Meassurement } from "../../location-meassurements/meassurement.type";
+import { Component, Input, OnChanges } from "@angular/core";
 import { NgbDateStruct, NgbDate } from "@ng-bootstrap/ng-bootstrap";
-import { AirQualityEnum } from "../../location-meassurements/air-quality.type";
-import { getAirQualityText, getAirQualityColor } from "../enum/air-quality";
+import { Meassurement } from "../../../location-meassurements/meassurement.type";
+import { MeassurementsHttpService } from "../../../utils/http-services/meassurements.http.service";
+import { AirQualityEnum } from "../../../location-meassurements/air-quality.type";
+import { getAirQualityText, getAirQualityColor } from "../../../utils/enum/air-quality";
+
 
 @Component({
   selector: 'meassurements-calendar',

@@ -10,9 +10,9 @@ import {
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
-import { AuthenticationService } from '../authentication/authentication.service';
-import { AuthUser } from '../authentication/auth-user.type';
 import { L10nTranslationService } from 'angular-l10n';
+import { AuthUser } from '../../auth/auth-user.type';
+import { AuthenticationService } from '../../auth/authentication.service';
 
 @Injectable()
 export class HttpConfigInterceptor implements HttpInterceptor {

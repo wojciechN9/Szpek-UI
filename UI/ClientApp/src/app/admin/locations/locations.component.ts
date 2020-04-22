@@ -1,11 +1,11 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
-import { SensorsHttpService } from "../../utils/http-services/sensors.service";
 import { Sensor } from "../sensors/sensor.type";
-import { Location } from "./location.type";
-import { LocationCreate } from "./location-create.type";
-import { LocationsHttpService } from "../../utils/http-services/locations.http.service";
+import { SensorsHttpService } from "../sensors.service";
+import { LocationsHttpService } from "../../shared/services/locations.http.service";
+import { LocationCreate } from "../../shared/models/location-create.type";
+import { Location } from "../../shared/models/location.type";
 
 @Component({
   selector: 'locations',
@@ -13,7 +13,7 @@ import { LocationsHttpService } from "../../utils/http-services/locations.http.s
 })
 export class LocationsComponent implements OnInit {
   public form: FormGroup;
-  public isAddFormVisible: boolean = false;
+  public isAddFormVisible = false;
   public locations: Array<Location>;
   public sensors: Array<Sensor>;
 
@@ -21,15 +21,15 @@ export class LocationsComponent implements OnInit {
     private locationsService: LocationsHttpService,
     private sensorsService: SensorsHttpService,
     private formBuilder: FormBuilder,
-    private router: Router) {
-    locationsService.getLocations().subscribe(
-      result => { this.locations = result })
-
-    sensorsService.getSensors().subscribe(
-      result => { this.sensors = result });
-  }
+    private router: Router) { }
 
   ngOnInit(): void {
+    this.locationsService.getLocations().subscribe(
+      result => { this.locations = result })
+
+    this.sensorsService.getSensors().subscribe(
+      result => { this.sensors = result });
+
     this.form = this.formBuilder.group({
       sensorId: ['', Validators.required],
       address: this.formBuilder.group({

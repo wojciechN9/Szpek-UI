@@ -1,8 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { FormBuilder, Validators, FormGroup } from "@angular/forms";
-import { SensorsHttpService } from "../../../utils/http-services/sensors.service";
 import { SensorDetails } from "./sensor-details.type";
+import { SensorsHttpService } from "../../sensors.service";
 
 @Component({
   selector: 'sensors-details',

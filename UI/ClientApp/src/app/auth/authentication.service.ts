@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { environment } from '../../../environments/environment.prod';
 import { AuthUser } from './auth-user.type';
-import { UserRemindPassword } from '../../password-remind/user-remind-password.type';
-import { UserPasswordReset } from '../../password-change/user-password-reset.type';
-import { User } from '../../admin/users/user.type';
-import { UserCreate } from '../../admin/users/user-create.type';
-import { UserLogin } from '../../login/userLogin.type';
+import { environment } from '../../environments/environment';
+import { UserCreate } from '../admin/users/user-create.type';
+import { User } from '../admin/users/user.type';
+import { UserRemindPassword } from '../password-remind/user-remind-password.type';
+import { UserPasswordReset } from '../password-change/user-password-reset.type';
+import { UserLogin } from '../login/userLogin.type';
+
 
 @Injectable()
 export class AuthenticationService {

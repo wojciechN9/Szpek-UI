@@ -1,11 +1,11 @@
 import { Component, OnInit } from "@angular/core";
-import { SensorsOwnersHttpService } from "../../utils/http-services/sensor-owners.service";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import { Sensor } from "./sensor.type";
-import { SensorOwner } from "../sensors-owners/sensor-owner.type";
 import { SensorCreate } from "./sensors-create.type";
-import { SensorsHttpService } from "../../utils/http-services/sensors.service";
+import { SensorsHttpService } from "../sensors.service";
+import { SensorsOwnersHttpService } from "../../shared/services/sensor-owners.service";
+import { SensorOwner } from "../../shared/models/sensor-owner.type";
 
 @Component({
   selector: 'sensors',
@@ -13,7 +13,7 @@ import { SensorsHttpService } from "../../utils/http-services/sensors.service";
 })
 export class SensorsComponent implements OnInit {
   public form: FormGroup;
-  public isAddFormVisible: boolean = false;
+  public isAddFormVisible = false;
   public sensors: Array<Sensor>;
   public sensorsOwners: Array<SensorOwner>;
 
@@ -21,15 +21,15 @@ export class SensorsComponent implements OnInit {
     private sensorsService: SensorsHttpService,
     private sensorsOwnersService: SensorsOwnersHttpService,
     private formBuilder: FormBuilder,
-    private router: Router) {
-    sensorsService.getSensors().subscribe(
-      result => { this.sensors = result });
-
-    sensorsOwnersService.getSensorsOwners().subscribe(
-      result => { this.sensorsOwners = result });
-  }
+    private router: Router) { }
 
   ngOnInit(): void {
+    this.sensorsService.getSensors().subscribe(
+      result => { this.sensors = result });
+
+    this.sensorsOwnersService.getSensorsOwners().subscribe(
+      result => { this.sensorsOwners = result });
+
     this.form = this.formBuilder.group({
       code: ['', Validators.required],
       publicKey: ['', Validators.required],

@@ -1,0 +1,10 @@
+<div class="jumbotron">
+  <h1>Dashboard</h1>
+  <hr class="my-4">
+  <a *ngIf="isSensorOwner" class="nav-link" [routerLink]='["/dashboard/sensors/my"]'>Moje czujniki</a>
+  <a *ngIf="isSensorOwner" class="nav-link" [routerLink]='["/dashboard/instruction"]'>Instrukcja</a>
+  <div *ngIf="isAdmin">
+    <hr class="my-4">
+    <button [routerLink]='["/admin"]'>admin panel</button>
+  </div>
+</div>

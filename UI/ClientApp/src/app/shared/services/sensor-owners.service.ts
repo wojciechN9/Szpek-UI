@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
-import { environment } from "../../../environments/environment.prod";
 import { Observable } from "rxjs";
 import { Injectable } from '@angular/core';
-import { SensorOwner } from '../../admin/sensors-owners/sensor-owner.type';
-import { SensorOwnerPost } from '../../admin/sensors-owners/sensor-owner-post.type';
+import { SensorOwnerPost } from '../models/sensor-owner-post.type';
+import { SensorOwner } from '../models/sensor-owner.type';
+import { environment } from '../../../environments/environment';
 
 @Injectable()
 export class SensorsOwnersHttpService {

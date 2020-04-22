@@ -1,10 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { environment } from '../../../environments/environment.prod';
 import { LocationMeassurements } from '../../location-meassurements/location-meassurements.type';
 import { LocationMeassurementsDetails } from '../../location-meassurements-details/location-meassurements-details.type';
 import { Meassurement } from '../../location-meassurements/meassurement.type';
+import { environment } from '../../../environments/environment';
 
 @Injectable()
 export class MeassurementsHttpService {

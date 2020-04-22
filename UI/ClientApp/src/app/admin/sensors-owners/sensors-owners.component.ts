@@ -1,11 +1,11 @@
 import { Component, OnInit } from "@angular/core";
-import { SensorsOwnersHttpService } from "../../utils/http-services/sensor-owners.service";
-import { SensorOwner } from "./sensor-owner.type";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
-import { SensorOwnerPost } from "./sensor-owner-post.type";
 import { Router } from "@angular/router";
 import { User } from "../users/user.type";
-import { AuthenticationService } from "../../utils/authentication/authentication.service";
+import { SensorsOwnersHttpService } from "../../shared/services/sensor-owners.service";
+import { SensorOwnerPost } from "../../shared/models/sensor-owner-post.type";
+import { SensorOwner } from "../../shared/models/sensor-owner.type";
+import { AuthenticationService } from "../../auth/authentication.service";
 
 @Component({
   selector: 'sensors-owners',
@@ -13,7 +13,7 @@ import { AuthenticationService } from "../../utils/authentication/authentication
 })
 export class SensorsOwnersComponent implements OnInit {
   public form: FormGroup;
-  public isAddFormVisible: boolean = false;
+  public isAddFormVisible = false;
   public sensorsOwners: Array<SensorOwner>;
   public users: Array<User>;
 
@@ -21,15 +21,15 @@ export class SensorsOwnersComponent implements OnInit {
     private sensorsOwnersService: SensorsOwnersHttpService,
     private authenticationService: AuthenticationService,
     private formBuilder: FormBuilder,
-    private router: Router) {
-    sensorsOwnersService.getSensorsOwners().subscribe(
-      result => { this.sensorsOwners = result });
-
-    authenticationService.getUsersWithoutOwner().subscribe(
-      result => { this.users = result });
-  }
+    private router: Router) { }
 
   ngOnInit(): void {
+    this.sensorsOwnersService.getSensorsOwners().subscribe(
+      result => { this.sensorsOwners = result });
+
+    this.authenticationService.getUsersWithoutOwner().subscribe(
+      result => { this.users = result });
+
     this.form = this.formBuilder.group({
       userId: ['', Validators.required],
       name: ['', Validators.required],

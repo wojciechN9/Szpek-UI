@@ -1,5 +1,5 @@
 import { Owner } from "../owner.type";
-import { Location } from "../../locations/location.type";
+import { Location } from "../../../shared/models/location.type";
 
 export interface SensorDetails {
   id: number;

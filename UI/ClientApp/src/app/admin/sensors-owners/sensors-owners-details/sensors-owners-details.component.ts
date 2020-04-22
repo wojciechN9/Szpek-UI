@@ -1,8 +1,8 @@
-import { SensorsOwnersHttpService } from "../../../utils/http-services/sensor-owners.service";
-import { SensorOwner } from "../sensor-owner.type";
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { FormBuilder, Validators, FormGroup } from "@angular/forms";
+import { SensorsOwnersHttpService } from "../../../shared/services/sensor-owners.service";
+import { SensorOwner } from "../../../shared/models/sensor-owner.type";
 
 @Component({
   selector: 'sensors-owners-details',

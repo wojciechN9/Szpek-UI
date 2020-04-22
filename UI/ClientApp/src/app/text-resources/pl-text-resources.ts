@@ -9,6 +9,7 @@ export const plTextResources = {
   contact: "Kontakt",
   contactInfo: "Najwygodniej skontaktować się z nami przez napisanie wiadomości na funpage Szpek.pl na facebooku. Link do niego znajduje się na pasku",
   currentAirQuality: "Aktualna jakość powietrza",
+  dashboard: "Dashboard",
   email: "Email",
   emailHasBeenSended: "Email został wysłany",
   enterAValidEmailFormat: "Podaj poprawny format email",
