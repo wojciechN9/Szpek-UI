@@ -54,7 +54,7 @@ export class MapFactoryComponent implements OnChanges, AfterViewInit {
   createMap(locationsMeassurements: LocationMeassurements[]) {
     this.source = new OlXYZ({
       url: 'https://tile.osm.org/{z}/{x}/{y}.png',
-      attributions: ["Szpek.pl - I like it"],
+      attributions: ["Szpek.pl"],
       attributionsCollapsible: false
     });
 

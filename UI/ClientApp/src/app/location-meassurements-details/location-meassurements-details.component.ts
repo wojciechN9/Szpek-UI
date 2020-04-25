@@ -9,7 +9,6 @@ import { MeassurementsHttpService } from '../utils/http-services/meassurements.h
 import { Title } from '@angular/platform-browser';
 import { MeassurementDetails } from './meassurement-details.type';
 import { LocationMeassurementsDetails } from './location-meassurements-details.type';
-import { SidebarService } from '../utils/sidebar-service/sidebar-service';
 import { L10N_LOCALE, L10nLocale, L10nTranslationService } from 'angular-l10n';
 import { Subscription } from 'rxjs';
 
@@ -34,10 +33,7 @@ export class LocationMeassurementsDetailsComponent implements OnInit, OnDestroy 
     private favouriteLocations: FavouriteLocationsService,
     @Inject(L10N_LOCALE) public locale: L10nLocale,
     private translation: L10nTranslationService,
-    private titleService: Title,
-    private sidebarService: SidebarService) {
-    this.sidebarService.showSidebar();
-  }
+    private titleService: Title) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -61,7 +57,6 @@ export class LocationMeassurementsDetailsComponent implements OnInit, OnDestroy 
   }
 
   ngOnDestroy() {
-    this.sidebarService.hideSidebar();
     this.titleTranslationSubscribtion.unsubscribe();
   }
 

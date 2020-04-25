@@ -1,6 +1,5 @@
 import { Component, OnInit, OnDestroy, Inject } from "@angular/core";
 import { Title } from "@angular/platform-browser";
-import { SidebarService } from "../utils/sidebar-service/sidebar-service";
 import { L10nTranslationService, L10N_LOCALE, L10nLocale } from "angular-l10n";
 import { Subscription } from "rxjs";
 
@@ -13,12 +12,9 @@ export class ContactComponent implements OnInit, OnDestroy {
   private titleTranslationSubscribtion: Subscription;
 
   constructor(
-    private sidebarService: SidebarService,
     @Inject(L10N_LOCALE) public locale: L10nLocale,
     private translation: L10nTranslationService,
-    private titleService: Title) {
-      this.sidebarService.showSidebar();
-  }
+    private titleService: Title) { }
 
   ngOnInit(): void {
     this.titleTranslationSubscribtion = this.translation.onChange().subscribe(() => {
@@ -29,7 +25,6 @@ export class ContactComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.sidebarService.hideSidebar();
     this.titleTranslationSubscribtion.unsubscribe();
   }
 }

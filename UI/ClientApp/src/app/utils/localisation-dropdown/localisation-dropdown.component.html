@@ -1,5 +1,5 @@
 <div ngbDropdown display="dynamic" class="d-inline-block">
-  <button class="btn btn-primary" id="dropdownBasic" ngbDropdownToggle> <img class="country-image" src="{{ getFlag(currentLocale.language) }}" />  </button>
+  <button class="btn btn-dark" id="dropdownBasic" ngbDropdownToggle> <img class="country-image" src="{{ getFlag(currentLocale.language) }}" />  </button>
   <div ngbDropdownMenu aria-labelledby="dropdownBasic" class="flags-dropdown"> 
     <button *ngFor="let item of schema" ngbDropdownItem (click)="setLocale(item.locale)"> <img class="country-image" src="{{ getFlag(item.locale.language) }}" /></button>
   </div>
