@@ -1,8 +1,7 @@
 <app-nav-menu></app-nav-menu>
 <div class="d-flex page-layout" style="height: 100%; display: flex;">
-  <div style="flex: 1 0 auto;" class="content">
+  <div style="flex: 1 0 auto;">
     <router-outlet></router-outlet>
   </div>
-  <sidebar [hidden]="!isSidebarVisible" class="sidebar" (isSidebarShow)="onSidebarShow($event)"></sidebar>
 </div>
 <cookie-consent></cookie-consent>

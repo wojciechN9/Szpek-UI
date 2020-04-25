@@ -9,11 +9,6 @@
   flex-direction: column;
 }
 
-.content {
-  padding-left: 20px;
-  padding-right: 20px;
-}
-
 .sidebar {
   margin-top: 40px;
 }

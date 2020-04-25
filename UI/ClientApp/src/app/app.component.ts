@@ -7,9 +7,4 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
-  isSidebarVisible = false;
-
-  onSidebarShow(isShow: boolean) {
-    this.isSidebarVisible = isShow;
-  }
 }

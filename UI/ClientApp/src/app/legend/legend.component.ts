@@ -3,7 +3,6 @@ import { AirQualityEnum } from "../location-meassurements/air-quality.type";
 import { getEnumValues } from "../utils/enum/enum-conversion";
 import { getAirQualityText, getAirQualityColor, getPM10QualityRange, getPM25QualityRange } from "../utils/enum/air-quality";
 import { Title } from "@angular/platform-browser";
-import { SidebarService } from "../utils/sidebar-service/sidebar-service";
 import { L10nTranslationService, L10nLocale, L10N_LOCALE } from "angular-l10n";
 import { Subscription } from "rxjs";
 
@@ -17,11 +16,8 @@ export class LegendComponent implements OnInit, OnDestroy {
 
   constructor(
     private titleService: Title,
-    private sidebarService: SidebarService,
     @Inject(L10N_LOCALE) public locale: L10nLocale,
-    private translation: L10nTranslationService) {
-    this.sidebarService.showSidebar();
-  }
+    private translation: L10nTranslationService) { }
 
   theLegendOfAirQualityConditionAndPollution
 
@@ -33,7 +29,6 @@ export class LegendComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.sidebarService.hideSidebar();
     this.titleTranslationSubscribtion.unsubscribe();
   }
 

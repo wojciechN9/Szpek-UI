@@ -11,6 +11,7 @@ import { AuthUser } from '../../auth/auth-user.type';
 })
 export class NavMenuComponent implements OnInit {
   currentUser: AuthUser;
+  isExpanded = false;
 
   constructor(
     private authenticationService: AuthenticationService,
@@ -20,8 +21,6 @@ export class NavMenuComponent implements OnInit {
   ngOnInit(): void {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
   }
-
-  isExpanded = false;
 
   collapse() {
     this.isExpanded = false;

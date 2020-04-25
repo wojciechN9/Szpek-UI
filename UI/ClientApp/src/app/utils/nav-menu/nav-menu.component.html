@@ -1,5 +1,5 @@
 <header>
-  <nav class='navbar navbar-light navbar-expand-sm navbar-toggleable-sm navbar-dark bg-primary border-bottom box-shadow mb-3'>
+  <nav class='navbar navbar-light navbar-expand-sm navbar-toggleable-sm  navbar-dark bg-dark border-bottom box-shadow mb-3'>
     <localisation-dropdown></localisation-dropdown>
     <a class="navbar-brand text-uppercase" [routerLink]='["/"]'><b>{{ 'appName' | translateAsync }}</b></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-label="Toggle navigation"
@@ -8,23 +8,23 @@
     </button>
     <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse" [ngClass]='{"show": isExpanded}'>
       <ul class="navbar-nav flex-grow">
-        <li class="nav-item" [routerLinkActive]='["link-active"]'>
-          <a class="nav-link text-uppercase" [routerLink]='["/map"]'>{{ 'map' | translateAsync }}</a>
+        <li (click)="collapse()" class="nav-item" [routerLinkActive]='["link-active"]'>
+          <a class="nav-link" [routerLink]='["/map"]'>{{ 'map' | translateAsync }}</a>
         </li>
-        <li class="nav-item" [routerLinkActive]='["link-active"]'>
-          <a class="nav-link text-uppercase" [routerLink]='["/legend"]'>{{ 'legend' | translateAsync }}</a>
+        <li (click)="collapse()" class="nav-item" [routerLinkActive]='["link-active"]'>
+          <a class="nav-link" [routerLink]='["/legend"]'>{{ 'legend' | translateAsync }}</a>
         </li>
-        <li class="nav-item" [routerLinkActive]='["link-active"]'>
+        <li (click)="collapse()" class="nav-item" [routerLinkActive]='["link-active"]'>
           <a class="nav-link text-uppercase" [routerLink]='["/faq"]'>{{ 'faq' | translateAsync }}</a>
         </li>
-        <li class="nav-item" [routerLinkActive]='["link-active"]'>
-          <a class="nav-link text-uppercase" [routerLink]='["/contact"]'>{{ 'contact' | translateAsync }}</a>
+        <li (click)="collapse()" class="nav-item" [routerLinkActive]='["link-active"]'>
+          <a class="nav-link" [routerLink]='["/contact"]'>{{ 'contact' | translateAsync }}</a>
         </li>
-        <li *ngIf="currentUser" class="nav-item" [routerLinkActive]='["link-active"]'>
-          <a class="nav-link text-uppercase" [routerLink]='["/dashboard"]'>{{ 'dashboard' | translateAsync }}</a>
+        <li (click)="collapse()" *ngIf="currentUser" class="nav-item" [routerLinkActive]='["link-active"]'>
+          <a class="nav-link" [routerLink]='["/dashboard"]'>{{ 'dashboard' | translateAsync }}</a>
         </li>
-        <li class="nav-item" [routerLinkActive]='["link-active"]'>
-          <a *ngIf="!currentUser" class="nav-link text-uppercase" [routerLink]='["/login"]'>{{ 'logIn' | translateAsync }}</a>
+        <li (click)="collapse()" class="nav-item" [routerLinkActive]='["link-active"]'>
+          <a *ngIf="!currentUser" class="nav-link" [routerLink]='["/login"]'>{{ 'logIn' | translateAsync }}</a>
           <div *ngIf="currentUser" (click)="logout()" style="cursor: pointer" class="nav-link text-uppercase">{{ 'logOut' | translateAsync }}</div>
         </li>
       </ul>

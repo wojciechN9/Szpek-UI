@@ -7,7 +7,6 @@ import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontaweso
 import { faStar, faClock } from '@fortawesome/free-solid-svg-icons';
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './utils/nav-menu/nav-menu.component';
-import { SidebarComponent } from './utils/sidebar/sidebar.component';
 import { LocationMeassurementsComponent } from './location-meassurements/location-meassurements.component';
 import { LocationMeassurementsDetailsComponent } from './location-meassurements-details/location-meassurements-details.component';
 import { LocationMeassurementsListComponent } from './location-meassurements-list/location-meassurements-list.component';
@@ -35,7 +34,6 @@ import { PasswordChangeComponent } from './password-change/password-change.compo
 import { PasswordChangeOkComponent } from './password-change/password-change-ok/password-change-ok.component';
 import { TokenUrlSerializer } from './utils/token-serializer/token-serializer';
 import { FaqComponent } from './faq/faq.component';
-import { SidebarService } from './utils/sidebar-service/sidebar-service';
 import { ProgressBarComponent } from './utils/progress-bar/progress-bar.component';
 import { L10nTranslationModule, L10nIntlModule, L10nLoader } from 'angular-l10n';
 import { l10nConfig, initL10n } from './l10n-config';
@@ -48,7 +46,6 @@ import { AuthModule } from './auth/auth.module';
     NavMenuComponent,
     LocationMeassurementsComponent,
     LocationMeassurementsDetailsComponent,
-    SidebarComponent,
     LocationMeassurementsListComponent,
     LocationMeassurementsListElementComponent,
     MapFactoryComponent,
@@ -105,7 +102,6 @@ import { AuthModule } from './auth/auth.module';
     NgbActiveModal,
     FavouriteLocationsService,
     DatePipe,
-    SidebarService,
     {
       provide: APP_INITIALIZER,
       useFactory: initL10n,
