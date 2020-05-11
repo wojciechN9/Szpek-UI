@@ -6,6 +6,7 @@ import { SensorsOwnersHttpService } from './services/sensor-owners.service';
 import { LocationsHttpService } from './services/locations.http.service';
 import { MeassurementsCalendarComponent } from './components/meassurements-calendar/meassurements-calendar.component';
 import { AuthModule } from '../auth/auth.module';
+import { L10nIntlModule, L10nTranslationModule } from 'angular-l10n';
 
 @NgModule({
   declarations: [
@@ -16,16 +17,20 @@ import { AuthModule } from '../auth/auth.module';
     CommonModule,
     NgbModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    L10nIntlModule,
+    L10nTranslationModule
   ],
   providers: [
     SensorsOwnersHttpService,
-    LocationsHttpService
+    LocationsHttpService,
   ],
   exports: [
     MeassurementsCalendarComponent,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    L10nIntlModule,
+    L10nTranslationModule
   ]
 })
 export class SharedModule { }

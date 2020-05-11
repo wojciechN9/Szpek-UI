@@ -1,9 +1,10 @@
-import { Component, Input, OnChanges } from "@angular/core";
+import { Component, Input, OnChanges, Inject } from "@angular/core";
 import { NgbDateStruct, NgbDate } from "@ng-bootstrap/ng-bootstrap";
 import { Meassurement } from "../../../location-meassurements/meassurement.type";
 import { MeassurementsHttpService } from "../../../utils/http-services/meassurements.http.service";
 import { AirQualityEnum } from "../../../location-meassurements/air-quality.type";
 import { getAirQualityText, getAirQualityColor } from "../../../utils/enum/air-quality";
+import { L10N_LOCALE, L10nLocale } from "angular-l10n";
 
 
 @Component({
@@ -19,7 +20,9 @@ export class MeassurementsCalendarComponent implements OnChanges {
   public initialCalendarDay: NgbDateStruct;
   public dataFetched = false;
 
-  constructor(private meassurementsService: MeassurementsHttpService) { }
+  constructor(
+    private meassurementsService: MeassurementsHttpService,
+    @Inject(L10N_LOCALE) public locale: L10nLocale) { }
 
   ngOnChanges() {
     if (this.initialMeassurementsData !== null && this.dataFetched === false) {

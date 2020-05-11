@@ -1,12 +1,12 @@
 <div class="container">
   <div class="jumbotron">
-    <h1>Dashboard</h1>
+    <h1>{{ 'dashboard' | translateAsync }}</h1>
     <hr class="my-4">
-    <a *ngIf="isSensorOwner" class="nav-link" [routerLink]='["/dashboard/sensors/my"]'>Moje czujniki</a>
-    <a *ngIf="isSensorOwner" class="nav-link" [routerLink]='["/dashboard/instruction"]'>Instrukcja</a>
+    <a *ngIf="isSensorOwner" class="nav-link" [routerLink]='["/dashboard/sensors/my"]'>{{ 'mySensors' | translateAsync }}</a>
+    <a *ngIf="isSensorOwner" class="nav-link" [routerLink]='["/dashboard/instruction"]'>{{ 'manual' | translateAsync }}</a>
     <div *ngIf="isAdmin">
       <hr class="my-4">
-      <button [routerLink]='["/admin"]'>admin panel</button>
+      <button [routerLink]='["/admin"]'>{{ 'adminPanel' | translateAsync }}</button>
     </div>
   </div>
 </div>

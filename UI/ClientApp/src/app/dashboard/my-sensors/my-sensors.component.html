@@ -1,26 +1,26 @@
 <div class="container">
-  <h1>Właściciel czujników</h1>
+  <h2>{{ 'sensorOwner' | translateAsync }}</h2>
   <div *ngIf="sensorOwner" class="form-group">
     <div class="row">
-      <label class="col-sm-2"><b>Imie</b></label>
+      <label class="col-sm-2"><b>{{ 'name' | translateAsync }}</b></label>
       <div class="col-sm-10"><p>{{sensorOwner.name}}</p></div>
     </div>
     <div class="row">
-      <label class="col-sm-2"><b>Adres</b></label>
+      <label class="col-sm-2"><b>{{ 'address' | translateAsync }}</b></label>
       <div class="col-sm-10"><p>{{sensorOwner.address}}</p></div>
     </div>
     <div class="row">
-      <label class="col-sm-2"><b>Firma</b></label>
-      <div class="col-sm-10"><input type="checkbox"[checked]="sensorOwner.isCompany" disabled="disabled"/></div>
+      <label class="col-sm-2"><b>{{ 'company' | translateAsync }}</b></label>
+      <div class="col-sm-10"><input type="checkbox" [checked]="sensorOwner.isCompany" disabled="disabled" /></div>
     </div>
   </div>
-  <h4>Moje czujniki</h4>
+  <h2>{{ 'mySensors' | translateAsync }}</h2>
   <table *ngIf="sensorOwner" class="table table-bordered">
     <thead class="thead-light">
       <tr>
-        <th scope="col">Kod czujnika</th>
-        <th scope="col">Prywatny</th>
-        <th scope="col">Aktualna lokalizacja</th>
+        <th scope="col">{{ 'sensorCode' | translateAsync }}</th>
+        <th scope="col">{{ 'private' | translateAsync }}</th>
+        <th scope="col">{{ 'currentLocation' | translateAsync }}</th>
       </tr>
     </thead>
     <tbody>
