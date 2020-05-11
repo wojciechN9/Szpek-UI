@@ -55,7 +55,7 @@ export const enTextResources = {
   thisWebsiteUsesCookiesForStatisticalPurposes: "This website uses cookies for statistical purposes",
   tryAgainLater: "Try again later",
   unableToConnectToTheServer: "Unable to connect to the server",
-  username: "Username",
+  usernameOrEmail: "Username or email",
   veryBad: "Very Bad",
   veryGood: "Very good",
   whoIAm: "I am {{name}}"

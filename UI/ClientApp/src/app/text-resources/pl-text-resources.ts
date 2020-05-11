@@ -55,7 +55,7 @@ export const plTextResources = {
   thisWebsiteUsesCookiesForStatisticalPurposes: "Niniejsza strona wykorzystuje pliki cookies w celach statystycznych",
   tryAgainLater: "Spróbuj ponownie później",
   unableToConnectToTheServer: "Nie można połączyć się z serwerem",
-  username: "Nazwa użytkownika",
+  usernameOrEmail: "Nazwa użytkownika lub email",
   veryBad: "Bardzo zła",
   veryGood: "Bardzo dobra",
   whoIAm: "Jestem {{name}}"
