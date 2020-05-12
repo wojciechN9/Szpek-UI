@@ -48,5 +48,5 @@
     <button type="submit" class="btn btn-primary">Edytuj</button>
   </form>
   <h4 class="mt-4">Historia pomiarów</h4>
-  <meassurements-calendar [locationId]="location?.id" [initialMeassurementsData]="location?.meassurements" ></meassurements-calendar>
+  <meassurements-calendar *ngIf="location" [locationId]="location.id"></meassurements-calendar>
 </div>

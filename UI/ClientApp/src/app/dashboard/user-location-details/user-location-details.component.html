@@ -41,5 +41,5 @@
     </div>
   </div>
   <h2 class="mt-4">{{ 'measurementHistory' | translateAsync }}</h2>
-  <meassurements-calendar [locationId]="location?.id" [initialMeassurementsData]="location?.meassurements"></meassurements-calendar>
+  <meassurements-calendar *ngIf="location" [locationId]="location.id"></meassurements-calendar>
 </div>
