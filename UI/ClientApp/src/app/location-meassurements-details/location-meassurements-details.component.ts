@@ -7,10 +7,9 @@ import { FavouriteLocationsService } from '../utils/favourite-locations-service/
 import { MeassurementChart } from '../utils/meassurements-chart/meassurement-chart.type';
 import { MeassurementsHttpService } from '../utils/http-services/meassurements.http.service';
 import { Title } from '@angular/platform-browser';
-import { MeassurementDetails } from './meassurement-details.type';
-import { LocationMeassurementsDetails } from './location-meassurements-details.type';
 import { L10N_LOCALE, L10nLocale, L10nTranslationService } from 'angular-l10n';
 import { Subscription } from 'rxjs';
+import { LocationMeassurements } from '../location-meassurements/location-meassurements.type';
 
 @Component({
   selector: 'location-meassurements-details',
@@ -19,8 +18,8 @@ import { Subscription } from 'rxjs';
 })
 export class LocationMeassurementsDetailsComponent implements OnInit, OnDestroy {
   private titleTranslationSubscribtion: Subscription;
-  public locationMeassurements: LocationMeassurementsDetails;
-  public currentMeassurement: MeassurementDetails;
+  public locationMeassurements: LocationMeassurements;
+  public currentMeassurement: Meassurement;
   public pm10Meassurements: MeassurementChart[];
   public pm25Meassurements: MeassurementChart[];
   public id: number;
@@ -40,7 +39,7 @@ export class LocationMeassurementsDetailsComponent implements OnInit, OnDestroy 
       this.id = +params['id'];
     });
 
-    this.meassurementsService.getLocationsMeassuresDetails(this.id).subscribe(result => {
+    this.meassurementsService.getLocationMeassure(this.id).subscribe(result => {
       this.locationMeassurements = this.orderMeassurementsByDateTimeDesc(result);
       this.currentMeassurement = this.locationMeassurements.meassurements[0];
       this.pm10Meassurements = this.convertToPM10(this.locationMeassurements.meassurements);
@@ -60,7 +59,7 @@ export class LocationMeassurementsDetailsComponent implements OnInit, OnDestroy 
     this.titleTranslationSubscribtion.unsubscribe();
   }
 
-  orderMeassurementsByDateTimeDesc(locationMeassurements: LocationMeassurementsDetails) {
+  orderMeassurementsByDateTimeDesc(locationMeassurements: LocationMeassurements) {
     locationMeassurements.meassurements = locationMeassurements.meassurements.sort((a, b) => {
       if (a.periodTo < b.periodTo) { return 1; }
       if (a.periodTo > b.periodTo) { return -1; }
@@ -79,12 +78,12 @@ export class LocationMeassurementsDetailsComponent implements OnInit, OnDestroy 
   }
 
   convertToChart(id: number, airQuality: AirQualityEnum, value: number, periodTo: Date) {
-    return <MeassurementChart>{
+    return {
       id: id,
       airQuality: airQuality,
       value: value,
       periodTo: periodTo
-    }
+    } as MeassurementChart
   }
 
   getQualityText(airQuality: AirQualityEnum) {

@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { LocationMeassurements } from '../../location-meassurements/location-meassurements.type';
-import { LocationMeassurementsDetails } from '../../location-meassurements-details/location-meassurements-details.type';
 import { Meassurement } from '../../location-meassurements/meassurement.type';
 import { environment } from '../../../environments/environment';
 
@@ -17,8 +16,8 @@ export class MeassurementsHttpService {
     return this.http.get<LocationMeassurements[]>(this.apiEndpoint + 'Meassurements');
   }
 
-  getLocationsMeassuresDetails(id: number): Observable<LocationMeassurementsDetails> {
-    return this.http.get<LocationMeassurementsDetails>(this.apiEndpoint + 'Meassurements/' + id);
+  getLocationMeassure(id: number): Observable<LocationMeassurements> {
+    return this.http.get<LocationMeassurements>(this.apiEndpoint + 'Meassurements/' + id);
   }
 
   getMeassurementsByDate(locationId: number, date: string) {
