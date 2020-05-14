@@ -38,6 +38,7 @@
     <None Remove="ClientApp\src\app\admin\sensors-owners\sensors-owners.component.ts" />
     <None Remove="ClientApp\src\app\admin\sensors-owners\user.type.ts" />
     <None Remove="ClientApp\src\app\admin\sensors\owner.type.ts" />
+    <None Remove="ClientApp\src\app\admin\sensors\sensor-update.type.ts" />
     <None Remove="ClientApp\src\app\admin\sensors\sensors-create.type.ts" />
     <None Remove="ClientApp\src\app\admin\sensors\sensors-details\sensor-details.type.ts" />
     <None Remove="ClientApp\src\app\admin\sensors\sensors-details\sensors-details.component.ts" />
@@ -100,6 +101,7 @@
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\src\app\admin\admin-panel\admin-panel.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\admin\locations\address-create.type.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\admin\sensors\sensors-details\sensor-update.type.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\shared\models\location-create.type.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\shared\models\location.type.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\shared\models\location-details.type.ts" />

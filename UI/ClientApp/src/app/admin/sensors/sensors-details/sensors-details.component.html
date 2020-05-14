@@ -15,7 +15,7 @@
         <option [ngValue]="sensor.owner.id" [selected]="sensor.owner.id">{{sensor.owner.name}}</option>
       </select>
     </div>
-    <button type="submit" class="btn btn-primary">Edytuj</button>
+    <button type="submit" class="btn btn-primary" [disabled]="!isSubmitButtonEnabled">Edytuj</button>
   </form>
   <h4 class="mt-4">Loalizacje</h4>
   <table *ngIf="sensor" class="table table-bordered">

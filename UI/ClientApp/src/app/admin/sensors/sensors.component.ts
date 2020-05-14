@@ -47,12 +47,12 @@ export class SensorsComponent implements OnInit {
       return;
     }
 
-    var sensorCreate = <SensorCreate>{
+    const sensorCreate = {
       code: this.form.controls.code.value,
       publicKey: this.form.controls.publicKey.value,
       ownerId: this.form.controls.ownerId.value,
       isPrivate: this.form.controls.isPrivate.value
-    };
+    } as SensorCreate;
 
     this.sensorsService.postSensor(sensorCreate).subscribe(
       id => this.router.navigate(['/admin/sensors', id]));

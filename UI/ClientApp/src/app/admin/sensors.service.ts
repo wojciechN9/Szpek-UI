@@ -5,6 +5,7 @@ import { SensorCreate } from './sensors/sensors-create.type';
 import { Sensor } from './sensors/sensor.type';
 import { SensorDetails } from './sensors/sensors-details/sensor-details.type';
 import { environment } from '../../environments/environment';
+import { SensorUpdate } from './sensors/sensors-details/sensor-update.type';
 
 @Injectable()
 export class SensorsHttpService {
@@ -23,5 +24,9 @@ export class SensorsHttpService {
 
   getSensorDetails(sensorId: number): Observable<SensorDetails> {
     return this.http.get<SensorDetails>(this.apiEndpoint + 'Sensors/' + sensorId);
+  }
+
+  updateSensor(sensorUpdate: SensorUpdate): Observable<any> {
+    return this.http.put<SensorUpdate>(this.apiEndpoint + 'Sensors/' + sensorUpdate.id, sensorUpdate);
   }
 }
