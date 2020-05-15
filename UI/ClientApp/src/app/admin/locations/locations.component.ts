@@ -53,18 +53,18 @@ export class LocationsComponent implements OnInit {
       return;
     }
 
-    var locationCreate = <LocationCreate>{
-      sensorId: this.form.controls.sensorId.value,
+    const locationCreate = {
+      sensorId: +this.form.controls.sensorId.value,
       address: {
         city: this.form.get('address.city').value,
         street: this.form.get('address.street').value,
         postCode: this.form.get('address.postCode').value,
         voivodeship: this.form.get('address.voivodeship').value,
         countryCode: this.form.get('address.countryCode').value,
-        latitude: this.form.get('address.latitude').value,
-        longitude: this.form.get('address.longitude').value
+        latitude: +this.form.get('address.latitude').value,
+        longitude: +this.form.get('address.longitude').value
       }
-    };
+    } as LocationCreate;
 
     this.locationsService.postLocation(locationCreate).subscribe(
       id => this.router.navigate(['/admin/locations', id]));

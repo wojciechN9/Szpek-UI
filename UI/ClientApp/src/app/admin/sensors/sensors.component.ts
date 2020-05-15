@@ -50,7 +50,7 @@ export class SensorsComponent implements OnInit {
     const sensorCreate = {
       code: this.form.controls.code.value,
       publicKey: this.form.controls.publicKey.value,
-      ownerId: this.form.controls.ownerId.value,
+      ownerId: +this.form.controls.ownerId.value,
       isPrivate: this.form.controls.isPrivate.value
     } as SensorCreate;
 
