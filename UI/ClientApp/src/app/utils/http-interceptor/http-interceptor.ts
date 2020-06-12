@@ -36,8 +36,12 @@ export class HttpConfigInterceptor implements HttpInterceptor {
 
     return next.handle(request).pipe(
       catchError((error: HttpErrorResponse) => {
-        if (error.status == 0) {
+        if (error.status === 0) {
           this.router.navigate(['/error', { reason: this.translation.translate('unableToConnectToTheServer') + ' ' + this.translation.translate('tryAgainLater') }]);
+        }
+        else if (error.status === 401) {
+          this.authenticationService.logout();
+          this.router.navigate(['/login']);
         }
         else {
           alert(error.error || error.message || '');
