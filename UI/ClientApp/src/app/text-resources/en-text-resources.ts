@@ -8,7 +8,6 @@ export const enTextResources = {
   bad: "Bad",
   cancel: "Cancel",
   city: "City",
-  comments: "Comments",
   company: "Company",
   contact: "Contact",
   contactInfo: "The most convenient way to contact us is to write a message on the Szpek.pl funpage on Facebook -> ",
@@ -84,5 +83,6 @@ export const enTextResources = {
   veryBad: "Very Bad",
   veryGood: "Very good",
   voivodeship: "Voivodeship",
+  weatherConditions: "Weather Conditions",
   whoIAm: "I am {{name}}"
 }

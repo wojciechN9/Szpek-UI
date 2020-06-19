@@ -8,7 +8,6 @@ export const plTextResources = {
   bad: "Zła",
   cancel: "Anuluj",
   city: "Miasto",
-  comments: "Komentarze",
   company: "Firma",
   contact: "Kontakt",
   contactInfo: "Najlepiej skontaktować się z nami przez wiadomość na funpage Szpek.pl na facebooku -> ",
@@ -84,5 +83,6 @@ export const plTextResources = {
   veryBad: "Bardzo zła",
   veryGood: "Bardzo dobra",
   voivodeship: "Województwo",
+  weatherConditions: "Warunki atmosferyczne",
   whoIAm: "Jestem {{name}}"
 }
