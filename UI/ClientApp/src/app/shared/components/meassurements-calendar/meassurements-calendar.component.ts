@@ -1,10 +1,10 @@
 import { Component, Input, Inject, OnInit } from "@angular/core";
 import { NgbDate } from "@ng-bootstrap/ng-bootstrap";
-import { Meassurement } from "../../../location-meassurements/meassurement.type";
 import { MeassurementsHttpService } from "../../../utils/http-services/meassurements.http.service";
 import { AirQualityEnum } from "../../../location-meassurements/air-quality.type";
 import { getAirQualityText, getAirQualityColor } from "../../../utils/enum/air-quality";
 import { L10N_LOCALE, L10nLocale } from "angular-l10n";
+import { Measurement } from "../../../location-meassurements/measurement.type";
 
 @Component({
   selector: 'meassurements-calendar',
@@ -13,7 +13,7 @@ import { L10N_LOCALE, L10nLocale } from "angular-l10n";
 
 export class MeassurementsCalendarComponent implements OnInit {
   @Input() locationId: number;
-  public calendarMeassurements: Array<Meassurement>;
+  public calendarMeassurements: Array<Measurement>;
   public loaderActive = false;
   public currentDay: NgbDate;
   public today: NgbDate;

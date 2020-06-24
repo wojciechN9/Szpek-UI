@@ -64,7 +64,9 @@
     <None Remove="ClientApp\src\app\location-meassurements\air-quality.type.ts" />
     <None Remove="ClientApp\src\app\location-meassurements\location-meassurements.component.ts" />
     <None Remove="ClientApp\src\app\location-meassurements\location-meassurements.type.ts" />
-    <None Remove="ClientApp\src\app\location-meassurements\meassurement.type.ts" />
+    <None Remove="ClientApp\src\app\location-meassurements\measurement.type.ts" />
+    <None Remove="ClientApp\src\app\location-meassurements\smog-measurement.type.ts" />
+    <None Remove="ClientApp\src\app\location-meassurements\weather-measurement.ts" />
     <None Remove="ClientApp\src\app\login\login.component.ts" />
     <None Remove="ClientApp\src\app\login\userLogin.type.ts" />
     <None Remove="ClientApp\src\app\password-change\password-change-ok\password-change-ok.component.ts" />
@@ -102,6 +104,8 @@
     <TypeScriptCompile Include="ClientApp\src\app\admin\admin-panel\admin-panel.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\admin\locations\address-create.type.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\admin\sensors\sensors-details\sensor-update.type.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\location-meassurements\smog-measurement.type.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\location-meassurements\weather-measurement.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\shared\models\location-create.type.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\shared\models\location.type.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\shared\models\location-details.type.ts" />
@@ -146,7 +150,7 @@
     <TypeScriptCompile Include="ClientApp\src\app\location-meassurements\air-quality.type.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\location-meassurements\location-meassurements.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\location-meassurements\location-meassurements.type.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\location-meassurements\meassurement.type.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\location-meassurements\measurement.type.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\login\login.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\login\userLogin.type.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\auth\auth.guard.ts" />

@@ -1,6 +1,6 @@
 import { AirQualityEnum } from "./air-quality.type";
 
-export interface Meassurement {
+export interface SmogMeasurement {
   id: number;
   airQuality: AirQualityEnum;
   pm10Value: number;

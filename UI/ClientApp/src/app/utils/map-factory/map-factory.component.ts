@@ -132,7 +132,7 @@ export class MapFactoryComponent implements OnChanges, AfterViewInit {
     let transform = getTransform('EPSG:4326', 'EPSG:3857');
 
     for (let quality in getEnumValues(AirQualityEnum)) {
-      let qualityLocations = locationsMeassurements.filter(l => l.meassurements[0].airQuality === +quality);
+      let qualityLocations = locationsMeassurements.filter(l => l.meassurements[0].smogMeasurement.airQuality === +quality);
 
       if (qualityLocations.length !== 0) {
         let circleStyle = this.getCircleStyle(getAirQualityColor(+quality));
@@ -178,10 +178,10 @@ export class MapFactoryComponent implements OnChanges, AfterViewInit {
     return {
       'locationId': locationMeassurement.id,
       'address': locationMeassurement.address.city + ', ' + locationMeassurement.address.street,
-      'airQuality': locationMeassurement.meassurements[0].airQuality,
-      'pm10Value': locationMeassurement.meassurements[0].pm10Value,
-      'pm25Value': locationMeassurement.meassurements[0].pm25Value,
-      'periodTo': locationMeassurement.meassurements[0].periodTo
+      'airQuality': locationMeassurement.meassurements[0].smogMeasurement.airQuality,
+      'pm10Value': locationMeassurement.meassurements[0].smogMeasurement.pm10Value,
+      'pm25Value': locationMeassurement.meassurements[0].smogMeasurement.pm25Value,
+      'periodTo': locationMeassurement.meassurements[0].smogMeasurement.periodTo
     }
   }
 

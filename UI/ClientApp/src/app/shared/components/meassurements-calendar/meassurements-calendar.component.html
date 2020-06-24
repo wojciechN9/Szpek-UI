@@ -17,13 +17,13 @@
       </thead>
       <tbody>
         <tr *ngFor="let meassurement of calendarMeassurements">
-          <td>{{meassurement.periodTo | date:'dd-MM-yyyy, HH:mm'}}</td>
-          <td><b [ngStyle]="{'color': getQualityColor(meassurement?.airQuality)}">{{ getQualityText(meassurement?.airQuality) | translateAsync }}</b></td>
-          <td><b [ngStyle]="{'color': getQualityColor(meassurement?.pm10Quality)}">{{ getQualityText(meassurement?.pm10Quality) | translateAsync }}</b></td>
-          <td>{{meassurement.pm10Value | number:'1.0-2':'pl'}}</td>
-          <td><b [ngStyle]="{'color': getQualityColor(meassurement?.pm25Quality)}">{{ getQualityText(meassurement?.pm25Quality) | translateAsync  }}</b></td>
-          <td>{{meassurement.pm25Value | number:'1.0-2':'pl'}}</td>
-          <td>{{meassurement.pm1Value | number:'1.0-2':'pl'}}</td>
+          <td>{{meassurement.smogMeasurement.periodTo | date:'dd-MM-yyyy, HH:mm'}}</td>
+          <td><b [ngStyle]="{'color': getQualityColor(meassurement?.smogMeasurement.airQuality)}">{{ getQualityText(meassurement?.smogMeasurement.airQuality) | translateAsync }}</b></td>
+          <td><b [ngStyle]="{'color': getQualityColor(meassurement?.smogMeasurement.pm10Quality)}">{{ getQualityText(meassurement?.smogMeasurement.pm10Quality) | translateAsync }}</b></td>
+          <td>{{meassurement.smogMeasurement.pm10Value | number:'1.0-2':'pl'}}</td>
+          <td><b [ngStyle]="{'color': getQualityColor(meassurement?.smogMeasurement.pm25Quality)}">{{ getQualityText(meassurement?.smogMeasurement.pm25Quality) | translateAsync  }}</b></td>
+          <td>{{meassurement.smogMeasurement.pm25Value | number:'1.0-2':'pl'}}</td>
+          <td>{{meassurement.smogMeasurement.pm1Value | number:'1.0-2':'pl'}}</td>
         </tr>
       </tbody>
     </table>

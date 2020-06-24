@@ -1,5 +1,5 @@
 import { Address } from "../../location-meassurements/address.type";
-import { Meassurement } from "../../location-meassurements/meassurement.type";
+import { Measurement } from "../../location-meassurements/measurement.type";
 
 export interface LocationDetails {
   id: number;
@@ -7,5 +7,5 @@ export interface LocationDetails {
   sensorId: number;
   sensorCode: string;
   address: Address;
-  meassurements: Array<Meassurement>;
+  meassurements: Array<Measurement>;
 }

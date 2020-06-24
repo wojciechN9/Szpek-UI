@@ -2,7 +2,6 @@ import { Component, OnInit, OnDestroy, Inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { getAirQualityText, getAirQualityColor } from '../utils/enum/air-quality';
 import { AirQualityEnum } from '../location-meassurements/air-quality.type';
-import { Meassurement } from '../location-meassurements/meassurement.type';
 import { FavouriteLocationsService } from '../utils/favourite-locations-service/favourite-locations-service';
 import { MeassurementChart } from '../utils/meassurements-chart/meassurement-chart.type';
 import { MeassurementsHttpService } from '../utils/http-services/meassurements.http.service';
@@ -10,6 +9,7 @@ import { Title } from '@angular/platform-browser';
 import { L10N_LOCALE, L10nLocale, L10nTranslationService } from 'angular-l10n';
 import { Subscription } from 'rxjs';
 import { LocationMeassurements } from '../location-meassurements/location-meassurements.type';
+import { Measurement } from '../location-meassurements/measurement.type';
 
 @Component({
   selector: 'location-meassurements-details',
@@ -19,9 +19,7 @@ import { LocationMeassurements } from '../location-meassurements/location-meassu
 export class LocationMeassurementsDetailsComponent implements OnInit, OnDestroy {
   private titleTranslationSubscribtion: Subscription;
   public locationMeassurements: LocationMeassurements;
-  public currentMeassurement: Meassurement;
-  public pm10Meassurements: MeassurementChart[];
-  public pm25Meassurements: MeassurementChart[];
+  public currentMeassurement: Measurement;
   public id: number;
   favouritesIds: Array<number>;
   loaderActive = true;
@@ -42,8 +40,6 @@ export class LocationMeassurementsDetailsComponent implements OnInit, OnDestroy 
     this.meassurementsService.getLocationMeassure(this.id).subscribe(result => {
       this.locationMeassurements = this.orderMeassurementsByDateTimeDesc(result);
       this.currentMeassurement = this.locationMeassurements.meassurements[0];
-      this.pm10Meassurements = this.convertToPM10(this.locationMeassurements.meassurements);
-      this.pm25Meassurements = this.convertToPM25(this.locationMeassurements.meassurements);
       this.loaderActive = false;
 
       this.titleTranslationSubscribtion = this.translation.onChange().subscribe(() => {
@@ -61,20 +57,24 @@ export class LocationMeassurementsDetailsComponent implements OnInit, OnDestroy 
 
   orderMeassurementsByDateTimeDesc(locationMeassurements: LocationMeassurements) {
     locationMeassurements.meassurements = locationMeassurements.meassurements.sort((a, b) => {
-      if (a.periodTo < b.periodTo) { return 1; }
-      if (a.periodTo > b.periodTo) { return -1; }
-      if (a.periodTo === b.periodTo) { return 0; }
+      if (a.smogMeasurement.periodTo < b.smogMeasurement.periodTo) { return 1; }
+      if (a.smogMeasurement.periodTo > b.smogMeasurement.periodTo) { return -1; }
+      if (a.smogMeasurement.periodTo === b.smogMeasurement.periodTo) { return 0; }
     });
 
     return locationMeassurements;
   }
 
-  convertToPM10(meassurements: Array<Meassurement>) {
-    return meassurements.map(m => this.convertToChart(m.id, m.pm10Quality, m.pm10Value, new Date(m.periodTo)));
+  getPM10ChartData() {
+    const smogMeasurement = this.locationMeassurements.meassurements.map(({ smogMeasurement }) => smogMeasurement)
+
+    return smogMeasurement.map(m => this.convertToChart(m.id, m.pm10Quality, m.pm10Value, new Date(m.periodTo)));
   }
 
-  convertToPM25(meassurements: Array<Meassurement>) {
-    return meassurements.map(m => this.convertToChart(m.id, m.pm25Quality, m.pm25Value, new Date(m.periodTo)));
+  getPM25ChartData() {
+    const smogMeasurement = this.locationMeassurements.meassurements.map(({ smogMeasurement }) => smogMeasurement)
+
+    return smogMeasurement.map(m => this.convertToChart(m.id, m.pm25Quality, m.pm25Value, new Date(m.periodTo)));
   }
 
   convertToChart(id: number, airQuality: AirQualityEnum, value: number, periodTo: Date) {

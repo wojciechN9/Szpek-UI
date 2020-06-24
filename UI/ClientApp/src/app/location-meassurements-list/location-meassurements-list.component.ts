@@ -37,7 +37,7 @@ export class LocationMeassurementsListComponent implements OnInit {
   sortLocations() {
       //show favourites first and order by name
       this.locationsMeassurements.sort((a, b) => {
-        if (this.isFavourite(a.id) == this.isFavourite(b.id)) {
+        if (this.isFavourite(a.id) === this.isFavourite(b.id)) {
           if (a.address.city < b.address.city) { return -1; }
           if (a.address.city > b.address.city) { return 1; }
           return 0;

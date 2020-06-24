@@ -1,8 +1,8 @@
-import { Meassurement } from "./meassurement.type";
 import { Address } from "./address.type";
+import { Measurement } from "./measurement.type";
 
 export interface LocationMeassurements {
   id: number;
   address: Address;
-  meassurements: Array<Meassurement>;
+  meassurements: Array<Measurement>;
 }

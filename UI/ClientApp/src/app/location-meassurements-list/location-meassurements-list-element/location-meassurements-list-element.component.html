@@ -1,18 +1,18 @@
-<div class="location-meassurements-list-element" [ngStyle]="{'background-color': getQualityColor(locationMeassurements.meassurements[0].airQuality)}">
+<div class="location-meassurements-list-element" [ngStyle]="{'background-color': getQualityColor(locationMeassurements.meassurements[0].smogMeasurement.airQuality)}">
   <div class="row location-meassurements-list-content">
     <div class="location-meassurements-list-values" [routerLink]="['/location/', locationMeassurements.id]" [routerLinkActive]='["link-active"]'>
       <div class="row">
         <div class="location-meassurements-list-value">
           <div class="location-meassurements-list-value-content">
             <div class="location-meassurements-list-value-unit">PM 10</div>
-            <div class="location-meassurements-list-value-pollution">{{locationMeassurements.meassurements[0].pm10Value | number:'1.0-1':'pl'}}</div>
+            <div class="location-meassurements-list-value-pollution">{{locationMeassurements.meassurements[0].smogMeasurement.pm10Value | number:'1.0-1':'pl'}}</div>
             <div class="location-meassurements-list-value-info">μg/m3</div>
           </div>
         </div>
         <div class="location-meassurements-list-value">
           <div class="location-meassurements-list-value-content">
             <div class="location-meassurements-list-value-unit">PM 2.5</div>
-            <div class="location-meassurements-list-value-pollution">{{locationMeassurements.meassurements[0].pm25Value | number:'1.0-1':'pl'}}</div>
+            <div class="location-meassurements-list-value-pollution">{{locationMeassurements.meassurements[0].smogMeasurement.pm25Value | number:'1.0-1':'pl'}}</div>
             <div class="location-meassurements-list-value-info">μg/m3</div>
           </div>
         </div>
@@ -25,7 +25,7 @@
           {{locationMeassurements.address.street}}
         </div>
         <div class="location-meassurements-list-location-time">
-          <fa-icon [icon]="['fas', 'clock']"></fa-icon> {{locationMeassurements.meassurements[0].periodTo | date:'HH:mm'}}
+          <fa-icon [icon]="['fas', 'clock']"></fa-icon> {{locationMeassurements.meassurements[0].smogMeasurement.periodTo | date:'HH:mm'}}
         </div>
       </div>
     </div>
