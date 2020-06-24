@@ -30,9 +30,7 @@
       </div>
     </div>
   </div>
-  <div class="row pl-3">
-    <h4>{{ 'last24hours' | translateAsync }}</h4>
-  </div>
+  <h4>{{ 'last24hours' | translateAsync }}</h4>
   <div class="row">
     <div class="col-md-6">
       <smog-meassurements-chart *ngIf="locationMeassurements" chartName="PM10 (μg/m3)" [data]="getPM10ChartData()"></smog-meassurements-chart>
@@ -50,7 +48,7 @@
         <measurements-chart *ngIf="locationMeassurements" chartName="{{ 'pressure' | translateAsync }} (mbar)" [data]="getPressureChartData()"></measurements-chart>
       </div>
     </div>
-    <div class="row pt-4">      
+    <div class="row pt-4">
       <div class="col-md-6">
         <measurements-chart *ngIf="locationMeassurements" chartName="{{ 'humidity' | translateAsync }} (%)" [data]="getHumidityChartData()"></measurements-chart>
       </div>
