@@ -3,6 +3,7 @@
     <div>
       <h1>{{ locationMeassurements?.address.city}}</h1>
       <h3>{{ locationMeassurements?.address.street}}</h3>
+      <fa-icon [icon]="['fas', 'clock']"></fa-icon> {{currentMeassurement?.smogMeasurement.periodTo | date:'HH:mm'}}
     </div>
     <div class="align-self-center" style="cursor: pointer" (click)="onClickFavourite()">
       <fa-icon [ngClass]="{'fav-checked': isFavourite(), 'fav-unchecked': !isFavourite()}" [icon]="['fas', 'star']" size="3x" [styles]="{'stroke': 'black'}"></fa-icon>
@@ -10,21 +11,26 @@
   </div>
   <img *ngIf="loaderActive" class="loader" src="assets/spinner-200px.svg" />
   <div class="row pt-4">
-    <div class="col-md-6 pl-4">
+    <div class="col-md-6 pb-2">
       <h4 class="pb-2">{{ 'currentAirQuality' | translateAsync }}</h4>
       <p>PM10:  &nbsp;<b>{{ currentMeassurement?.smogMeasurement.pm10Value | number:'1.0-2':'pl'}}</b> μg/m3</p>
       <p>PM2.5: <b>{{ currentMeassurement?.smogMeasurement.pm25Value | number:'1.0-2':'pl'}}</b> μg/m3</p>
       <p *ngIf="currentMeassurement?.smogMeasurement.pm1Value !== 0">PM1: &nbsp;&nbsp;&nbsp;<b>{{ currentMeassurement?.smogMeasurement.pm1Value | number:'1.0-2':'pl'}}</b> μg/m3</p>
       <p>{{ 'airQuality' | translateAsync }}: <b [ngStyle]="{'color': getQualityColor(currentMeassurement?.smogMeasurement.airQuality)}">{{ getQualityText(currentMeassurement?.smogMeasurement.airQuality) | translateAsync }}</b></p>
-      <fa-icon [icon]="['fas', 'clock']"></fa-icon> {{currentMeassurement?.smogMeasurement.periodTo | date:'HH:mm'}}
     </div>
-    <div class="col-md-6">
-      <div style="min-height: 200px; height: 100%">
-        <map-factory *ngIf="locationMeassurements" [locationsMeassurements]="[locationMeassurements]" [modalOnClick]="false"></map-factory>
+    <div class="col-md-6 pb-2">
+      <h4 class="pb-2">{{ 'weatherConditions' | translateAsync }}</h4>
+      <div *ngIf="currentMeassurement?.weatherMeasurement === null">
+        <p>{{ 'noAtmosphericConditionsMeasurementsForThisSensor' | translateAsync }}</p>
+      </div>
+      <div *ngIf="currentMeassurement?.weatherMeasurement !== null">
+        <p>{{ 'temperature' | translateAsync }}: <b>{{currentMeassurement?.weatherMeasurement.celciusTemperature}}</b> °C</p>
+        <p>{{ 'pressure' | translateAsync }}: <b>{{currentMeassurement?.weatherMeasurement.atmosphericPreassure}}</b> mbar</p>
+        <p>{{ 'humidity' | translateAsync }}: <b>{{currentMeassurement?.weatherMeasurement.humidityPercentage}}</b> %</p>
       </div>
     </div>
   </div>
-  <div class="row pt-4 pl-4">
+  <div class="row pl-3">
     <h4>{{ 'last24hours' | translateAsync }}</h4>
   </div>
   <div class="row">
@@ -35,32 +41,25 @@
       <smog-meassurements-chart *ngIf="locationMeassurements" chartName="PM2.5 (μg/m3)" [data]="getPM25ChartData()"></smog-meassurements-chart>
     </div>
   </div>
-  <div class="row pt-2 pl-4">
-    <h4>{{ 'weatherConditions' | translateAsync }}</h4>
-  </div>
-  <div *ngIf="currentMeassurement?.weatherMeasurement === null">
-    <p class="pl-4">{{ 'noAtmosphericConditionsMeasurementsForThisSensor' | translateAsync }}</p>
-  </div>
   <div *ngIf="currentMeassurement?.weatherMeasurement !== null">
     <div class="row pt-4">
-      <div class="col-md-6 pl-4">
-        <p>{{ 'temperature' | translateAsync }}: <b>{{currentMeassurement?.weatherMeasurement.celciusTemperature}}</b> °C</p>
-        <p>{{ 'pressure' | translateAsync }}: <b>{{currentMeassurement?.weatherMeasurement.atmosphericPreassure}}</b> mbar</p>
-        <p>{{ 'humidity' | translateAsync }}: <b>{{currentMeassurement?.weatherMeasurement.humidityPercentage}}</b> %</p>
-        <fa-icon [icon]="['fas', 'clock']"></fa-icon> {{currentMeassurement?.weatherMeasurement.measurementDate | date:'HH:mm'}}
-      </div>
       <div class="col-md-6">
         <measurements-chart *ngIf="locationMeassurements" chartName="{{ 'temperature' | translateAsync }} (°C)" [data]="getTemperatureChartData()"></measurements-chart>
       </div>
-    </div>
-    <div class="row pt-4">
       <div class="col-md-6">
         <measurements-chart *ngIf="locationMeassurements" chartName="{{ 'pressure' | translateAsync }} (mbar)" [data]="getPressureChartData()"></measurements-chart>
       </div>
+    </div>
+    <div class="row pt-4">      
       <div class="col-md-6">
         <measurements-chart *ngIf="locationMeassurements" chartName="{{ 'humidity' | translateAsync }} (%)" [data]="getHumidityChartData()"></measurements-chart>
       </div>
+      <div class="col-md-6">
+      </div>
     </div>
+  </div>
+  <div class="row p-4" style="min-height: 300px; height: 100%; display: flex">
+    <map-factory style="width: 100%" *ngIf="locationMeassurements" [locationsMeassurements]="[locationMeassurements]" [modalOnClick]="false"></map-factory>
   </div>
 </div>
 

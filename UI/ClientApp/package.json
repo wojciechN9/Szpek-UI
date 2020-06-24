@@ -1,6 +1,6 @@
 {
   "name": "szpek-client-app",
-  "version": "0.96",
+  "version": "1.0.0",
   "author": "Wojciech Nastaj",
   "scripts": {
     "ng": "ng",

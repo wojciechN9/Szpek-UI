@@ -87,6 +87,6 @@ export const enTextResources = {
   veryBad: "Very Bad",
   veryGood: "Very good",
   voivodeship: "Voivodeship",
-  weatherConditions: "Weather Conditions",
+  weatherConditions: "Weather conditions",
   whoIAm: "I am {{name}}"
 }
