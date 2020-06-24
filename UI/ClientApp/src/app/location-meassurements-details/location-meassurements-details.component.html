@@ -29,15 +29,38 @@
   </div>
   <div class="row">
     <div class="col-md-6">
-      <meassurements-chart *ngIf="locationMeassurements" chartName="PM10" [data]="getPM10ChartData()"></meassurements-chart>
+      <meassurements-chart *ngIf="locationMeassurements" chartName="PM10 (μg/m3)" [data]="getPM10ChartData()"></meassurements-chart>
     </div>
     <div class="col-md-6">
-      <meassurements-chart *ngIf="locationMeassurements" chartName="PM2.5" [data]="getPM25ChartData()"></meassurements-chart>
+      <meassurements-chart *ngIf="locationMeassurements" chartName="PM2.5 (μg/m3)" [data]="getPM25ChartData()"></meassurements-chart>
     </div>
   </div>
   <div class="row pt-2 pl-4">
-    <!-- TODO weatherConditions -->
     <h4>{{ 'weatherConditions' | translateAsync }}</h4>
+  </div>
+  <div *ngIf="currentMeassurement?.weatherMeasurement === null">
+    <p class="pl-4">{{ 'noAtmosphericConditionsMeasurementsForThisSensor' | translateAsync }}</p>
+  </div>
+  <div *ngIf="currentMeassurement?.weatherMeasurement !== null">
+    <div class="row pt-4">
+      <div class="col-md-6 pl-4">
+        <p>{{ 'temperature' | translateAsync }}: <b>{{currentMeassurement?.weatherMeasurement.celciusTemperature}}</b> °C</p>
+        <p>{{ 'pressure' | translateAsync }}: <b>{{currentMeassurement?.weatherMeasurement.atmosphericPreassure}}</b> mbar</p>
+        <p>{{ 'humidity' | translateAsync }}: <b>{{currentMeassurement?.weatherMeasurement.humidityPercentage}}</b> %</p>
+        <fa-icon [icon]="['fas', 'clock']"></fa-icon> {{currentMeassurement?.weatherMeasurement.measurementDate | date:'HH:mm'}}
+      </div>
+      <div class="col-md-6">
+        <meassurements-chart *ngIf="locationMeassurements" chartName="{{ 'temperature' | translateAsync }} (°C)" [data]="getTemperatureChartData()"></meassurements-chart>
+      </div>
+    </div>
+    <div class="row pt-4">
+      <div class="col-md-6">
+        <meassurements-chart *ngIf="locationMeassurements" chartName="{{ 'pressure' | translateAsync }} (mbar)" [data]="getPressureChartData()"></meassurements-chart>
+      </div>
+      <div class="col-md-6">
+        <meassurements-chart *ngIf="locationMeassurements" chartName="{{ 'humidity' | translateAsync }} (%)" [data]="getHumidityChartData()"></meassurements-chart>
+      </div>
+    </div>
   </div>
 </div>
 

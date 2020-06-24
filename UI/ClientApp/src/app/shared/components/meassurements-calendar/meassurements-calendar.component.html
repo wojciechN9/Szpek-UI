@@ -13,6 +13,9 @@
           <th scope="col">{{ 'pM25Quality' | translateAsync }}</th>
           <th scope="col">{{ 'pM25Value' | translateAsync }}</th>
           <th scope="col">{{ 'pM1Value' | translateAsync }}</th>
+          <th scope="col">{{ 'temperature' | translateAsync }} (°C)</th>
+          <th scope="col">{{ 'pressure' | translateAsync }} (mbar)</th>
+          <th scope="col">{{ 'humidity' | translateAsync }} (%)</th>
         </tr>
       </thead>
       <tbody>
@@ -24,6 +27,9 @@
           <td><b [ngStyle]="{'color': getQualityColor(meassurement?.smogMeasurement.pm25Quality)}">{{ getQualityText(meassurement?.smogMeasurement.pm25Quality) | translateAsync  }}</b></td>
           <td>{{meassurement.smogMeasurement.pm25Value | number:'1.0-2':'pl'}}</td>
           <td>{{meassurement.smogMeasurement.pm1Value | number:'1.0-2':'pl'}}</td>
+          <td>{{meassurement.weatherMeasurement?.celciusTemperature | number:'1.0-2':'pl'}}</td>
+          <td>{{meassurement.weatherMeasurement?.atmosphericPreassure | number:'1.0-2':'pl'}}</td>
+          <td>{{meassurement.weatherMeasurement?.humidityPercentage | number:'1.0-2':'pl'}}</td>
         </tr>
       </tbody>
     </table>

@@ -36,7 +36,7 @@ export class MeassurementsChartComponent implements AfterViewInit  {
     this.chartData = [
       {
         data: this.data.map(d => this.roundTwoDigits(d.value)),
-        label: this.chartName + ' (μg/m3)', pointHoverRadius: 7, pointHitRadius: 5
+        label: this.chartName, pointHoverRadius: 7, pointHitRadius: 5
       },
     ];
 
@@ -46,7 +46,7 @@ export class MeassurementsChartComponent implements AfterViewInit  {
   }
 
   ngAfterViewInit() {
-    let gradient = this.canvas.nativeElement.getContext('2d').createLinearGradient(this.canvas.nativeElement.width, 0, 0, 0);
+    const gradient = this.canvas.nativeElement.getContext('2d').createLinearGradient(this.canvas.nativeElement.width, 0, 0, 0);
     this.paintGradient(gradient);
     this.chartColors = [{ backgroundColor: gradient }];
   }
@@ -55,12 +55,12 @@ export class MeassurementsChartComponent implements AfterViewInit  {
     if (this.data.length > 2) {
       //slice gradient to three parts
       const gradientStep = 0.5;
-      var gradientValue = 1;
-      var step = Math.floor(this.data.length / 3);
-      var reminder = this.data.length % 3;
+      let gradientValue = 1;
+      const step = Math.floor(this.data.length / 3);
+      const reminder = this.data.length % 3;
 
-      for (var i = 0; i < 3; i++) {
-        var arrayFragment = this.data.slice(0 + step * i, i !== 2 ? 1 + (step - 1) + step * i : 1 + (step - 1) + step * i + reminder);
+      for (let i = 0; i < 3; i++) {
+        const arrayFragment = this.data.slice(0 + step * i, i !== 2 ? 1 + (step - 1) + step * i : 1 + (step - 1) + step * i + reminder);
         gradient.addColorStop(gradientValue, getAirQualityColorInRgba(this.countAverageQuality(arrayFragment.map(a => a.airQuality))));
         gradientValue -= gradientStep;
       }
@@ -72,8 +72,8 @@ export class MeassurementsChartComponent implements AfterViewInit  {
   }
 
   countAverageQuality(airQualites: Array<AirQualityEnum>) {
-    var sum = 0;
-    for (var i = 0; i < airQualites.length; i++) {
+    let sum = 0;
+    for (let i = 0; i < airQualites.length; i++) {
       sum += airQualites[i];
     }
 
@@ -84,7 +84,7 @@ export class MeassurementsChartComponent implements AfterViewInit  {
     meassurements = meassurements.sort((a, b) => {
       if (a.periodTo < b.periodTo) { return -1; }
       if (a.periodTo > b.periodTo) { return 1; }
-      if (a.periodTo == b.periodTo) { return 0; }
+      if (a.periodTo === b.periodTo) { return 0; }
     });
 
     return meassurements;

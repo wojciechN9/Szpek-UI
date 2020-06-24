@@ -77,6 +77,27 @@ export class LocationMeassurementsDetailsComponent implements OnInit, OnDestroy 
     return smogMeasurement.map(m => this.convertToChart(m.id, m.pm25Quality, m.pm25Value, new Date(m.periodTo)));
   }
 
+  getTemperatureChartData() {
+    let weatherMeasurement = this.locationMeassurements.meassurements.map(({ weatherMeasurement }) => weatherMeasurement)
+    weatherMeasurement = weatherMeasurement.filter(wm => wm !== null);
+
+    return weatherMeasurement.map(m => this.convertToChart(m.id, AirQualityEnum.Good, m.celciusTemperature, new Date(m.measurementDate)));
+  }
+
+  getPressureChartData() {
+    let weatherMeasurement = this.locationMeassurements.meassurements.map(({ weatherMeasurement }) => weatherMeasurement)
+    weatherMeasurement = weatherMeasurement.filter(wm => wm !== null);
+
+    return weatherMeasurement.map(m => this.convertToChart(m.id, AirQualityEnum.Good, m.atmosphericPreassure, new Date(m.measurementDate)));
+  }
+
+  getHumidityChartData() {
+    let weatherMeasurement = this.locationMeassurements.meassurements.map(({ weatherMeasurement }) => weatherMeasurement)
+    weatherMeasurement = weatherMeasurement.filter(wm => wm !== null);
+
+    return weatherMeasurement.map(m => this.convertToChart(m.id, AirQualityEnum.Good, m.humidityPercentage, new Date(m.measurementDate)));
+  }
+
   convertToChart(id: number, airQuality: AirQualityEnum, value: number, periodTo: Date) {
     return {
       id: id,
