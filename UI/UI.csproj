@@ -95,8 +95,10 @@
     <None Remove="ClientApp\src\app\utils\map-factory\location-modal\location-modal.component.ts" />
     <None Remove="ClientApp\src\app\shared\components\meassurements-calendar\meassurements-calendar.component.ts" />
     <None Remove="ClientApp\src\app\utils\meassurements-chart.ts" />
-    <None Remove="ClientApp\src\app\utils\meassurements-chart\meassurement-chart.type.ts" />
+    <None Remove="ClientApp\src\app\utils\measurements-chart\measurements-chart.component.ts" />
+    <None Remove="ClientApp\src\app\utils\measurements-chart\measurements-chart.type.ts" />
     <None Remove="ClientApp\src\app\utils\progress-bar\progress-bar.component.ts" />
+    <None Remove="ClientApp\src\app\utils\smog-meassurements-chart\smog-meassurement-chart.type.ts" />
     <None Remove="ClientApp\src\app\utils\token-serializer\token-serializer.ts" />
   </ItemGroup>
 
@@ -172,8 +174,10 @@
     <TypeScriptCompile Include="ClientApp\src\app\utils\localisation-dropdown\localisation-dropdown.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\utils\map-factory\location-modal\location-modal.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\shared\components\meassurements-calendar\meassurements-calendar.component.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\utils\meassurements-chart\meassurement-chart.type.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\utils\meassurements-chart\meassurements-chart.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\utils\measurements-chart\measurements-chart.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\utils\measurements-chart\measurements-chart.type.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\utils\smog-meassurements-chart\smog-meassurement-chart.type.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\utils\smog-meassurements-chart\smog-meassurements-chart.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\utils\progress-bar\progress-bar.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\utils\token-serializer\token-serializer.ts" />
   </ItemGroup>

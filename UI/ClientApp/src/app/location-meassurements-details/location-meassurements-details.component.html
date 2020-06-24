@@ -29,10 +29,10 @@
   </div>
   <div class="row">
     <div class="col-md-6">
-      <meassurements-chart *ngIf="locationMeassurements" chartName="PM10 (μg/m3)" [data]="getPM10ChartData()"></meassurements-chart>
+      <smog-meassurements-chart *ngIf="locationMeassurements" chartName="PM10 (μg/m3)" [data]="getPM10ChartData()"></smog-meassurements-chart>
     </div>
     <div class="col-md-6">
-      <meassurements-chart *ngIf="locationMeassurements" chartName="PM2.5 (μg/m3)" [data]="getPM25ChartData()"></meassurements-chart>
+      <smog-meassurements-chart *ngIf="locationMeassurements" chartName="PM2.5 (μg/m3)" [data]="getPM25ChartData()"></smog-meassurements-chart>
     </div>
   </div>
   <div class="row pt-2 pl-4">
@@ -50,15 +50,15 @@
         <fa-icon [icon]="['fas', 'clock']"></fa-icon> {{currentMeassurement?.weatherMeasurement.measurementDate | date:'HH:mm'}}
       </div>
       <div class="col-md-6">
-        <meassurements-chart *ngIf="locationMeassurements" chartName="{{ 'temperature' | translateAsync }} (°C)" [data]="getTemperatureChartData()"></meassurements-chart>
+        <measurements-chart *ngIf="locationMeassurements" chartName="{{ 'temperature' | translateAsync }} (°C)" [data]="getTemperatureChartData()"></measurements-chart>
       </div>
     </div>
     <div class="row pt-4">
       <div class="col-md-6">
-        <meassurements-chart *ngIf="locationMeassurements" chartName="{{ 'pressure' | translateAsync }} (mbar)" [data]="getPressureChartData()"></meassurements-chart>
+        <measurements-chart *ngIf="locationMeassurements" chartName="{{ 'pressure' | translateAsync }} (mbar)" [data]="getPressureChartData()"></measurements-chart>
       </div>
       <div class="col-md-6">
-        <meassurements-chart *ngIf="locationMeassurements" chartName="{{ 'humidity' | translateAsync }} (%)" [data]="getHumidityChartData()"></meassurements-chart>
+        <measurements-chart *ngIf="locationMeassurements" chartName="{{ 'humidity' | translateAsync }} (%)" [data]="getHumidityChartData()"></measurements-chart>
       </div>
     </div>
   </div>

@@ -3,17 +3,17 @@ import { Component, ElementRef, Input, ViewChild, AfterViewInit } from '@angular
 import { ChartDataSets, ChartOptions } from 'chart.js';
 import { Color, Label } from 'ng2-charts';
 import { getAirQualityColor, getAirQualityColorInRgba } from '../enum/air-quality';
-import { MeassurementChart } from './meassurement-chart.type';
+import { SmogMeassurementChart } from './smog-meassurement-chart.type';
 import { AirQualityEnum } from '../../location-meassurements/air-quality.type';
 
 @Component({
-  selector: 'meassurements-chart',
-  templateUrl: './meassurements-chart.component.html'
+  selector: 'smog-meassurements-chart',
+  templateUrl: './smog-meassurements-chart.component.html'
 })
-export class MeassurementsChartComponent implements AfterViewInit  {
+export class SmogMeassurementsChartComponent implements AfterViewInit  {
   @ViewChild("chartCanvas", { static: true }) canvas: ElementRef;
   @Input() chartName: string;
-  @Input() data: MeassurementChart[];
+  @Input() data: SmogMeassurementChart[];
 
   public chartData: ChartDataSets[];
   public chartLabels: Label[];
@@ -80,7 +80,7 @@ export class MeassurementsChartComponent implements AfterViewInit  {
     return Math.round(sum / airQualites.length);
   }
 
-  orderMeassurementsByDateTimeAsc(meassurements: MeassurementChart[]) {
+  orderMeassurementsByDateTimeAsc(meassurements: SmogMeassurementChart[]) {
     meassurements = meassurements.sort((a, b) => {
       if (a.periodTo < b.periodTo) { return -1; }
       if (a.periodTo > b.periodTo) { return 1; }

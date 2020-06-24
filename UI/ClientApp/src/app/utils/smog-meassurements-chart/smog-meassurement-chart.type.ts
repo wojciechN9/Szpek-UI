@@ -1,6 +1,6 @@
 import { AirQualityEnum } from "../../location-meassurements/air-quality.type";
 
-export interface MeassurementChart {
+export interface SmogMeassurementChart {
   id: number;
   airQuality: AirQualityEnum;
   value: number;

@@ -25,7 +25,6 @@ import { registerLocaleData, DatePipe } from '@angular/common';
 import localePl from '@angular/common/locales/pl';
 import { ContactComponent } from './contact/contact.component';
 import { CookieConsentComponent } from './utils/cookie-consent/cookie-consent.component';
-import { MeassurementsChartComponent } from './utils/meassurements-chart/meassurements-chart.component';
 import { ChartsModule } from 'ng2-charts';
 import { MeassurementsHttpService } from './utils/http-services/meassurements.http.service';
 import { RemindPasswordOkComponent } from './password-remind/remind-password-ok/remind-password-ok.component';
@@ -39,6 +38,8 @@ import { L10nTranslationModule, L10nIntlModule, L10nLoader } from 'angular-l10n'
 import { l10nConfig, initL10n } from './l10n-config';
 import { LocalisationDropdown } from './utils/localisation-dropdown/localisation-dropdown.component';
 import { AuthModule } from './auth/auth.module';
+import { SmogMeassurementsChartComponent } from './utils/smog-meassurements-chart/smog-meassurements-chart.component';
+import { MeasurementsChartComponent } from './utils/measurements-chart/measurements-chart.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import { AuthModule } from './auth/auth.module';
     InputError,
     ContactComponent,
     CookieConsentComponent,
-    MeassurementsChartComponent,
+    SmogMeassurementsChartComponent,
+    MeasurementsChartComponent,
     RemindPasswordComponent,
     RemindPasswordOkComponent,
     PasswordChangeComponent,
