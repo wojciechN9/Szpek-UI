@@ -7,4 +7,5 @@ export interface Address {
   countryCode: string;
   latitude: number;
   longitude: number;
+  height: number;
 }

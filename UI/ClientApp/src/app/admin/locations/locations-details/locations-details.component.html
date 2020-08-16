@@ -44,6 +44,11 @@
         <input type="text" class="form-control" id="longitude" formControlName="longitude" />
         <input-error [control]="form.controls.address.controls.longitude"></input-error>
       </div>
+      <div class="form-group">
+        <label for="publicKey">Height above sea level (integer)</label>
+        <input type="number" class="form-control" id="height" formControlName="height" />
+        <input-error [control]="form.controls.address.controls.height"></input-error>
+      </div>
     </div>
     <button type="submit" class="btn btn-primary">Edytuj</button>
   </form>
