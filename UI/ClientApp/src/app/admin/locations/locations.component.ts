@@ -40,6 +40,7 @@ export class LocationsComponent implements OnInit {
         countryCode: ['', [Validators.maxLength(2), Validators.required]],
         latitude: ['', Validators.required],
         longitude: ['', Validators.required],
+        height: ['', Validators.required],
       })
     });
   }
@@ -62,7 +63,8 @@ export class LocationsComponent implements OnInit {
         voivodeship: this.form.get('address.voivodeship').value,
         countryCode: this.form.get('address.countryCode').value,
         latitude: +this.form.get('address.latitude').value,
-        longitude: +this.form.get('address.longitude').value
+        longitude: +this.form.get('address.longitude').value,
+        height: +this.form.get('address.height').value
       }
     } as LocationCreate;
 
@@ -71,7 +73,7 @@ export class LocationsComponent implements OnInit {
   }
 
   getSensorCode(sensorId: number) {
-    return this.sensors.filter(s => s.id == sensorId)[0].code;
+    return this.sensors.filter(s => s.id === sensorId)[0].code;
   }
 
   onReset() {

@@ -25,6 +25,7 @@ export const plTextResources = {
   forgetPassword: "Zapomniałeś hasła",
   frequentlyAskedQuestions: "Najczęściej zadawane pytania",
   good: "Dobra",
+  heightAboveSeaLevel: "Wysokość nad poziomem morza",
   humidity: "Wilgotność",
   iAccept: "Akceptuje",
   ifYouHaveEnteredTheCorrectEmailWeSendLinkToResetThePassword: "Jeśli podałeś poprawny email, wyślemy na niego link do restartu hasła",

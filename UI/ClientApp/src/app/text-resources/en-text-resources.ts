@@ -25,6 +25,7 @@ export const enTextResources = {
   forgetPassword: "Forget password",
   frequentlyAskedQuestions: "Frequently asked questions",
   good: "Good",
+  heightAboveSeaLevel: "Height above sea level",
   humidity: "Humidity",
   iAccept: "I Accept",
   ifYouHaveEnteredTheCorrectEmailWeSendLinkToResetThePassword: "If you have entered the correct email, we send a link to reset the password",

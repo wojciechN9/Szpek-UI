@@ -19,7 +19,7 @@ export class LocationsDetailsComponent implements OnInit {
     private formBuilder: FormBuilder) { }
 
   ngOnInit() {
-    var locationId = +this.route.snapshot.params['id'];
+    const locationId = +this.route.snapshot.params['id'];
     this.locationsService.getLocationById(locationId).subscribe(
       result => {
         this.location = result;
@@ -33,6 +33,7 @@ export class LocationsDetailsComponent implements OnInit {
             countryCode: [this.location.address.countryCode, [Validators.maxLength(2), Validators.required]],
             latitude: [this.location.address.latitude, Validators.required],
             longitude: [this.location.address.longitude, Validators.required],
+            height: [this.location.address.height, Validators.required]
           })
         });
       })
