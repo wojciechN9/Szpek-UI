@@ -3,6 +3,7 @@ import { ActivatedRoute } from "@angular/router";
 import { LocationsHttpService } from "../../shared/services/locations.http.service";
 import { LocationDetails } from "../../shared/models/location-details.type";
 import { L10N_LOCALE, L10nLocale } from "angular-l10n";
+import { Observable } from "rxjs";
 
 @Component({
   selector: 'user-location-details',
@@ -10,7 +11,7 @@ import { L10N_LOCALE, L10nLocale } from "angular-l10n";
 })
 
 export class UserLocationDetailsComonent implements OnInit {
-  public location: LocationDetails;
+  public location$: Observable<LocationDetails>;
 
   constructor(
     private locationsService: LocationsHttpService,
@@ -19,9 +20,6 @@ export class UserLocationDetailsComonent implements OnInit {
 
   ngOnInit() {
    const locationId = +this.route.snapshot.params['id'];
-    this.locationsService.getLocationById(locationId).subscribe(
-      result => {
-        this.location = result;
-      });
+    this.location$ = this.locationsService.getLocationById(locationId);
   }
 }

@@ -1,36 +1,30 @@
-<div class="location-meassurements-list-element" [ngStyle]="{'background-color': getQualityColor(locationMeassurements.meassurements[0].smogMeasurement.airQuality)}">
-  <div class="row location-meassurements-list-content">
-    <div class="location-meassurements-list-values" [routerLink]="['/location/', locationMeassurements.id]" [routerLinkActive]='["link-active"]'>
-      <div class="row">
-        <div class="location-meassurements-list-value">
-          <div class="location-meassurements-list-value-content">
-            <div class="location-meassurements-list-value-unit">PM 10</div>
-            <div class="location-meassurements-list-value-pollution">{{locationMeassurements.meassurements[0].smogMeasurement.pm10Value | number:'1.0-1':'pl'}}</div>
-            <div class="location-meassurements-list-value-info">μg/m3</div>
-          </div>
-        </div>
-        <div class="location-meassurements-list-value">
-          <div class="location-meassurements-list-value-content">
-            <div class="location-meassurements-list-value-unit">PM 2.5</div>
-            <div class="location-meassurements-list-value-pollution">{{locationMeassurements.meassurements[0].smogMeasurement.pm25Value | number:'1.0-1':'pl'}}</div>
-            <div class="location-meassurements-list-value-info">μg/m3</div>
-          </div>
+<div class="card" style="width: 20rem;">
+  <div class="content">
+    <div class="card-body" [routerLink]="['/location/', locationMeassurements.id]" [routerLinkActive]='["link-active"]'>
+      <div class="status">
+        <div class="circle" [ngStyle]="{'background-color': getQualityColor(locationMeassurements.meassurements[0].smogMeasurement.airQuality)}">          
         </div>
       </div>
-      <div class="location-meassurements-list-location">
-        <div class="location-meassurements-list-location-city">
-          {{locationMeassurements.address.city}}
-        </div>
-        <div class="location-meassurements-list-location-name">
-          {{locationMeassurements.address.street}}
-        </div>
-        <div class="location-meassurements-list-location-time">
-          <fa-icon [icon]="['fas', 'clock']"></fa-icon> {{locationMeassurements.meassurements[0].smogMeasurement.periodTo | date:'HH:mm'}}
+      <div class="info">
+        <h4 class="card-title">{{locationMeassurements.address.city}}</h4>
+        <h5 class="card-subtitle mb-2 text-muted">{{locationMeassurements.address.street}}</h5>
+        <div class="clock-component">
+          <fa-icon [icon]="['fas', 'clock']" size="xs"></fa-icon> {{locationMeassurements.meassurements[0].smogMeasurement.periodTo | date:'HH:mm'}}
         </div>
       </div>
     </div>
-    <div class="star-component" (click)="onClickFavourite()">
-      <fa-icon class="star" [ngClass]="{'fav-checked': isFavourite, 'fav-unchecked': !isFavourite}" [icon]="['fas', 'star']" size="3x" [styles]="{'stroke': 'black'}"></fa-icon>
+    <div class="card-footer">
+      <div class="measurements">
+        <div class="measurement-content">
+          <div class="measurement-name">PM 10</div>
+          <div class="measurement-value">{{locationMeassurements.meassurements[0].smogMeasurement.pm10Value | number:'1.0-1':'pl'}}</div>
+        </div>
+        <div class="measurement-content">
+          <div class="measurement-name">PM 2.5</div>
+          <div class="measurement-value">{{locationMeassurements.meassurements[0].smogMeasurement.pm25Value | number:'1.0-1':'pl'}}</div>
+        </div>
+      </div>
+      <fa-icon class="star" (click)="onClickFavourite()" [ngClass]="{'fav-checked': isFavourite, 'fav-unchecked': !isFavourite}" [icon]="['fas', 'star']" size="2x" [styles]="{'stroke': 'black'}"></fa-icon>
     </div>
   </div>
 </div>

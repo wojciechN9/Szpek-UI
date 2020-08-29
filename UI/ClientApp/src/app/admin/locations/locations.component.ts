@@ -6,6 +6,7 @@ import { SensorsHttpService } from "../sensors.service";
 import { LocationsHttpService } from "../../shared/services/locations.http.service";
 import { LocationCreate } from "../../shared/models/location-create.type";
 import { Location } from "../../shared/models/location.type";
+import { Observable } from "rxjs";
 
 @Component({
   selector: 'locations',
@@ -14,7 +15,7 @@ import { Location } from "../../shared/models/location.type";
 export class LocationsComponent implements OnInit {
   public form: FormGroup;
   public isAddFormVisible = false;
-  public locations: Array<Location>;
+  public locations$: Observable<Location[]>;
   public sensors: Array<Sensor>;
 
   constructor(
@@ -24,8 +25,7 @@ export class LocationsComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit(): void {
-    this.locationsService.getLocations().subscribe(
-      result => { this.locations = result })
+    this.locations$ = this.locationsService.getLocations();
 
     this.sensorsService.getSensors().subscribe(
       result => { this.sensors = result });
