@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" *ngIf="sensors$ | async as sensors">
   <h1>Locations</h1>
   <div *ngIf="isAddFormVisible" class="jumbotron">
     <button (click)="triggerFormVisible()" class="btn btn-primary mb-4">x</button>
@@ -57,38 +57,36 @@
     </form>
   </div>
   <button *ngIf="!isAddFormVisible" (click)="triggerFormVisible()" class="btn btn-primary float-right">Dodaj Nowy</button>
-  <div *ngIf="locations$ | async as locations">
-    <table *ngIf="sensors" class="table table-bordered">
-      <thead class="thead-light">
-        <tr>
-          <th scope="col">isActive</th>
-          <th scope="col">SensorId</th>
-          <th scope="col">City</th>
-          <th scope="col">Street</th>
-          <th scope="col">PostCode</th>
-          <th scope="col">Voivodeship</th>
-          <th scope="col">CountryCode</th>
-          <th scope="col">Latitude</th>
-          <th scope="col">Longitude</th>
-          <th scope="col">Height</th>
-          <th scope="col">Details</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let location of locations">
-          <td class="text-center"><input type="checkbox" [checked]="location.isActive" disabled="disabled" /></td>
-          <td><a [routerLink]="['/admin/sensors/', location.sensorId]" [routerLinkActive]='["link-active"]'>{{getSensorCode(location.sensorId)}}</a></td>
-          <td>{{location.address.city}}</td>
-          <td>{{location.address.street}}</td>
-          <td>{{location.address.postCode}}</td>
-          <td>{{location.address.voivodeship}}</td>
-          <td>{{location.address.countryCode}}</td>
-          <td>{{location.address.latitude}}</td>
-          <td>{{location.address.longitude}}</td>
-          <td>{{location.address.height}}</td>
-          <td class="text-center"><a [routerLink]="['/admin/locations/', location.id]" [routerLinkActive]='["link-active"]'>>></a></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+  <table class="table table-bordered">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">isActive</th>
+        <th scope="col">SensorCode</th>
+        <th scope="col">City</th>
+        <th scope="col">Street</th>
+        <th scope="col">PostCode</th>
+        <th scope="col">Voivodeship</th>
+        <th scope="col">CountryCode</th>
+        <th scope="col">Latitude</th>
+        <th scope="col">Longitude</th>
+        <th scope="col">Height</th>
+        <th scope="col">Details</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let location of locations$ | async">
+        <td class="text-center"><input type="checkbox" [checked]="location.isActive" disabled="disabled" /></td>
+        <td><a [routerLink]="['/admin/sensors/', location.sensorId]" [routerLinkActive]='["link-active"]'>{{getSensorCode(sensors, location.sensorId)}}</a></td>
+        <td>{{location.address.city}}</td>
+        <td>{{location.address.street}}</td>
+        <td>{{location.address.postCode}}</td>
+        <td>{{location.address.voivodeship}}</td>
+        <td>{{location.address.countryCode}}</td>
+        <td>{{location.address.latitude}}</td>
+        <td>{{location.address.longitude}}</td>
+        <td>{{location.address.height}}</td>
+        <td class="text-center"><a [routerLink]="['/admin/locations/', location.id]" [routerLinkActive]='["link-active"]'>>></a></td>
+      </tr>
+    </tbody>
+  </table>
 </div>

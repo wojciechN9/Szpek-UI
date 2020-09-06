@@ -16,7 +16,7 @@
     <button type="submit" class="btn btn-primary">Edytuj</button>
   </form>
   <h4 class="mt-4">Czujniki</h4>
-  <table *ngIf="sensorsOwner" class="table table-bordered">
+  <table *ngIf="sensorsOwner$ | async as sensorsOwner" class="table table-bordered">
     <thead class="thead-light">
       <tr>
         <th scope="col">Kod czujnika</th>
