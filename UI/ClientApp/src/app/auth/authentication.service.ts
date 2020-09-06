@@ -44,9 +44,7 @@ export class AuthenticationService {
     return this.http.post<any>(environment.apiUrl + 'Users/register', userCreate);
   }
 
-  getAll(): Observable<Array<User>> {
-    return this.http.get<Array<User>>(environment.apiUrl + 'Users');
-  }
+  users$ = this.http.get<Array<User>>(environment.apiUrl + 'Users');
 
   remindPassword(userRemindPassword: UserRemindPassword) {
     return this.http.post<any>(environment.apiUrl + 'Users/remindPassword', userRemindPassword);
@@ -56,9 +54,7 @@ export class AuthenticationService {
     return this.http.post<any>(environment.apiUrl + 'Users/resetPassword', userPasswordReset);
   }
 
-  getUsersWithoutOwner(): Observable<Array<User>> {
-    return this.http.get<Array<User>>(environment.apiUrl + 'Users/UsersWithoutOwner');
-  }
+  usersWithoutOwner$ = this.http.get<Array<User>>(environment.apiUrl + 'Users/UsersWithoutOwner');
 
   logout() {
     // remove user from local storage to log user out

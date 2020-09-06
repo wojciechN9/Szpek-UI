@@ -1,4 +1,4 @@
-<div class="container">
+<div *ngIf="sensor$ | async as sensor" class="container">
   <h1>Sensor</h1>
   <form *ngIf="form" [formGroup]="form" (ngSubmit)="onSubmit()">
     <div class="form-group">
@@ -18,7 +18,7 @@
     <button type="submit" class="btn btn-primary" [disabled]="!isSubmitButtonEnabled">Edytuj</button>
   </form>
   <h4 class="mt-4">Loalizacje</h4>
-  <table *ngIf="sensor" class="table table-bordered">
+  <table class="table table-bordered">
     <thead class="thead-light">
       <tr>
         <th scope="col">Adres</th>

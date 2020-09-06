@@ -9,18 +9,14 @@ import { SensorUpdate } from './sensors/sensors-details/sensor-update.type';
 
 @Injectable()
 export class SensorsHttpService {
-  private readonly apiEndpoint;
-  constructor(private http: HttpClient) {
-    this.apiEndpoint = environment.apiUrl;
-  }
+  private readonly apiEndpoint = environment.apiUrl;
+  constructor(private http: HttpClient) { }
 
   postSensor(sensor: SensorCreate): Observable<number> {
-    return this.http.post<any>(this.apiEndpoint + 'Sensors', sensor);
+    return this.http.post<number>(this.apiEndpoint + 'Sensors', sensor);
   }
 
-  getSensors(): Observable<Array<Sensor>> {
-    return this.http.get<Array<Sensor>>(this.apiEndpoint + 'Sensors');
-  }
+  sensors$ = this.http.get<Array<Sensor>>(this.apiEndpoint + 'Sensors');
 
   getSensorDetails(sensorId: number): Observable<SensorDetails> {
     return this.http.get<SensorDetails>(this.apiEndpoint + 'Sensors/' + sensorId);

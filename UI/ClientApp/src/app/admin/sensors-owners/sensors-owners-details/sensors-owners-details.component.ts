@@ -3,6 +3,8 @@ import { ActivatedRoute } from "@angular/router";
 import { FormBuilder, Validators, FormGroup } from "@angular/forms";
 import { SensorsOwnersHttpService } from "../../../shared/services/sensor-owners.service";
 import { SensorOwner } from "../../../shared/models/sensor-owner.type";
+import { Observable } from "rxjs";
+import { tap } from "rxjs/operators";
 
 @Component({
   selector: 'sensors-owners-details',
@@ -11,7 +13,7 @@ import { SensorOwner } from "../../../shared/models/sensor-owner.type";
 
 export class SensorsOwnersDetailsComponent implements OnInit {
   public form: FormGroup;
-  public sensorsOwner: SensorOwner;
+  public sensorsOwner$: Observable<SensorOwner>;
   public sensorOwnerId: number;
 
   constructor(
@@ -21,17 +23,16 @@ export class SensorsOwnersDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.sensorOwnerId = +this.route.snapshot.params['id'];
-    this.sensorsOwnersService.getSensorsOwner(this.sensorOwnerId).subscribe(
-      result => {
-        this.sensorsOwner = result;
+    this.sensorsOwner$ = this.sensorsOwnersService.getSensorsOwner(this.sensorOwnerId).pipe(
+      tap(sensorsOwner => {
         this.form = this.formBuilder.group({
-          name: [{ value: this.sensorsOwner.name, disabled: true }, Validators.required],
-          address: [this.sensorsOwner.address, Validators.required],
-          isCompany: [this.sensorsOwner.isCompany, Validators.required]
+          name: [{ value: sensorsOwner.name, disabled: true }, Validators.required],
+          address: [sensorsOwner.address, Validators.required],
+          isCompany: [sensorsOwner.isCompany, Validators.required]
         });
-      });
+      }));
   }
-  
+
   onSubmit() {
     alert('not active');
   }

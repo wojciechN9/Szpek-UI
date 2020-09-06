@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" *ngIf="location$ | async as location">
   <h1>Location</h1>
   <form *ngIf="form" [formGroup]="form" (ngSubmit)="onSubmit()">
     <div class="form-group">
@@ -53,5 +53,5 @@
     <button type="submit" class="btn btn-primary">Edytuj</button>
   </form>
   <h4 class="mt-4">Historia pomiarów</h4>
-  <meassurements-calendar *ngIf="location" [locationId]="location.id"></meassurements-calendar>
+  <meassurements-calendar [locationId]="location.id"></meassurements-calendar>
 </div>

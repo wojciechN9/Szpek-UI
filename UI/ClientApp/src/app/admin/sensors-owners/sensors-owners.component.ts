@@ -1,10 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
-import { User } from "../users/user.type";
 import { SensorsOwnersHttpService } from "../../shared/services/sensor-owners.service";
 import { SensorOwnerPost } from "../../shared/models/sensor-owner-post.type";
-import { SensorOwner } from "../../shared/models/sensor-owner.type";
 import { AuthenticationService } from "../../auth/authentication.service";
 
 @Component({
@@ -14,8 +12,8 @@ import { AuthenticationService } from "../../auth/authentication.service";
 export class SensorsOwnersComponent implements OnInit {
   public form: FormGroup;
   public isAddFormVisible = false;
-  public sensorsOwners: Array<SensorOwner>;
-  public users: Array<User>;
+  public sensorsOwners$ = this.sensorsOwnersService.sensorsOwners$;
+  public users$ = this.authenticationService.usersWithoutOwner$;
 
   constructor(
     private sensorsOwnersService: SensorsOwnersHttpService,
@@ -24,12 +22,6 @@ export class SensorsOwnersComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit(): void {
-    this.sensorsOwnersService.getSensorsOwners().subscribe(
-      result => { this.sensorsOwners = result });
-
-    this.authenticationService.getUsersWithoutOwner().subscribe(
-      result => { this.users = result });
-
     this.form = this.formBuilder.group({
       userId: ['', Validators.required],
       name: ['', Validators.required],
@@ -47,12 +39,12 @@ export class SensorsOwnersComponent implements OnInit {
       return;
     }
 
-    var sensorOwner = <SensorOwnerPost>{
+    const sensorOwner = {
       userId: this.form.controls.userId.value,
       name: this.form.controls.name.value,
       address: this.form.controls.address.value,
       isCompany: this.form.controls.isCompany.value
-    };
+    } as SensorOwnerPost;
 
     this.sensorsOwnersService.postSensorOwner(sensorOwner).subscribe(
       id => this.router.navigate(['/admin/sensorsOwners', id]));

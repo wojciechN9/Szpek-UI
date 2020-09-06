@@ -5,8 +5,6 @@ import { Sensor } from "../sensors/sensor.type";
 import { SensorsHttpService } from "../sensors.service";
 import { LocationsHttpService } from "../../shared/services/locations.http.service";
 import { LocationCreate } from "../../shared/models/location-create.type";
-import { Location } from "../../shared/models/location.type";
-import { Observable } from "rxjs";
 
 @Component({
   selector: 'locations',
@@ -15,8 +13,8 @@ import { Observable } from "rxjs";
 export class LocationsComponent implements OnInit {
   public form: FormGroup;
   public isAddFormVisible = false;
-  public locations$: Observable<Location[]>;
-  public sensors: Array<Sensor>;
+  public locations$ = this.locationsService.getLocations();
+  public sensors$ = this.sensorsService.sensors$;
 
   constructor(
     private locationsService: LocationsHttpService,
@@ -25,11 +23,6 @@ export class LocationsComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit(): void {
-    this.locations$ = this.locationsService.getLocations();
-
-    this.sensorsService.getSensors().subscribe(
-      result => { this.sensors = result });
-
     this.form = this.formBuilder.group({
       sensorId: ['', Validators.required],
       address: this.formBuilder.group({
@@ -72,8 +65,8 @@ export class LocationsComponent implements OnInit {
       id => this.router.navigate(['/admin/locations', id]));
   }
 
-  getSensorCode(sensorId: number) {
-    return this.sensors.filter(s => s.id === sensorId)[0].code;
+  getSensorCode(sensors: Sensor[], sensorId: number) {
+    return sensors.filter(s => s.id === sensorId)[0].code;
   }
 
   onReset() {

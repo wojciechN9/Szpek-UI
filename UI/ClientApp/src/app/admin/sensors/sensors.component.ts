@@ -1,11 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
-import { Sensor } from "./sensor.type";
 import { SensorCreate } from "./sensors-create.type";
 import { SensorsHttpService } from "../sensors.service";
 import { SensorsOwnersHttpService } from "../../shared/services/sensor-owners.service";
-import { SensorOwner } from "../../shared/models/sensor-owner.type";
 
 @Component({
   selector: 'sensors',
@@ -14,8 +12,8 @@ import { SensorOwner } from "../../shared/models/sensor-owner.type";
 export class SensorsComponent implements OnInit {
   public form: FormGroup;
   public isAddFormVisible = false;
-  public sensors: Array<Sensor>;
-  public sensorsOwners: Array<SensorOwner>;
+  public sensors$ = this.sensorsService.sensors$;
+  public sensorsOwners$ = this.sensorsOwnersService.sensorsOwners$;
 
   constructor(
     private sensorsService: SensorsHttpService,
@@ -23,13 +21,7 @@ export class SensorsComponent implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router) { }
 
-  ngOnInit(): void {
-    this.sensorsService.getSensors().subscribe(
-      result => { this.sensors = result });
-
-    this.sensorsOwnersService.getSensorsOwners().subscribe(
-      result => { this.sensorsOwners = result });
-
+  ngOnInit(): void {  
     this.form = this.formBuilder.group({
       code: ['', Validators.required],
       publicKey: ['', Validators.required],
