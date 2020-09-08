@@ -1,10 +1,13 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
-import { Sensor } from "../sensors/sensor.type";
 import { SensorsHttpService } from "../sensors.service";
 import { LocationsHttpService } from "../../shared/services/locations.http.service";
 import { LocationCreate } from "../../shared/models/location-create.type";
+import { Subject, merge } from "rxjs";
+import { scan } from "rxjs/operators";
+import { Sensor } from "../sensors/sensor.type";
+import { Location } from "../../shared/models/location.type";
 
 @Component({
   selector: 'locations',
@@ -15,6 +18,10 @@ export class LocationsComponent implements OnInit {
   public isAddFormVisible = false;
   public locations$ = this.locationsService.getLocations();
   public sensors$ = this.sensorsService.sensors$;
+  private locationAddedSubject = new Subject<Location>();
+  private locationAddedAction$ = this.locationAddedSubject.asObservable();
+  locationsWithAdded$ = merge(this.locations$, this.locationAddedAction$).pipe(
+    scan((acc: Location[], value: Location) => [value, ...acc]));
 
   constructor(
     private locationsService: LocationsHttpService,
@@ -62,7 +69,14 @@ export class LocationsComponent implements OnInit {
     } as LocationCreate;
 
     this.locationsService.postLocation(locationCreate).subscribe(
-      id => this.router.navigate(['/admin/locations', id]));
+      id => this.locationAddedSubject.next(this.convertToLocation(locationCreate, id)));
+  }
+  convertToLocation(locationCreate: LocationCreate, locationId: number): Location {
+    return {
+      id: locationId,
+      address: locationCreate.address,
+      sensorId: locationCreate.sensorId
+    } as Location
   }
 
   getSensorCode(sensors: Sensor[], sensorId: number) {

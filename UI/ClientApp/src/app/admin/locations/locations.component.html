@@ -74,7 +74,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let location of locations$ | async">
+      <tr *ngFor="let location of locationsWithAdded$ | async">
         <td class="text-center"><input type="checkbox" [checked]="location.isActive" disabled="disabled" /></td>
         <td><a [routerLink]="['/admin/sensors/', location.sensorId]" [routerLinkActive]='["link-active"]'>{{getSensorCode(sensors, location.sensorId)}}</a></td>
         <td>{{location.address.city}}</td>

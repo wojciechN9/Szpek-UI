@@ -28,7 +28,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let user of users$ | async">
+      <tr *ngFor="let user of usersWithAdd$ | async">
         <td>{{user.userId}}</td>
         <td>{{user.userName}}</td>
         <td>{{user.email}}</td>
