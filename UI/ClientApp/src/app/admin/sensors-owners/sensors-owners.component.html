@@ -40,7 +40,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let sensorOwner of sensorsOwners$ | async">
+      <tr *ngFor="let sensorOwner of sensorsOwnersWithAdded$ | async">
         <td>{{sensorOwner.name}}</td>
         <td>{{sensorOwner.address}}</td>
         <td class="text-center"><input type="checkbox" [checked]="sensorOwner.isCompany" disabled="disabled" /></td>

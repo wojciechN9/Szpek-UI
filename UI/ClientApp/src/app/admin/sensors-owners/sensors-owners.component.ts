@@ -4,6 +4,9 @@ import { Router } from "@angular/router";
 import { SensorsOwnersHttpService } from "../../shared/services/sensor-owners.service";
 import { SensorOwnerPost } from "../../shared/models/sensor-owner-post.type";
 import { AuthenticationService } from "../../auth/authentication.service";
+import { SensorOwner } from "../../shared/models/sensor-owner.type";
+import { Subject, merge } from "rxjs";
+import { scan } from "rxjs/operators";
 
 @Component({
   selector: 'sensors-owners',
@@ -14,6 +17,12 @@ export class SensorsOwnersComponent implements OnInit {
   public isAddFormVisible = false;
   public sensorsOwners$ = this.sensorsOwnersService.sensorsOwners$;
   public users$ = this.authenticationService.usersWithoutOwner$;
+  private sensorOwnerAddedSubject = new Subject<SensorOwner>();
+  private sensorOwnerAddedAction$ = this.sensorOwnerAddedSubject.asObservable();
+
+  sensorsOwnersWithAdded$ = merge(this.sensorsOwners$, this.sensorOwnerAddedAction$).pipe(
+    scan((acc: SensorOwner[], value: SensorOwner) => [value, ...acc])
+  );
 
   constructor(
     private sensorsOwnersService: SensorsOwnersHttpService,
@@ -47,7 +56,16 @@ export class SensorsOwnersComponent implements OnInit {
     } as SensorOwnerPost;
 
     this.sensorsOwnersService.postSensorOwner(sensorOwner).subscribe(
-      id => this.router.navigate(['/admin/sensorsOwners', id]));
+      (id) => this.sensorOwnerAddedSubject.next(this.convertToSensorOwner(sensorOwner, id)));
+  }
+
+  private convertToSensorOwner(sensorOwnerPost: SensorOwnerPost, sensorId: number) {
+    return {
+      id: sensorId,
+      address: sensorOwnerPost.address,
+      name: sensorOwnerPost.name,
+      isCompany: sensorOwnerPost.isCompany
+    } as SensorOwner;
   }
 
   onReset() {
