@@ -24,7 +24,6 @@
         <p>{{ 'noWeatherConditionsMeasurementsForThisSensor' | translateAsync }}</p>
       </div>
       <div *ngIf="currentMeassurement?.weatherMeasurement !== null">
-        <p>{{ 'temperature' | translateAsync }}: <b>{{currentMeassurement?.weatherMeasurement.celciusTemperature | number:'1.0-2':'pl'}}</b> °C</p>
         <p>{{ 'pressure' | translateAsync }}: <b>{{currentMeassurement?.weatherMeasurement.atmosphericPreassure | number:'1.0-2':'pl'}}</b> hPa</p>
         <p>{{ 'humidity' | translateAsync }}: <b>{{currentMeassurement?.weatherMeasurement.humidityPercentage | number:'1.0-2':'pl'}}</b> %</p>
       </div>
