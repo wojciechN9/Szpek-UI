@@ -41,17 +41,10 @@
   <div *ngIf="currentMeassurement?.weatherMeasurement !== null">
     <div class="row pt-4">
       <div class="col-md-6">
-        <measurements-chart *ngIf="locationMeassurements" chartName="{{ 'temperature' | translateAsync }} (°C)" [data]="getTemperatureChartData()"></measurements-chart>
-      </div>
-      <div class="col-md-6">
         <measurements-chart *ngIf="locationMeassurements" chartName="{{ 'pressure' | translateAsync }} (hPa)" [data]="getPressureChartData()"></measurements-chart>
       </div>
-    </div>
-    <div class="row pt-4">
       <div class="col-md-6">
         <measurements-chart *ngIf="locationMeassurements" chartName="{{ 'humidity' | translateAsync }} (%)" [data]="getHumidityChartData()"></measurements-chart>
-      </div>
-      <div class="col-md-6">
       </div>
     </div>
   </div>
