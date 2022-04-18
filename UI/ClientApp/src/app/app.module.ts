@@ -94,6 +94,7 @@ import { MeasurementsChartComponent } from './utils/measurements-chart/measureme
       { path: 'passwordChange/ok', component: PasswordChangeOkComponent },
       { path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule) },
       { path: 'dashboard', loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule) },
+      { path: 'manual', loadChildren: () => import('./manual/manual.module').then(m => m.ManualModule) },
       { path: '**', redirectTo: '' }
     ])
   ],
