@@ -42,78 +42,77 @@ import { SmogMeassurementsChartComponent } from './utils/smog-meassurements-char
 import { MeasurementsChartComponent } from './utils/measurements-chart/measurements-chart.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    NavMenuComponent,
-    LocationMeassurementsComponent,
-    LocationMeassurementsDetailsComponent,
-    LocationMeassurementsListComponent,
-    LocationMeassurementsListElementComponent,
-    MapFactoryComponent,
-    LocationModalComponent,
-    LocationMapComponent,
-    ErrorPageComponent,
-    LegendComponent,
-    LoginComponent,
-    InputError,
-    ContactComponent,
-    CookieConsentComponent,
-    SmogMeassurementsChartComponent,
-    MeasurementsChartComponent,
-    RemindPasswordComponent,
-    RemindPasswordOkComponent,
-    PasswordChangeComponent,
-    PasswordChangeOkComponent,
-    FaqComponent,
-    ProgressBarComponent,
-    LocalisationDropdown
-  ],
-  imports: [
-    AuthModule,
-    BrowserModule,
-    HttpClientModule,
-    FontAwesomeModule,
-    NgbModule,
-    ReactiveFormsModule,
-    ChartsModule,
-    L10nTranslationModule.forRoot(l10nConfig),
-    L10nIntlModule,
-    RouterModule.forRoot([
-    { path: '', component: LocationMeassurementsComponent, pathMatch: 'prefix' },
-    { path: 'location', component: LocationMeassurementsComponent },
-    { path: 'location/:id', component: LocationMeassurementsDetailsComponent },
-    { path: 'map', component: LocationMapComponent },
-    { path: 'error', component: ErrorPageComponent },
-    { path: 'legend', component: LegendComponent },
-    { path: 'login', component: LoginComponent },
-    { path: 'contact', component: ContactComponent },
-    { path: 'faq', component: FaqComponent },
-    { path: 'remindPassword', component: RemindPasswordComponent },
-    { path: 'remindPassword/ok', component: RemindPasswordOkComponent },
-    { path: 'passwordChange', component: PasswordChangeComponent },
-    { path: 'passwordChange/ok', component: PasswordChangeOkComponent },
-    { path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule) },
-    { path: 'dashboard', loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule) },
-    { path: 'manual', loadChildren: () => import('./manual/manual.module').then(m => m.ManualModule) },
-    { path: '**', redirectTo: '' }
-], { relativeLinkResolution: 'legacy' })
-  ],
-  providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: HttpConfigInterceptor, multi: true },
-    { provide: UrlSerializer, useClass: TokenUrlSerializer },
-    MeassurementsHttpService,
-    NgbActiveModal,
-    FavouriteLocationsService,
-    DatePipe,
-    {
-      provide: APP_INITIALIZER,
-      useFactory: initL10n,
-      deps: [L10nLoader],
-      multi: true
-    }
+    declarations: [
+        AppComponent,
+        NavMenuComponent,
+        LocationMeassurementsComponent,
+        LocationMeassurementsDetailsComponent,
+        LocationMeassurementsListComponent,
+        LocationMeassurementsListElementComponent,
+        MapFactoryComponent,
+        LocationModalComponent,
+        LocationMapComponent,
+        ErrorPageComponent,
+        LegendComponent,
+        LoginComponent,
+        InputError,
+        ContactComponent,
+        CookieConsentComponent,
+        SmogMeassurementsChartComponent,
+        MeasurementsChartComponent,
+        RemindPasswordComponent,
+        RemindPasswordOkComponent,
+        PasswordChangeComponent,
+        PasswordChangeOkComponent,
+        FaqComponent,
+        ProgressBarComponent,
+        LocalisationDropdown
     ],
-  bootstrap: [AppComponent],
-  entryComponents: [LocationModalComponent]
+    imports: [
+        AuthModule,
+        BrowserModule,
+        HttpClientModule,
+        FontAwesomeModule,
+        NgbModule,
+        ReactiveFormsModule,
+        ChartsModule,
+        L10nTranslationModule.forRoot(l10nConfig),
+        L10nIntlModule,
+        RouterModule.forRoot([
+            { path: '', component: LocationMeassurementsComponent, pathMatch: 'prefix' },
+            { path: 'location', component: LocationMeassurementsComponent },
+            { path: 'location/:id', component: LocationMeassurementsDetailsComponent },
+            { path: 'map', component: LocationMapComponent },
+            { path: 'error', component: ErrorPageComponent },
+            { path: 'legend', component: LegendComponent },
+            { path: 'login', component: LoginComponent },
+            { path: 'contact', component: ContactComponent },
+            { path: 'faq', component: FaqComponent },
+            { path: 'remindPassword', component: RemindPasswordComponent },
+            { path: 'remindPassword/ok', component: RemindPasswordOkComponent },
+            { path: 'passwordChange', component: PasswordChangeComponent },
+            { path: 'passwordChange/ok', component: PasswordChangeOkComponent },
+            { path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule) },
+            { path: 'dashboard', loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule) },
+            { path: 'manual', loadChildren: () => import('./manual/manual.module').then(m => m.ManualModule) },
+            { path: '**', redirectTo: '' }
+        ], { relativeLinkResolution: 'legacy' })
+    ],
+    providers: [
+        { provide: HTTP_INTERCEPTORS, useClass: HttpConfigInterceptor, multi: true },
+        { provide: UrlSerializer, useClass: TokenUrlSerializer },
+        MeassurementsHttpService,
+        NgbActiveModal,
+        FavouriteLocationsService,
+        DatePipe,
+        {
+            provide: APP_INITIALIZER,
+            useFactory: initL10n,
+            deps: [L10nLoader],
+            multi: true
+        }
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule {
   constructor(library: FaIconLibrary) {
