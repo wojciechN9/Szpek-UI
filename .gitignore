@@ -42,3 +42,6 @@ Thumbs.db
 *.js
 *.js.map
 *.type.js
+
+#ignore cache
+.angular/cache/
