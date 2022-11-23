@@ -45,3 +45,6 @@ Thumbs.db
 
 #ignore cache
 .angular/cache/
+
+#ignore vs studio builds
+.vs
