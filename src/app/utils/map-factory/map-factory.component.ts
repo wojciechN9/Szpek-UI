@@ -11,7 +11,6 @@ import { Style, Circle, Stroke, Fill } from 'ol/style';
 import VectorSource from 'ol/source/Vector';
 import Feature from 'ol/Feature';
 import Point from 'ol/geom/Point';
-import LayerVector from 'ol/layer/Vector';
 import { createEmpty, extend } from 'ol/extent';
 import Overlay from 'ol/overlay';
 import { LocationMeassurements } from '../../location-meassurements/location-meassurements.type';
@@ -19,6 +18,7 @@ import { AirQualityEnum } from '../../location-meassurements/air-quality.type';
 import { getAirQualityColor } from '../enum/air-quality';
 import { getEnumValues } from '../enum/enum-conversion';
 import { ProgressBarComponent } from '../progress-bar/progress-bar.component';
+import BaseVectorLayer from 'ol/layer/BaseVector';
 
 
 @Component({
@@ -34,7 +34,7 @@ export class MapFactoryComponent implements OnChanges, AfterViewInit {
 
   map: OlMap;
   source: OlXYZ;
-  layer: OlTileLayer;
+  layer: OlTileLayer<OlXYZ>;
   view: OlView;
   popup: Overlay;
   tooltip: any;
@@ -69,7 +69,7 @@ export class MapFactoryComponent implements OnChanges, AfterViewInit {
     });
 
     var locationLayers = this.getLocationLayers(locationsMeassurements);
-    var layers = [this.layer].concat(locationLayers);
+    var layers = [this.layer].concat(locationLayers as any);
 
     this.map = new OlMap({
       target: 'map',
@@ -128,7 +128,7 @@ export class MapFactoryComponent implements OnChanges, AfterViewInit {
   }
 
   getLocationLayers(locationsMeassurements: LocationMeassurements[]) {
-    let layers = new Array<LayerVector>();
+    let layers = new Array<BaseVectorLayer<any, any>>();
     let transform = getTransform('EPSG:4326', 'EPSG:3857');
 
     for (let quality in getEnumValues(AirQualityEnum)) {
@@ -140,7 +140,7 @@ export class MapFactoryComponent implements OnChanges, AfterViewInit {
 
         for (let i = 0; i < qualityLocations.length; i++) {
           let feature = new Feature();
-          let coordinate = transform([qualityLocations[i].address.longitude, qualityLocations[i].address.latitude]);
+          let coordinate = transform([qualityLocations[i].address.longitude, qualityLocations[i].address.latitude], undefined, undefined);
           let geometry = new Point(coordinate);
           feature.setGeometry(geometry);
 
@@ -149,7 +149,7 @@ export class MapFactoryComponent implements OnChanges, AfterViewInit {
         }
 
         layers.push(
-          new LayerVector({
+          new BaseVectorLayer({
             source: locationsSource,
             style: circleStyle
           }));
@@ -191,6 +191,6 @@ export class MapFactoryComponent implements OnChanges, AfterViewInit {
       extend(extent, locationsLayer[i].getSource().getExtent());
     }
 
-    this.map.getView().fit(extent, this.map.getSize());
+    this.map.getView().fit(extent, {size: this.map.getSize()} );
   }
 }
