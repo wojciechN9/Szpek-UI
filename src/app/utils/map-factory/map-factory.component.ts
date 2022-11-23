@@ -9,6 +9,7 @@ import OlView from 'ol/View';
 import { fromLonLat, getTransform } from 'ol/proj';
 import { Style, Circle, Stroke, Fill } from 'ol/style';
 import VectorSource from 'ol/source/Vector';
+import VectorLayer from 'ol/layer/Vector';
 import Feature from 'ol/Feature';
 import Point from 'ol/geom/Point';
 import { createEmpty, extend } from 'ol/extent';
@@ -18,7 +19,6 @@ import { AirQualityEnum } from '../../location-meassurements/air-quality.type';
 import { getAirQualityColor } from '../enum/air-quality';
 import { getEnumValues } from '../enum/enum-conversion';
 import { ProgressBarComponent } from '../progress-bar/progress-bar.component';
-import BaseVectorLayer from 'ol/layer/BaseVector';
 
 
 @Component({
@@ -128,7 +128,7 @@ export class MapFactoryComponent implements OnChanges, AfterViewInit {
   }
 
   getLocationLayers(locationsMeassurements: LocationMeassurements[]) {
-    let layers = new Array<BaseVectorLayer<any, any>>();
+    let layers = new Array<VectorLayer<VectorSource>>();
     let transform = getTransform('EPSG:4326', 'EPSG:3857');
 
     for (let quality in getEnumValues(AirQualityEnum)) {
@@ -149,7 +149,7 @@ export class MapFactoryComponent implements OnChanges, AfterViewInit {
         }
 
         layers.push(
-          new BaseVectorLayer({
+          new VectorLayer({
             source: locationsSource,
             style: circleStyle
           }));
@@ -191,6 +191,6 @@ export class MapFactoryComponent implements OnChanges, AfterViewInit {
       extend(extent, locationsLayer[i].getSource().getExtent());
     }
 
-    this.map.getView().fit(extent, {size: this.map.getSize()} );
+    this.map.getView().fit(extent, {size: this.map.getSize(), padding: [20, 20, 20, 20]} );
   }
 }
