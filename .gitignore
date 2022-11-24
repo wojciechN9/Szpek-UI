@@ -42,3 +42,9 @@ Thumbs.db
 *.js
 *.js.map
 *.type.js
+
+#ignore cache
+.angular/cache/
+
+#ignore vs studio builds
+.vs
