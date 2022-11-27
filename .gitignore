@@ -7,7 +7,7 @@
 /out-tsc
 
 # dependencies
-/node_modules
+szpek/node_modules
 
 # IDEs and editors
 /.idea
@@ -44,7 +44,7 @@ Thumbs.db
 *.type.js
 
 #ignore cache
-.angular/cache/
+/szpek/.angular/cache/
 
 #ignore vs studio builds
 .vs
