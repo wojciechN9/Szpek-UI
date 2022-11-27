@@ -13,7 +13,7 @@ import VectorLayer from 'ol/layer/Vector';
 import Feature from 'ol/Feature';
 import Point from 'ol/geom/Point';
 import { createEmpty, extend } from 'ol/extent';
-import Overlay from 'ol/overlay';
+import Overlay from 'ol/Overlay';
 import { LocationMeassurements } from '../../location-meassurements/location-meassurements.type';
 import { AirQualityEnum } from '../../location-meassurements/air-quality.type';
 import { getAirQualityColor } from '../enum/air-quality';

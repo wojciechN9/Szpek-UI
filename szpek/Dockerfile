@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1.4
 
-FROM --platform=$BUILDPLATFORM node:17.0.1-bullseye-slim as builder
+FROM --platform=$BUILDPLATFORM node:16.18-bullseye-slim as builder
 
 RUN mkdir /project
 WORKDIR /project
@@ -8,7 +8,9 @@ WORKDIR /project
 RUN npm install -g @angular/cli@14
 
 COPY package.json package-lock.json ./
-RUN npm ci
+
+#fix bootstrap issue to remove force
+RUN npm ci --force 
 
 COPY . .
 CMD ["ng", "serve", "--host", "0.0.0.0"]
