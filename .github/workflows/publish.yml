@@ -49,5 +49,5 @@ jobs:
           username: ${{ secrets.SERVER_USERNAME }}
           password: ${{ secrets.SERVER_PASSWORD }}
           port: 22
-          source: "szpek_release"
+          source: "szpek/szpek_release"
           target: "/var/szpek-ui-backups"
