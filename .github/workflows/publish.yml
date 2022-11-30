@@ -38,10 +38,12 @@ jobs:
       #  with:
       #    name: deploy_coverage
       #    path: coverage
+      - name: Set dir name
+        run: echo "dir_name=szpek_ui_release_$(date +%Y-%m-%dT%H:%M:%S)" >> $GITHUB_OUTPUT
       - name: Copy and rename release folder
         run: |
-          mkdir -p "szpek_release"
-          cp -R "dist" "szpek_release"
+          mkdir -p "${{ steps.vars.outputs.dir_name }}"
+          cp -R "dist" "${{ steps.vars.outputs.dir_name }}"
       - name: Send release folder via ssh
         uses: appleboy/scp-action@master
         with:
@@ -49,5 +51,5 @@ jobs:
           username: ${{ secrets.SERVER_USERNAME }}
           password: ${{ secrets.SERVER_PASSWORD }}
           port: 22
-          source: "szpek/szpek_release"
+          source: "szpek/${{ steps.vars.outputs.dir_name }}"
           target: "/var/szpek-ui-backups"
