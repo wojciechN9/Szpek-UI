@@ -1,9 +1,8 @@
 name: publish app
 
-on:
-  push:
-    branches:
-      - 'test-publish'
+on: 
+  release:
+    types: [published]
 
 jobs:
   build:
