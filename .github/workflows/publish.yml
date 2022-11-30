@@ -39,7 +39,7 @@ jobs:
       #    name: deploy_coverage
       #    path: coverage
       - name: Set dir name
-        run: echo "dir_name=szpek_ui_release_$(date +%Y-%m-%dT%H:%M:%S)" >> $GITHUB_OUTPUT
+        run: dir_name=szpek_ui_release_$(date +%Y-%m-%dT%H:%M:%S) >> $GITHUB_OUTPUT
       - name: Copy and rename release folder
         run: |
           mkdir -p "${{ steps.vars.outputs.dir_name }}"
