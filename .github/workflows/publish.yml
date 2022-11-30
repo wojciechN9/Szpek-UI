@@ -31,7 +31,7 @@ jobs:
         uses: actions/upload-artifact@v1
         with:
           name: deploy_dist
-          path: dist
+          path: szpek/dist
       #- name: Archive code coverage result
       #  if: success()
       #  uses: actions/upload-artifact@v1
