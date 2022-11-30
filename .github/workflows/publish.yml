@@ -1,0 +1,65 @@
+name: publish app
+
+on: 
+  release:
+    types: [published]
+
+jobs:
+  build:
+    name: Build and Test
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: szpek
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Use Node 16.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16.x'
+      - name: Install dependencies
+        run: npm ci --force
+      - name: Build
+        run: npm run build:ci
+      # no tests so skipped for now
+      #- name: Test
+      #  run: npm run test:ci
+      - name: Archive build
+        if: success()
+        uses: actions/upload-artifact@v1
+        with:
+          name: deploy_dist
+          path: szpek/dist
+      #- name: Archive code coverage result
+      #  if: success()
+      #  uses: actions/upload-artifact@v1
+      #  with:
+      #    name: deploy_coverage
+      #    path: coverage
+      - name: Send release folder via ssh
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USERNAME }}
+          password: ${{ secrets.SERVER_PASSWORD }}
+          port: 22
+          source: "szpek/dist"
+          target: "/var/szpek-ui-backups"
+      - name: Publish App on the server
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USERNAME }}
+          password: ${{ secrets.SERVER_PASSWORD }}
+          port: 22
+          script: |
+            dir_name=szpek_ui_release_$(date +%Y-%m-%dT%H_%M_%S)
+            backup_dir=/var/szpek-ui-backups
+            publish_dir=/var/www/szpek-ui
+            cd $backup_dir
+            mv szpek/dist/ $dir_name
+            cd $publish_dir
+            rm -r *
+            cp -R $backup_dir/$dir_name/. $publish_dir
+            cp -R $backup_dir/non-angular/. $publish_dir
