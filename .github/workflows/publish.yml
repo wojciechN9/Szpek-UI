@@ -54,7 +54,7 @@ jobs:
           password: ${{ secrets.SERVER_PASSWORD }}
           port: 22
           script: |
-            dir_name=szpek_ui_release_$(date +%Y-%m-%dT%H_%M_%S)
+            dir_name=szpek_ui_release_${{ github.event.release.tag_name }}
             backup_dir=/var/szpek-ui-backups
             publish_dir=/var/www/szpek-ui
             cd $backup_dir
