@@ -39,7 +39,9 @@ jobs:
       #    name: deploy_coverage
       #    path: coverage
       - name: Copy and rename release folder
-        run: mkdir -p "szpek_release" && cp "szpek/dist" "szpek_release"
+        run: |
+          mkdir -p "szpek_release"
+          cp "szpek/dist" "szpek_release"
       - name: Send release folder via ssh
         uses: appleboy/scp-action@master
         with:
