@@ -10,6 +10,8 @@ jobs:
     name: Build and Test
     runs-on: ubuntu-latest
     steps:
+      - name: Go to the project directory
+        run: cd szpek
       - name: Checkout
         uses: actions/checkout@v2
       - name: Use Node 16.x
