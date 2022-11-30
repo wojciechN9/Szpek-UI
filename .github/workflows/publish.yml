@@ -47,7 +47,7 @@ jobs:
           port: 22
           source: "szpek/dist"
           target: "/var/szpek-ui-backups"
-      - name: executing remote ssh commands using password
+      - name: Publish App on the server
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.SERVER_HOST }}
@@ -55,6 +55,12 @@ jobs:
           password: ${{ secrets.SERVER_PASSWORD }}
           port: 22
           script: |
-            dir_name=szpek_ui_release_$(date +%Y-%m-%dT%H:%M:%S)
-            cd /var/szpek-ui-backups
+            dir_name=szpek_ui_release_$(date +%Y-%m-%dT%H-%M-%S)
+            backup_dir=/var/szpek-ui-backups
+            publish_dir=/var/www/szpek-ui
+            cd $backup_dir
             mv szpek/dist/ $dir_name
+            cd $publish_dir
+            rm -r *
+            cp -R $backup_dir/$dir_name/. $publish_dir
+            cp -R $backup_dir/non-angular/. $publish_dir
