@@ -41,7 +41,7 @@ jobs:
       - name: Copy and rename release folder
         run: |
           mkdir -p "szpek_release"
-          cp "szpek/dist" "szpek_release"
+          cp "dist" "szpek_release"
       - name: Send release folder via ssh
         uses: appleboy/scp-action@master
         with:
