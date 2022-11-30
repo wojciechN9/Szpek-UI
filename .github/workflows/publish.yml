@@ -10,14 +10,14 @@ jobs:
     name: Build and Test
     runs-on: ubuntu-latest
     steps:
-      - name: Go to the project directory
-        run: cd szpek
       - name: Checkout
         uses: actions/checkout@v2
       - name: Use Node 16.x
         uses: actions/setup-node@v1
         with:
           node-version: '16.x'
+      - name: Go to the project directory
+        run: cd szpek
       - name: Install dependencies
         run: npm ci
       - name: Build
