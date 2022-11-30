@@ -2,6 +2,7 @@
 
 # compiled output
 /dist
+szpek/dist
 /dist-server
 /tmp
 /out-tsc
