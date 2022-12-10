@@ -2,7 +2,9 @@ services:
   web:
     build:
       context: szpek
-      target: builder
+      target: dev-envs
+      #dev-envs - local machine
+      #builder - production
     ports:
       - 4200:4200
     volumes:
